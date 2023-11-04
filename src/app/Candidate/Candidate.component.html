@@ -1,0 +1,46 @@
+<p>
+  Candidate works!
+</p>
+<p>
+  Candidate-ver works!
+</p>
+<H1>Candidate: {{ candidate.nombres }} {{ candidate.apellidos }}(Id: {{ candidate.id }})</H1>
+<H5>Correo: {{ candidate.email }}</H5>
+<H5>Id_Usuario: {{ candidate.id_usuario}}</H5>
+<H5>Ciudad: {{ candidate.ciudad }}</H5>
+<H5>Direccion: {{ candidate.direccion }}</H5>
+<H5>Celular: {{ candidate.phone}}</H5>
+<H5>num_Perfil: {{ candidate.num_perfil}}</H5>
+<HR>
+<!-- <a routerLink="/agregarProyecto/{{ candidate.id }}/{{ this.userId }}/{{ this.token }}"> Adicionar Proyecto a la Empresa </a>  -->
+<HR>
+<div class="container-fluid">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="h4">Nombre</th>
+          <th class="h4">Tipo</th>
+          <th class="h4">Calificacion</th>
+          <th class="h4">Valoracion</th>
+        </tr>
+        <tr *ngFor="let habil of candidate.lstHabils">
+          <td>
+            <dd>{{habil.nombre}}</dd>
+          </td>
+          <td>
+            <dd>{{habil.tipo}}</dd>
+          </td>
+          <td>
+            <dd>{{habil.calificacion}}</dd>
+          </td>
+          <td>
+            <dd>{{habil.valoracion}}</dd>
+          </td>          
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
