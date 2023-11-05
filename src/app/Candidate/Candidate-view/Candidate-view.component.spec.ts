@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { CandidateViewComponent } from './Candidate-view.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('CandidateViewComponent', () => {
   let component: CandidateViewComponent;
@@ -11,6 +13,7 @@ describe('CandidateViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ CandidateViewComponent ]
     })
     .compileComponents();
