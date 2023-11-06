@@ -6,8 +6,10 @@ import { faker } from '@faker-js/faker';
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateComponent } from './Candidate.component';
 import { CandidateService } from './Candidate.service';
-import { CandidateDetail } from './/Candidate-detail';
-import { Candidate } from './/Candidate';
+import { CandidateDetail } from './Candidate-detail';
+import { Candidate } from './Candidate';
+import { Habilidad } from './Habilidad';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('CandidateComponent', () => {
@@ -17,7 +19,7 @@ describe('CandidateComponent', () => {
 
  beforeEach(async(() => {
    TestBed.configureTestingModule({
-     imports: [HttpClientModule],
+     imports: [HttpClientModule, RouterTestingModule],
      declarations: [ CandidateComponent ],
      providers: [ CandidateService ]
    })
@@ -28,16 +30,12 @@ describe('CandidateComponent', () => {
    fixture = TestBed.createComponent(CandidateComponent);
    component = fixture.componentInstance;
 
-   component.candidate={id: 1, nombres:'Luis Eduardo', apellidos:'Padilla Caviedes',
-                        direccion: 'Mz 8', email:'caviedes72@hotmail.com', phone: '3054419334',
-                        ciudad: '', num_perfil: 1, id_usuario: 1, imagen: '', 
-                        lstHabils: [
-                            {id_ph: 1, id_perfil: 1, valoracion: 'BAJO', calificacion: 100,
-                             id_habil: 1, nombre: 'Python', tipo: 'Tecnica'},
-                             {id_ph: 2, id_perfil: 1, valoracion: 'BAJO', calificacion: 100,
-                             id_habil: 2, nombre: 'Angular', tipo: 'Tecnica'}
-                        ]
-                    }
+   component.candidate=new CandidateDetail(1, 'Luis Eduardo', 'Padilla Caviedes',
+   'Mz 8', 'caviedes72@hotmail.com', '3054419334',
+   '', 1, 1, '', []); 
+   component.candidate.lstHabils.push(new Habilidad(1, 1, 100, 'BAJO', 1, 'Python', 'Tecnica'))
+   component.candidate.lstHabils.push(new Habilidad(2, 1, 100, 'BAJO', 2, 'Angular', 'Tecnica'))
+
 
    //component.courses = [
    //  new Course(faker.lorem.sentence(), faker.name.firstName(), faker.datatype.number())

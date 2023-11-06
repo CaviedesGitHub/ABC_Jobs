@@ -24,6 +24,8 @@
           <th class="h4">Calificacion</th>
           <th class="h4">Valoracion</th>
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let habil of candidate.lstHabils">
           <td>
             <dd>{{habil.nombre}}</dd>
@@ -37,9 +39,7 @@
           <td>
             <dd>{{habil.valoracion}}</dd>
           </td>          
-      </tr>
-      </thead>
-      <tbody>
+      </tr>        
       </tbody>
     </table>
   </div>

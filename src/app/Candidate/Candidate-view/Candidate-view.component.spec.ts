@@ -5,7 +5,11 @@ import { DebugElement } from '@angular/core';
 
 import { CandidateViewComponent } from './Candidate-view.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 describe('CandidateViewComponent', () => {
   let component: CandidateViewComponent;
@@ -13,7 +17,8 @@ describe('CandidateViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, 
+        MatCardModule, MatFormFieldModule, MatPaginatorModule],
       declarations: [ CandidateViewComponent ]
     })
     .compileComponents();
