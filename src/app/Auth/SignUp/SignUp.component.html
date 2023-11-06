@@ -1,3 +1,129 @@
 <p>
   SignUp works!
 </p>
+
+<div class="container-fluid my-4" id="principal">
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Sign Up New User</h1>
+          <h5 class="card-title text-center my-0 py-0">Digita los datos para crearte un usuario en la plataforma y un rol</h5>
+        </div>
+        <div class="card-body py-1">          
+          <div class="container mt-1">
+            <form
+              [formGroup]="signupForm"
+              (ngSubmit)="!signupForm.invalid && createUser(signupForm.value)"
+            >
+              <!--nombre-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="nombre">Name</label>
+                <input
+                  novalidate
+                  id="nombre"
+                  class="form-control form-control-sm"
+                  formControlName="nombre"
+                  placeholder="User's name"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    signupForm.get('nombre')!.hasError('required') &&
+                    signupForm.get('nombre')!.touched
+                  "
+                >
+                  Name required
+                </div>
+              </div>
+          
+              <!--Password-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="password">Password</label>
+                <input
+                  novalidate
+                  id="password"
+                  class="form-control form-control-sm"
+                  formControlName="password"
+                  placeholder="User's Password"
+                  type="password"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    signupForm.get('password')!.hasError('required') &&
+                    signupForm.get('password')!.touched
+                  "
+                >
+                  Password required
+                </div>
+              </div>
+          
+              <!--Password2-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="password2">Password Repeat</label>
+                <input
+                  novalidate
+                  id="password2"
+                  class="form-control form-control-sm"
+                  formControlName="password2"
+                  placeholder="User's Password Repeat"
+                  type="password"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    signupForm.get('password2')!.hasError('required') &&
+                    signupForm.get('password2')!.touched
+                  "
+                >
+                  Password required
+                </div>
+              </div>
+          
+              <!--Tipo-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="tipo">Type</label>
+                <select novalidate id="tipo" formControlName="tipo" class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm">
+                  <option selected>Select your ROLE</option>
+                  <option value="EMPRESA">CANDIDATE</option>
+                  <option value="CANDIDATO">COMPANY</option>
+                  <option value="EMPLEADO_ABC ">ABCJOBS EMPLOYEE </option>
+                </select>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    signupForm.get('tipo')!.hasError('required') &&
+                    signupForm.get('tipo')!.touched 
+                  "
+                >
+                  Type required
+                </div>
+              </div>
+              <div class="container-fluid text-center">
+                <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!signupForm.valid"
+              >
+                Create
+              </button>
+              </div>
+            </form>
+           </div>
+        </div>
+        <div class="card-footer text-muted">
+          Already have an account?  <a class="active" routerLink="/login">Login Here</a>
+         </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      
+    </div>
+  </div>
+</div>
+

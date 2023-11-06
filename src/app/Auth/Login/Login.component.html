@@ -1,13 +1,101 @@
 <p>
   Login works!
 </p>
+<div class="container-fluid my-4" id="principal">
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
+          <h5 class="card-title text-center mb-0 pb-0">Digita tus credenciales para ingresar a la plataforma</h5>
+        </div>
+        <div class="card-body">
+          <div class="container mt-2">
+            <form
+              [formGroup]="loginForm"
+              (ngSubmit)="!loginForm.invalid && loginUser(loginForm.value)"
+            >
+              <!--nombre-->
+              <div class="form-group mx-sm-3 mb-4">
+                <label class="fst-italic fw-bold" for="nombre">Name</label>
+                <input
+                  novalidate
+                  id="nombre"
+                  class="form-control form-control-sm"
+                  formControlName="nombre"
+                  placeholder="User's name"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    loginForm.get('nombre')!.hasError('required') &&
+                    loginForm.get('nombre')!.touched
+                  "
+                >
+                  Name required
+                </div>
+              </div>
+          
+              <!--Password-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="text-left fst-italic fw-bold" for="password">Password</label>
+                <input
+                  novalidate
+                  id="password"
+                  class="form-control form-control-sm"
+                  formControlName="password"
+                  placeholder="User's Password"
+                  type="password"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    loginForm.get('password')!.hasError('required') &&
+                    loginForm.get('password')!.touched
+                  "
+                >
+                  Password required
+                </div>
+              </div>
+              <p class="ml-2 mt-3 mb-4 mx-sm-3"><a>Forget Password?</a></p>
+              <div class="container-fluid text-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="!loginForm.valid"
+                >
+                  Login
+              </button>
+            </div>
+          
+            </form>
+           </div>
+        </div>
+        <div class="card-footer text-muted">
+          Do not have an account? <a routerLink="/signup">Sign Up</a>
+         </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- 
 <div class="container mt-4">
-  <h2 class="text-center">Login</h2>
+  <h1 class="text-center">Bienvenido</h1>
+  <h5 class="text-center">Digita tus credenciales para ingresar a la plataforma</h5>
   <form
     [formGroup]="loginForm"
     (ngSubmit)="!loginForm.invalid && loginUser(loginForm.value)"
   >
-    <!--nombre-->
+
     <div class="form-group mx-sm-3 mb-2">
       <label for="nombre">Name</label>
       <input
@@ -28,7 +116,6 @@
       </div>
     </div>
 
-    <!--Password-->
     <div class="form-group mx-sm-3 mb-2">
       <label for="password">Password</label>
       <input
@@ -59,3 +146,5 @@
 
   </form>
  </div>
+ Do not have an account? <a>Sign Up</a>
+-->
