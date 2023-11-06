@@ -1,0 +1,61 @@
+<p>
+  Login works!
+</p>
+<div class="container mt-4">
+  <h2 class="text-center">Login</h2>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="!loginForm.invalid && loginUser(loginForm.value)"
+  >
+    <!--nombre-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="nombre">Name</label>
+      <input
+        novalidate
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="User's name"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          loginForm.get('nombre')!.hasError('required') &&
+          loginForm.get('nombre')!.touched
+        "
+      >
+        Name required
+      </div>
+    </div>
+
+    <!--Password-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="password">Password</label>
+      <input
+        novalidate
+        id="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="User's Password"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          loginForm.get('password')!.hasError('required') &&
+          loginForm.get('password')!.touched
+        "
+      >
+        Password required
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!loginForm.valid"
+    >
+      Login
+    </button>
+
+  </form>
+ </div>
