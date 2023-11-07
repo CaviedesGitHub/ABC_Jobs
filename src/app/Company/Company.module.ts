@@ -1,27 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './Company.component';
-
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [CompanyComponent]
-})
-export class CompanyModule { }
-
-
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CompanyComponent } from './Company.component';
 import { CompanyCrearComponent } from './Company-crear/Company-crear.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyVerComponent } from './Company-ver/Company-ver.component';
 import { ProyectoVerComponent } from './Proyecto-ver/Proyecto-ver.component';
 import { RouterModule } from '@angular/router';
-import { PerflAgregarComponent } from './Perfl-agregar/Perfl-agregar.component';
+import { PerfilAgregarComponent } from './Perfil-agregar/Perfil-agregar.component';
 import { PerfilEmpComponent } from './Perfil-emp/Perfil-emp.component';
-import { ProjectoCrearComponent } from './Projecto-crear/Projecto-crear.component';
+import { ProyectoCrearComponent } from './Proyecto-crear/Proyecto-crear.component';
 
 @NgModule({
   imports: [
@@ -29,13 +16,13 @@ import { ProjectoCrearComponent } from './Projecto-crear/Projecto-crear.componen
   ],
   declarations: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent, 
-    PerflAgregarComponent, PerfilEmpComponent,
-    ProjectoCrearComponent
+    PerfilAgregarComponent, PerfilEmpComponent,
+    ProyectoCrearComponent
   ],
   exports: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent,
-    PerflAgregarComponent, PerfilEmpComponent,
-    ProjectoCrearComponent
+    PerfilAgregarComponent, PerfilEmpComponent,
+    ProyectoCrearComponent
   ]
 })
 export class CompanyModule { }

@@ -1,21 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-Proyecto-ver',
-  templateUrl: './Proyecto-ver.component.html',
-  styleUrls: ['./Proyecto-ver.component.css']
-})
-export class ProyectoVerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
-import { Component, OnInit } from '@angular/core';
 import { ProjectDetail } from '../Project-detail';
 import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,6 +10,7 @@ import { Project } from '../Project';
   templateUrl: './Proyecto-ver.component.html',
   styleUrls: ['./Proyecto-ver.component.css']
 })
+
 export class ProyectoVerComponent implements OnInit {
 
   proyId: number | undefined;
@@ -76,13 +60,13 @@ export class ProyectoVerComponent implements OnInit {
     }
 
    ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.proyId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['proyId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.proyId = parseInt(this.router.snapshot.params.proyId)
-      this.userId = parseInt(this.router.snapshot.params.userId)
-      this.token = this.router.snapshot.params.userToken
+      this.proyId = parseInt(this.router.snapshot.params['proyId'])
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
       //console.log("Mi Propia Consola")
       //console.log("+++++++++++++")
       //console.log("+++++++++++++")

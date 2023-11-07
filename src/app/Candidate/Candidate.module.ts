@@ -9,10 +9,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { CandidateCreateComponent } from './Candidate-create/Candidate-create.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
@@ -21,7 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatButtonModule,
   ],
-  declarations: [CandidateComponent, CandidateViewComponent],
-  exports: [CandidateComponent, CandidateViewComponent],
+  declarations: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
+  exports: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
 })
 export class CandidateModule { }

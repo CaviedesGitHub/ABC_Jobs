@@ -1,21 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-Company-ver',
-  templateUrl: './Company-ver.component.html',
-  styleUrls: ['./Company-ver.component.css']
-})
-export class CompanyVerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
-import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -26,6 +9,7 @@ import { CompanyDetail } from '../Company-detail';
   templateUrl: './Company-ver.component.html',
   styleUrls: ['./Company-ver.component.css']
 })
+
 export class CompanyVerComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
@@ -46,12 +30,12 @@ export class CompanyVerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.userId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.userId = parseInt(this.router.snapshot.params.userId)
-      this.token = this.router.snapshot.params.userToken
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
       this.viewDetailUserCompany(this.userId)
     }
 

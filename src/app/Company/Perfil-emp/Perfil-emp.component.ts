@@ -1,20 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-Perfil-emp',
-  templateUrl: './Perfil-emp.component.html',
-  styleUrls: ['./Perfil-emp.component.css']
-})
-export class PerfilEmpComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../Company.service';
@@ -26,6 +10,7 @@ import { Project } from '../Project';
   templateUrl: './Perfil-emp.component.html',
   styleUrls: ['./Perfil-emp.component.css']
 })
+
 export class PerfilEmpComponent implements OnInit {
   perfilId: number = 1;
   token: string = "";
@@ -53,14 +38,14 @@ export class PerfilEmpComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.perfilId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['perfilId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.proyId = parseInt(this.router.snapshot.params.proyId)
-      this.perfilId = parseInt(this.router.snapshot.params.perfilId)
-      this.userId = parseInt(this.router.snapshot.params.userId)
-      this.token = this.router.snapshot.params.userToken
+      this.proyId = parseInt(this.router.snapshot.params['proyId'])
+      this.perfilId = parseInt(this.router.snapshot.params['perfilId'])
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
       this.verCandidatosCumplen(this.perfilId)
     }
   }

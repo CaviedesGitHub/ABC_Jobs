@@ -1,21 +1,10 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CompanyService {
-
-constructor() { }
-
-}
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Company } from './Company';
 import { CompanyDetail } from './Company-detail';
 import { ProjectDetail } from './Project-detail';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+//import { environment } from 'src/environments/environment';
 import { PerfilProyecto } from './Perfil-proyecto';
 import { Habil } from './Habil';
 import { Project } from './Project';
@@ -29,7 +18,9 @@ export class CompanyService {
   //private apiEmpresas = 'http://empresas.eba-djxnu4ir.us-east-2.elasticbeanstalk.com/empresas'
   //private apiEmpresas = 'http://localhost:5000/empresas'
   private detalleUrl=''
-  private apiUrl=environment.baseUrl
+ 
+  private apiUrl = 'http://localhost:5000';
+  //private apiUrl = 'http://gateway.eba-brqkktps.us-east-2.elasticbeanstalk.com';
 
   constructor(private http: HttpClient) { }
 

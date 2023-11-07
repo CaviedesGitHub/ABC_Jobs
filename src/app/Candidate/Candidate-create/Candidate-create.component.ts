@@ -1,20 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-Candidate-create',
-  templateUrl: './Candidate-create.component.html',
-  styleUrls: ['./Candidate-create.component.css']
-})
-export class CandidateCreateComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from '../Candidate';
@@ -56,12 +40,12 @@ export class CandidateCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.userId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.userId = parseInt(this.router.snapshot.params.userId)
-      this.token = this.router.snapshot.params.userToken
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
       console.log('INICIO MENDSAJE CONSOLE LOG CREAR CANDIDATO')
       console.log(this.userId)
       console.log('FIN MENDSAJE CONSOLE LOG CREAR CANDIDATO')

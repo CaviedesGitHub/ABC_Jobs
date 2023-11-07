@@ -1,20 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-Perfil-agregar',
-  templateUrl: './Perfil-agregar.component.html',
-  styleUrls: ['./Perfil-agregar.component.css']
-})
-export class PerfilAgregarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
@@ -24,11 +7,11 @@ import { CompanyService } from '../Company.service';
 import { Habil } from '../Habil';
 
 @Component({
-  selector: 'app-Perfl-agregar',
-  templateUrl: './Perfl-agregar.component.html',
-  styleUrls: ['./Perfl-agregar.component.css']
+  selector: 'app-Perfil-agregar',
+  templateUrl: './Perfil-agregar.component.html',
+  styleUrls: ['./Perfil-agregar.component.css']
 })
-export class PerflAgregarComponent implements OnInit {
+export class PerfilAgregarComponent implements OnInit {
   perfilForm!: FormGroup;
   lstHabils: Array<Habil> = [];
   lstHT: Array<Habil> = [];
@@ -103,12 +86,12 @@ export class PerflAgregarComponent implements OnInit {
 
 
   ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.proyId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['proyId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.proyId = parseInt(this.router.snapshot.params.proyId)
-      this.token = this.router.snapshot.params.userToken
+      this.proyId = parseInt(this.router.snapshot.params['proyId'])
+      this.token = this.router.snapshot.params['userToken']
     }
 
     this.perfilForm = this.formBuilder.group({
@@ -128,4 +111,3 @@ export class PerflAgregarComponent implements OnInit {
 
 
 }
-

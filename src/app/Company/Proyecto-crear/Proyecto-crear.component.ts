@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from '../Company.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Project } from '../Project';
 
 @Component({
   selector: 'app-Proyecto-crear',
@@ -6,29 +11,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Proyecto-crear.component.css']
 })
 export class ProyectoCrearComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
-import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../Company.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Project } from '../Project';
-
-
-@Component({
-  selector: 'app-Projecto-crear',
-  templateUrl: './Projecto-crear.component.html',
-  styleUrls: ['./Projecto-crear.component.css']
-})
-export class ProjectoCrearComponent implements OnInit {
   userId: number | undefined;
   empId: number = 0
   token: string | undefined;
@@ -50,13 +32,13 @@ export class ProjectoCrearComponent implements OnInit {
     }
 
   ngOnInit() {
-    if (!parseInt(this.router.snapshot.params.userId) || this.router.snapshot.params.userToken === " ") {
+    if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else {
-      this.empId = parseInt(this.router.snapshot.params.empId)
-      this.userId = parseInt(this.router.snapshot.params.userId)
-      this.token = this.router.snapshot.params.userToken
+      this.empId = parseInt(this.router.snapshot.params['empId'])
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
       //this.toastr.success("Confirmation", `${this.empId}`)
       //this.viewDetailProject(this.proyId)
     } 
