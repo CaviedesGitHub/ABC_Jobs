@@ -73,9 +73,9 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.error = true
-        console.log('MENSAJE LOG CONSOLE')
+        console.log('ERROR: MENSAJE LOG CONSOLE')
         //console.log(res)
-        console.log('FIN MENSAJE LOG CONSOLE')
+        console.log('ERROR: FIN MENSAJE LOG CONSOLE')
       }
     )
   }
