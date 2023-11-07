@@ -33,6 +33,10 @@ export class CompanyCrearComponent implements OnInit {
     })
   }
 
+  cancelCreation(){
+    this.empresaForm.reset();
+    //this.enrutador.navigate([`/detalleProyecto/${this.userId}/${this.token}`])
+  }
 
   ngOnInit() {
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {

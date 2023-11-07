@@ -2,82 +2,108 @@
   Proyecto-crear works!
 </p>
 
-<div class="container mt-4">
-  <h2 class="text-center">Create a new Project</h2>
-  <form
-    [formGroup]="proyForm"
-    (ngSubmit)="!proyForm.invalid && createProject(proyForm.value)"
-  >
-    <!--Nombre-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="nombre">Name</label>
-      <input
-        novalidate
-        id="nombre"
-        class="form-control"
-        formControlName="nombre"
-        placeholder="Project's name"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          proyForm.get('nombre')!.hasError('required') &&
-          proyForm.get('nombre')!.touched
-        "
-      >
-        Name required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="proyForm.get('nombre')!.hasError('minlength')"
-      >
-        Name too short
+<div class="container-fluid my-4" id="principal">
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
+          <h5 class="card-title text-center mb-0 pb-0">Digita tus credenciales para ingresar a la plataforma</h5>
+        </div>
+        <div class="card-body">
+          <div class="container mt-4">
+            <h2 class="text-center">Create a new Project</h2>
+            <form
+              [formGroup]="proyForm"
+              (ngSubmit)="!proyForm.invalid && createProject(proyForm.value)"
+            >
+              <!--Nombre-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="nombre">Name</label>
+                <input
+                  novalidate
+                  id="nombre"
+                  class="form-control"
+                  formControlName="nombre"
+                  placeholder="Project's name"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    proyForm.get('nombre')!.hasError('required') &&
+                    proyForm.get('nombre')!.touched
+                  "
+                >
+                  Name required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="proyForm.get('nombre')!.hasError('minlength')"
+                >
+                  Name too short
+                </div>
+              </div>
+           
+              <!--Descripcion-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="descripcion">Description</label>
+                <input
+                  novalidate
+                  id="descripcion"
+                  class="form-control"
+                  formControlName="descripcion"
+                  placeholder="Project's short description"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    proyForm.get('descripcion')!.hasError('required') &&
+                    proyForm.get('descripcion')!.touched
+                  "
+                >
+                  Description required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="proyForm.get('descripcion')!.hasError('maxlength')"
+                >
+                  Description too long
+                </div>
+              </div>
+           
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!proyForm.valid"
+              >
+                Create
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger ml-3"
+                (click)="cancelCreation()"
+              >
+                Cancel
+              </button>
+            </form>
+           </div>
+        </div>
+        <div class="card-footer text-muted">
+          Do not have an account? <a routerLink="/signup">Sign Up</a>
+         </div>
       </div>
     </div>
- 
-    <!--Descripcion-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="descripcion">Description</label>
-      <input
-        novalidate
-        id="descripcion"
-        class="form-control"
-        formControlName="descripcion"
-        placeholder="Project's short description"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          proyForm.get('descripcion')!.hasError('required') &&
-          proyForm.get('descripcion')!.touched
-        "
-      >
-        Description required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="proyForm.get('descripcion')!.hasError('maxlength')"
-      >
-        Description too long
-      </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      
     </div>
- 
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="!proyForm.valid"
-    >
-      Create
-    </button>
-    <button
-      type="button"
-      class="btn btn-danger ml-3"
-      (click)="cancelCreation()"
-    >
-      Cancel
-    </button>
-  </form>
- </div>
+  </div>
+</div>
+
+
 
 
  <!--

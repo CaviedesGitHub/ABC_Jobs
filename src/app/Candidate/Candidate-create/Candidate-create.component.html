@@ -1,218 +1,243 @@
-<div class="container mt-4">
-  <h2 class="text-center">Create a new Candidate</h2>
-  <form
-    [formGroup]="candidateForm"
-    (ngSubmit)="!candidateForm.invalid && createCandidate(candidateForm.value)"
-  >
-    <!--Nombres-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="nombres">Names</label>
-      <input
-        novalidate
-        id="nombres"
-        class="form-control"
-        formControlName="nombres"
-        placeholder="Candidate's names"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('nombres')!.hasError('required') &&
-          candidateForm.get('nombres')!.touched
-        "
-      >
-        Names required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('nombres')!.hasError('minlength')"
-      >
-        Names too short
-      </div>
-    </div>
- 
-    <!--Apellidos-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="apellidos">Last Name</label>
-      <input
-        novalidate
-        id="apellidos"
-        class="form-control"
-        formControlName="apellidos"
-        placeholder="Candidate's last name"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('apellidos')!.hasError('required') &&
-          candidateForm.get('apellidos')!.touched
-        "
-      >
-        Last Name required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('apellidos')!.hasError('minlength')"
-      >
-        Last Name too short
-      </div>
-    </div>
+<div class="container-fluid my-4" id="principal">
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
 
-    <!--Documento-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="documento">Document</label>
-      <input
-        novalidate
-        id="documento"
-        class="form-control"
-        formControlName="documento"
-        placeholder="Candidate's document"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('documento')!.hasError('required') &&
-          candidateForm.get('documento')!.touched
-        "
-      >
-        Document required
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
+          <h5 class="card-title text-center mb-0 pb-0">Digita tus credenciales para ingresar a la plataforma</h5>
+        </div>
+        <div class="card-body">
+          
+          <div class="container mt-4">
+            <h2 class="text-center">Create a new Candidate</h2>
+            <form
+              [formGroup]="candidateForm"
+              (ngSubmit)="!candidateForm.invalid && createCandidate(candidateForm.value)"
+            >
+              <!--Nombres-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="nombres">Names</label>
+                <input
+                  novalidate
+                  id="nombres"
+                  class="form-control"
+                  formControlName="nombres"
+                  placeholder="Candidate's names"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('nombres')!.hasError('required') &&
+                    candidateForm.get('nombres')!.touched
+                  "
+                >
+                  Names required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('nombres')!.hasError('minlength')"
+                >
+                  Names too short
+                </div>
+              </div>
+          
+              <!--Apellidos-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="apellidos">Last Name</label>
+                <input
+                  novalidate
+                  id="apellidos"
+                  class="form-control"
+                  formControlName="apellidos"
+                  placeholder="Candidate's last name"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('apellidos')!.hasError('required') &&
+                    candidateForm.get('apellidos')!.touched
+                  "
+                >
+                  Last Name required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('apellidos')!.hasError('minlength')"
+                >
+                  Last Name too short
+                </div>
+              </div>
+
+              <!--Documento-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="documento">Document</label>
+                <input
+                  novalidate
+                  id="documento"
+                  class="form-control"
+                  formControlName="documento"
+                  placeholder="Candidate's document"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('documento')!.hasError('required') &&
+                    candidateForm.get('documento')!.touched
+                  "
+                >
+                  Document required
+                </div>
+              </div>
+
+              <!--Email-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="email">Email</label>
+                <input
+                  novalidate
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="Candidate's email"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('email')!.hasError('required') &&
+                    candidateForm.get('email')!.touched
+                  "
+                >
+                  Email required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('email')!.hasError('minlength')"
+                >
+                  Email too short
+                </div>
+              </div>
+
+              <!--Telefono-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="phone">Phone</label>
+                <input
+                  novalidate
+                  id="phone"
+                  class="form-control"
+                  formControlName="phone"
+                  placeholder="Candidate's phone"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('phone')!.hasError('required') &&
+                    candidateForm.get('phone')!.touched
+                  "
+                >
+                  Phone required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('phone')!.hasError('minlength')"
+                >
+                  Phone too short
+                </div>
+              </div>
+
+              <!--Ciudad-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="ciudad">City</label>
+                <input
+                  novalidate
+                  id="ciudad"
+                  class="form-control"
+                  formControlName="ciudad"
+                  placeholder="Candidate's city"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('ciudad')!.hasError('required') &&
+                    candidateForm.get('ciudad')!.touched
+                  "
+                >
+                  City required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('ciudad')!.hasError('minlength')"
+                >
+                  City too short
+                </div>
+              </div>
+
+              <!--Direccion-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="direccion">Address</label>
+                <input
+                  novalidate
+                  id="direccion"
+                  class="form-control"
+                  formControlName="direccion"
+                  placeholder="Candidate's address"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('direccion')!.hasError('required') &&
+                    candidateForm.get('direccion')!.touched
+                  "
+                >
+                  Address required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('direccion')!.hasError('minlength')"
+                >
+                  Address too short
+                </div>
+              </div>
+
+              <!--num_perfil-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="num_perfil">Profile#</label>
+                <input
+                  novalidate
+                  id="num_perfil"
+                  class="form-control"
+                  formControlName="num_perfil"
+                  placeholder="Profile #"
+                />
+              </div>
+          
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!candidateForm.valid"
+              >
+                Create
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger ml-3"
+                (click)="cancelCreation()"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Do not have an account? <a routerLink="/signup">Sign Up</a>
+         </div>
       </div>
     </div>
-
-    <!--Email-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="email">Email</label>
-      <input
-        novalidate
-        id="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Candidate's email"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('email')!.hasError('required') &&
-          candidateForm.get('email')!.touched
-        "
-      >
-        Email required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('email')!.hasError('minlength')"
-      >
-        Email too short
-      </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      
     </div>
-
-    <!--Telefono-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="phone">Phone</label>
-      <input
-        novalidate
-        id="phone"
-        class="form-control"
-        formControlName="phone"
-        placeholder="Candidate's phone"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('phone')!.hasError('required') &&
-          candidateForm.get('phone')!.touched
-        "
-      >
-        Phone required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('phone')!.hasError('minlength')"
-      >
-        Phone too short
-      </div>
-    </div>
-
-    <!--Ciudad-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="ciudad">City</label>
-      <input
-        novalidate
-        id="ciudad"
-        class="form-control"
-        formControlName="ciudad"
-        placeholder="Candidate's city"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('ciudad')!.hasError('required') &&
-          candidateForm.get('ciudad')!.touched
-        "
-      >
-        City required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('ciudad')!.hasError('minlength')"
-      >
-        City too short
-      </div>
-    </div>
-
-    <!--Direccion-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="direccion">Address</label>
-      <input
-        novalidate
-        id="direccion"
-        class="form-control"
-        formControlName="direccion"
-        placeholder="Candidate's address"
-      />
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="
-          candidateForm.get('direccion')!.hasError('required') &&
-          candidateForm.get('direccion')!.touched
-        "
-      >
-        Address required
-      </div>
-      <div
-        class="alert alert-danger alert-dismissible fade show"
-        *ngIf="candidateForm.get('direccion')!.hasError('minlength')"
-      >
-        Address too short
-      </div>
-    </div>
-
-    <!--num_perfil-->
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="num_perfil">Profile#</label>
-      <input
-        novalidate
-        id="num_perfil"
-        class="form-control"
-        formControlName="num_perfil"
-        placeholder="Profile #"
-      />
-    </div>
- 
-
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="!candidateForm.valid"
-    >
-      Create
-    </button>
-    <button
-      type="button"
-      class="btn btn-danger ml-3"
-      (click)="cancelCreation()"
-    >
-      Cancel
-    </button>
-  </form>
- </div>
+  </div>
+</div>
