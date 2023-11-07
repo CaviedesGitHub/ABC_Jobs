@@ -1,0 +1,97 @@
+<p>
+  Proyecto-ver works!
+</p>
+
+<H1>Empresa {{project.empresa}}</H1>
+<H2>Proyecto {{project.nombre}}</H2>
+<H3>Id Proyecto: {{project.id}} </H3>
+<H3>Descripcion: {{project.descripcion}}  </H3>
+<HR>
+<a routerLink="/agregarPerfil/{{ this.proyId }}/{{ this.token }}"> Adicionar Perfil al proyecto </a> 
+<HR>
+<div class="container-fluid">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="h5">Profile's Id</th>
+          <th class="h5">Profile's Name</th>
+          <th class="h5">Persona Contratada</th>
+          <th class="h5">Habil Tecnicas</th>
+          <th class="h5">Habil Blandas</th>
+          <th class="h5">Personalidad</th>
+          <th class="h5">Cumplen el Perfil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let perfil of project.perfiles">
+          <td>
+            <dd>{{perfil.id}}</dd>
+          </td>
+          <td>
+            <dd>{{perfil.nombre}}</dd>
+          </td>
+          <td>
+            <dd>{{perfil.candidato}}</dd>
+          </td>
+          <td >
+            <p *ngFor="let ht of perfil.lstHT">{{ ht.nombre }}</p>
+          </td>
+          <td >
+            <p *ngFor="let hb of perfil.lstHB">{{ hb.nombre }}</p>
+          </td>
+          <td >
+            <p *ngFor="let hp of perfil.lstHP">{{ hp.nombre }}</p>
+          </td>
+          <td >
+            <p><a routerLink="/cumplenPerfil/{{this.proyId}}/{{perfil.id_perfil}}/{{ this.userId }}/{{ this.token }}"> Ver </a> </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button
+    type="button"
+    class="btn btn-danger ml-3"
+    (click)="cancelCreation()" >
+    Cancel
+  </button>
+  </div>
+  <a routerLink="/detalleEmpresa/{{ this.userId }}/{{ this.token }}"> Volver a Empresa </a> 
+
+
+<!--
+  
+  <p>this.proyId: {{this.proyId}}</p>
+<p>this.token: {{this.token}}</p>
+  
+  <div *ngFor="let perfil of project.perfiles" class="col mb-2">
+  <p >{{ perfil.id }}</p>
+  <p >{{ perfil.nombre }}</p>
+  <p >{{ perfil.id_proy }}</p>
+  <p >{{ perfil.id_perfil }}</p>
+  <p >{{ perfil.id_cand }}</p>
+  <p >{{ perfil.candidato }}</p>
+    <div *ngFor="let ht of perfil.lstHT" class="col mb-2">
+      <p >{{ ht.id }}</p>
+      <p >{{ ht.nombre }}</p>
+      <p >{{ ht.tipo }}</p>
+      <p >{{ ht.id_ph }}</p>
+      <p >{{ ht.valoracion }}</p>
+    </div>
+    <div *ngFor="let hb of perfil.lstHB" class="col mb-2">
+      <p >{{ hb.id }}</p>
+      <p >{{ hb.nombre }}</p>
+      <p >{{ hb.tipo }}</p>
+      <p >{{ hb.id_ph }}</p>
+      <p >{{ hb.valoracion }}</p>
+    </div>
+    <div *ngFor="let hp of perfil.lstHP" class="col mb-2">
+      <p >{{ hp.id }}</p>
+      <p >{{ hp.nombre }}</p>
+      <p >{{ hp.tipo }}</p>
+      <p >{{ hp.id_ph }}</p>
+      <p >{{ hp.valoracion }}</p>
+    </div>
+</div>
+-->
+

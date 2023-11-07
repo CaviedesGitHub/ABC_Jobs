@@ -1,0 +1,209 @@
+<p>
+  Company-crear works!
+</p>
+<div class="container mt-4">
+  <h2 class="text-center">Create a new Company</h2>
+  <form
+    [formGroup]="empresaForm"
+    (ngSubmit)="!empresaForm.invalid && createCompany(empresaForm.value)"
+  >
+
+  <!--nombre-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="nombre">Name</label>
+      <input
+        novalidate
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="Company's name"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('nombre')!.hasError('required') &&
+          empresaForm.get('nombre')!.touched
+        "
+      >
+        Name required
+      </div>
+    </div>
+
+    <!--Type-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="tipo">Type</label>
+      <input
+        novalidate
+        id="tipo"
+        class="form-control"
+        formControlName="tipo"
+        placeholder="Company's Type"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('tipo')!.hasError('required') &&
+          empresaForm.get('tipo')!.touched
+        "
+      >
+        Type required
+      </div>
+    </div>
+
+    <!--Email-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="correo">E-Mail</label>
+      <input
+        novalidate
+        id="correo"
+        class="form-control"
+        formControlName="correo"
+        placeholder="Company's E-Mail"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('correo')!.hasError('required') &&
+          empresaForm.get('correo')!.touched
+        "
+      >
+        E-Mail required
+      </div>
+    </div>
+
+    <!--Cell-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="celular">Cell Phone</label>
+      <input
+        novalidate
+        id="celular"
+        class="form-control"
+        formControlName="celular"
+        placeholder="Company's CellPhone"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('celular')!.hasError('required') &&
+          empresaForm.get('celular')!.touched
+        "
+      >
+        CellPhone required
+      </div>
+    </div>
+
+    <!--contact-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="contacto">Contact</label>
+      <input
+        novalidate
+        id="contacto"
+        class="form-control"
+        formControlName="contacto"
+        placeholder="Contact's name"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('contacto')!.hasError('required') &&
+          empresaForm.get('contacto')!.touched
+        "
+      >
+        Contact required
+      </div>
+    </div>
+
+    <!--Country-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="pais">Country</label>
+      <input
+        novalidate
+        id="pais"
+        class="form-control"
+        formControlName="pais"
+        placeholder="Company's Country"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('pais')!.hasError('required') &&
+          empresaForm.get('pais')!.touched
+        "
+      >
+        Country required
+      </div>
+    </div>
+
+    <!--City-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="ciudad">City</label>
+      <input
+        novalidate
+        id="ciudad"
+        class="form-control"
+        formControlName="ciudad"
+        placeholder="Company's City"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('ciudad')!.hasError('required') &&
+          empresaForm.get('ciudad')!.touched
+        "
+      >
+        City required
+      </div>
+    </div>
+
+    <!--Address-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="direccion">Address</label>
+      <input
+        novalidate
+        id="direccion"
+        class="form-control"
+        formControlName="direccion"
+        placeholder="Company's Address"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('direccion')!.hasError('required') &&
+          empresaForm.get('direccion')!.touched
+        "
+      >
+        Address required
+      </div>
+    </div>
+
+    <!--Id_User-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="id_usuario">Id User</label>
+      <input
+        novalidate
+        id="id_usuario"
+        class="form-control"
+        formControlName="id_usuario"
+        placeholder="Company's Id User"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          empresaForm.get('id_usuario')!.hasError('required') &&
+          empresaForm.get('id_usuario')!.touched
+        "
+      >
+        Id'User required
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!empresaForm.valid"
+    >
+      Create
+    </button>
+
+  </form>
+ </div>

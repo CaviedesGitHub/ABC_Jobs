@@ -1,0 +1,115 @@
+<p>
+  Perfil-agregar works!
+</p>
+
+<!-- <p>
+  Perfl-agregar works!
+</p>
+<p>this.proyId: {{this.proyId}}</p>
+<p>this.token: {{this.token}}</p>  -->
+<div class="container mt-4">
+  <h2 class="text-center">Create a new Profile</h2>
+  <form
+    [formGroup]="perfilForm"
+    (ngSubmit)="!perfilForm.invalid && createPerfil(perfilForm.value)"
+  >
+    <!--Nombre-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="nombre">Name</label>
+      <input
+        novalidate
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="Rol's name"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          perfilForm.get('nombre')!.hasError('required') &&
+          perfilForm.get('nombre')!.touched
+        "
+      >
+        Name required
+      </div>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="perfilForm.get('nombre')!.hasError('minlength')"
+      >
+        Name too short
+      </div>
+    </div>
+ 
+    <!--lstHabils-->
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="lstHabils">Skill</label>
+          <input
+            novalidate
+            id="lstHabils"
+            class="form-control"
+            formControlName="lstHabils"
+            placeholder="Skill's List"
+          />
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            *ngIf="
+              perfilForm.get('lstHabils')!.hasError('required') &&
+              perfilForm.get('lstHabils')!.touched
+            "
+          >
+            Skills required
+          </div>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            *ngIf="perfilForm.get('lstHabils')!.hasError('minlength')"
+          >
+            Skill's List too short
+          </div>
+        </div>
+
+
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!perfilForm.valid"
+    >
+      Create
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger ml-3"
+      (click)="cancelCreation()"
+    >
+      Cancel
+    </button>
+  </form>
+
+  <p></p><p></p><p></p>
+  <form name="formHabilidades">
+    <div style="width: 25%; display:inline-block;">
+      <p><label for="lstHabTec">habilidades Tecnicas</label></p>
+      <select [(ngModel)]="selectedHT" multiple name="lstHabTec" id="lstHabTec">
+        <option value={{ht.id}} *ngFor="let ht of this.lstHT">{{ ht.nombre }}</option>
+      </select>
+      <p>You have selected {{selectedHT}}</p>
+    </div>
+
+    <div style="width: 75%; display:inline-block;">
+      <p><label for="lstHabBlan">habilidades Blandas</label></p>
+      <select [(ngModel)]="selectedHB" multiple name="lstHabBlan" id="lstHabBlan">
+        <option value={{ht.id}} *ngFor="let ht of this.lstHB">{{ ht.nombre }}</option>
+      </select>
+      <p>You have selected {{selectedHB}}</p>
+    </div>
+    
+    <div style="width: 30%; display:inline-block;">
+      <p><label for="lstHabPers">habilidades Personales</label></p>
+      <select [(ngModel)]="selectedHP"  multiple name="lstHabPers" id="lstHabPers">
+        <option value={{ht.id}} *ngFor="let ht of this.lstHP">{{ ht.nombre }}</option>
+      </select>
+      <p>You have selected {{selectedHP}}</p>
+    </div>
+  </form>
+
+ </div>

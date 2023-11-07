@@ -1,0 +1,88 @@
+<p>
+  Perfil-emp works!
+</p>
+
+
+<H1>Lista de Candidatos Emparejados por el Motor</H1>
+<p><a routerLink="/detalleProyecto/{{this.proyId}}/{{ this.userId }}/{{ this.token }}"> Volver al Proyecto </a> </p>
+
+<div class="container-fluid">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="h5">Id</th>
+          <th class="h5">Candidate</th>
+          <th class="h5">Calificacion</th>
+          <th class="h5">Email</th>
+          <th class="h5">Phone</th>
+          <th class="h5">City</th>
+          <th class="h5">Address</th>
+          <th class="h5">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of lstCandidatos.Respuesta.Seleccion">
+          <td>
+            <dd>{{c.id_cand}}</dd>
+          </td>
+          <td>
+            <dd>{{c.apellidos}}, {{c.nombres}}</dd>
+          </td>
+          <td>
+            <dd>{{c.Calificacion}}</dd>
+          </td>
+          <td>
+            <dd>{{c.email}}</dd>
+          </td>
+          <td>
+            <dd>{{c.phone}}</dd>
+          </td>          
+          <td>
+            <dd>{{c.ciudad}}</dd>
+          </td>
+          <td>
+            <dd>{{c.direccion}}</dd>
+          </td>
+          <td>
+            <dd>Seleccionar</dd>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- 
+
+    <button
+    type="button"
+    class="btn btn-danger ml-3"
+    (click)="volverAnterior()" >
+    Volver
+    </button>
+
+<p>
+  Perfil-emp works!
+</p>
+<p>this.proyId: {{this.proyId}}</p>
+<p>this.userId: {{this.userId}}</p>
+<p>this.perfilId: {{this.perfilId}}</p>
+<p>this.token: {{this.token}}</p>
+
+<p>lstCandidatos: {{lstCandidatos}}</p>
+<p>lstCandidatos: {{lstCandidatos.Mensaje}}</p>
+<p>lstCandidatos: {{lstCandidatos.Otro}}</p>
+<p>lstCandidatos: {{lstCandidatos.Respuesta.Seleccion}}</p>
+<p>lstCandidatos: {{lstCandidatos.Respuesta.Seleccion.length}}</p>
+
+
+
+  <p>this.longitud: {{this.longitud}}</p>
+
+<p><a routerLink="/detalleProyecto/{{this.proyId}}/{{ this.userId }}/{{ this.token }}"> Volver al Proyecto </a> </p>
+
+<p>lstCandidatos: {{lstCandidatos}}</p>
+<p>lstCandidatos: {{lstCandidatos.length}}</p>
+--> 

@@ -1,0 +1,90 @@
+<p>
+  Proyecto-crear works!
+</p>
+
+<div class="container mt-4">
+  <h2 class="text-center">Create a new Project</h2>
+  <form
+    [formGroup]="proyForm"
+    (ngSubmit)="!proyForm.invalid && createProject(proyForm.value)"
+  >
+    <!--Nombre-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="nombre">Name</label>
+      <input
+        novalidate
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="Project's name"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          proyForm.get('nombre')!.hasError('required') &&
+          proyForm.get('nombre')!.touched
+        "
+      >
+        Name required
+      </div>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="proyForm.get('nombre')!.hasError('minlength')"
+      >
+        Name too short
+      </div>
+    </div>
+ 
+    <!--Descripcion-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="descripcion">Description</label>
+      <input
+        novalidate
+        id="descripcion"
+        class="form-control"
+        formControlName="descripcion"
+        placeholder="Project's short description"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          proyForm.get('descripcion')!.hasError('required') &&
+          proyForm.get('descripcion')!.touched
+        "
+      >
+        Description required
+      </div>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="proyForm.get('descripcion')!.hasError('maxlength')"
+      >
+        Description too long
+      </div>
+    </div>
+ 
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!proyForm.valid"
+    >
+      Create
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger ml-3"
+      (click)="cancelCreation()"
+    >
+      Cancel
+    </button>
+  </form>
+ </div>
+
+
+ <!--
+  <p>
+  Projecto-crear works!
+</p>
+<p>this.userId: {{this.userId}}</p>
+<p>this.empId: {{this.empId}}</p>
+<p>this.token: {{this.token}}</p>
+ -->
