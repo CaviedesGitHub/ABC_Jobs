@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
   loginUser(login: Login){
     this.error = false
     this.authService.userLogIn(login).subscribe(res => {
-      console.info("The Login Created: ", res.id)
-      this.toastr.success("Confirmation", 'Login'+res.tipo)
-      this.loginForm.reset();
-      const decodedToken = this.helper.decodeToken(res.token);
+      //console.info("The Login Created: ", res.id)
+      //this.toastr.success("Confirmation", 'Login'+res.tipo)
+      //this.loginForm.reset();
+      //const decodedToken = this.helper.decodeToken(res.token);
       console.log('MENSAJE LOG CONSOLE')
       console.log(res)
       console.log('FIN MENSAJE LOG CONSOLE')
-      console.log(decodedToken.sub)
+      //console.log(decodedToken.sub)
       //if (res.tipo=='EMPRESA'){
       //  if (res.hasOwnProperty('empresa')){
       //    console.log(res.empresa)
@@ -72,7 +72,10 @@ export class LoginComponent implements OnInit {
       //}            
       },
       error => {
-          this.error = true
+        this.error = true
+        console.log('MENSAJE LOG CONSOLE')
+        //console.log(res)
+        console.log('FIN MENSAJE LOG CONSOLE')
       }
     )
   }
