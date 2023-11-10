@@ -3,6 +3,7 @@ import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyDetail } from '../Company-detail';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-Company-ver',
@@ -19,13 +20,15 @@ export class CompanyVerComponent implements OnInit {
   userId: number | undefined;
   token: string | undefined;
   company!: CompanyDetail;
-
+  lstProy: any;
+  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'detalle'];
 
   viewDetailUserCompany(userId: number){
     this.companyService.viewDetailUserCompany(userId).subscribe(company=>{
       console.info("The company was created: ", company)
       this.toastr.success("Confirmation", `/${userId}`)
       this.company=company
+      this.lstProy=new MatTableDataSource(company.proyectos);
     })
   }
 
@@ -47,6 +50,11 @@ export class CompanyVerComponent implements OnInit {
 
   showWarning(warning: string) {
     this.toastr.warning(warning, "Error de autenticación")
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.lstProy.filter = filterValue.trim().toLowerCase();
   }
 
 }
