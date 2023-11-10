@@ -9,10 +9,15 @@ import { RouterModule } from '@angular/router';
 import { PerfilAgregarComponent } from './Perfil-agregar/Perfil-agregar.component';
 import { PerfilEmpComponent } from './Perfil-emp/Perfil-emp.component';
 import { ProyectoCrearComponent } from './Proyecto-crear/Proyecto-crear.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule, RouterModule, FormsModule
+    CommonModule, ReactiveFormsModule, RouterModule, FormsModule, 
+    MatTableModule, MatCheckboxModule, MatFormFieldModule, MatInputModule
   ],
   declarations: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent, 

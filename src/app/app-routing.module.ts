@@ -16,14 +16,14 @@ import { PruebaComponent } from './ABCJobs/prueba/prueba.component';
 import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista-CumplenPerfil.component';
 
 const routes: Routes = [
-  { path: '', component: PerfilConsultaCumplenComponent },
+  { path: '', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'empresa/:userId/:userToken', component: CompanyCrearComponent },
   { path: 'detalleEmpresa/:userId/:userToken', component: CompanyVerComponent },
   { path: 'detalleProyecto/:proyId/:userId/:userToken', component: ProyectoVerComponent },
-  { path: 'agregarPerfil/:proyId/:userToken', component: PerfilAgregarComponent },
+  { path: 'agregarPerfil/:proyId/:userId/:userToken', component: PerfilAgregarComponent },
   { path: 'cumplenPerfil/:proyId/:perfilId/:userId/:userToken', component: PerfilEmpComponent },
   { path: 'agregarProyecto/:empId/:userId/:userToken', component: ProyectoCrearComponent },
   { path: 'candidato/:userId/:userToken', component: CandidateCreateComponent },
