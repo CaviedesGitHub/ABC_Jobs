@@ -16,5 +16,8 @@ export class AppComponent implements OnInit{
         alert("Mensaje desde el boton");
       })
     });
+    //$(function() {
+    //  $( "p" ).text( "The DOM is now loaded and can be manipulated." );
+    //  });
   }
 }

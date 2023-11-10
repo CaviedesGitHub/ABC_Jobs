@@ -13,7 +13,7 @@ import { Habil } from '../Habil';
 })
 export class PerfilAgregarComponent implements OnInit {
   perfilForm!: FormGroup;
-  lstHabils: Array<Habil> = [];
+  lstHabilsData: Array<Habil> = [];
   lstHT: Array<Habil> = [];
   lstHB: Array<Habil> = [];
   lstHP: Array<Habil> = [];
@@ -26,6 +26,11 @@ export class PerfilAgregarComponent implements OnInit {
   proyId: number =1;
   token: string = "";
 
+  ctrlHabils:HTMLInputElement = <HTMLInputElement>document.getElementById('lstHabils')!;
+  ctrlHT:HTMLInputElement = <HTMLInputElement>document.getElementById('lstHabTec2')!;
+  ctrlHB:HTMLInputElement = <HTMLInputElement>document.getElementById('lstHabBlan2')!;
+  ctrlHP:HTMLInputElement = <HTMLInputElement>document.getElementById('lstHabPers2')!;
+
   @ViewChild('lstHT') lstHT2: ElementRef | undefined;
 
   constructor(
@@ -36,23 +41,30 @@ export class PerfilAgregarComponent implements OnInit {
     private enrutador: Router
   ) { }
 
+  asignaHabils(){
+    alert('EY')
+    this.selectedH=this.selectedHT+','+this.selectedHB+','+this.selectedHP
+    alert(this.selectedH);
+    this.perfilForm.controls['lstHabils'].setValue(this.selectedH)
+  }
+
   getSkills(){
     this.companyService.getSkills().subscribe(s=>{
       this.toastr.success("Confirmation", "List created")
-      this.lstHabils=s
-      for (let i=0; i < this.lstHabils.length; i++){
-        if (this.lstHabils[i].tipo=="TECNICA"){
-          this.lstHT.push(this.lstHabils[i])
+      this.lstHabilsData=s
+      for (let i=0; i < this.lstHabilsData.length; i++){
+        if (this.lstHabilsData[i].tipo=="TECNICA"){
+          this.lstHT.push(this.lstHabilsData[i])
         }
       }
-      for (let i=0; i < this.lstHabils.length; i++){
-        if (this.lstHabils[i].tipo=="BLANDA"){
-          this.lstHB.push(this.lstHabils[i])
+      for (let i=0; i < this.lstHabilsData.length; i++){
+        if (this.lstHabilsData[i].tipo=="BLANDA"){
+          this.lstHB.push(this.lstHabilsData[i])
         }
       }
-      for (let i=0; i < this.lstHabils.length; i++){
-        if (this.lstHabils[i].tipo=="PERSONALIDAD"){
-          this.lstHP.push(this.lstHabils[i])
+      for (let i=0; i < this.lstHabilsData.length; i++){
+        if (this.lstHabilsData[i].tipo=="PERSONALIDAD"){
+          this.lstHP.push(this.lstHabilsData[i])
         }
       }
     })
@@ -86,6 +98,7 @@ export class PerfilAgregarComponent implements OnInit {
 
 
   ngOnInit() {
+    alert('Inicio')
     if (!parseInt(this.router.snapshot.params['proyId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
@@ -96,9 +109,15 @@ export class PerfilAgregarComponent implements OnInit {
 
     this.perfilForm = this.formBuilder.group({
       nombre: ["", [Validators.required, Validators.minLength(2)]],
-      lstHabils: [""]
+      lstHabils: ["30", [Validators.required]],
+      lstHabTec: ["", [Validators.required]], 
+      lstHabBlan: ["", [Validators.required]], 
+      lstHabPers: ["", [Validators.required]]
     })
     this.getSkills()
+    this.ctrlHT.onclick = this.asignaHabils;
+    this.ctrlHB.onclick = this.asignaHabils;
+    this.ctrlHP.onclick = this.asignaHabils;
   }
   
   showError(error: string) {

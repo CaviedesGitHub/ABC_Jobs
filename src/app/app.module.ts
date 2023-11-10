@@ -13,6 +13,7 @@ import { HttpErrorInterceptorServiceService } from './Interceptors/HttpErrorInte
 import { CandidateModule } from './Candidate/Candidate.module';
 import { AuthModule } from './Auth/Auth.module';
 import { CompanyModule } from './Company/Company.module';
+import { ABCJobsModule } from './ABCJobs/ABCJobs.module';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,6 +38,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CandidateModule,
     AuthModule,
     CompanyModule,
+    ABCJobsModule,
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,

@@ -11,9 +11,12 @@ import { PerfilEmpComponent } from './Company/Perfil-emp/Perfil-emp.component';
 import { ProyectoCrearComponent } from './Company/Proyecto-crear/Proyecto-crear.component';
 import { CandidateCreateComponent } from './Candidate/Candidate-create/Candidate-create.component';
 import { CandidateViewComponent } from './Candidate/Candidate-view/Candidate-view.component';
+import { PerfilConsultaCumplenComponent } from './ABCJobs/Perfil-ConsultaCumplen/Perfil-ConsultaCumplen.component';
+import { PruebaComponent } from './ABCJobs/prueba/prueba.component';
+import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista-CumplenPerfil.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: PerfilConsultaCumplenComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
@@ -24,7 +27,9 @@ const routes: Routes = [
   { path: 'cumplenPerfil/:proyId/:perfilId/:userId/:userToken', component: PerfilEmpComponent },
   { path: 'agregarProyecto/:empId/:userId/:userToken', component: ProyectoCrearComponent },
   { path: 'candidato/:userId/:userToken', component: CandidateCreateComponent },
-  { path: 'detalleCandidato/:userId/:userToken', component: CandidateViewComponent } 
+  { path: 'detalleCandidato/:userId/:userToken', component: CandidateViewComponent },
+  { path: 'seleccionHabilidades', component: PerfilConsultaCumplenComponent },
+  { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent } 
 ];
 
 @NgModule({
