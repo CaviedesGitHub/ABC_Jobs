@@ -1,7 +1,16 @@
 <p>
-  Company-ver works!
+  Company-ver works!   Information related to a company
 </p>
-
+<div class="dropdown">
+  <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another Action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
 <H1>Company: {{ company.nombre }}(Id: {{ company.id }})</H1>
 <H5>Correo: {{ company.correo }}</H5>
 <H5>Pais: {{ company.pais }}</H5>
@@ -15,56 +24,80 @@
 
   <div class="container-fluid my-4" id="principal">
     <div class="row align-items-center">
-      <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
   
       </div>
-      <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
         <div class="card bg-light">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
           <div class="card-header text-center ">
-            <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">View Company</h1>
-            <h5 class="card-title text-center mb-0 pb-0">Information related to a company</h5>
+            <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h1>
+            <h5 class="card-title text-center mb-0 pb-0">List of projects registered by this company</h5>
+            <button style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
+              <mat-icon>plus_one</mat-icon>
+              New
+            </button>
           </div>
           <div class="card-body">
-            <div class="container table-container mt-2" *ngIf="true">
-              <mat-form-field>
-                <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-              </mat-form-field>
-              <table mat-table [dataSource]="lstProy" class="mat-elevation-z8">
-               
-                <!-- Position Column -->
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef> No. </th>
+            <section class="example-container mat-elevation-z8" tabindex="0">
+              <table mat-table [dataSource]="lstProy">
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="id" sticky>
+                  <th mat-header-cell *matHeaderCellDef> Id </th>
                   <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
-              
-                <!-- Name Column -->
+            
+                <!-- Position Column -->
                 <ng-container matColumnDef="nombre">
-                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <th mat-header-cell *matHeaderCellDef> Nombre </th>
                   <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
-              
+            
                 <!-- Weight Column -->
                 <ng-container matColumnDef="descripcion">
-                  <th mat-header-cell *matHeaderCellDef> Type </th>
+                  <th mat-header-cell *matHeaderCellDef> Descripcion </th>
                   <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
                 </ng-container>
-              
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                       
+                <!-- Star Column -->
+                <ng-container matColumnDef="star" stickyEnd>
+                  <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                        <mat-icon>open_in_new</mat-icon>
+                        <span><a routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > View </a></span>
+                      </button>
+                      <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span><a routerLink="/construcion" > Update </a></span>
+                      </button>
+                      <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span><a routerLink="/construcion" > Delete </a></span>
+                      </button>
+                    </mat-menu>
+                  </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                <tr class="mat-row" *matNoDataRow>
-                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                </tr>
               </table>
-             </div>
+            </section>
           </div>
           <div class="card-footer text-muted">
-            Do not have an account? <a routerLink="/signup">Sign Up</a>
+            <button (click)="volverAtras()" mat-fab extended color="accent">
+              <mat-icon>bookmark</mat-icon>
+              Back
+          </button>
            </div>
         </div>
       </div>
-      <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+      <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
         
       </div>
     </div>

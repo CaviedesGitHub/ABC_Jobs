@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ABCJobsComponent } from './ABCJobs.component';
 import { PerfilConsultaCumplenComponent } from './Perfil-ConsultaCumplen/Perfil-ConsultaCumplen.component';
+import { ListaCumplenPerfilComponent } from './Lista-CumplenPerfil/Lista-CumplenPerfil.component';
+import { PageConstructionComponent } from './Page-construction/Page-construction.component';
 
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PruebaComponent } from './prueba/prueba.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
-import { ListaCumplenPerfilComponent } from './Lista-CumplenPerfil/Lista-CumplenPerfil.component';
+
 
 @NgModule({
   imports: [
@@ -27,12 +29,12 @@ import { ListaCumplenPerfilComponent } from './Lista-CumplenPerfil/Lista-Cumplen
   declarations: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
     PruebaComponent,
-    ListaCumplenPerfilComponent
+    ListaCumplenPerfilComponent, PageConstructionComponent
   ],
   exports: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
     PruebaComponent,
-    ListaCumplenPerfilComponent
+    ListaCumplenPerfilComponent, PageConstructionComponent
   ]
 })
 export class ABCJobsModule { }

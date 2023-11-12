@@ -13,11 +13,15 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
     CommonModule, ReactiveFormsModule, RouterModule, FormsModule, 
-    MatTableModule, MatCheckboxModule, MatFormFieldModule, MatInputModule
+    MatTableModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule,
+    MatMenuModule, MatButtonModule
   ],
   declarations: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent, 

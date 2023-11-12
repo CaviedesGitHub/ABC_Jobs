@@ -14,6 +14,7 @@ import { CandidateViewComponent } from './Candidate/Candidate-view/Candidate-vie
 import { PerfilConsultaCumplenComponent } from './ABCJobs/Perfil-ConsultaCumplen/Perfil-ConsultaCumplen.component';
 import { PruebaComponent } from './ABCJobs/prueba/prueba.component';
 import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista-CumplenPerfil.component';
+import { PageConstructionComponent } from './ABCJobs/Page-construction/Page-construction.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'candidato/:userId/:userToken', component: CandidateCreateComponent },
   { path: 'detalleCandidato/:userId/:userToken', component: CandidateViewComponent },
   { path: 'seleccionHabilidades', component: PerfilConsultaCumplenComponent },
-  { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent } 
+  { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent },
+  { path: 'construccion', component: PageConstructionComponent }
 ];
 
 @NgModule({

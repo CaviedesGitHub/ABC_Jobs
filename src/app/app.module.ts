@@ -14,6 +14,7 @@ import { CandidateModule } from './Candidate/Candidate.module';
 import { AuthModule } from './Auth/Auth.module';
 import { CompanyModule } from './Company/Company.module';
 import { ABCJobsModule } from './ABCJobs/ABCJobs.module';
+import { PruebaBootModule } from './PruebaBoot/PruebaBoot.module';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PruebaMaterialModule } from './PruebaMaterial/PruebaMaterial.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AuthModule,
     CompanyModule,
     ABCJobsModule,
+    PruebaBootModule,
+    PruebaMaterialModule,
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,

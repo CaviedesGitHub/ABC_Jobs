@@ -21,7 +21,7 @@ export class CompanyVerComponent implements OnInit {
   token: string | undefined;
   company!: CompanyDetail;
   lstProy: any;
-  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'detalle'];
+  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'star'];
 
   viewDetailUserCompany(userId: number){
     this.companyService.viewDetailUserCompany(userId).subscribe(company=>{
@@ -55,6 +55,14 @@ export class CompanyVerComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.lstProy.filter = filterValue.trim().toLowerCase();
+  }
+
+  agregarProyecto(){
+    //<a routerLink="/agregarProyecto/{{ company.id }}/{{ this.userId }}/{{ this.token }}"> Adicionar Proyecto a la Empresa </a> 
+  }
+
+  volverAtras(){
+    
   }
 
 }
