@@ -15,7 +15,8 @@ export class CompanyVerComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
     private companyService: CompanyService,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute,
+    private enrutador: Router,) { }
 
   userId: number | undefined;
   token: string | undefined;
@@ -58,7 +59,7 @@ export class CompanyVerComponent implements OnInit {
   }
 
   agregarProyecto(){
-    //<a routerLink="/agregarProyecto/{{ company.id }}/{{ this.userId }}/{{ this.token }}"> Adicionar Proyecto a la Empresa </a> 
+    this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
   }
 
   volverAtras(){

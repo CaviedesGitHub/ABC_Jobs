@@ -4,6 +4,7 @@ import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Project } from '../Project';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-Proyecto-ver',
@@ -20,6 +21,8 @@ export class ProyectoVerComponent implements OnInit {
   error: boolean = false;
   p!: Project;
   project!: any;
+  lstProfiles: any;
+  displayedColumns: string[] = ['id', 'nombre', 'candidato', 'lstHT', 'lstHB', 'lstHP', 'star'];  //, 'lstHB', 'lstHP',  'Skills Tech', 'Skills Soft', 'Personalidad', 
 
 
   // ,private router: ActivatedRoute
@@ -41,6 +44,7 @@ export class ProyectoVerComponent implements OnInit {
         console.info("The Project was created: ", proj)
         this.toastr.success("Confirmation", `/${proj.nombre}`)
         this.project=proj
+        this.lstProfiles=new MatTableDataSource(this.project.perfiles);
       },
       error => {
         this.error = true
@@ -88,9 +92,21 @@ export class ProyectoVerComponent implements OnInit {
     this.toastr.warning(warning, "Error de autenticación")
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.lstProfiles.filter = filterValue.trim().toLowerCase();
+  }
+
+  agregarPerfil(){
+    this.enrutador.navigate([`/agregarPerfil/${this.proyId}/${this.userId}/${this.token}`])
+  }
+
   cancelCreation(){
     this.enrutador.navigate([`/detalleEmpresa/${this.userId}/${this.token}`])
   }
 
+  volverAtras(){
+    this.enrutador.navigate([`/detalleEmpresa/${this.userId}/${this.token}`])
+  }
 
 }

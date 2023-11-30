@@ -1,57 +1,55 @@
 <div class="container-fluid my-4" id="principal">
   <div class="row align-items-center">
-    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+    <div class="col-0 col-sm-2 col-md-1 col-lg-1 col-xl-2">
 
     </div>
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+    <div class="col-12 col-sm-8 col-md-10 col-lg-10 col-xl-8">
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
-          <h5 class="card-title text-center mb-0 pb-0">Digita tus credenciales para ingresar a la plataforma</h5>
+          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Candidate</h1>
+          <h5 class="card-title text-center mb-0 pb-0">Enter the candidate's data</h5>
         </div>
         <div class="card-body">
-          
-          <div class="container mt-4">
-            <h2 class="text-center">Create a new Candidate</h2>
+          <div class="container mt-2">
             <form
               [formGroup]="candidateForm"
               (ngSubmit)="!candidateForm.invalid && createCandidate(candidateForm.value)"
             >
-              <!--Nombres-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="nombres">Names</label>
-                <input
-                  novalidate
-                  id="nombres"
-                  class="form-control"
-                  formControlName="nombres"
-                  placeholder="Candidate's names"
-                />
-                <div
-                  class="alert alert-danger alert-dismissible fade show"
-                  *ngIf="
-                    candidateForm.get('nombres')!.hasError('required') &&
-                    candidateForm.get('nombres')!.touched
-                  "
-                >
-                  Names required
-                </div>
-                <div
-                  class="alert alert-danger alert-dismissible fade show"
-                  *ngIf="candidateForm.get('nombres')!.hasError('minlength')"
-                >
-                  Names too short
-                </div>
+            <div class="row">  
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <!--Nombres-->
+                  <label class="text-left fst-italic fw-bold" for="nombres">Names</label>
+                  <input
+                    novalidate
+                    id="nombres"
+                    class="form-control form-control-sm"
+                    formControlName="nombres"
+                    placeholder="Candidate's names"
+                  />
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                      candidateForm.get('nombres')!.hasError('required') &&
+                      candidateForm.get('nombres')!.touched
+                    "
+                  >
+                    Names required
+                  </div>
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="candidateForm.get('nombres')!.hasError('minlength')"
+                  >
+                    Names too short
+                  </div>
               </div>
-          
-              <!--Apellidos-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="apellidos">Last Name</label>
+
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold"  for="apellidos">Last Name</label>
                 <input
                   novalidate
                   id="apellidos"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="apellidos"
                   placeholder="Candidate's last name"
                 />
@@ -72,13 +70,12 @@
                 </div>
               </div>
 
-              <!--Documento-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="documento">Document</label>
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="documento">Document</label>
                 <input
                   novalidate
                   id="documento"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="documento"
                   placeholder="Candidate's document"
                 />
@@ -91,15 +88,20 @@
                 >
                   Document required
                 </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('documento')!.hasError('minlength')"
+                >
+                  Document too short
+                </div>
               </div>
-
-              <!--Email-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="email">Email</label>
+          
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="email">Email</label>
                 <input
                   novalidate
                   id="email"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="email"
                   placeholder="Candidate's email"
                 />
@@ -120,13 +122,12 @@
                 </div>
               </div>
 
-              <!--Telefono-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="phone">Phone</label>
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="phone">Phone</label>
                 <input
                   novalidate
                   id="phone"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="phone"
                   placeholder="Candidate's phone"
                 />
@@ -146,14 +147,14 @@
                   Phone too short
                 </div>
               </div>
-
-              <!--Ciudad-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="ciudad">City</label>
+          
+              <!--City-->
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="ciudad">City</label>
                 <input
                   novalidate
                   id="ciudad"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="ciudad"
                   placeholder="Candidate's city"
                 />
@@ -173,14 +174,14 @@
                   City too short
                 </div>
               </div>
-
-              <!--Direccion-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="direccion">Address</label>
+          
+              <!--Address-->
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="direccion">Address</label>
                 <input
                   novalidate
                   id="direccion"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="direccion"
                   placeholder="Candidate's address"
                 />
@@ -200,43 +201,46 @@
                   Address too short
                 </div>
               </div>
-
-              <!--num_perfil-->
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="num_perfil">Profile#</label>
+          
+              <!--Address-->
+              <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label class="text-left fst-italic fw-bold" for="num_perfil">Profile#</label>
                 <input
                   novalidate
                   id="num_perfil"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="num_perfil"
                   placeholder="Profile #"
                 />
               </div>
-          
-
-              <button
-                type="submit"
-                class="btn btn-primary"
-                [disabled]="!candidateForm.valid"
-              >
-                Create
-              </button>
+            </div>
+            <div class="container-fluid text-center">
               <button
                 type="button"
-                class="btn btn-danger ml-3"
+                class="btn btn-danger mx-3 mt-4"
                 (click)="cancelCreation()"
               >
                 Cancel
               </button>
+              <button
+                type="submit"
+                class="btn btn-primary mx-3 mt-4"
+                [disabled]="!candidateForm.valid"
+              >
+                Create
+              </button>
+
+            </div>
             </form>
-          </div>
+           </div>
+          
         </div>
         <div class="card-footer text-muted">
-          Do not have an account? <a routerLink="/signup">Sign Up</a>
+          
          </div>
       </div>
     </div>
-    <div class="col-0 col-sm-2 col-md-3 col-lg-4 col-xl-4">
+    <div class="col-0 col-sm-2 col-md-1 col-lg-1 col-xl-2">
       
     </div>
   </div>

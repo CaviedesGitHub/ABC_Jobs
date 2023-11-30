@@ -1,97 +1,120 @@
-<p>
-  Proyecto-ver works!
-</p>
+<div class="container-fluid my-4" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
 
-<H1>Empresa {{project.empresa}}</H1>
-<H2>Proyecto {{project.nombre}}</H2>
-<H3>Id Proyecto: {{project.id}} </H3>
-<H3>Descripcion: {{project.descripcion}}  </H3>
-<HR>
-<a routerLink="/agregarPerfil/{{ this.proyId }}/{{ this.userId }}/{{ this.token }}"> Adicionar Perfil al proyecto </a> 
-<HR>
-<div class="container-fluid">
-  <div class="col-6">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="h5">Profile's Id</th>
-          <th class="h5">Profile's Name</th>
-          <th class="h5">Persona Contratada</th>
-          <th class="h5">Habil Tecnicas</th>
-          <th class="h5">Habil Blandas</th>
-          <th class="h5">Personalidad</th>
-          <th class="h5">Cumplen el Perfil</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let perfil of project.perfiles">
-          <td>
-            <dd>{{perfil.id}}</dd>
-          </td>
-          <td>
-            <dd>{{perfil.nombre}}</dd>
-          </td>
-          <td>
-            <dd>{{perfil.candidato}}</dd>
-          </td>
-          <td >
-            <p *ngFor="let ht of perfil.lstHT">{{ ht.nombre }}</p>
-          </td>
-          <td >
-            <p *ngFor="let hb of perfil.lstHB">{{ hb.nombre }}</p>
-          </td>
-          <td >
-            <p *ngFor="let hp of perfil.lstHP">{{ hp.nombre }}</p>
-          </td>
-          <td >
-            <p><a routerLink="/cumplenPerfil/{{this.proyId}}/{{perfil.id_perfil}}/{{ this.userId }}/{{ this.token }}"> Ver </a> </p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button
-    type="button"
-    class="btn btn-danger ml-3"
-    (click)="cancelCreation()" >
-    Cancel
-  </button>
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <mat-card class="example-card" style="width:100%">          
+        <mat-card-header>
+          <img mat-card-md-image src="../../../assets/imagenes/proyecto.png"  alt="Image of a Project">
+          <mat-card-title-group>
+            <mat-card-title><H1 style="font-weight:bold">Project: {{ project.nombre }}</H1></mat-card-title>
+            <mat-card-subtitle><span>Company: </span>{{ project.empresa }}</mat-card-subtitle>                            
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <p><span>Description: </span>{{ project.descripcion }}</p>
+        </mat-card-content>
+      </mat-card>
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-left ">
+          <div class="row align-items-left">
+            <div class="col-10">
+              <h2 class="mb-0 pb-0 fw-bold fst-italic fw-light">Profiles List</h2>
+              <h5 class="card-title text-left mb-0 pb-0">List of profiles registered by this project</h5>          
+            </div>
+            <div class="col-2">
+              <button style="float: right" (click)="agregarPerfil()" mat-fab extended color="primary">
+                <mat-icon>plus_one</mat-icon>
+                New Profile
+              </button>
+            </div>
+        </div>
+        <div class="card-body">
+          <section class="example-container mat-elevation-z8" tabindex="0">
+            <table mat-table [dataSource]="lstProfiles">
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="id" sticky>
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+          
+              <!-- Position Column -->
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+              </ng-container>
+          
+              <!-- Weight Column -->
+              <ng-container matColumnDef="candidato">
+                <th mat-header-cell *matHeaderCellDef> Candidate </th>
+                <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="lstHT">
+                <th mat-header-cell *matHeaderCellDef> Skill Tech </th>
+                <td mat-cell *matCellDef="let element"> <p *ngFor="let ht of element.lstHT">{{ ht.nombre }}</p> </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="lstHB">
+                <th mat-header-cell *matHeaderCellDef> Skill Soft </th>
+                <td mat-cell *matCellDef="let element"> <p *ngFor="let hb of element.lstHB">{{ hb.nombre }}</p> </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="lstHP">
+                <th mat-header-cell *matHeaderCellDef> Personality</th>
+                <td mat-cell *matCellDef="let element"> <p *ngFor="let hp of element.lstHP">{{ hp.nombre }}</p> </td>
+              </ng-container>
+                     
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                      <mat-icon>open_in_new</mat-icon>
+                      <span><a routerLink="/cumplenPerfil/{{this.proyId}}/{{element.id_perfil}}/{{ this.userId }}/{{ this.token }}" > Match profile </a></span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>open_in_new</mat-icon>
+                      <span><a routerLink="/construcion" > View </a></span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>edit</mat-icon>
+                      <span><a routerLink="/construcion" > Update </a></span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>delete</mat-icon>
+                      <span><a routerLink="/construcion" > Delete </a></span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </section>
+        </div>
+        <div class="card-footer text-muted">
+          <button (click)="volverAtras()" mat-fab extended color="accent">
+            <mat-icon>bookmark</mat-icon>
+            Back
+        </button>
+         </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
   </div>
-  <a routerLink="/detalleEmpresa/{{ this.userId }}/{{ this.token }}"> Volver a Empresa </a> 
-
-
-<!--
-  
-  <p>this.proyId: {{this.proyId}}</p>
-<p>this.token: {{this.token}}</p>
-  
-  <div *ngFor="let perfil of project.perfiles" class="col mb-2">
-  <p >{{ perfil.id }}</p>
-  <p >{{ perfil.nombre }}</p>
-  <p >{{ perfil.id_proy }}</p>
-  <p >{{ perfil.id_perfil }}</p>
-  <p >{{ perfil.id_cand }}</p>
-  <p >{{ perfil.candidato }}</p>
-    <div *ngFor="let ht of perfil.lstHT" class="col mb-2">
-      <p >{{ ht.id }}</p>
-      <p >{{ ht.nombre }}</p>
-      <p >{{ ht.tipo }}</p>
-      <p >{{ ht.id_ph }}</p>
-      <p >{{ ht.valoracion }}</p>
-    </div>
-    <div *ngFor="let hb of perfil.lstHB" class="col mb-2">
-      <p >{{ hb.id }}</p>
-      <p >{{ hb.nombre }}</p>
-      <p >{{ hb.tipo }}</p>
-      <p >{{ hb.id_ph }}</p>
-      <p >{{ hb.valoracion }}</p>
-    </div>
-    <div *ngFor="let hp of perfil.lstHP" class="col mb-2">
-      <p >{{ hp.id }}</p>
-      <p >{{ hp.nombre }}</p>
-      <p >{{ hp.tipo }}</p>
-      <p >{{ hp.id_ph }}</p>
-      <p >{{ hp.valoracion }}</p>
-    </div>
 </div>
--->
 

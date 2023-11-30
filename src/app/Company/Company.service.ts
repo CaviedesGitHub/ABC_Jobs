@@ -68,5 +68,10 @@ export class CompanyService {
   createProject(project: Project, id_empresa: number): Observable<Project> {
     //this.detalleUrl='http://localhost:5000'+'/empresas/'+`${id_empresa}`+'/proyectos'
     return this.http.post<Project>(this.apiUrl+'/empresas/'+`${id_empresa}`+'/proyectos', project);
- }
+  }
+
+  getSkillsProfile(profileId: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/perfil/'+`${profileId}`);
+  }
+
 }

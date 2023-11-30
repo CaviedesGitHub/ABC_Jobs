@@ -17,6 +17,7 @@ import {MatTableDataSource} from '@angular/material/table';
 export class PerfilAgregarComponent implements OnInit {
   perfilForm!: FormGroup;
   //lstHabilsData: Array<Habil> = [];
+  error: boolean = false;
   lstHabilsData: any =[];
   lstHT: Array<Habil> = [];
   lstHB: Array<Habil> = [];
@@ -93,12 +94,18 @@ export class PerfilAgregarComponent implements OnInit {
     //this.selectedH=this.selectedHT+','+this.selectedHB+','+this.selectedHP
     //perfil.lstHabils="5,7"
     this.companyService.createPerfil(perfil,this.proyId).subscribe(res=>{
-      console.info("The Profile was created: ", res)
-      this.toastr.success("Confirmation", "Profile Created")
-      this.perfilForm.reset();
-      this.enrutador.navigate([`/detalleProyecto/${this.proyId}/${this.userId}/${this.token}`])
-    })
-    
+        console.info("The Profile was created: ", res)
+        this.toastr.success("Confirmation", "Profile Created"+res)
+        this.perfilForm.reset();
+        this.enrutador.navigate([`/detalleProyecto/${this.proyId}/${this.userId}/${this.token}`])
+      },
+      error => {
+        this.error = true
+        //this.toastr.error("Error", error)
+        console.log("Error:")
+        console.log(error)
+      }
+    )
   }
 
   cancelCreation(){

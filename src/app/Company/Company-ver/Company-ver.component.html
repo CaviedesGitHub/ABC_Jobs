@@ -1,42 +1,38 @@
-<p>
-  Company-ver works!   Information related to a company
-</p>
-<div class="dropdown">
-  <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another Action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-<H1>Company: {{ company.nombre }}(Id: {{ company.id }})</H1>
-<H5>Correo: {{ company.correo }}</H5>
-<H5>Pais: {{ company.pais }}</H5>
-<H5>Ciudad: {{ company.ciudad }}</H5>
-<H5>Direccion: {{ company.direccion }}</H5>
-<H5>Celular: {{ company.celular }}</H5>
-<H5>Contacto: {{ company.contacto }}</H5>
-<HR>
-<a routerLink="/agregarProyecto/{{ company.id }}/{{ this.userId }}/{{ this.token }}"> Adicionar Proyecto a la Empresa </a> 
-<HR>
-
   <div class="container-fluid my-4" id="principal">
-    <div class="row align-items-center">
+    <div class="row align-items-left">
       <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
   
       </div>
       <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+        <mat-card class="example-card" style="width:100%">          
+          <mat-card-header>
+            <img mat-card-md-image src="../../../assets/imagenes/Empresa.jpg"  alt="Image of a Company">
+            <mat-card-title-group>
+              <mat-card-title><H1 style="font-weight:bold">{{ company.nombre }}</H1></mat-card-title>
+              <mat-card-subtitle><span>E-Mail: </span>{{ company.correo }}</mat-card-subtitle>                            
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content>
+            <p><span>Contact: </span>{{ company.contacto }}</p>
+            <p><span>City: </span>{{ company.ciudad }}</p>
+            <p><span>Address: </span>{{ company.direccion }}</p>
+            <p><span>Phone: </span>{{ company.celular }}</p>
+          </mat-card-content>
+        </mat-card>
         <div class="card bg-light">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-          <div class="card-header text-center ">
-            <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h1>
-            <h5 class="card-title text-center mb-0 pb-0">List of projects registered by this company</h5>
-            <button style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
-              <mat-icon>plus_one</mat-icon>
-              New
-            </button>
+          <div class="card-header text-left ">
+            <div class="row align-items-left">
+              <div class="col-10">
+                <h2 class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h2>
+                <h5 class="card-title text-left mb-0 pb-0">List of projects registered by this company</h5>          
+              </div>
+              <div class="col-2">
+                <button style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
+                  <mat-icon>plus_one</mat-icon>
+                  New
+                </button>
+              </div>
           </div>
           <div class="card-body">
             <section class="example-container mat-elevation-z8" tabindex="0">
@@ -102,58 +98,3 @@
       </div>
     </div>
   </div>
-
-<div class="container-fluid">
-  <div class="col-6">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="h4">Project's Id</th>
-          <th class="h4">Project's Name</th>
-          <th class="h4">Description</th>
-          <th class="h4">Detalle</th>
-        </tr>
-        <tr *ngFor="let proy of company.proyectos">
-          <td>
-            <dd>{{proy.id}}</dd>
-          </td>
-          <td>
-            <dd>{{proy.nombre}}</dd>
-          </td>
-          <td>
-            <dd>{{proy.descripcion}}</dd>
-          </td>
-          <td>
-            <dd><a routerLink="/detalleProyecto/{{ proy.id }}/{{ this.userId }}/{{ this.token }}" > detalle </a> </dd>
-          </td>
-      </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-<!-- 
-
-<p>
-  Company-ver works!
-</p>
-<p>this.userId: {{this.userId}}</p>
-<p>this.token: {{this.token}}</p>
-<p class="card-text">[{{ company.nombre }}]</p>
-
-  <div *ngFor="let proy of company.proyectos" class="col mb-2">
-  <p >Nombre Proyecto: {{ proy.nombre }}</p>
-  <a routerLink="/detalleProyecto/{{ proy.id }}/{{ this.token }}" > {{ proy.nombre }}</a>
-</div>
-
-
-
-
-
-  <a routerLink="detalleProyecto/{{ proy.id }}/{{ this.token }}"> {{ proy.nombre }}</a>
-/home/lepcorp1/Desarrollo/repo/angular/ABC170830/Inicio_ABCJobs_FrontEnd/src
--->

@@ -54,7 +54,7 @@ export class CandidateCreateComponent implements OnInit {
     this.candidateForm = this.formBuilder.group({
       nombres: ["", [Validators.required, Validators.minLength(2)]],
       apellidos: ["", [Validators.required, Validators.minLength(2)]],
-      documento: [, [Validators.required]],
+      documento: [, [Validators.required, Validators.minLength(2)]],
       email: ["", [Validators.required, Validators.minLength(2)]],
       phone: ["", [Validators.required, Validators.minLength(2)]],
       ciudad: ["", [Validators.required, Validators.minLength(2)]],

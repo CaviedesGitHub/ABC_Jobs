@@ -16,12 +16,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
     CommonModule, ReactiveFormsModule, RouterModule, FormsModule, 
     MatTableModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule,
-    MatMenuModule, MatButtonModule
+    MatMenuModule, MatButtonModule, MatCardModule, MatSortModule, MatPaginatorModule
   ],
   declarations: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent, 
