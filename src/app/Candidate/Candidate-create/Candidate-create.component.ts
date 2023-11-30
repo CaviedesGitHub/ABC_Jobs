@@ -55,12 +55,13 @@ export class CandidateCreateComponent implements OnInit {
       nombres: ["", [Validators.required, Validators.minLength(2)]],
       apellidos: ["", [Validators.required, Validators.minLength(2)]],
       documento: [, [Validators.required, Validators.minLength(2)]],
+      fecha_nac: [, []],
       email: ["", [Validators.required, Validators.minLength(2)]],
       phone: ["", [Validators.required, Validators.minLength(2)]],
       ciudad: ["", [Validators.required, Validators.minLength(2)]],
       direccion: ["", [Validators.required, Validators.minLength(2)]],
       id_usuario: [this.userId],
-      num_perfil: [, ],
+      num_perfil: [0, ],
     })
   }
 

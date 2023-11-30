@@ -69,7 +69,7 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
   token: string | undefined;
   candidate!: CandidateDetail;
   listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
-  columnNames: string[] = ['position', 'nombre', 'tipo', 'calificacion', 'valoracion'];
+  columnNames: string[] = ['nombre', 'tipo', 'calificacion', 'valoracion', 'star'];
   @ViewChild(MatSort) sort: MatSort | null = null;
   @ViewChild(MatSort) sort2: MatSort | null = null;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -109,15 +109,23 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    //if (!parseInt(this.router.snapshot.params.userId) || this.router.snapshot.params.userToken === " ") {
-    //  this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
-    //}
-    //else {
-    this.userId = 1 //parseInt(this.router.snapshot.params.userId)
-    this.token = "" //this.router.snapshot.params.userToken
-    this.viewDetailUserCandidate(this.userId)
-    //}
+    if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
+      this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+    }
+    else {
+      this.userId = 1 //parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
+      this.viewDetailUserCandidate(this.userId)
+    }
 
+  }
+
+  agregarHabilidad(){
+    //this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
+  }
+
+  volverAtras(){
+    
   }
 
   applyFilter(event: Event) {

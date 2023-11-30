@@ -184,6 +184,7 @@
                   class="form-control form-control-sm"
                   formControlName="direccion"
                   placeholder="Candidate's address"
+                  maxlength="20"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -204,13 +205,14 @@
           
               <!--Address-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="num_perfil">Profile#</label>
+                <label class="text-left fst-italic fw-bold" for="fecha_nac">Birth Date</label>
                 <input
                   novalidate
-                  id="num_perfil"
+                  id="fecha_nac"
                   class="form-control form-control-sm"
-                  formControlName="num_perfil"
-                  placeholder="Profile #"
+                  formControlName="fecha_nac"
+                  placeholder="Candidate's Date Of Birth"
+                  type="date"
                 />
               </div>
             </div>

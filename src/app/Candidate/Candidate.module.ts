@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CandidateCreateComponent } from './Candidate-create/Candidate-create.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   declarations: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
   exports: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
