@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       console.log('FIN MENSAJE LOG CONSOLE')
       console.log(decodedToken.sub)
       if (res.tipo=='EMPRESA'){
+        this.authService.setCompanyRole()
         if (res.hasOwnProperty('empresa')){
           console.log(res.empresa)
           this.company=res.empresa
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
         }
       }
       else if (res.tipo=='CANDIDATO'){
+        this.authService.setCandidateRole()
         if (res.hasOwnProperty('candidato')){
           console.log(res.candidato)
           this.candidate=res.candidato
@@ -67,9 +69,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate([`/candidato/${decodedToken.sub}/${res.token}`])  
         }
       }    
+      else if (res.tipo=='EMPLEADO_ABC'){
+        this.authService.setEmployeeRole()
+      }    
       else{
-
-      }            
+        this.authService.setGuestRole()
+      }        
       },
       error => {
         this.error = true

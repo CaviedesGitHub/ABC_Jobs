@@ -15,20 +15,51 @@ import { PerfilConsultaCumplenComponent } from './ABCJobs/Perfil-ConsultaCumplen
 import { PruebaComponent } from './ABCJobs/prueba/prueba.component';
 import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista-CumplenPerfil.component';
 import { PageConstructionComponent } from './ABCJobs/Page-construction/Page-construction.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'empresa/:userId/:userToken', component: CompanyCrearComponent },
-  { path: 'detalleEmpresa/:userId/:userToken', component: CompanyVerComponent },
+  { path: 'empresa/:userId/:userToken', component: CompanyCrearComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['COMPANY']
+      }
+    } 
+  },
+  { path: 'detalleEmpresa/:userId/:userToken', component: CompanyVerComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['COMPANY']
+      }
+    } 
+  },
+  { path: 'detalleEmpresa', component: CompanyVerComponent },
   { path: 'detalleProyecto/:proyId/:userId/:userToken', component: ProyectoVerComponent },
   { path: 'agregarPerfil/:proyId/:userId/:userToken', component: PerfilAgregarComponent },
   { path: 'cumplenPerfil/:proyId/:perfilId/:userId/:userToken', component: PerfilEmpComponent },
   { path: 'agregarProyecto/:empId/:userId/:userToken', component: ProyectoCrearComponent },
-  { path: 'candidato/:userId/:userToken', component: CandidateCreateComponent },
-  { path: 'detalleCandidato/:userId/:userToken', component: CandidateViewComponent },
+  { path: 'candidato/:userId/:userToken', component: CandidateCreateComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['CANDIDATE']
+      }
+    } 
+  },
+  { path: 'detalleCandidato/:userId/:userToken', component: CandidateViewComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['CANDIDATE']
+      }
+    } 
+  },
+  { path: 'detalleCandidato', component: CandidateViewComponent },
   { path: 'seleccionHabilidades', component: PerfilConsultaCumplenComponent },
   { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent },
   { path: 'construccion', component: PageConstructionComponent }

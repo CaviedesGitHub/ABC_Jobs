@@ -28,6 +28,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PruebaMaterialModule } from './PruebaMaterial/PruebaMaterial.module';
 
+import { NgxPermissionsModule} from 'ngx-permissions';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -53,6 +55,7 @@ import { PruebaMaterialModule } from './PruebaMaterial/PruebaMaterial.module';
     MatDatepickerModule,
     MatNativeDateModule,
     MatToolbarModule,
+    NgxPermissionsModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-right',
