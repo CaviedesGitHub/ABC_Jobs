@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 import { AuthService } from './Auth/Auth.service';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(localeEs, 'es');
 
@@ -24,6 +24,15 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.start();
+    if (environment.production) {
+      console.log("We are running in production mode");
+      console.log(`API Key: ${environment.apiKey}`);
+      console.log(`baseUrl: ${environment.baseUrl}`);
+    } else {
+      console.log("We are running in development mode");
+      console.log(`API Key: ${environment.apiKey}`);
+      console.log(`baseUrl: ${environment.baseUrl}`);
+    }
     $(document).ready(function(){
       $("#BTNAbrir").on('click', function(){
         alert("Mensaje desde el boton");

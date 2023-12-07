@@ -5,13 +5,14 @@ import { Login } from './Login';
 import { User } from './User';
 import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions'
 import { Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = environment.baseUrl;
+  //private apiUrl = 'http://localhost:5000';
   //private apiUrl = 'http://gateway.eba-brqkktps.us-east-2.elasticbeanstalk.com';
 
   constructor(private http: HttpClient, 
