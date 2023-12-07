@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { AuthService } from './Auth/Auth.service';
-//import {registerLocaleData} from '@angular/common';
-//import localeEs from '@angular/common/locales/es';
+import {registerLocaleData} from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
 
-//registerLocaleData(localeEs, 'es');
+registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'app-root',

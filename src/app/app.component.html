@@ -88,6 +88,13 @@
 </header>
 
 <main id="main">
+  <ul>
+    <li *ngFor="let locale of localesList">
+      <a href="/ABC_Jobs/abc-jobs/{{locale.code}}/">
+        {{locale.label}}
+      </a>
+    </li>
+  </ul>
   <router-outlet></router-outlet>
 </main>
 
