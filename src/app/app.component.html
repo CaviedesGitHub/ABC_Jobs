@@ -1,11 +1,11 @@
 <header>
-  <a href="#main" class="skip-link">Skip to main content</a>
+  <a i18n="Enlace principal usabilidad|Primer enlace al contenido principal usado por lectores" href="#main" class="skip-link">Skip to main content</a>
   <nav
     class="navbar navbar-expand-lg navbar-dark"
     style="background-color: #4e477a"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">ABC Jobs</a>
+      <a i18n="Nombre Empresa|Nombre que identifica la empresa" class="navbar-brand" href="#">ABC Jobs</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -21,6 +21,7 @@
         <ul class="navbar-nav">
           <li class="nav-item" *ngxPermissionsOnly="['COMPANY']">
             <a
+              i18n="Empresa|Menu principal de los usuarios de tipo Empresa"
               class="nav-link active"
               aria-current="page"
               routerLink="/detalleEmpresa"
@@ -29,6 +30,7 @@
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
             <a
+              i18n="Candidato|Menu principal de los usuarios de tipo Candidato"
               class="nav-link active"
               aria-current="page"
               routerLink="/detalleCandidato"
@@ -37,6 +39,7 @@
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
             <a
+              i18n="Empleado ABC|Menu principal de los usuarios de tipo Empleado ABC"
               class="nav-link active"
               aria-current="page"
               routerLink="/seleccionHabilidades"
@@ -45,6 +48,7 @@
           </li>
           <li class="nav-item">
             <a
+              i18n="Prueba|Menu principal de los usuarios de tipo Prueba"
               class="nav-link active"
               aria-current="page"
               routerLink="/seleccionHabilidades"
@@ -53,6 +57,7 @@
           </li>
           <li class="nav-item dropdown">
             <a
+              i18n="Autores|Menu principal de los usuarios de tipo Autores"
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
@@ -63,18 +68,18 @@
               Authors
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/authors/list">List</a></li>
-            <li><a class="dropdown-item" routerLink="/authors/create">Create</a></li>
+            <li><a i18n="Lista de Autores|lista de los Autores" class="dropdown-item" routerLink="/authors/list">List</a></li>
+            <li><a i18n="Crear Autor|Crear Autor" class="dropdown-item" routerLink="/authors/create">Create</a></li>
             </ul>
             </li>
           <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
-            <a class="nav-link active" routerLink="/login">Login</a>
+            <a i18n="Login|Ingreso a la plataforma" class="nav-link active" routerLink="/login">Login</a>
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
-            <a class="nav-link active" routerLink="/signup">SignUp</a>
+            <a i18n="SignUp|Registro en la plataforma" class="nav-link active" routerLink="/signup">SignUp</a>
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE', 'COMPANY', 'ABCJOBS EMPLOYEE', 'ADMIN']">
-            <a class="nav-link active" (click)="logout()" href="#">LogOut</a>
+            <a i18n="LogOut|Salir de la plataforma" class="nav-link active" (click)="logout()" href="#">LogOut</a>
           </li>
         </ul>
       </div>
@@ -88,11 +93,21 @@
 
 <footer class="page-footer">
   <div class="footer-copyright text-center py-2">
-    <a routerLink="" id="colorFooterText2"> ABC Jobs</a>
+    <a i18n="Nombre Empresa|Nombre empresa en Pie de Pagina" routerLink="" id="colorFooterText2">ABC Jobs</a>
   </div>
 </footer>
 
 <!--
+
+    <ul>
+    <li *ngFor="let locale of localesList">
+      <a href="/{{locale.code}}/">
+        {{locale.label}}
+      </a>
+    </li>
+  </ul>
+
+  
   <app-PruebaBoot></app-PruebaBoot>
   <app-PruebaMaterial></app-PruebaMaterial>
   

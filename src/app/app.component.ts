@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { AuthService } from './Auth/Auth.service';
+//import {registerLocaleData} from '@angular/common';
+//import localeEs from '@angular/common/locales/es';
+
+
+//registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'app-root',
@@ -10,6 +15,10 @@ import { AuthService } from './Auth/Auth.service';
 export class AppComponent implements OnInit{
   title = 'ABC_Jobs';
   categories = ['Hardware', 'Computers', 'Clothing', 'Software'];
+  localesList = [
+    { code: "en-US", label: 'English' },
+    { code: "es", label: 'Spanish' }
+  ];
   
   constructor(private authService: AuthService) { }
 
