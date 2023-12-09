@@ -9,6 +9,7 @@ import { PerfilProyecto } from './Perfil-proyecto';
 import { Habil } from './Habil';
 import { Project } from './Project';
 import { Candidato } from './Candidato';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class CompanyService {
   //private apiEmpresas = 'http://localhost:5000/empresas'
   private detalleUrl=''
  
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = environment.baseUrl;
+  //private apiUrl = 'http://localhost:5000';
   //private apiUrl = 'http://gateway.eba-brqkktps.us-east-2.elasticbeanstalk.com';
 
   constructor(private http: HttpClient) { }
