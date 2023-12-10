@@ -22,7 +22,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": true,
+            "localize": false,
             "aot": true,
             "outputPath": "dist/abc-jobs",
             "index": "src/index.html",

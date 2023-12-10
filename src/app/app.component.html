@@ -28,6 +28,24 @@
               >Company</a
             >
           </li>
+          <li class="nav-item" *ngxPermissionsOnly="['COMPANY']">
+            <a
+              i18n="Entrevistas|Entrevistas de un Candidato"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Interviews</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['COMPANY']">
+            <a
+              i18n="Pagos|Pagos hechos por las Empresas"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Payments</a
+            >
+          </li>          
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
             <a
               i18n="Candidato|Menu principal de los usuarios de tipo Candidato"
@@ -35,6 +53,24 @@
               aria-current="page"
               routerLink="/detalleCandidato"
               >Candidate</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
+            <a
+              i18n="Entrevistas|Entrevistas de un Candidato"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Interviews</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
+            <a
+              i18n="Ingresos|Ingresos de un Candidato recibidos de las empresas"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Revenues</a
             >
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
@@ -46,32 +82,42 @@
               >ABC Jobs</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
             <a
-              i18n="Prueba|Menu principal de los usuarios de tipo Prueba"
+              i18n="Candidatos|Candidatos registrados en el portal ABC"
               class="nav-link active"
               aria-current="page"
-              routerLink="/seleccionHabilidades"
-              >Prueba</a
+              routerLink="/construccion"
+              >Candidates</a
             >
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
             <a
-              i18n="Autores|Menu principal de los usuarios de tipo Autores"
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >
-              Authors
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a i18n="Lista de Autores|lista de los Autores" class="dropdown-item" routerLink="/authors/list">List</a></li>
-            <li><a i18n="Crear Autor|Crear Autor" class="dropdown-item" routerLink="/authors/create">Create</a></li>
-            </ul>
-            </li>
+              i18n="Empresas|Empresas registradas en el portal ABC"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Companies</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
+            <a
+              i18n="Entrevistas|Entrevistas programadas entre las empresas y los candidatos"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Interviews</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
+            <a
+              i18n="Contratos|Contratos entre las empresas y los candidatos"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/construccion"
+              >Contracts</a
+            >
+          </li>
           <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
             <a i18n="Login|Ingreso a la plataforma" class="nav-link active" routerLink="/login">Login</a>
           </li>
@@ -81,6 +127,23 @@
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE', 'COMPANY', 'ABCJOBS EMPLOYEE', 'ADMIN']">
             <a i18n="LogOut|Salir de la plataforma" class="nav-link active" (click)="logout()" href="#">LogOut</a>
           </li>
+          <li class="nav-item dropdown">
+            <a
+              i18n="Idioma|Menu de idiomas"
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >
+              Language
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a i18n="Idioma Spanish|Idioma Spanish" class="dropdown-item" href="/abc-jobs/{{localesList[1].code}}/">Spanish</a></li>
+            <li><a i18n="Idioma English|idioma English" class="dropdown-item" href="/abc-jobs/{{localesList[0].code}}/">English</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -88,19 +151,22 @@
 </header>
 
 <main id="main">
-  <ul>
-    <li *ngFor="let locale of localesList">
-      <a href="/abc-jobs/{{locale.code}}/">
-        {{locale.label}}
-      </a>
-    </li>
-  </ul>
   <router-outlet></router-outlet>
 </main>
 
-<footer class="page-footer">
-  <div class="footer-copyright text-center py-2">
-    <a i18n="Nombre Empresa|Nombre empresa en Pie de Pagina" routerLink="" id="colorFooterText2">ABC Jobs</a>
+<footer class="page-footer py-0 my-0">
+  <div class="footer-copyright text-center py-0 my-0">
+    <!-- <a i18n="Nombre Empresa|Nombre empresa en Pie de Pagina" routerLink="" id="colorFooterText2">ABC Jobs</a> -->
+    <button 
+      class="py-0 my-0"
+      mat-icon-button matTooltip="Home" 
+      color="primary"
+      i18n="Ir a Casa|Va a la Pagina de Inicio segun el usuario"
+      (click)="goHome()">
+      <mat-icon class="py-0 my-0">home</mat-icon>
+    </button>
+    <p class="footP"><a i18n href="#">Privacy Policy</a>|<a i18n href="#">Terms of Use</a></p>
+    <p class="footP"><span i18n >CopyRight 2023-2040 Uniandes-ABC Jobs</span></p>
   </div>
 </footer>
 

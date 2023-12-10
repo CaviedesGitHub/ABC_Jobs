@@ -66,7 +66,7 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
     }
 
   userId: number | undefined;
-  token: string | undefined;
+  token: string = "";
   candidate!: CandidateDetail;
   listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
   columnNames: string[] = ['nombre', 'tipo', 'calificacion', 'valoracion', 'star'];
@@ -110,14 +110,17 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
-      this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      this.userId=Number(sessionStorage.getItem("idUser"))
+      this.token=sessionStorage.getItem("token")!
+      if (!this.userId || !this.token){
+        this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
     }
     else {
-      this.userId = 1 //parseInt(this.router.snapshot.params['userId'])
+      this.userId = parseInt(this.router.snapshot.params['userId'])
       this.token = this.router.snapshot.params['userToken']
-      this.viewDetailUserCandidate(this.userId)
     }
-
+    this.viewDetailUserCandidate(this.userId)
   }
 
   agregarHabilidad(){

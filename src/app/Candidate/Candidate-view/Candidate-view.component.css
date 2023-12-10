@@ -37,3 +37,48 @@
     font-size: 14px;
     width: 100%;
   }
+
+  .logoPag {
+    width: 100%;
+    height: inherit;
+  }
+  
+  
+  .divSup{
+    background-color: rgb(255, 255, 255);
+    vertical-align:top;
+    margin-top: 0;
+  }
+  
+  .divIzq{
+    width:18%;
+    margin: 0px;
+    padding: 1px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    vertical-align:top;
+  }
+  
+  .divDer{
+    width:auto;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    vertical-align:top;
+  }
+  
+  .campo{
+    font-weight: bold;  
+  }
+  
+  .linea{
+    margin: 0px;
+  }
+  
+  .titTarjeta{
+    margin:0;
+    padding:0;
+  }
+  
+  .cardContent{
+    margin-top: 12px;
+  }

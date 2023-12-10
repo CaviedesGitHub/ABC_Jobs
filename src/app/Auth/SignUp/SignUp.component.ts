@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit {
         nombre: ["", Validators.required],
         password: ["", Validators.required],
         password2: ["", Validators.required],
-        tipo: ["", Validators.required]
+        tipo: ["Select your ROLE", Validators.required]
       })
     }
 

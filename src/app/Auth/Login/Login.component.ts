@@ -37,11 +37,15 @@ export class LoginComponent implements OnInit {
       console.log(res)
       console.log('FIN MENSAJE LOG CONSOLE')
       console.log(decodedToken.sub)
+      sessionStorage.setItem("token", res.token)
+      sessionStorage.setItem("idUser", String(res.id))
+      sessionStorage.setItem("typeUser", res.tipo)
       if (res.tipo=='EMPRESA'){
         this.authService.setCompanyRole()
         if (res.hasOwnProperty('empresa')){
           console.log(res.empresa)
           this.company=res.empresa
+          sessionStorage.setItem("idCompany", String(this.company.id))
           if (JSON.stringify(this.company) === '{}'){
             this.router.navigate([`/empresa/${decodedToken.sub}/${res.token}`])  
           }        
@@ -58,6 +62,7 @@ export class LoginComponent implements OnInit {
         if (res.hasOwnProperty('candidato')){
           console.log(res.candidato)
           this.candidate=res.candidato
+          sessionStorage.setItem("idCandidate", String(this.candidate.id))
           if (JSON.stringify(this.candidate) === '{}'){
             this.router.navigate([`/candidato/${decodedToken.sub}/${res.token}`])  
           }        

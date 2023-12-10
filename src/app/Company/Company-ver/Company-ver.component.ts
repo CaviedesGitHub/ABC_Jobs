@@ -19,7 +19,7 @@ export class CompanyVerComponent implements OnInit {
     private enrutador: Router,) { }
 
   userId: number | undefined;
-  token: string | undefined;
+  token: string = "";
   company!: CompanyDetail;
   lstProy: any;
   displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'star'];
@@ -35,14 +35,17 @@ export class CompanyVerComponent implements OnInit {
 
   ngOnInit() {
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
-      this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      this.userId=Number(sessionStorage.getItem("idUser"))
+      this.token=sessionStorage.getItem("token")!
+      if (!this.userId || !this.token){
+        this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
     }
     else {
       this.userId = parseInt(this.router.snapshot.params['userId'])
       this.token = this.router.snapshot.params['userToken']
-      this.viewDetailUserCompany(this.userId)
     }
-
+    this.viewDetailUserCompany(this.userId)
   }
 
   showError(error: string) {

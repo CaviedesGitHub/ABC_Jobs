@@ -4,6 +4,7 @@ import { AuthService } from './Auth/Auth.service';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 registerLocaleData(localeEs, 'es');
 
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit{
     { code: "es", label: 'Spanish' }
   ];
   
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private enrutador: Router) { }
 
   ngOnInit(): void {
     this.authService.start();
@@ -45,5 +46,25 @@ export class AppComponent implements OnInit{
 
   logout(): void {
     this.authService.logout()
+  }
+
+  goHome(){
+    let tipoUsuario=sessionStorage.getItem("typeUser")
+    if (!tipoUsuario){
+      this.enrutador.navigate([`/`])
+    }
+    else{
+      let token=sessionStorage.getItem("token")
+      let userId=sessionStorage.getItem("idUser")
+      if (tipoUsuario==="EMPRESA"){
+         this.enrutador.navigate([`/detalleEmpresa/${userId}/${token}`])
+      }
+      else if (tipoUsuario==="CANDIDATO"){
+         this.enrutador.navigate([`/detalleCandidato/${userId}/${token}`])
+      }
+      else{  //EMPLEADO_ABC
+        this.enrutador.navigate([`/seleccionHabilidades`])
+      }
+    }
   }
 }
