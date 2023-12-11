@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../Company.service';
@@ -40,12 +40,22 @@ export class PerfilEmpComponent implements OnInit {
   constructor(private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router,) { }
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string,) { }
 
 
   verCandidatosCumplen(perfilId: number){
     this.companyService.verCandidatosCumplenServ(perfilId).subscribe(lstCand=>{
-      this.toastr.success("Confirmation", 'Consulta Done')
+      //this.toastr.success("Confirmation", 'Consulta Done')
+      if (this.locale=="en-US"){
+        this.toastr.success("Confirmation", 'Consultation successfully completed.')
+      }
+      else if(this.locale=="es"){
+        this.toastr.success("Confirmacion", 'Consulta realizada exitosamente.')
+      }
+      else{
+        this.toastr.success("Confirmation", 'Consultation successfully completed.')
+      }
       this.lstCandidatos=lstCand
       //this.lstCandidatos2=new MatTableDataSource(lstCand.Respuesta.Seleccion);
       this.lstCandidatos2=lstCand.Respuesta.Seleccion

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from '../Candidate';
@@ -18,7 +18,8 @@ export class CandidateCreateComponent implements OnInit {
     private toastr: ToastrService,
     private candidateService: CandidateService,
     private router: ActivatedRoute,
-    private enrutador: Router) 
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string,) 
   { }
 
   userId: number | undefined
@@ -28,7 +29,16 @@ export class CandidateCreateComponent implements OnInit {
     this.candidateService.createCandidate(candidate).subscribe(
       resp => {
         console.info("The candidate was created: ", candidate)
-        this.toastr.success("Confirmation", "Candidate created"+`${resp.nombres}`)
+        //this.toastr.success("Confirmation", "Candidate created"+`${resp.nombres}`)
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'Candidate successfully created.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'Candidato creado exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'Candidate successfully created.')
+        }
         this.candidateForm.reset();
         this.enrutador.navigate([`/detalleCandidato/${this.userId}/${this.token}`])
       }

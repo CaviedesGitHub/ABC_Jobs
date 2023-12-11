@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -24,13 +24,22 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authService: AuthService,
-    private router: Router,) { }
+    private router: Router,
+    @Inject(LOCALE_ID) public locale: string, ) { }
 
   loginUser(login: Login){
     this.error = false
     this.authService.userLogIn(login).subscribe(res => {
       console.info("The Login Created: ", res.id)
-      this.toastr.success("Confirmation", 'Login'+res.tipo)
+      if (this.locale=="en-US"){
+        this.toastr.success("Confirmation", 'Successful Login.')
+      }
+      else if(this.locale=="es"){
+        this.toastr.success("Confirmacion", 'Ingreso Exitoso.')
+      }
+      else{
+        this.toastr.success("Confirmation", 'Successful Login.')
+      }
       this.loginForm.reset();
       const decodedToken = this.helper.decodeToken(res.token);
       console.log('MENSAJE LOG CONSOLE')
@@ -95,6 +104,8 @@ export class LoginComponent implements OnInit {
       nombre: ["", [Validators.required, Validators.maxLength(20)]],
       password: ["", Validators.required]
     })
+    console.log("Lenguaje: ")
+    console.log(this.locale)
   }
 
 }

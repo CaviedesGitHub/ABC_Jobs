@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -46,7 +46,8 @@ export class PerfilAgregarComponent implements OnInit {
     private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string,
   ) { 
     this.selection = new SelectionModel<Habil>(true, []);
   }
@@ -95,7 +96,16 @@ export class PerfilAgregarComponent implements OnInit {
     //perfil.lstHabils="5,7"
     this.companyService.createPerfil(perfil,this.proyId).subscribe(res=>{
         console.info("The Profile was created: ", res)
-        this.toastr.success("Confirmation", "Profile Created"+res)
+        //this.toastr.success("Confirmation", "Profile Created"+res)
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'Profile successfully created.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'Perfil creado exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'Profile successfully created.')
+        }
         this.perfilForm.reset();
         this.enrutador.navigate([`/detalleProyecto/${this.proyId}/${this.userId}/${this.token}`])
       },

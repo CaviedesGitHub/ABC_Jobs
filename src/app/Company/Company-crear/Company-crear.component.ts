@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { Company } from '../Company';
@@ -18,7 +18,8 @@ export class CompanyCrearComponent implements OnInit {
     private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string, 
   ) { }
 
   userId: number | undefined
@@ -27,7 +28,16 @@ export class CompanyCrearComponent implements OnInit {
   createCompany(company: Company){
     this.companyService.createCompany(company).subscribe(empresa=>{
       console.info("The company was created: ", empresa)
-      this.toastr.success("Confirmation", "Company created"+`${empresa.Empresa.id_usuario}`)
+      //this.toastr.success("Confirmation", "Company created"+`${empresa.Empresa.id_usuario}`)
+      if (this.locale=="en-US"){
+        this.toastr.success("Confirmation", 'Successfully established company.')
+      }
+      else if(this.locale=="es"){
+        this.toastr.success("Confirmacion", 'Empresa creada exitosamente.')
+      }
+      else{
+        this.toastr.success("Confirmation", 'Successfully established company.')
+      }
       this.empresaForm.reset();  //id_usuario
       this.enrutador.navigate([`/detalleEmpresa/${this.userId}/${this.token}`])
     })

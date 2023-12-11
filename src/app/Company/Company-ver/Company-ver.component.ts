@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,8 @@ export class CompanyVerComponent implements OnInit {
   constructor(private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router,) { }
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string, ) { }
 
   userId: number | undefined;
   token: string = "";
@@ -26,8 +27,17 @@ export class CompanyVerComponent implements OnInit {
 
   viewDetailUserCompany(userId: number){
     this.companyService.viewDetailUserCompany(userId).subscribe(company=>{
-      console.info("The company was created: ", company)
-      this.toastr.success("Confirmation", `/${userId}`)
+      console.info("The company was recovered: ", company)
+      //this.toastr.success("Confirmation", `/${userId}`)
+      if (this.locale=="en-US"){
+        this.toastr.success("Confirmation", 'Company data successfully recovered.')
+      }
+      else if(this.locale=="es"){
+        this.toastr.success("Confirmacion", 'Datos de la empresa recuperados exitosamente.')
+      }
+      else{
+        this.toastr.success("Confirmation", 'Company data successfully recovered.')
+      }
       this.company=company
       this.lstProy=new MatTableDataSource(company.proyectos);
     })

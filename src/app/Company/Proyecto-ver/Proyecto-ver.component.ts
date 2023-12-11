@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { ProjectDetail } from '../Project-detail';
 import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,7 +29,8 @@ export class ProyectoVerComponent implements OnInit {
   constructor(private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router) { }
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string,) { }
 
 
     verDetalleComp(){
@@ -42,7 +43,16 @@ export class ProyectoVerComponent implements OnInit {
       this.p=new Project(proyId, 1, "Mi Empresa", "String");
       this.companyService.viewDetailProject(this.p).subscribe(proj=>{
         console.info("The Project was created: ", proj)
-        this.toastr.success("Confirmation", `/${proj.nombre}`)
+        //this.toastr.success("Confirmation", `/${proj.nombre}`)
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'Project data were successfully retrieved.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'Los datos del proyecto fueron recuperados exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'Project data were successfully retrieved.')
+        }
         this.project=proj
         this.lstProfiles=new MatTableDataSource(this.project.perfiles);
       },

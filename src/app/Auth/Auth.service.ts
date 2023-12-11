@@ -107,6 +107,7 @@ export class AuthService {
     this.roleService.flushRoles();
     this.setGuestRole();
     localStorage.removeItem('role');
+    sessionStorage.clear();
     this.router.navigateByUrl('/');
   }
 }

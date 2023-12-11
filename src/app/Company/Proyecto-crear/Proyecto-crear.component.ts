@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { CompanyService } from '../Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -20,12 +20,22 @@ export class ProyectoCrearComponent implements OnInit {
     private toastr: ToastrService,
     private companyService: CompanyService,
     private router: ActivatedRoute,
-    private enrutador: Router) { }
+    private enrutador: Router,
+    @Inject(LOCALE_ID) public locale: string,) { }
 
     createProject(project: Project){
       this.companyService.createProject(project, this.empId).subscribe(project=>{
         console.info("The Project was created: ", project)
-        this.toastr.success("Confirmation", "Project created")
+        //this.toastr.success("Confirmation", "Project created")
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'The project was successfully created.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'El proyecto fue creado exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'The project was successfully created.')
+        }
         this.proyForm.reset();
         this.enrutador.navigate([`/detalleEmpresa/${this.userId}/${this.token}`])
       })

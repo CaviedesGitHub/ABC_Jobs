@@ -1,5 +1,5 @@
 import {LiveAnnouncer} from '@angular/cdk/a11y';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, LOCALE_ID, Inject } from '@angular/core';
 import { CandidateService } from '../Candidate.service';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { ToastrService } from 'ngx-toastr';
@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 
 export interface interHabil {
   position: number;
@@ -62,7 +63,9 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
 
   //private toastr: ToastrService,
   constructor(private _liveAnnouncer: LiveAnnouncer, private candidateService: CandidateService, 
-    private router: ActivatedRoute) { 
+    private router: ActivatedRoute,
+    private toastr: ToastrService,
+    @Inject(LOCALE_ID) public locale: string,) { 
     }
 
   userId: number | undefined;
@@ -78,6 +81,15 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
     this.candidateService.viewDetailUserCandidate(userId).subscribe(cand=>{
     console.info("The candidate was created: ", cand.nombres)
     //this.toastr.success("Confirmation", `/${userId}`+cand.nombres)
+    if (this.locale=="en-US"){
+      this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
+    }
+    else if(this.locale=="es"){
+      this.toastr.success("Confirmacion", 'Datos del candidato recuperados exitosamente.')
+    }
+    else{
+      this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
+    }
     this.candidate=cand
     this.listaHabils=new MatTableDataSource(this.candidate.lstHabils); //this.candidate.lstHabils; 
     //this.listaHabils.sort = this.sort
