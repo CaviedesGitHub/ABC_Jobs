@@ -12,15 +12,18 @@
             <mat-card class="example-card" >          
               <mat-card-header>            
                 <mat-card-title-group>
-                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span class="campo">Company: </span>{{ company.nombre }}</H1></mat-card-title>
-                  <mat-card-subtitle><span class="campo">E-Mail: </span>{{ company.correo }}</mat-card-subtitle>                            
+                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span class="campo">Company: </span><span data-cy="nameCompanyView">{{ company.nombre }}</span></H1></mat-card-title>
+                  <mat-card-subtitle><span class="campo">Type: </span><span data-cy="typeCompanyView">{{ company.tipo }}</span></mat-card-subtitle>                            
                 </mat-card-title-group>
               </mat-card-header>
               <mat-card-content class="cardContent">
-                <p class="linea"><span class="campo">Contact: </span>{{ company.contacto }}</p>
-                <p class="linea"><span class="campo">City: </span>{{ company.ciudad }}</p>
-                <p class="linea"><span class="campo">Address: </span>{{ company.direccion }}</p>
-                <p class="linea"><span class="campo">Phone: </span>{{ company.celular }}</p>
+                <p class="linea"><span class="campo">Contact: </span><span data-cy="contactCompanyView">{{ company.contacto }}</span></p>                
+                <p class="linea"><span class="campo">E-Mail: </span><span data-cy="emailCompanyView">{{ company.correo }}</span></p>
+                <p class="linea"><span class="campo">Phone: </span><span data-cy="phoneCompanyView">{{ company.celular }}</span></p>
+                <p class="linea"><span class="campo">Country: </span><span data-cy="countryCompanyView">{{ company.pais }}</span></p>
+                <p class="linea"><span class="campo">City: </span><span data-cy="cityCompanyView">{{ company.ciudad }}</span></p>
+                <p class="linea"><span class="campo">Address: </span><span data-cy="addressCompanyView">{{ company.direccion }}</span></p>
+                
               </mat-card-content>
             </mat-card>  
           </div>
@@ -30,11 +33,11 @@
           <div class="card-header text-left ">
             <div class="row align-items-left">
               <div class="col-10">
-                <h2 class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h2>
+                <h2 data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h2>
                 <h5 class="card-title text-left mb-0 pb-0">List of projects registered by this company</h5>          
               </div>
               <div class="col-2">
-                <button style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
+                <button data-cy="addProjCompanyView" style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
                   <mat-icon>plus_one</mat-icon>
                   New
                 </button>
@@ -42,7 +45,7 @@
           </div>
           <div class="card-body">
             <section class="example-container mat-elevation-z8" tabindex="0">
-              <table mat-table [dataSource]="lstProy">
+              <table data-cy="lstProjCompanyView" mat-table [dataSource]="lstProy">
             
                 <!-- Name Column -->
                 <ng-container matColumnDef="id" sticky>
@@ -72,15 +75,15 @@
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
-                        <span><a routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > View </a></span>
+                        <span><a data-cy="linkDetailProject" routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > View </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>edit</mat-icon>
-                        <span><a routerLink="/construcion" > Update </a></span>
+                        <span><a data-cy="linkEditProject" routerLink="/construcion" > Update </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>delete</mat-icon>
-                        <span><a routerLink="/construcion" > Delete </a></span>
+                        <span><a  data-cy="linkDeleteProject" routerLink="/construcion" > Delete </a></span>
                       </button>
                     </mat-menu>
                   </td>
@@ -92,7 +95,7 @@
             </section>
           </div>
           <div class="card-footer text-muted">
-            <button (click)="volverAtras()" mat-fab extended color="accent">
+            <button data-cy="backCompanyView" (click)="volverAtras()" mat-fab extended color="accent">
               <mat-icon>bookmark</mat-icon>
               Back
             </button>

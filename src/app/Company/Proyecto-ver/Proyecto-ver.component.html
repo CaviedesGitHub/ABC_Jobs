@@ -9,15 +9,15 @@
           <img class="logoPag" src="../../../assets/imagenes/proyecto.png"  alt="Image of a Project">
         </div>
         <div class="divDer">
-          <mat-card class="example-card" >          
+          <mat-card class="example-card" >           
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold">Project: {{ project.nombre }}</H1></mat-card-title>
-                <mat-card-subtitle><span class="campo">Company: </span>{{ project.empresa }}</mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold">Project: <span data-cy="titleProject">{{ project.nombre }}</span></H1></mat-card-title>
+                <mat-card-subtitle><span class="campo">Company: </span><span data-cy="companyProject">{{ project.empresa }}</span></mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span class="campo">Description: </span>{{ project.descripcion }}</p>
+              <p class="linea"><span class="campo">Description: </span><span data-cy="descripProject">{{ project.descripcion }}</span></p>
             </mat-card-content>
           </mat-card>  
         </div>
@@ -28,11 +28,11 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 class="mb-0 pb-0 fw-bold fst-italic fw-light">Profiles List</h2>
-              <h5 class="card-title text-left mb-0 pb-0">List of profiles registered by this project</h5>          
+              <h2 data-cy="subTitleProject" class="mb-0 pb-0 fw-bold fst-italic fw-light">Profiles List</h2>
+              <h5 data-cy="DescripProject" class="card-title text-left mb-0 pb-0">List of profiles registered by this project</h5>          
             </div>
             <div class="col-2">
-              <button style="float: right" (click)="agregarPerfil()" mat-fab extended color="primary">
+              <button data-cy="addProfile" style="float: right" (click)="agregarPerfil()" mat-fab extended color="primary">
                 <mat-icon>plus_one</mat-icon>
                 New Profile
               </button>
@@ -40,7 +40,7 @@
         </div>
         <div class="card-body">
           <section class="example-container mat-elevation-z8" tabindex="0">
-            <table mat-table [dataSource]="lstProfiles">
+            <table data-cy="lstProfile" mat-table [dataSource]="lstProfiles">
           
               <!-- Name Column -->
               <ng-container matColumnDef="id" sticky>
@@ -88,19 +88,19 @@
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a routerLink="/cumplenPerfil/{{this.proyId}}/{{element.id_perfil}}/{{ this.userId }}/{{ this.token }}" > Match profile </a></span>
+                      <span><a data-cy="linkMatchProfile" routerLink="/cumplenPerfil/{{this.proyId}}/{{element.id_perfil}}/{{ this.userId }}/{{ this.token }}" > Match profile </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a routerLink="/construcion" > View </a></span>
+                      <span><a data-cy="linkViewProfile" routerLink="/construcion" > View </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>edit</mat-icon>
-                      <span><a routerLink="/construcion" > Update </a></span>
+                      <span><a data-cy="linkUpdateProfile" routerLink="/construcion" > Update </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>delete</mat-icon>
-                      <span><a routerLink="/construcion" > Delete </a></span>
+                      <span><a data-cy="linkDeleteProfile" routerLink="/construcion" > Delete </a></span>
                     </button>
                   </mat-menu>
                 </td>
@@ -112,7 +112,7 @@
           </section>
         </div>
         <div class="card-footer text-muted">
-          <button (click)="volverAtras()" mat-fab extended color="accent">
+          <button data-cy="backProject" (click)="volverAtras()" mat-fab extended color="accent">
             <mat-icon>bookmark</mat-icon>
             Back
         </button>

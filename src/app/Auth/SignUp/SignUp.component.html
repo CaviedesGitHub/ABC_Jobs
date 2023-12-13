@@ -25,6 +25,7 @@
                   class="form-control form-control-sm"
                   formControlName="nombre"
                   placeholder="User's name"
+                  data-cy="nameSignup"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -47,6 +48,7 @@
                   formControlName="password"
                   placeholder="User's Password"
                   type="password"
+                  data-cy="pass1Signup"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -69,6 +71,7 @@
                   formControlName="password2"
                   placeholder="User's Password Repeat"
                   type="password"
+                  data-cy="pass2Signup"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -84,7 +87,7 @@
               <!--Tipo-->
               <div class="form-group mx-sm-3 mb-2">
                 <label class="fst-italic fw-bold" for="tipo">Type</label>
-                <select novalidate id="tipo" formControlName="tipo" class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm">
+                <select data-cy="roleSignup" novalidate id="tipo" formControlName="tipo" class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm">
                   <option selected>Select your ROLE</option>
                   <option value="CANDIDATO">CANDIDATE</option>
                   <option value="EMPRESA">COMPANY</option>
@@ -105,6 +108,7 @@
                 type="submit"
                 class="btn btn-primary"
                 [disabled]="!signupForm.valid"
+                data-cy="submitSignup"
               >
                 Create
               </button>
@@ -113,7 +117,7 @@
            </div>
         </div>
         <div class="card-footer text-muted">
-          Already have an account?  <a class="active" routerLink="/login">Login Here</a>
+          Already have an account?  <a data-cy="loginSignup" class="active" routerLink="/login">Login Here</a>
          </div>
       </div>
     </div>

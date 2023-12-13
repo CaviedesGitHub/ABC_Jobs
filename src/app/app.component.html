@@ -14,6 +14,7 @@
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        data-cy="btnToggleNav"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,6 +26,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/detalleEmpresa"
+              data-cy="companyCompany"
               >Company</a
             >
           </li>
@@ -34,6 +36,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="interCompany"
               >Interviews</a
             >
           </li>
@@ -43,6 +46,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="payCompany"
               >Payments</a
             >
           </li>          
@@ -52,6 +56,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/detalleCandidato"
+              data-cy="candCandidate"
               >Candidate</a
             >
           </li>
@@ -61,6 +66,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="interCandidate"
               >Interviews</a
             >
           </li>
@@ -70,6 +76,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="reveCandidate"
               >Revenues</a
             >
           </li>
@@ -79,6 +86,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/seleccionHabilidades"
+              data-cy="habilABC"
               >ABC Jobs</a
             >
           </li>
@@ -88,6 +96,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="candidateABC"
               >Candidates</a
             >
           </li>
@@ -97,6 +106,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="companyABC"
               >Companies</a
             >
           </li>
@@ -106,6 +116,7 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="interABC"
               >Interviews</a
             >
           </li>
@@ -115,17 +126,18 @@
               class="nav-link active"
               aria-current="page"
               routerLink="/construccion"
+              data-cy="contractsABC"
               >Contracts</a
             >
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
-            <a i18n="Login|Ingreso a la plataforma" class="nav-link active" routerLink="/login">Login</a>
+            <a data-cy="loginMenu" i18n="Login|Ingreso a la plataforma" class="nav-link active" routerLink="/login">Login</a>
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
-            <a i18n="SignUp|Registro en la plataforma" class="nav-link active" routerLink="/signup">SignUp</a>
+            <a data-cy="signupMenu" i18n="SignUp|Registro en la plataforma" class="nav-link active" routerLink="/signup">SignUp</a>
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE', 'COMPANY', 'ABCJOBS EMPLOYEE', 'ADMIN']">
-            <a i18n="LogOut|Salir de la plataforma" class="nav-link active" (click)="logout()" href="#">LogOut</a>
+            <a data-cy="logoutMenu" i18n="LogOut|Salir de la plataforma" class="nav-link active" (click)="logout()" href="#">LogOut</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -140,8 +152,8 @@
               Language
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a i18n="Idioma Spanish|Idioma Spanish" class="dropdown-item" href="/abc-jobs/{{localesList[1].code}}/">Spanish</a></li>
-            <li><a i18n="Idioma English|idioma English" class="dropdown-item" href="/abc-jobs/{{localesList[0].code}}/">English</a></li>
+            <li><a data-cy="spanishMenu" i18n="Idioma Spanish|Idioma Spanish" class="dropdown-item" href="/abc-jobs/{{localesList[1].code}}/">Spanish</a></li>
+            <li><a data-cy="englishMenu" i18n="Idioma English|idioma English" class="dropdown-item" href="/abc-jobs/{{localesList[0].code}}/">English</a></li>
             </ul>
           </li>
         </ul>
@@ -158,6 +170,7 @@
   <div class="footer-copyright text-center py-0 my-0">
     <!-- <a i18n="Nombre Empresa|Nombre empresa en Pie de Pagina" routerLink="" id="colorFooterText2">ABC Jobs</a> -->
     <button 
+      data-cy="goHome"
       class="py-0 my-0"
       mat-icon-button matTooltip="Home" 
       color="primary"

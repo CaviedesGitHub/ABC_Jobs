@@ -56,7 +56,7 @@ export class ProyectoCrearComponent implements OnInit {
       id: [0],
       id_emp: [this.empId],
       nombre: ["", [Validators.required, Validators.minLength(2)]],
-      descripcion: ["", [Validators.required, Validators.maxLength(100)]]
+      descripcion: ["", [Validators.required, Validators.maxLength(120)]]
     })
   }
 

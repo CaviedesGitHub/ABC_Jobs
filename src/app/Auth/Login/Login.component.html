@@ -25,6 +25,7 @@
                   class="form-control form-control-sm"
                   formControlName="nombre"
                   placeholder="User's name"
+                  data-cy="nameLogin"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -47,6 +48,7 @@
                   formControlName="password"
                   placeholder="User's Password"
                   type="password"
+                  data-cy="passLogin"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -64,6 +66,7 @@
                   type="submit"
                   class="btn btn-primary"
                   [disabled]="!loginForm.valid"
+                  data-cy="submitLogin"
                 >
                   Login
               </button>
@@ -73,7 +76,7 @@
            </div>
         </div>
         <div class="card-footer text-muted">
-          Do not have an account? <a routerLink="/signup">Sign Up</a>
+          Do not have an account? <a data-cy="signupLogin" routerLink="/signup">Sign Up</a>
          </div>
       </div>
     </div>

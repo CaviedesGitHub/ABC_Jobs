@@ -65,7 +65,16 @@ export class ProyectoVerComponent implements OnInit {
       
       this.companyService.viewDetailProject(this.p).subscribe(proj=>{
         console.info("The Project was created: ", proj)
-        this.toastr.success("Confirmation", `/${proj.nombre}`)
+        //this.toastr.success("Confirmation", `/${proj.nombre}`)
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'Project data were successfully retrieved.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'Los datos del proyecto fueron recuperados exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'Project data were successfully retrieved.')
+        }
         this.project=proj
       },
       error => {
