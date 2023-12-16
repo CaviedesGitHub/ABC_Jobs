@@ -7,24 +7,24 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
-          <h5 class="card-title text-center mb-0 pb-0">Digita tus credenciales para ingresar a la plataforma</h5>
+          <h1 i18n="TituloCreateProject|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Project</h1>
+          <h5 i18n="IndicacionCreateProject|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Enter the project data</h5>
         </div>
         <div class="card-body">
-          <div class="container mt-4">
-            <h2 class="text-center">Create a new Project</h2>
+          <div class="container mt-2">
             <form
               [formGroup]="proyForm"
               (ngSubmit)="!proyForm.invalid && createProject(proyForm.value)"
             >
               <!--Nombre-->
               <div class="form-group mx-sm-3 mb-2">
-                <label for="nombre">Name</label>
+                <label i18n="lblNameCreateProject|Etiqueta del campo nombre" class="text-left fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate
                   id="nombre"
-                  class="form-control"
+                  class="form-control form-control-sm"
                   formControlName="nombre"
+                  i18n-placeholder="holderNameCreateProject|placeholder del campo nombre"
                   placeholder="Project's name"
                   data-cy="nameProject"
                 />
@@ -35,23 +35,24 @@
                     proyForm.get('nombre')!.touched
                   "
                 >
-                  Name required
+                  <span i18n="msgErrorReqNameCreateProject|Mensaje de error nombre requerido">Name required</span>
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="proyForm.get('nombre')!.hasError('minlength')"
                 >
-                  Name too short
+                  <span i18n="msgErrorShortNameCreateProject|Mensaje de error nombre muy corto">Name too short</span>
                 </div>
               </div>
            
               <!--Descripcion-->
               <div class="form-group mx-sm-3 mb-2">
-                <label for="descripcion">Description</label>
+                <label i18n="lblDescCreateProject|Etiqueta del campo descripcion" class="text-left fst-italic fw-bold" for="descripcion">Description</label>
                 <input
                   novalidate
                   id="descripcion"
-                  class="form-control"
+                  class="form-control form-control-sm"
+                  i18n-placeholder="holderDescCreateProject|placeholder del campo descripcion"
                   formControlName="descripcion"
                   placeholder="Project's short description"
                   data-cy="descProject"
@@ -63,37 +64,37 @@
                     proyForm.get('descripcion')!.touched
                   "
                 >
-                  Description required
+                  <span i18n="msgErrorReqDescCreateProject|Mensaje de error descripcion requerida">Description required</span>                
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="proyForm.get('descripcion')!.hasError('maxlength')"
                 >
-                  Description too long
+                  <span i18n="msgErrorLongDescCreateProject|Mensaje de error descripcion muy larga">Description too long</span>
                 </div>
               </div>
-           
-              <button
-                type="submit"
-                class="btn btn-primary"
-                [disabled]="!proyForm.valid"
-                data-cy="submitProject"
-              >
-                Create
-              </button>
+
               <button
                 type="button"
-                class="btn btn-danger ml-3"
+                class="btn btn-danger mx-3 mt-4"
                 (click)="cancelCreation()"
                 data-cy="cancelProject"
               >
-                Cancel
+                <span i18n="msgBotonCancelCreateProject|Mensaje boton cancelar Crear Proyecto">Cancel</span>
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary mx-3 mt-4"
+                [disabled]="!proyForm.valid"
+                data-cy="submitProject"
+              >
+                <span i18n="msgBotonCreateCreateProject|Mensaje boton Crear Proyecto">Create</span>
               </button>
             </form>
            </div>
         </div>
         <div class="card-footer text-muted">
-          Do not have an account? <a routerLink="/signup">Sign Up</a>
+          
          </div>
       </div>
     </div>

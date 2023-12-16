@@ -46,7 +46,7 @@ describe('Company Test', () => {
       //})
     })
 
-    it.skip('Company Creation', () => {
+    it('Company Creation', () => {
       const nameCompany = 'Company'+Date.now().toString()
       companyName=nameCompany
       const type = 'Comercio'
@@ -85,7 +85,7 @@ describe('Company Test', () => {
       cy.get('[data-cy=addressCompanyView]').invoke('text').should('eq', address)
     })
 
-    it.skip('Invalid Company Name ', () => {
+    it('Invalid Company Name ', () => {
       const nameCompany2 = companyName
       const type2 = 'Comercio'
       const email2 = 'Mail'+Date.now().toString()+'@correo.com'
@@ -111,7 +111,7 @@ describe('Company Test', () => {
       })
     })
 
-    it.skip('Invalid EMail ', () => {
+    it('Invalid EMail ', () => {
       const nameCompany2 = 'Company'+Date.now().toString()
       const type2 = 'Comercio'
       const email2 = companyEmail
@@ -137,7 +137,7 @@ describe('Company Test', () => {
       })
     })
 
-    it.skip('Project Creation', () => {
+    it('Project Creation', () => {
       const nameCompany = 'Company'+Date.now().toString()
       const type = 'Comercio'
       const email = 'Mail'+Date.now().toString()+'@correo.com'
@@ -249,7 +249,7 @@ describe('Company Test', () => {
       cy.get('[data-cy=cancelProject]').click()
     })
 
-    it.skip('Profile Creation', () => {
+    it('Profile Creation', () => {
       const nameCompany = 'Company'+Date.now().toString()
       const type = 'Comercio'
       const email = 'Mail'+Date.now().toString()+'@correo.com'
@@ -518,7 +518,12 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProfile]').children().eq(1).children().eq(0).children().eq(6).children().eq(0).click()
       cy.get('[data-cy=linkMatchProfile]').click()
       cy.get('[data-cy=root]').contains('JavaScript')
-      
+      cy.get('[data-cy=titleMatch]').contains('List of Candidates who meet a profile')
+      cy.get('[data-cy=subTitleMatch]').contains('The candidates meet, at a minimum, the following abilities:')
+      cy.get('[data-cy=lstSkillsMatch]').contains('JavaScript')
+      //cy.get('[data-cy=lstCandMatch]').should('')
+      //cy.get('[data-cy=backMatch]').click()
+
     })
 
   })

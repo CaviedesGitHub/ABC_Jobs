@@ -7,8 +7,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
-          <h5 class="card-title text-center mb-0 pb-0">Enter your credentials to log in to the platform</h5>
+          <h1 i18n="TituloLogin|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Welcome</h1>
+          <h5 i18n="IndicacionLogin|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Enter your credentials to log in to the platform</h5>
         </div>
         <div class="card-body">
           <div class="container mt-2">
@@ -18,12 +18,13 @@
             >
               <!--nombre-->
               <div class="form-group mx-sm-3 mb-4">
-                <label class="fst-italic fw-bold" for="nombre">Name</label>
+                <label i18n="lblNameLogin|Etiqueta del campo nombre" class="fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate
                   id="nombre"
                   class="form-control form-control-sm"
                   formControlName="nombre"
+                  i18n-placeholder="holderNameLogin|placeholder del campo nombre"
                   placeholder="User's name"
                   data-cy="nameLogin"
                 />
@@ -34,18 +35,19 @@
                     loginForm.get('nombre')!.touched
                   "
                 >
-                  Name required
+                  <span i18n="msgErrorReqNameLogin|Mensaje de error nombre requerido">Name required</span>
                 </div>
               </div>
           
               <!--Password-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="text-left fst-italic fw-bold" for="password">Password</label>
+                <label i18n="lblPassLogin|Etiqueta del campo password" class="text-left fst-italic fw-bold" for="password">Password</label>
                 <input
                   novalidate
                   id="password"
                   class="form-control form-control-sm"
                   formControlName="password"
+                  i18n-placeholder="holderPassLogin|placeholder del campo password"
                   placeholder="User's Password"
                   type="password"
                   data-cy="passLogin"
@@ -57,10 +59,12 @@
                     loginForm.get('password')!.touched
                   "
                 >
-                  Password required
+                  <span i18n="msgErrorReqPassLogin|Mensaje de error clave requerida">Password required</span>
                 </div>
               </div>
-              <p class="ml-2 mt-3 mb-4 mx-sm-3"><a>Forget Password?</a></p>
+              <p class="ml-2 mt-3 mb-4 mx-sm-3">
+                <a i18n="forgetPassLogin|Mensaje olvidaste la clave">Forget Password?</a>
+              </p>
               <div class="container-fluid text-center">
                 <button
                   type="submit"
@@ -68,7 +72,7 @@
                   [disabled]="!loginForm.valid"
                   data-cy="submitLogin"
                 >
-                  Login
+                  <span i18n="msgBotonLogin|Mensaje boton Login">Login</span>
               </button>
             </div>
           
@@ -76,7 +80,8 @@
            </div>
         </div>
         <div class="card-footer text-muted">
-          Do not have an account? <a data-cy="signupLogin" routerLink="/signup">Sign Up</a>
+          <span i18n="msgHaveLogin|Mensaje enlace no tienes una cuenta">not have an account?</span> 
+          <a i18n="msgSignupLogin|Mensaje enlace Signup" class="contraste" data-cy="signupLogin" routerLink="/signup">Sign Up</a>
          </div>
       </div>
     </div>

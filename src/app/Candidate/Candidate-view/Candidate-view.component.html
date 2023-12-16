@@ -6,22 +6,22 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
       <div class="divSup">
         <div class="divIzq">
-          <img class="logoPag" src="../../../assets/imagenes/usuario2.png"  alt="Image of a User">
+          <img i18n-alt="txtAltViewCandidate|Texto alternativo imagen candidato" class="logoPag" src="../../../assets/imagenes/usuario2.png"  alt="Image of a User">
         </div>
         <div class="divDer">
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold">Candidate: {{candidate.apellidos}}, {{candidate.nombres}}</H1></mat-card-title>
-                <mat-card-subtitle><span class="campo">E-Mail: </span>{{candidate.email}}</mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate.apellidos}}, {{candidate.nombres}}</H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate.email}}</mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span class="campo">Document: </span>{{ candidate.documento }}</p>
-              <p class="linea"><span class="campo">BirthDate: </span>{{ candidate.fecha_nac }}</p>
-              <p class="linea"><span class="campo">City: </span>{{ candidate.ciudad }}</p>
-              <p class="linea"><span class="campo">Address: </span>{{ candidate.direccion }}</p>
-              <p class="linea"><span class="campo">Phone: </span>{{ candidate.phone }}</p>
+              <p class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate.documento }}</p>
+              <p class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate.fecha_nac }}</p>
+              <p class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate.ciudad }}</p>
+              <p class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate.direccion }}</p>
+              <p class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate.phone }}</p>
             </mat-card-content>
           </mat-card>  
         </div>
@@ -31,43 +31,46 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 class="mb-0 pb-0 fw-bold fst-italic fw-light">Skills List</h2>
-              <h5 class="card-title text-left mb-0 pb-0">List of skills registered by this candidate</h5>          
+              <h2 i18n="titDetalleViewCandidate|Titulo detalle ver candidato" class="mb-0 pb-0 fw-bold fst-italic fw-light">Skills List</h2>
+              <h5 i18n="subTitDetalleViewCandidate|SubTitulo detalle ver candidato" class="card-title text-left mb-0 pb-0">List of skills registered by this candidate</h5>          
             </div>
             <div class="col-2">
               <button style="float: right" (click)="agregarHabilidad()" mat-fab extended color="primary">
                 <mat-icon>plus_one</mat-icon>
-                New Skill
+                <span i18n="txtBtnNewViewCandidate|texto boton nuevo ver candidato">New Skill</span>
               </button>
             </div>
         </div>
         <div class="card-body">
           <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            <mat-label><span i18n="FilterViewCandidate|Texto filtro de la pagina">Filter</span></mat-label>
+            <input matInput (keyup)="applyFilter($event)" 
+            i18n-placeholder="holderFilterViewCandidate|Place holder filtro de la pagina" placeholder="Ex. Mia" #input>
           </mat-form-field>
           <section class="example-container mat-elevation-z8" tabindex="0">
             <table mat-table [dataSource]="listaHabils" matSort matSortDisableClear >
               <ng-container matColumnDef="nombre" sticky>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Name</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header 
+                    i18n-sortActionDescription="orderNameViewCandidate|texto ordenar por nombre en ver candidato"
+                    sortActionDescription="Sort by name"><span i18n="headNameViewCandidate|texto cabecera name ver candidato">Name</span></th>
                 <td mat-cell *matCellDef="let habili">
                   {{ habili.nombre}}
                 </td>
               </ng-container>
               <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span i18n="headTypeViewCandidate|texto cabecera tipo ver candidato">Type</span></th>
                 <td mat-cell *matCellDef="let habili">
                   {{ habili.tipo}}
                 </td>
               </ng-container>
               <ng-container matColumnDef="calificacion">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span i18n="headRateViewCandidate|texto cabecera Rate ver candidato">Rate</span></th>
                 <td mat-cell *matCellDef="let habili">
                   {{ habili.calificacion }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="valoracion">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Valuation</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span i18n="headValueViewCandidate|texto cabecera calificacion ver candidato">Valuation</span></th>
                 <td mat-cell *matCellDef="let habili">
                   {{ habili.valoracion }}
                 </td>
@@ -83,15 +86,15 @@
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a routerLink="/construcion" > View </a></span>
+                      <span><a routerLink="/construcion" > <span i18n="menuVerViewCandidate|texto menu ver habilidad ver candidato">View</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>edit</mat-icon>
-                      <span><a routerLink="/construcion" > Update </a></span>
+                      <span><a routerLink="/construcion" > <span i18n="menuUpdateViewCandidate|Menu update habilidad en ver candidato">Update</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>delete</mat-icon>
-                      <span><a routerLink="/construcion" > Delete </a></span>
+                      <span><a routerLink="/construcion" > <span i18n="menuDeleteViewCandidate|Menu borrar habilidad en ver candidato">Delete</span> </a></span>
                     </button>
                   </mat-menu>
                 </td>
@@ -101,6 +104,7 @@
             </table>
             <mat-paginator [pageSizeOptions]="[5, 10, 15]" 
                            showFirstLastButtons 
+                           i18n-aria-label="msgAriaPaginViewCandidate|Mensaje aria paginador en ver candidato"
                            aria-label="Select Page">
             </mat-paginator>
 
@@ -109,7 +113,7 @@
         <div class="card-footer text-muted">
           <button (click)="volverAtras()" mat-fab extended color="accent">
             <mat-icon>bookmark</mat-icon>
-            Back
+            <span i18n="txtBtnBackViewCandidate|texto boton volver en ver candidato" class="contraste">Back</span>
           </button>
         </div>
       </div>

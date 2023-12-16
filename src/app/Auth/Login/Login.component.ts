@@ -56,13 +56,16 @@ export class LoginComponent implements OnInit {
           this.company=res.empresa
           sessionStorage.setItem("idCompany", String(this.company.id))
           if (JSON.stringify(this.company) === '{}'){
+            sessionStorage.setItem("creado", "NO")
             this.router.navigate([`/empresa/${decodedToken.sub}/${res.token}`])  
           }        
           else {
+            sessionStorage.setItem("creado", "SI")
             this.router.navigate([`/detalleEmpresa/${decodedToken.sub}/${res.token}`])
           }
         }
         else {
+          sessionStorage.setItem("creado", "NO")
           this.router.navigate([`/empresa/${decodedToken.sub}/${res.token}`])  
         }
       }
@@ -73,17 +76,21 @@ export class LoginComponent implements OnInit {
           this.candidate=res.candidato
           sessionStorage.setItem("idCandidate", String(this.candidate.id))
           if (JSON.stringify(this.candidate) === '{}'){
+            sessionStorage.setItem("creado", "NO")
             this.router.navigate([`/candidato/${decodedToken.sub}/${res.token}`])  
           }        
           else {
+            sessionStorage.setItem("creado", "SI")
             this.router.navigate([`/detalleCandidato/${decodedToken.sub}/${res.token}`])
           }
         }
         else {
+          sessionStorage.setItem("creado", "NO")
           this.router.navigate([`/candidato/${decodedToken.sub}/${res.token}`])  
         }
       }    
       else if (res.tipo=='EMPLEADO_ABC'){
+        sessionStorage.setItem("creado", "SI")
         this.authService.setEmployeeRole()
       }    
       else{

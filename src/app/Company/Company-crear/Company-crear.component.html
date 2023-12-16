@@ -7,8 +7,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Company</h1>
-          <h5 class="card-title text-center mb-0 pb-0">Digita los datos de tu empresa</h5>
+          <h1 i18n="TituloCreateCompany|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Company</h1>
+          <h5 i18n="IndicacionCreateCompany|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Enter your company data</h5>
         </div>
         <div class="card-body">
           <div class="container mt-2">
@@ -18,12 +18,13 @@
             >
             <div class="row">  
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="nombre">Name</label>
+                <label i18n="lblNameCreateCompany|Etiqueta del campo nombre" class="text-left fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate
                   id="nombre"
                   class="form-control form-control-sm"
                   formControlName="nombre"
+                  i18n-placeholder="holderNameCreateCompany|placeholder del campo nombre"
                   placeholder="Company's name"
                   data-cy="nameCompany"
                 />
@@ -34,17 +35,18 @@
                     empresaForm.get('nombre')!.touched
                   "
                 >
-                  Name required
+                <span i18n="msgErrorReqNameCreateCompany|Mensaje de error nombre requerido">Name required</span>
                 </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="tipo">Type</label>
+                <label i18n="lblTypeCreateCompany|Etiqueta del campo tipo" class="text-left fst-italic fw-bold" for="tipo">Type</label>
                 <input
                   novalidate
                   id="tipo"
                   class="form-control form-control-sm"
                   formControlName="tipo"
+                  i18n-placeholder="holderTypeCreateCompany|placeholder del campo tipo"
                   placeholder="Company's Type"
                   data-cy="typeCompany"
                 />
@@ -55,17 +57,18 @@
                     empresaForm.get('tipo')!.touched
                   "
                 >
-                  Type required
+                <span i18n="msgErrorReqTypeCreateCompany|Mensaje de error tipo requerido">Type required</span>
                 </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="correo">E-Mail</label>
+                <label i18n="lblMailCreateCompany|Etiqueta del campo correo electronico" class="text-left fst-italic fw-bold" for="correo">E-Mail</label>
                 <input
                   novalidate
                   id="correo"
                   class="form-control form-control-sm"
                   formControlName="correo"
+                  i18n-placeholder="holderMailCreateCompany|placeholder del campo mail"
                   placeholder="Company's E-Mail"
                   data-cy="emailCompany"
                 />
@@ -76,18 +79,19 @@
                     empresaForm.get('correo')!.touched
                   "
                 >
-                  E-Mail required
+                  <span i18n="msgErrorReqMailCreateCompany|Mensaje de error correo electronico requerido">E-Mail required</span>
                 </div>
               </div>
           
               <!--Cell-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="celular">Cell Phone</label>
+                <label i18n="lblPhoneCreateCompany|Etiqueta del campo numero telefonico" class="text-left fst-italic fw-bold" for="celular">Cell Phone</label>
                 <input
                   novalidate
                   id="celular"
                   class="form-control form-control-sm"
                   formControlName="celular"
+                  i18n-placeholder="holderPhoneCreateCompany|placeholder del campo phone"
                   placeholder="Company's CellPhone"
                   data-cy="phoneCompany"
                 />
@@ -98,17 +102,18 @@
                     empresaForm.get('celular')!.touched
                   "
                 >
-                  CellPhone required
+                  <span i18n="msgErrorReqPhoneCreateCompany|Mensaje de error numero telefonico requerido">CellPhone required</span>
                 </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="contacto">Contact</label>
+                <label i18n="lblContactCreateCompany|Etiqueta del campo Contacto" class="text-left fst-italic fw-bold" for="contacto">Contact</label>
                 <input
                   novalidate
                   id="contacto"
                   class="form-control form-control-sm"
                   formControlName="contacto"
+                  i18n-placeholder="holderContactCreateCompany|placeholder del campo contacto"
                   placeholder="Contact's name"
                   data-cy="contactCompany"
                 />
@@ -119,18 +124,19 @@
                     empresaForm.get('contacto')!.touched
                   "
                 >
-                  Contact required
+                  <span i18n="msgErrorReqContactoCreateCompany|Mensaje de error contacto requerido">Contact required</span>                  
                 </div>
               </div>
           
               <!--Country-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="pais">Country</label>
+                <label i18n="lblCountryCreateCompany|Etiqueta del campo Pais" class="text-left fst-italic fw-bold" for="pais">Country</label>
                 <input
                   novalidate
                   id="pais"
                   class="form-control form-control-sm"
                   formControlName="pais"
+                  i18n-placeholder="holderCountryCreateCompany|placeholder del campo pais"
                   placeholder="Company's Country"
                   data-cy="countryCompany"
                 />
@@ -141,18 +147,19 @@
                     empresaForm.get('pais')!.touched
                   "
                 >
-                  Country required
+                  <span i18n="msgErrorReqCountryCreateCompany|Mensaje de error pais requerido">Country required</span>                  
                 </div>
               </div>
           
               <!--City-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="ciudad">City</label>
+                <label i18n="lblCityCreateCompany|Etiqueta del campo Ciudad" class="text-left fst-italic fw-bold" for="ciudad">City</label>
                 <input
                   novalidate
                   id="ciudad"
                   class="form-control form-control-sm"
                   formControlName="ciudad"
+                  i18n-placeholder="holderCityCreateCompany|placeholder del campo ciudad"
                   placeholder="Company's City"
                   data-cy="cityCompany"
                 />
@@ -163,18 +170,19 @@
                     empresaForm.get('ciudad')!.touched
                   "
                 >
-                  City required
+                  <span i18n="msgErrorReqCityCreateCompany|Mensaje de error ciudad requerida">City required</span>                  
                 </div>
               </div>
           
               <!--Address-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="direccion">Address</label>
+                <label i18n="lblAddressCreateCompany|Etiqueta del campo Direccion" class="text-left fst-italic fw-bold" for="direccion">Address</label>
                 <input
                   novalidate
                   id="direccion"
                   class="form-control form-control-sm"
                   formControlName="direccion"
+                  i18n-placeholder="holderAddressCreateCompany|placeholder del campo direccion"
                   placeholder="Company's Address"
                   data-cy="addressCompany"
                 />
@@ -185,7 +193,7 @@
                     empresaForm.get('direccion')!.touched
                   "
                 >
-                  Address required
+                  <span i18n="msgErrorReqAddressCreateCompany|Mensaje de error direccion requerida">Address required</span>                  
                 </div>
               </div>
             </div>
@@ -196,7 +204,7 @@
                 (click)="cancelCreation()"
                 data-cy="cancelCompany"
               >
-                Cancel
+                <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
               </button>
               <button
                 type="submit"
@@ -204,7 +212,7 @@
                 [disabled]="!empresaForm.valid"
                 data-cy="createCompany"
               >
-                Create
+                <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
               </button>
 
             </div>

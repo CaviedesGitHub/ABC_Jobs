@@ -7,14 +7,14 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Profile skills</h1>
-          <h4 class="card-title text-center mb-0 pb-0">Select the required skills</h4>
+          <h1 i18n="TituloPerfilConsultaABC|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Profile skills</h1>
+          <h4 i18n="IndicacionPerfilConsultaABC|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Select the required skills</h4>
         </div>
         <div class="card-body">
           <div class="container table-container mt-2" *ngIf="true">
             <mat-form-field>
-              <mat-label>Filter</mat-label>
-              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+              <mat-label><span i18n="FilterPerfilConsultaABC|Texto filtro de la pagina">Filter</span></mat-label>
+              <input matInput (keyup)="applyFilter($event)" i18n-placeholder="holderFilterPerfilConsultaABC|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
             </mat-form-field>
             <table mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8">
 
@@ -38,19 +38,19 @@
             
               <!-- Position Column -->
               <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="textHeadNoPerfilConsultaABC|Texto cabecera No.">No. </span></th>
                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
               </ng-container>
             
               <!-- Name Column -->
               <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="textHeadNamePerfilConsultaABC|Texto cabecera Name">Name </span></th>
                 <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
               </ng-container>
             
               <!-- Weight Column -->
               <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="textHeadTypePerfilConsultaABC|Texto cabecera Tipo">Type </span></th>
                 <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
               </ng-container>
             
@@ -59,17 +59,17 @@
                   (click)="selection.toggle(row)">
               </tr>
               <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptyPerfilConsultaABC|Mensaje filtro sin coincidencias en PerfilConsultaABC">No data matching the filter</span> "{{input.value}}"</td>
               </tr>
             </table>
            </div>
         </div>
         <div class="card-footer text-muted">
           <button class="btn btn-danger">
-            Cancel
+            <span i18n="msgBotonCancelPerfilConsultaABC|Mensaje boton cancelar en PerfilConsultaABC" class="contraste">Cancel</span>
           </button>          
           <button id="btnBuscaCumplen" (click)="this.buscaCandidatos()" class="btn btn-primary">
-            Find
+            <span i18n="msgBotonFindPerfilConsultaABC|Mensaje boton find en PerfilConsultaABC" class="contraste">Find</span>
           </button>
         </div>          
       </div>

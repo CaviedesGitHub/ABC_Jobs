@@ -48,12 +48,21 @@ export class PerfilEmpComponent implements OnInit {
     this.companyService.verCandidatosCumplenServ(perfilId).subscribe(lstCand=>{
       //this.toastr.success("Confirmation", 'Consulta Done')
       if (this.locale=="en-US"){
+        this.cadHT = "SOFT SKILLS: ";
+        this.cadHB = "HABILIDADES BLANDAS: ";
+        this.cadHP = "PERSONAL SKILLS:: ";
         this.toastr.success("Confirmation", 'Consultation successfully completed.')
       }
       else if(this.locale=="es"){
+        this.cadHT = "HABILIDADES TECNICAS: ";
+        this.cadHB = "HABILIDADES BLANDAS: ";
+        this.cadHP = "HABILIDADES PERSONALES: ";
         this.toastr.success("Confirmacion", 'Consulta realizada exitosamente.')
       }
       else{
+        this.cadHT = "SOFT SKILLS: ";
+        this.cadHB = "HABILIDADES BLANDAS: ";
+        this.cadHP = "PERSONAL SKILLS:: ";
         this.toastr.success("Confirmation", 'Consultation successfully completed.')
       }
       this.lstCandidatos=lstCand

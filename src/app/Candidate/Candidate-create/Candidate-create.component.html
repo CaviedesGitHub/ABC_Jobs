@@ -7,8 +7,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Candidate</h1>
-          <h5 class="card-title text-center mb-0 pb-0">Enter the candidate's data</h5>
+          <h1 i18n="TituloCreateCandidate|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Candidate</h1>
+          <h5 i18n="IndicacionCreateCandidate|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Enter the candidate's data</h5>
         </div>
         <div class="card-body">
           <div class="container mt-2">
@@ -19,11 +19,12 @@
             <div class="row">  
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                   <!--Nombres-->
-                  <label class="text-left fst-italic fw-bold" for="nombres">Names</label>
+                  <label i18n="lblNameCreateCandidate|Etiqueta del campo nombre" class="text-left fst-italic fw-bold" for="nombres">Names</label>
                   <input
                     novalidate
                     id="nombres"
                     class="form-control form-control-sm"
+                    i18n-placeholder="holderNameCreateCandidate|placeholder del campo nombre"
                     formControlName="nombres"
                     placeholder="Candidate's names"
                   />
@@ -34,23 +35,24 @@
                       candidateForm.get('nombres')!.touched
                     "
                   >
-                    Names required
+                  <span i18n="msgErrorReqNameCreateCandidate|Mensaje de error nombre requerido">Names required</span>
                   </div>
                   <div
                     class="alert alert-danger alert-dismissible fade show"
                     *ngIf="candidateForm.get('nombres')!.hasError('minlength')"
                   >
-                    Names too short
+                  <span i18n="msgErrorShortNameCreateCandidate|Mensaje de error nombre muy corto">Names too short</span>
                   </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold"  for="apellidos">Last Name</label>
+                <label i18n="lblLastNameCreateCandidate|Etiqueta del campo apellido" class="text-left fst-italic fw-bold"  for="apellidos">Last Name</label>
                 <input
                   novalidate
                   id="apellidos"
                   class="form-control form-control-sm"
                   formControlName="apellidos"
+                  i18n-placeholder="holderLastNameCreateCandidate|placeholder del campo apellidos"
                   placeholder="Candidate's last name"
                 />
                 <div
@@ -60,23 +62,24 @@
                     candidateForm.get('apellidos')!.touched
                   "
                 >
-                  Last Name required
+                <span i18n="msgErrorReqLastCreateCandidate|Mensaje de error apellido requerido">Last Name required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('apellidos')!.hasError('minlength')"
                 >
-                  Last Name too short
+                  <span i18n="msgErrorShortLastCreateCandidate|Mensaje de error apellido muy corto">Last Name too short</span>  
                 </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="documento">Document</label>
+                <label i18n="lblDocumentCreateCandidate|Etiqueta del campo documento" class="text-left fst-italic fw-bold" for="documento">Document</label>
                 <input
                   novalidate
                   id="documento"
                   class="form-control form-control-sm"
                   formControlName="documento"
+                  i18n-placeholder="holderDocumentCreateCandidate|placeholder del campo documentoi"
                   placeholder="Candidate's document"
                 />
                 <div
@@ -86,23 +89,24 @@
                     candidateForm.get('documento')!.touched
                   "
                 >
-                  Document required
+                  <span i18n="msgErrorReqDocumentCreateCandidate|Mensaje de error documento requerido">Document required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('documento')!.hasError('minlength')"
                 >
-                  Document too short
+                  <span i18n="msgErrorShortDocumentCreateCandidate|Mensaje de error documento muy corto">Document too short</span>  
                 </div>
               </div>
           
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="email">Email</label>
+                <label i18n="lblMailCreateCandidate|Etiqueta del campo correo" class="text-left fst-italic fw-bold" for="email">Email</label>
                 <input
                   novalidate
                   id="email"
                   class="form-control form-control-sm"
                   formControlName="email"
+                  i18n-placeholder="holderMailCreateCandidate|placeholder del campo correo"
                   placeholder="Candidate's email"
                 />
                 <div
@@ -112,23 +116,24 @@
                     candidateForm.get('email')!.touched
                   "
                 >
-                  Email required
+                <span i18n="msgErrorReqMailCreateCandidate|Mensaje de error email requerido">Email required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('email')!.hasError('minlength')"
                 >
-                  Email too short
+                  <span i18n="msgErrorShortMailCreateCandidate|Mensaje de error email muy corto">Email too short</span>  
                 </div>
               </div>
 
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="phone">Phone</label>
+                <label i18n="lblPhoneCreateCandidate|Etiqueta del campo telefono" class="text-left fst-italic fw-bold" for="phone">Phone</label>
                 <input
                   novalidate
                   id="phone"
                   class="form-control form-control-sm"
                   formControlName="phone"
+                  i18n-placeholder="holderPhoneCreateCandidate|placeholder del campo telefono"
                   placeholder="Candidate's phone"
                 />
                 <div
@@ -138,24 +143,25 @@
                     candidateForm.get('phone')!.touched
                   "
                 >
-                  Phone required
+                  <span i18n="msgErrorReqPhoneCreateCandidate|Mensaje de error telefono requerido">Phone required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('phone')!.hasError('minlength')"
                 >
-                  Phone too short
+                <span i18n="msgErrorShortPhoneCreateCandidate|Mensaje de error telefono muy corto">Phone too short</span>  
                 </div>
               </div>
           
               <!--City-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="ciudad">City</label>
+                <label i18n="lblCityCreateCandidate|Etiqueta del campo ciudad" class="text-left fst-italic fw-bold" for="ciudad">City</label>
                 <input
                   novalidate
                   id="ciudad"
                   class="form-control form-control-sm"
                   formControlName="ciudad"
+                  i18n-placeholder="holderCityCreateCandidate|placeholder del campo ciudad"
                   placeholder="Candidate's city"
                 />
                 <div
@@ -165,24 +171,25 @@
                     candidateForm.get('ciudad')!.touched
                   "
                 >
-                  City required
+                  <span i18n="msgErrorReqCityCreateCandidate|Mensaje de error ciudad requerida">City required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('ciudad')!.hasError('minlength')"
                 >
-                  City too short
+                <span i18n="msgErrorShortCityCreateCandidate|Mensaje de error ciudad muy corta">City too short</span>  
                 </div>
               </div>
           
               <!--Address-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="direccion">Address</label>
+                <label i18n="lblAddressCreateCandidate|Etiqueta del campo direccion" class="text-left fst-italic fw-bold" for="direccion">Address</label>
                 <input
                   novalidate
                   id="direccion"
                   class="form-control form-control-sm"
                   formControlName="direccion"
+                  i18n-placeholder="holderAddressCreateCandidate|placeholder del campo direccion"
                   placeholder="Candidate's address"
                   maxlength="20"
                 />
@@ -193,24 +200,25 @@
                     candidateForm.get('direccion')!.touched
                   "
                 >
-                  Address required
+                <span i18n="msgErrorReqAddressCreateCandidate|Mensaje de error direccion requerida">Address required</span>  
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="candidateForm.get('direccion')!.hasError('minlength')"
                 >
-                  Address too short
+                  <span i18n="msgErrorShortAddressCreateCandidate|Mensaje de error direccion muy corta">Address too short</span>  
                 </div>
               </div>
           
               <!--Address-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <label class="text-left fst-italic fw-bold" for="fecha_nac">Birth Date</label>
+                <label i18n="lblBirthCreateCandidate|Etiqueta del campo fecha nacimiento" class="text-left fst-italic fw-bold" for="fecha_nac">Birth Date</label>
                 <input
                   novalidate
                   id="fecha_nac"
                   class="form-control form-control-sm"
                   formControlName="fecha_nac"
+                  i18n-placeholder="holderBirthCreateCandidate|placeholder del campo fecha de nacimiento"
                   placeholder="Candidate's Date Of Birth"
                   type="date"
                 />
@@ -222,14 +230,14 @@
                 class="btn btn-danger mx-3 mt-4"
                 (click)="cancelCreation()"
               >
-                Cancel
+              <span i18n="msgBotonCancelCreateCandidate|Mensaje boton cancelar creacion candidato">Cancel</span>
               </button>
               <button
                 type="submit"
                 class="btn btn-primary mx-3 mt-4"
                 [disabled]="!candidateForm.valid"
               >
-                Create
+              <span i18n="msgBotonCreateCreateCandidate|Mensaje boton creacion candidato">Create</span>
               </button>
 
             </div>

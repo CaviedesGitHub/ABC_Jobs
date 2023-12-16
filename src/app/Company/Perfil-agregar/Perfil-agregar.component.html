@@ -6,8 +6,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 data-cy="titleProfile" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Profile</h1>
-          <h5 data-cy="descripProfile" class="card-title text-center mb-0 pb-0">Enter the name of the profile and skills required</h5>
+          <h1 i18n="TituloAddprofile|Titulo principal de la pagina" data-cy="titleProfile" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Profile</h1>
+          <h5 i18n="IndicacionAddProfile|Enunciado guia para el usuario" data-cy="descripProfile" class="card-title text-center mb-0 pb-0">Enter the name of the profile and skills required</h5>
         </div>
         <div class="card-body">
           <div class="container mt-2 pt-0">
@@ -17,12 +17,13 @@
             >
               <!--Nombre-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="fst-italic fw-bold" for="nombre">Name</label>
+                <label i18n="lblNameAddProfile|Etiqueta del campo nombre" class="fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate
                   id="nombre"
                   class="form-control form-control-sm"
                   formControlName="nombre"
+                  i18n-placeholder="holderNameAddprofile|placeholder del campo nombre"
                   placeholder="Rol's name"
                   data-cy="nameProfile"
                 />
@@ -33,18 +34,19 @@
                     perfilForm.get('nombre')!.touched
                   "
                 >
-                  Name required
+                  <span i18n="msgErrorReqNameAddProfile|Mensaje de error nombre requerido">Name required</span>
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
                   *ngIf="perfilForm.get('nombre')!.hasError('minlength')"
                 >
-                  Name too short
+                  <span i18n="msgErrorShortNameAddProfile|Mensaje de error nombre muy corto">Name too short</span>
                 </div>
               </div>
               <mat-form-field>
-                <mat-label>Filter</mat-label>
-                <input data-cy="filterSkills" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+                <mat-label><span i18n="msgFilterAddProfile|Etiqueta de filtro de habilidades">Filter</span></mat-label>
+                <input data-cy="filterSkills" matInput (keyup)="applyFilter($event)" 
+                 i18n-placeholder="msgPlaceFilterAddProfile|PlaceHolder para el fitro de adicionar Perfil" placeholder="Ex. ium" #input>
               </mat-form-field>
               <div class="container table-container mt-2" *ngIf="true">
                 <table data-cy="lstSkills" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8">
@@ -71,19 +73,19 @@
                 
                   <!-- Position Column -->
                   <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderNumAddProfile|Etiqueta encabezado numero" >No. </span></th>
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                   </ng-container>
                 
                   <!-- Name Column -->
                   <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderNameAddProfile|Etiqueta encabezado nombre" >Name </span></th>
                     <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                   </ng-container>
                 
                   <!-- Weight Column -->
                   <ng-container matColumnDef="tipo">
-                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderTypeAddProfile|Etiqueta encabezado tipo" >Type</span> </th>
                     <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
                   </ng-container>
                 
@@ -92,7 +94,7 @@
                       (click)="selection.toggle(row)">
                   </tr>
                   <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptyAddProfile|Mensaje cuando no hay elementos que concuerden con el filtro" >No data matching the filter </span>" {{input.value}}"</td>
                   </tr>
                 </table>
                </div>
@@ -104,7 +106,7 @@
                   (click)="cancelCreation()"
                   data-cy="cancelProfile"
                 >
-                  Cancel
+                  <span i18n="msgBotonCancelAddProfile|Mensaje boton cancelar Adicionar Perfil">Cancel</span>
                 </button>
                 <button
                   type="submit"
@@ -112,7 +114,7 @@
                   [disabled]="!perfilForm.valid"
                   data-cy="createProfile"
                 >
-                  Create
+                  <span i18n="msgBotonCreateAddProfile|Mensaje boton Adicionar Perfil">Create</span>
                 </button> 
               </div>
             </form>

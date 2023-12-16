@@ -28,6 +28,7 @@ export class CandidateCreateComponent implements OnInit {
   createCandidate(candidate: Candidate){
     this.candidateService.createCandidate(candidate).subscribe(
       resp => {
+        sessionStorage.setItem("creado", "SI")
         console.info("The candidate was created: ", candidate)
         //this.toastr.success("Confirmation", "Candidate created"+`${resp.nombres}`)
         if (this.locale=="en-US"){

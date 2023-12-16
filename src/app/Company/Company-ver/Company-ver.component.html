@@ -6,23 +6,23 @@
       <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
         <div class="divSup">
           <div class="divIzq">
-            <img class="logoPag" src="../../../assets/imagenes/Empresa.jpg"  alt="Image of a Company">
+            <img i18n-alt="txtAltViewCompany|Texto alternativo imagen empresa" class="logoPag" src="../../../assets/imagenes/Empresa.jpg"  alt="Image of a Company">
           </div>
           <div class="divDer">
             <mat-card class="example-card" >          
               <mat-card-header>            
                 <mat-card-title-group>
-                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span class="campo">Company: </span><span data-cy="nameCompanyView">{{ company.nombre }}</span></H1></mat-card-title>
-                  <mat-card-subtitle><span class="campo">Type: </span><span data-cy="typeCompanyView">{{ company.tipo }}</span></mat-card-subtitle>                            
+                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Company: </span><span data-cy="nameCompanyView">{{ company.nombre }}</span></H1></mat-card-title>
+                  <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">Type: </span><span data-cy="typeCompanyView">{{ company.tipo }}</span></mat-card-subtitle>                            
                 </mat-card-title-group>
               </mat-card-header>
               <mat-card-content class="cardContent">
-                <p class="linea"><span class="campo">Contact: </span><span data-cy="contactCompanyView">{{ company.contacto }}</span></p>                
-                <p class="linea"><span class="campo">E-Mail: </span><span data-cy="emailCompanyView">{{ company.correo }}</span></p>
-                <p class="linea"><span class="campo">Phone: </span><span data-cy="phoneCompanyView">{{ company.celular }}</span></p>
-                <p class="linea"><span class="campo">Country: </span><span data-cy="countryCompanyView">{{ company.pais }}</span></p>
-                <p class="linea"><span class="campo">City: </span><span data-cy="cityCompanyView">{{ company.ciudad }}</span></p>
-                <p class="linea"><span class="campo">Address: </span><span data-cy="addressCompanyView">{{ company.direccion }}</span></p>
+                <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Contact: </span><span data-cy="contactCompanyView">{{ company.contacto }}</span></p>                
+                <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">E-Mail: </span><span data-cy="emailCompanyView">{{ company.correo }}</span></p>
+                <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Phone: </span><span data-cy="phoneCompanyView">{{ company.celular }}</span></p>
+                <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Country: </span><span data-cy="countryCompanyView">{{ company.pais }}</span></p>
+                <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">City: </span><span data-cy="cityCompanyView">{{ company.ciudad }}</span></p>
+                <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Address: </span><span data-cy="addressCompanyView">{{ company.direccion }}</span></p>
                 
               </mat-card-content>
             </mat-card>  
@@ -33,13 +33,13 @@
           <div class="card-header text-left ">
             <div class="row align-items-left">
               <div class="col-10">
-                <h2 data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h2>
-                <h5 class="card-title text-left mb-0 pb-0">List of projects registered by this company</h5>          
+                <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Project List</h2>
+                <h5 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">List of projects registered by this company</h5>          
               </div>
               <div class="col-2">
                 <button data-cy="addProjCompanyView" style="float: right" (click)="agregarProyecto()" mat-fab extended color="primary">
                   <mat-icon>plus_one</mat-icon>
-                  New
+                  <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">New</span>
                 </button>
               </div>
           </div>
@@ -49,19 +49,19 @@
             
                 <!-- Name Column -->
                 <ng-container matColumnDef="id" sticky>
-                  <th mat-header-cell *matHeaderCellDef> Id </th>
+                  <th mat-header-cell *matHeaderCellDef> <span i18n="headIdViewCompany|texto cabecera Id ver empresa">Id</span> </th>
                   <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
             
                 <!-- Position Column -->
                 <ng-container matColumnDef="nombre">
-                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <th mat-header-cell *matHeaderCellDef> <span i18n="headNameViewCompany|texto cabecera nombre ver empresa">Name</span> </th>
                   <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
             
                 <!-- Weight Column -->
                 <ng-container matColumnDef="descripcion">
-                  <th mat-header-cell *matHeaderCellDef> Description </th>
+                  <th mat-header-cell *matHeaderCellDef> <span i18n="headDescViewCompany|texto cabecera descripcion ver empresa">Description</span> </th>
                   <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
                 </ng-container>
                        
@@ -75,15 +75,15 @@
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
-                        <span><a data-cy="linkDetailProject" routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > View </a></span>
+                        <span><a data-cy="linkDetailProject" routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>edit</mat-icon>
-                        <span><a data-cy="linkEditProject" routerLink="/construcion" > Update </a></span>
+                        <span><a data-cy="linkEditProject" routerLink="/construcion" > <span i18n="menuUpdateViewCompany|Menu update proyecto en ver empresa">Update</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>delete</mat-icon>
-                        <span><a  data-cy="linkDeleteProject" routerLink="/construcion" > Delete </a></span>
+                        <span><a data-cy="linkDeleteProject" routerLink="/construcion" > <span i18n="menuDeleteViewCompany|Menu borrar proyecto en ver empresa">Delete</span> </a></span>
                       </button>
                     </mat-menu>
                   </td>
@@ -97,7 +97,7 @@
           <div class="card-footer text-muted">
             <button data-cy="backCompanyView" (click)="volverAtras()" mat-fab extended color="accent">
               <mat-icon>bookmark</mat-icon>
-              Back
+              <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
             </button>
            </div>
         </div>

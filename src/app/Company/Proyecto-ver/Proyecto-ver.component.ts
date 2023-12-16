@@ -96,7 +96,7 @@ export class ProyectoVerComponent implements OnInit {
       //console.log(this.proyId)
       //console.log("+++++++++++++")
        //console.log("+++++++++++++")
-      this.toastr.success("Confirmation", `${this.proyId}`)
+      //this.toastr.success("Confirmation", `${this.proyId}`)
       //this.verDetalleComp()
       this.viewDetailProject(this.proyId)
     } 

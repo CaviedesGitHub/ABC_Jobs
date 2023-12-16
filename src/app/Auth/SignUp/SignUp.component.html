@@ -7,8 +7,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 class="mb-0 pb-0 fw-bold fst-italic fw-light">Sign Up New User</h1>
-          <h5 class="card-title text-center my-0 py-0">Enter the data to create a user on the platform and a role</h5>
+          <h1 i18n="TituloSignup|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Sign Up New User</h1>
+          <h5 i18n="IndicacionSignup|Enunciado guia para el usuario" class="card-title text-center my-0 py-0">Enter the data to create a user on the platform and a role</h5>
         </div>
         <div class="card-body py-1">          
           <div class="container mt-1">
@@ -18,12 +18,13 @@
             >
               <!--nombre-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="fst-italic fw-bold" for="nombre">Name</label>
+                <label i18n="lblNameSignup|Etiqueta del campo nombre" class="fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate
                   id="nombre"
                   class="form-control form-control-sm"
                   formControlName="nombre"
+                  i18n-placeholder="holderNameSignup|placeholder del campo nombre"
                   placeholder="User's name"
                   data-cy="nameSignup"
                 />
@@ -34,18 +35,19 @@
                     signupForm.get('nombre')!.touched
                   "
                 >
-                  Name required
+                  <span i18n="msgErrorReqNameSignup|Mensaje de error nombre requerido">Name required</span>
                 </div>
               </div>
           
               <!--Password-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="fst-italic fw-bold" for="password">Password</label>
+                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="password">Password</label>
                 <input
                   novalidate
                   id="password"
                   class="form-control form-control-sm"
                   formControlName="password"
+                  i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                   placeholder="User's Password"
                   type="password"
                   data-cy="pass1Signup"
@@ -57,18 +59,19 @@
                     signupForm.get('password')!.touched
                   "
                 >
-                  Password required
+                  <span i18n="msgErrorReqPass1Signup|Mensaje de error clave1 requerida">Password required</span>
                 </div>
               </div>
           
               <!--Password2-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="fst-italic fw-bold" for="password2">Password Repeat</label>
+                <label i18n="lblPass2Signup|Etiqueta del campo password2" class="fst-italic fw-bold" for="password2">Password Repeat</label>
                 <input
                   novalidate
                   id="password2"
                   class="form-control form-control-sm"
                   formControlName="password2"
+                  i18n-placeholder="holderPass2Signup|placeholder del campo password2"
                   placeholder="User's Password Repeat"
                   type="password"
                   data-cy="pass2Signup"
@@ -80,18 +83,18 @@
                     signupForm.get('password2')!.touched
                   "
                 >
-                  Password required
+                  <span i18n="msgErrorReqPass2Signup|Mensaje de error clave2 requerida">Password required</span>
                 </div>
               </div>
           
               <!--Tipo-->
               <div class="form-group mx-sm-3 mb-2">
-                <label class="fst-italic fw-bold" for="tipo">Type</label>
+                <label i18n="lblTipoSignup|Etiqueta del campo tipo" class="fst-italic fw-bold" for="tipo">Type</label>
                 <select data-cy="roleSignup" novalidate id="tipo" formControlName="tipo" class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm">
-                  <option selected>Select your ROLE</option>
-                  <option value="CANDIDATO">CANDIDATE</option>
-                  <option value="EMPRESA">COMPANY</option>
-                  <option value="EMPLEADO_ABC ">ABCJOBS EMPLOYEE</option>
+                  <option i18n="selectTipo0Signup|Mensaje seleccione el tipo" selected>Select your ROLE</option>
+                  <option i18n="selectTipo1Signup|Valor opcion1]" value="CANDIDATO">CANDIDATE</option>
+                  <option i18n="selectTipo2Signup|Valor opcion2]" value="EMPRESA">COMPANY</option>
+                  <option i18n="selectTipo3Signup|Valor opcion3]" value="EMPLEADO_ABC ">ABCJOBS EMPLOYEE</option>
                 </select>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -100,7 +103,7 @@
                     signupForm.get('tipo')!.touched 
                   "
                 >
-                  Type required
+                  <span i18n="msgErrorReqTipoSignup|Mensaje de error tipo requerido">Type required</span>
                 </div>
               </div>
               <div class="container-fluid text-center">
@@ -110,14 +113,15 @@
                 [disabled]="!signupForm.valid"
                 data-cy="submitSignup"
               >
-                Create
+                <span i18n="msgBotonCreate|Mensaje boton Create">Create</span>
               </button>
               </div>
             </form>
            </div>
         </div>
         <div class="card-footer text-muted">
-          Already have an account?  <a data-cy="loginSignup" class="active" routerLink="/login">Login Here</a>
+          <span i18n="msgHaveSignup|Mensaje enlace tienes una cuenta">Already have an account?</span>
+          <a i18n="msgLoginSignup|Mensaje enlace Login" data-cy="loginSignup" class="active contraste" routerLink="/login">Login Here</a>
          </div>
       </div>
     </div>

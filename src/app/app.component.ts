@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
     { code: "en-US", label: 'English' },
     { code: "es", label: 'Spanish' }
   ];
-  
+
   constructor(private authService: AuthService, private enrutador: Router) { }
 
   ngOnInit(): void {
@@ -45,11 +45,13 @@ export class AppComponent implements OnInit{
   }
 
   logout(): void {
+    sessionStorage.setItem("creado", "NO")
     this.authService.logout()
   }
 
   goHome(){
     let tipoUsuario=sessionStorage.getItem("typeUser")
+    let creado=sessionStorage.getItem("creado")
     if (!tipoUsuario){
       this.enrutador.navigate([`/`])
     }
@@ -57,10 +59,14 @@ export class AppComponent implements OnInit{
       let token=sessionStorage.getItem("token")
       let userId=sessionStorage.getItem("idUser")
       if (tipoUsuario==="EMPRESA"){
-         this.enrutador.navigate([`/detalleEmpresa/${userId}/${token}`])
+         if (creado==="SI") {
+          this.enrutador.navigate([`/detalleEmpresa/${userId}/${token}`])
+         }
       }
       else if (tipoUsuario==="CANDIDATO"){
-         this.enrutador.navigate([`/detalleCandidato/${userId}/${token}`])
+         if (creado==="SI") {
+            this.enrutador.navigate([`/detalleCandidato/${userId}/${token}`])
+         }
       }
       else{  //EMPLEADO_ABC
         this.enrutador.navigate([`/seleccionHabilidades`])

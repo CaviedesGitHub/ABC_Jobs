@@ -27,6 +27,7 @@ export class CompanyCrearComponent implements OnInit {
 
   createCompany(company: Company){
     this.companyService.createCompany(company).subscribe(empresa=>{
+      sessionStorage.setItem("creado", "SI")
       console.info("The company was created: ", empresa)
       //this.toastr.success("Confirmation", "Company created"+`${empresa.Empresa.id_usuario}`)
       if (this.locale=="en-US"){
