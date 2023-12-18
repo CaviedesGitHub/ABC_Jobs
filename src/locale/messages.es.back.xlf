@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8212201454948020943" datatype="html">
+        <source>Skip to main content</source>
+        <target>Ir al contenido Principal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Primer enlace al contenido principal usado por lectores</note>
+        <note priority="1" from="meaning">Enlace principal usabilidad</note>
+      </trans-unit>
+      <trans-unit id="4282703167229499276" datatype="html">
+        <source>ABC Jobs</source>
+        <target>Trabajos ABC</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <note priority="1" from="description">Nombre que identifica la empresa</note>
+        <note priority="1" from="meaning">Nombre Empresa</note>
+      </trans-unit>
+      <trans-unit id="5109158223844664682" datatype="html">
+        <source>Company</source>
+        <target>Empresa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Menu principal de los usuarios de tipo Empresa</note>
+        <note priority="1" from="meaning">Empresa</note>
+      </trans-unit>
+      <trans-unit id="2145125783015487099" datatype="html">
+        <source>Candidate</source>
+        <target>Candidato</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Menu principal de los usuarios de tipo Candidato</note>
+        <note priority="1" from="meaning">Candidato</note>
+      </trans-unit>
+      <trans-unit id="8123782126169746400" datatype="html">
+        <source>ABC Jobs</source>
+        <target>Trabajos ABC</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="description">Menu principal de los usuarios de tipo Empleado ABC</note>
+        <note priority="1" from="meaning">Empleado ABC</note>
+      </trans-unit>
+      <trans-unit id="6393628455322557971" datatype="html">
+        <source>Prueba</source>
+        <target>Pruebas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <note priority="1" from="description">Menu principal de los usuarios de tipo Prueba</note>
+        <note priority="1" from="meaning">Prueba</note>
+      </trans-unit>
+      <trans-unit id="6660536926994782100" datatype="html">
+        <source> Authors </source>
+        <target>Autores</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">67,69</context>
+        </context-group>
+        <note priority="1" from="description">Menu principal de los usuarios de tipo Autores</note>
+        <note priority="1" from="meaning">Autores</note>
+      </trans-unit>
+      <trans-unit id="3494287755910398024" datatype="html">
+        <source>List</source>
+        <target>Listar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <note priority="1" from="description">lista de los Autores</note>
+        <note priority="1" from="meaning">Lista de Autores</note>
+      </trans-unit>
+      <trans-unit id="6591971266331339009" datatype="html">
+        <source>Create</source>
+        <target>Crear</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <note priority="1" from="description">Crear Autor</note>
+        <note priority="1" from="meaning">Crear Autor</note>
+      </trans-unit>
+      <trans-unit id="7362151090434011899" datatype="html">
+        <source>Login</source>
+        <target>Ingresar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <note priority="1" from="description">Ingreso a la plataforma</note>
+        <note priority="1" from="meaning">Login</note>
+      </trans-unit>
+      <trans-unit id="3952582003176306728" datatype="html">
+        <source>SignUp</source>
+        <target>Registrarse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <note priority="1" from="description">Registro en la plataforma</note>
+        <note priority="1" from="meaning">SignUp</note>
+      </trans-unit>
+      <trans-unit id="5654414608424987241" datatype="html">
+        <source>LogOut</source>
+        <target>Salir</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <note priority="1" from="description">Salir de la plataforma</note>
+        <note priority="1" from="meaning">LogOut</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
