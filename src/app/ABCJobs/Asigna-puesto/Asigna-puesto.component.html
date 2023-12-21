@@ -1,0 +1,91 @@
+<p>
+  Asigna-puesto works!
+</p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col mb-2" *ngFor="let p of puestos2">
+         {{p.nom_perfil}}
+      </div>
+  </div>
+</div>
+
+<div class="container-fluid my-4" id="principal">
+
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-0 col-md-0 col-lg-1 col-xl-1">
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 i18n="TituloMatchProfileABC|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of Candidates who meet a profile</h1>
+          <h4 i18n="SubTituloMatchProfileABC|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">The candidates meet, at a minimum, the following abilities:</h4>
+        </div>
+        <div class="card-body">
+          <mat-form-field>
+            <mat-label><span i18n="FilterMatchProfileABC|Texto filtro de la pagina">Filter</span></mat-label>
+            <input matInput (keyup)="applyFilter($event)" i18n-placeholder="holderFilterMatchProfileABC|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
+          </mat-form-field>
+          <section class="example-container mat-elevation-z8" tabindex="0">  
+            <table mat-table [dataSource]="puestos" class="mat-elevation-z8" matSort>
+           
+              <ng-container matColumnDef="nom_empresa" sticky>
+                <th class="mat-column-position" mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadLastMatchProfileABC|Texto cabecera apellidos">Company</span> </th>
+                <td class="mat-column-position" mat-cell *matCellDef="let element"> {{element.nom_empresa}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="nom_proyecto">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadNameMatchProfileABC|Texto cabecera nombre">Project</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.nom_proyecto}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="nom_perfil">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadRatingMatchProfile|Texto cabecera rating">Profile</span></th>
+                <td mat-cell *matCellDef="let element"> {{element.nom_perfil}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="candidato">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadMailMatchProfileABC|Texto cabecera correo">Candidate</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.candidato}} </td>
+              </ng-container>
+                       
+              <!-- Weight Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadIdUserMatchProfileABC|Texto cabecera Id User">Id</span>  </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                  <td class="mat-column-star" mat-cell *matCellDef="let element">
+                    <mat-icon>more_vert</mat-icon>
+                  </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptyMatchProfileABC|Mensaje filtro sin coincidencias en ver Emparejamiento">No data matching the filter</span> "{{input.value}}"</td>
+              </tr>
+            </table>
+            </section>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+              showFirstLastButtons
+              i18n-aria-label="msgAriaPaginMathProfilesABC|Mensaje aria paginador en ver Emparejamiento"
+              aria-label="Select page of profiles">
+            </mat-paginator>
+        </div>
+        <div class="card-footer text-muted">
+          <button (click)="regresar()" class="btn btn-danger">
+            <span i18n="msgBotonBackProfilesABC|Mensaje boton atras ver Emparejamiento" class="contraste">Back</span>
+          </button> 
+        </div>          
+      </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-0 col-lg-1 col-xl-1">
+
+    </div>
+  </div>
+</div>
+

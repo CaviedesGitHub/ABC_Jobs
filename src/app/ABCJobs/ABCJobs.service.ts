@@ -4,6 +4,7 @@ import { Habil } from './Habil';
 import { Observable } from 'rxjs';
 import { ClsListaHabils } from './clsListaHabils';
 import { environment } from 'src/environments/environment';
+import { Puesto } from './Puesto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class ABCJobsService {
 
   verCandidatosCumplenporLista(clsLstHabils: ClsListaHabils): Observable<any> {
     return this.http.post<any>(this.apiUrl+'/cumplenPerfilporLista', clsLstHabils)
+  }
+
+  getPuestos(max: number, num_pag: number, order: string, empresa: string, proyecto: string, perfil: string, candidato: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/empresas/puestos', {"max": max, "num_pag": num_pag, "order": order, "empresa": empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato})
   }
 
 }

@@ -16,9 +16,10 @@ import { PruebaComponent } from './ABCJobs/prueba/prueba.component';
 import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista-CumplenPerfil.component';
 import { PageConstructionComponent } from './ABCJobs/Page-construction/Page-construction.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
+import { AsignaPuestoComponent } from './ABCJobs/Asigna-puesto/Asigna-puesto.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: PruebaComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
@@ -62,7 +63,8 @@ const routes: Routes = [
   { path: 'detalleCandidato', component: CandidateViewComponent },
   { path: 'seleccionHabilidades', component: PerfilConsultaCumplenComponent },
   { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent },
-  { path: 'construccion', component: PageConstructionComponent }
+  { path: 'construccion', component: PageConstructionComponent },
+  { path: 'asignaPuesto', component: AsignaPuestoComponent }
 ];
 
 @NgModule({
