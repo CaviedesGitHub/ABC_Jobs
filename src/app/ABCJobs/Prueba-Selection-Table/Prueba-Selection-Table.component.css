@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+  }
+  .hovered {
+      background: #eee;
+  }
+  
+  .highlighted {
+    background: #999;
+  }

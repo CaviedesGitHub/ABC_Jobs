@@ -28,6 +28,13 @@ export class ABCJobsService {
     return this.http.post<any>(this.apiUrl+'/empresas/puestos', {"max": max, "num_pag": num_pag, "order": order, "empresa": empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato})
   }
 
+  verProyectoPerfilDetalle(id_ProyPerfil: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/'+`${id_ProyPerfil}`)
+  }
+
+  asignaCandidatoPerfilProyecto(id_ProyPerfil: number, id_cand: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/empresas/proyectos/perfiles/asignacion/'+`${id_ProyPerfil}`, {"id_cand": id_cand})
+  }
 }
 
 

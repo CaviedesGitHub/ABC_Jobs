@@ -17,6 +17,10 @@ import { ListaCumplenPerfilComponent } from './ABCJobs/Lista-CumplenPerfil/Lista
 import { PageConstructionComponent } from './ABCJobs/Page-construction/Page-construction.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { AsignaPuestoComponent } from './ABCJobs/Asigna-puesto/Asigna-puesto.component';
+import { AsignacionComponent } from './ABCJobs/Asignacion/Asignacion.component';
+import { PruebaSelectionTableComponent } from './ABCJobs/Prueba-Selection-Table/Prueba-Selection-Table.component';
+import { PruebaSelection2TableComponent } from './ABCJobs/Prueba-Selection2-Table/Prueba-Selection2-Table.component';
+import { PruebaExpansionTableComponent } from './ABCJobs/Prueba-Expansion-Table/Prueba-Expansion-Table.component';
 
 const routes: Routes = [
   { path: '', component: PruebaComponent },
@@ -64,7 +68,8 @@ const routes: Routes = [
   { path: 'seleccionHabilidades', component: PerfilConsultaCumplenComponent },
   { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent },
   { path: 'construccion', component: PageConstructionComponent },
-  { path: 'asignaPuesto', component: AsignaPuestoComponent }
+  { path: 'asignaPuesto', component: AsignaPuestoComponent },
+  { path: 'asignacion/:perfilProyId', component: AsignacionComponent }
 ];
 
 @NgModule({

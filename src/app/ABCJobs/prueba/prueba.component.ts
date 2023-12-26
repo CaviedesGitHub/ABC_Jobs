@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Puesto } from '../Puesto';
 import { ABCJobsService } from '../ABCJobs.service';
@@ -18,22 +18,16 @@ import {DatePipe} from '@angular/common';
   styleUrls: ['./prueba.component.css']
 })
 export class PruebaComponent implements OnInit, AfterViewInit {
-  @ViewChild('fEmpresa', {static: true}) inputEmp: ElementRef | undefined;
-  @ViewChild('fProyecto', {static: true}) inputProy: ElementRef | undefined;
-  @ViewChild('fPerfil', {static: true}) inputPerf: ElementRef | undefined;
-  @ViewChild('fCandidato', {static: true}) inputCand: ElementRef | undefined;
-
   textoEmpresa: string = '';
   textoProyecto: string = '';
   textoPerfil: string = '';
   textoCandidato: string = '';
   
-  value = 'Clear me';
+  proyId: number | undefined;
+  token: string | undefined;
+  userId: number | undefined;
 
-  ngOnInit() {
-  }
-
-  displayedColumns: string[] = ['nom_empresa', 'nom_proyecto', 'nom_perfil', 'candidato', 'id', 'id_perfil', 'id_cand'];
+  displayedColumns: string[] = ['num', 'nom_empresa', 'nom_proyecto', 'nom_perfil', 'candidato', 'star'];
   exampleDatabase!: ExampleHttpDatabase | null;
   data: any = [];
 
@@ -44,13 +38,33 @@ export class PruebaComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private abcjobsService: ABCJobsService, private _httpClient: HttpClient) {}
+  constructor(private abcjobsService: ABCJobsService,
+     private toastr: ToastrService,
+     private router: ActivatedRoute,
+     private enrutador: Router,
+     @Inject(LOCALE_ID) public locale: string, ) {}
+
+  ngOnInit() {
+    if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
+      this.userId=Number(sessionStorage.getItem("idUser"))
+      this.token=sessionStorage.getItem("token")!
+      if (!this.userId || !this.token){
+        this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
+    }
+    else {
+      this.userId = parseInt(this.router.snapshot.params['userId'])
+      this.token = this.router.snapshot.params['userToken']
+    }
+    //this.viewDetailUserCompany(this.userId)
+  }
 
   ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
-
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    //this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    console.log('Datos')
+    console.log(this.sort.active)
+    console.log(this.sort.direction)
+    console.log(this.paginator.pageIndex)
 
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
@@ -87,7 +101,19 @@ export class PruebaComponent implements OnInit, AfterViewInit {
           return data.Puestos;
         }),
       )
-      .subscribe(data => (this.data = data));
+      .subscribe(data => {
+        this.data=data
+        console.info("The List Jobs was recovered: ")
+        if (this.locale=="en-US"){
+          this.toastr.success("Confirmation", 'List Jobs data successfully recovered.')
+        }
+        else if(this.locale=="es"){
+          this.toastr.success("Confirmacion", 'Lista de Trabajos recuperados exitosamente.')
+        }
+        else{
+          this.toastr.success("Confirmation", 'List Jobs data successfully recovered.')
+        }
+      });
   }
 
   asignaTextoEmpresa(event: Event){
@@ -110,6 +136,14 @@ export class PruebaComponent implements OnInit, AfterViewInit {
     this.paginator.pageIndex = 0
     this.ngAfterViewInit()
     console.log("Actualiza Consulta")
+  }
+
+  showError(error: string) {
+    this.toastr.error(error, "Error de autenticación")
+  }
+
+  showWarning(warning: string) {
+    this.toastr.warning(warning, "Error de autenticación")
   }
 
 }

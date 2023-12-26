@@ -1,0 +1,67 @@
+<div class="container-fluid my-0" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <div class="divSup">
+        <div class="divIzq">
+          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/equipo.png"  alt="Image of a Team">
+        </div>
+        <div class="divDer">
+          <mat-card class="example-card" >          
+            <mat-card-header>            
+              <mat-card-title-group>
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Assignment to work team</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content class="cardContent">
+              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy.nom_empresa }}</span></p>                
+              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Perfil: </span><span data-cy="phoneCompanyView">{{ perfilProy.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              
+            </mat-card-content>
+          </mat-card>  
+        </div>
+      </div>
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-left ">
+          <div class="row align-items-left">
+            <div class="col-12">
+              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Elected candidate</h2>
+              <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>          
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-Detail-Match-Prueba (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match-Prueba>          
+        </div>
+        <div class="card-footer text-muted">
+          <button 
+            type="button"
+            class="btn btn-danger mx-3 mt-4"
+            data-cy="backCompanyView" 
+            (click)="volverAtras()" mat-fab extended color="accent">
+              <!-- <mat-icon>bookmark</mat-icon> -->
+              <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mx-3 mt-4"
+            (click)="actualizar()"
+            data-cy="cancelCompany">
+              <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Save</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
+  </div>
+</div>
