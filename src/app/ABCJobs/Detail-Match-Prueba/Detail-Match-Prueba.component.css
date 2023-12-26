@@ -77,7 +77,7 @@ tr.example-detail-row {
     padding: 8px;
     font-weight: lighter;
     margin: 8px 0;
-    height: 104px;
+    
   }
   
   .example-element-symbol {
@@ -92,4 +92,21 @@ tr.example-detail-row {
   
   .example-element-description-attribution {
     opacity: 0.5;
+  }
+
+  .avatarDetalle{
+    width: 120px;
+    height: 120px;
+  }
+
+  .campo{
+    font-weight: bold;  
+  }
+
+  .titHabil{
+    font-weight: bold;  
+  }
+  
+  .linea{
+    margin: 0px;
   }

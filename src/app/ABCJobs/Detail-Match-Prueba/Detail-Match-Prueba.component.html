@@ -63,17 +63,17 @@
         </ng-container>
 
 
-        <ng-container matColumnDef="id_cand">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadIdUserMatchProfile|Texto cabecera Id User">Id User</span> </th>
-          <td mat-cell *matCellDef="let element"> {{element.id_cand}} </td>
+        <ng-container matColumnDef="fecha_nac">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadIdUserMatchProfile|Texto cabecera Id User">Birthday's Date</span> </th>
+          <td mat-cell *matCellDef="let element"> {{convFecha(element.fecha_nac)|date:'longDate'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="star" stickyEnd>
+        <!-- <ng-container matColumnDef="star" stickyEnd>
           <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
             <td class="mat-column-star" mat-cell *matCellDef="let element">
               <mat-icon>more_vert</mat-icon>
             </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="expand" stickyEnd>
           <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
@@ -93,14 +93,43 @@
             <div class="example-element-detail"
                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="example-element-diagram">
-                <div class="example-element-position"> {{element.apellidos}} </div>
+                <img *ngIf="element.imagen==''" i18n-alt="txtAltViewAvatarDetalle|Texto alternativo imagen avatar detalle" 
+                     class="avatarDetalle" src="../../../assets/imagenes/usuario2.png"  
+                     alt="Image of a User">
+                <img *ngIf="element.imagen!=''" i18n-alt="txtAltViewAvatarDetalle|Texto alternativo imagen avatar detalle" 
+                     class="avatarDetalle" src={{element.imagen}}
+                     alt="Image of a User">
+                <!-- <div class="example-element-position"> {{element.apellidos}} </div>
                 <div class="example-element-symbol"> {{element.nombres}} </div>
                 <div class="example-element-name"> {{element.calificacion}} </div>
-                <div class="example-element-weight"> {{element.ciudad}} </div>
+                <div class="example-element-weight"> {{element.fecha_nac}} </div> -->
               </div>
               <div class="example-element-description">
-                {{element.email}}
-                <span class="example-element-description-attribution"> -- Wikipedia </span>
+                <h4 class="titHabil">SKILLS</h4>
+                <div id="DivTechSkills">
+                  <span class="campo">Tech Skills: </span>
+                  <span *ngFor="let h of element['lstHabils']">
+                    <ng-container *ngIf="filterSkill(h, 'TECNICA')">
+                      {{h.nombre}}, 
+                    </ng-container>
+                  </span>
+                </div>
+                <div id="DivSoftSkills">
+                  <span class="campo">Soft Skills: </span>
+                  <span *ngFor="let h of element['lstHabils']">
+                    <ng-container *ngIf="filterSkill(h, 'BLANDA')">
+                      <span>{{h.nombre}}, </span>
+                    </ng-container>
+                  </span>
+                </div>
+                <div id="DivPersSkills">
+                  <span class="campo">Personality Skills: </span>
+                  <span *ngFor="let h of element['lstHabils']">
+                    <ng-container *ngIf="filterSkill(h, 'PERSONALIDAD')">
+                      <span>{{h.nombre}}, </span>
+                    </ng-container>
+                  </span>
+                </div>
               </div>
             </div>
           </td>
@@ -122,7 +151,7 @@
         </tr>
       </table>
       </section>
-      <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]"
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
         i18n-aria-label="msgAriaPaginMathProfiles|Mensaje aria paginador en ver Emparejamiento"
         aria-label="Select page of candidates">

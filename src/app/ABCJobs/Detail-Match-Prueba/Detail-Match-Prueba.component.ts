@@ -9,6 +9,7 @@ import { MatSort, Sort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { DatePipe } from '@angular/common';
 
 export enum SelectType {
   single,
@@ -48,7 +49,7 @@ export class DetailMatchPruebaComponent implements OnInit {
     { text: "Multiple", value: SelectType.multiple }
   ];
   displayType = SelectType.single;
-  displayedColumns2: string[] = ['select', 'apellidos', 'nombres', 'Calificacion', 'email', 'phone', 'direccion', 'ciudad', 'id_cand', 'star'];
+  displayedColumns2: string[] = ['select', 'apellidos', 'nombres', 'Calificacion', 'email', 'phone', 'direccion', 'ciudad', 'fecha_nac'];
   columnsToDisplayWithExpand = [...this.displayedColumns2, 'expand'];
   expandedElement: any | null | undefined;
 
@@ -105,6 +106,10 @@ export class DetailMatchPruebaComponent implements OnInit {
       this.error = true
     }
     )
+  }
+
+  filterSkill(skill: any, type:string): boolean {
+    return skill.tipo == type;
   }
 
   obtenerHabilidadesPerfil(perfilId: number){
@@ -203,6 +208,10 @@ export class DetailMatchPruebaComponent implements OnInit {
   onChange(typeValue: number) {
     this.displayType = typeValue;
     this.selection.clear();
+  }
+
+  convFecha(fecha: string):Date{
+    return new Date(fecha)
   }
 
 }

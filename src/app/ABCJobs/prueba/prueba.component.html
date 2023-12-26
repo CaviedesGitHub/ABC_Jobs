@@ -27,7 +27,7 @@
                     <h5 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h5>          
                   </div>
                   <div class="col-2">
-                    <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" mat-fab extended color="primary">
+                    <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
                       <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
                     </button>
                   </div>
@@ -133,8 +133,12 @@
             <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
           </div>
           <div class="card-footer text-muted">
-            <button data-cy="backCompanyView" mat-fab extended color="accent">
-              <mat-icon>bookmark</mat-icon>
+            <button 
+              type="button"
+              class="btn btn-danger mx-3 mt-4"
+              data-cy="backCompanyView" 
+              mat-fab extended color="accent">
+              <!-- <mat-icon>bookmark</mat-icon> -->
               <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
             </button>
           </div>
