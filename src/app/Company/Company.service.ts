@@ -10,6 +10,7 @@ import { Habil } from './Habil';
 import { Project } from './Project';
 import { Candidato } from './Candidato';
 import { environment } from 'src/environments/environment';
+import { Eval } from './Eval';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,22 @@ export class CompanyService {
 
   getSkillsProfile(profileId: number): Observable<any> {
     return this.http.get<any>(this.apiUrl+'/perfil/'+`${profileId}`);
+  }
+
+  getPuestos(id_empresa: number, max: number, num_pag: number, order: string, proyecto: string, perfil: string, candidato: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/empresas/'+`${id_empresa}`+'/puestos', {"id_empresa": id_empresa, "max": max, "num_pag": num_pag, "order": order, "proyecto": proyecto, "perfil": perfil, "candidato": candidato})
+  }
+
+  verProyectoPerfilDetalle(id_ProyPerfil: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/'+`${id_ProyPerfil}`)
+  }
+
+  getEvaluationsJob(id_ProyPerfil: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/evaluaciones/'+`${id_ProyPerfil}`)
+  }
+
+  createEval(evaluation: Eval): Observable<Eval> {
+    return this.http.post<Eval>(this.apiUrl+'/empresas/proyectos/perfiles/evaluaciones', evaluation);
   }
 
 }

@@ -45,6 +45,36 @@
                 </div>
               </div>
            
+              <!--Initial Date-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label i18n="lblDateIniCreateProject|Etiqueta del campo fecha inicial" class="text-left fst-italic fw-bold" for="fecha_inicio">Initial Date</label>
+                <input
+                  novalidate
+                  id="fecha_inicio"
+                  class="form-control form-control-sm"
+                  formControlName="fecha_inicio"
+                  i18n-placeholder="holderDateIniCreateProject|placeholder del campo fecha inicial"
+                  placeholder="Initial Date Of Project"
+                  type="date"
+                  [min]=this.fechaStrMin
+                  [max]=this.fechaStrMax
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    proyForm.get('fecha_inicio')!.hasError('required') &&
+                    proyForm.get('fecha_inicio')!.touched
+                  ">
+                  <span i18n="msgErrorReqDateIniCreateProject|Mensaje de error fecha inicio requerida">Initial date required</span>  
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="proyForm.get('fecha_inicio')!.hasError('Invalid Date')
+                  ">
+                  <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">Initial date Invalid</span>  
+                </div>
+              </div>
+
               <!--Descripcion-->
               <div class="form-group mx-sm-3 mb-2">
                 <label i18n="lblDescCreateProject|Etiqueta del campo descripcion" class="text-left fst-italic fw-bold" for="descripcion">Description</label>

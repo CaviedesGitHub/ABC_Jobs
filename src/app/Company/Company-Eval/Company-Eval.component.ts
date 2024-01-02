@@ -2,20 +2,24 @@ import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../../Company/Company.service';
-import { ABCJobsService } from '../ABCJobs.service';
 import { Project } from '../../Company/Project';
 import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Eval } from '../Eval';
 
 interface LolState {
-  prueba1: string;
+  anno: string;
+  mes: string;
+  strmes: string;
+  id_cand: string;
 }
 
 @Component({
-  selector: 'app-Asignacion',
-  templateUrl: './Asignacion.component.html',
-  styleUrls: ['./Asignacion.component.css']
+  selector: 'app-Company-Eval',
+  templateUrl: './Company-Eval.component.html',
+  styleUrls: ['./Company-Eval.component.css']
 })
-export class AsignacionComponent implements OnInit {
+export class CompanyEvalComponent implements OnInit {
   estado: any;
   resp: any;
   perfilProy: any;
@@ -37,9 +41,15 @@ export class AsignacionComponent implements OnInit {
   prueba1: string = 'Inicial';
   nomCand: string = '';
   idCand: number = 0;
+  anno: number = 0;
+  mes: number = 0;
+  strmes: string = '';
+
+  evalForm!: FormGroup;
+  valores = ['Excelente', 'Buena', 'Regular', 'Mala'];
 
   constructor(private toastr: ToastrService,
-    private abcService: ABCJobsService,
+    private formBuilder: FormBuilder,
     private companyService: CompanyService,
     private router: ActivatedRoute,
     private location: Location,
@@ -49,7 +59,10 @@ export class AsignacionComponent implements OnInit {
   ngOnInit() {
     console.log(this.location.getState())
     this.estado=this.location.getState()
-    this.prueba1=(this.estado as LolState).prueba1
+    this.anno=Number((this.estado as LolState).anno)
+    this.mes=Number((this.estado as LolState).mes)
+    this.strmes=(this.estado as LolState).strmes
+    this.idCand=Number((this.estado as LolState).id_cand)
 
     this.userId=Number(sessionStorage.getItem("idUser"))
     this.token=sessionStorage.getItem("token")!
@@ -66,10 +79,20 @@ export class AsignacionComponent implements OnInit {
         
       }
     }
+
+    this.evalForm = this.formBuilder.group({
+      id_cand: [this.idCand, Validators.required],
+      idPerfilProy: [this.perfilProyId, Validators.required],
+      year: [this.anno, Validators.required],
+      strmonth: [this.strmes, Validators.required],
+      month: [this.mes, Validators.required],
+      valuation: [, Validators.required],
+      note: [, [Validators.required, Validators.maxLength(254)]]
+    })
   }
 
   verProyectoPerfilDetalle(perfilProyId: number){
-    this.abcService.verProyectoPerfilDetalle(perfilProyId).subscribe(resp => {
+    this.companyService.verProyectoPerfilDetalle(perfilProyId).subscribe(resp => {
       this.resp=resp
       this.perfilProy=this.resp["Perfil"]
       this.nomCand=this.perfilProy.candidato
@@ -118,23 +141,41 @@ export class AsignacionComponent implements OnInit {
   )
   }
 
-  asignaCandidatoPerfilProyecto(perfilProyId: number, id_cand: number, fecha_inicio: string){
-    this.abcService.asignaCandidatoPerfilProyecto(perfilProyId, id_cand, fecha_inicio).subscribe(resp => {
-      console.info("The PerfilProject was updated: ", resp)
-      if (this.locale=="en-US"){
-        this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
-      }
-      else if(this.locale=="es"){
-        this.toastr.success("Confirmacion", 'PerfilProjecto actualizado exitosamente.')
-      }
-      else{
-        this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
-      }
-    },
-    error => {
-      this.error = true
+  createEvaluation(evaluation: Eval){
+    this.companyService.createEval(evaluation).subscribe(resp=>{
+       console.info("The evaluation was created: ", resp)
+       this.toastr.success("Confirmation", "Evaluation created")
+       this.evalForm.reset();
+       this.enrutador.navigate(['/listaCalificacion/'+`${this.perfilProyId}`])  
     })
   }
+
+  cancelCreation(){
+    this.evalForm.reset();
+    this.evalForm.controls['year'].setValue(this.anno)
+    this.evalForm.controls['strmonth'].setValue(this.strmes)
+    this.evalForm.controls['month'].setValue(this.mes) 
+    this.evalForm.controls['id_cand'].setValue(this.idCand)
+    this.evalForm.controls['idPerfilProy'].setValue(this.perfilProyId)
+    this.enrutador.navigate(['/listaCalificacion/'+`${this.perfilProyId}`]) 
+ }
+  //asignaCandidatoPerfilProyecto(perfilProyId: number, id_cand: number, fecha_inicio: string){
+  //  this.abcService.asignaCandidatoPerfilProyecto(perfilProyId, id_cand, fecha_inicio).subscribe(resp => {
+  //    console.info("The PerfilProject was updated: ", resp)
+  //    if (this.locale=="en-US"){
+  //      this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
+  //    }
+  //    else if(this.locale=="es"){
+  //      this.toastr.success("Confirmacion", 'PerfilProjecto actualizado exitosamente.')
+  //    }
+  //    else{
+  //      this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
+  //    }
+  //  },
+  //  error => {
+  //    this.error = true
+  //  })
+  //}
 
   showError(error: string) {
     this.toastr.error(error, "Error de autenticación")
@@ -157,7 +198,7 @@ export class AsignacionComponent implements OnInit {
   }
 
   actualizar(){
-    this.asignaCandidatoPerfilProyecto(this.perfilProyId, this.idCand, this.fecha_inicio)
+    //this.asignaCandidatoPerfilProyecto(this.perfilProyId, this.idCand, this.fecha_inicio)
   }
 
   receiveNombre($event: string) {

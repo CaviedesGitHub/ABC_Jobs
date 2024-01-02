@@ -1,21 +1,21 @@
 import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CompanyService } from '../../Company/Company.service';
 import { ABCJobsService } from '../ABCJobs.service';
 import { Project } from '../../Company/Project';
 import { Location } from '@angular/common';
+import { CompanyService } from '../../Company/Company.service';
 
 interface LolState {
   prueba1: string;
 }
 
 @Component({
-  selector: 'app-Asignacion',
-  templateUrl: './Asignacion.component.html',
-  styleUrls: ['./Asignacion.component.css']
+  selector: 'app-ABC-Entrevistas-Puesto',
+  templateUrl: './ABC-Entrevistas-Puesto.component.html',
+  styleUrls: ['./ABC-Entrevistas-Puesto.component.css']
 })
-export class AsignacionComponent implements OnInit {
+export class ABCEntrevistasPuestoComponent implements OnInit {
   estado: any;
   resp: any;
   perfilProy: any;
@@ -37,6 +37,13 @@ export class AsignacionComponent implements OnInit {
   prueba1: string = 'Inicial';
   nomCand: string = '';
   idCand: number = 0;
+  lstEvals: any;
+  lstEV: any;
+  displayedColumns: string[] = ['candidato', 'cuando', 'contacto', 'calificacion', 'anotaciones', 'star'];
+  anno: number = 0;
+  mes: number =0;
+  strmes: string = '';
+  date_fecha_asig : any;
 
   constructor(private toastr: ToastrService,
     private abcService: ABCJobsService,
@@ -69,7 +76,7 @@ export class AsignacionComponent implements OnInit {
   }
 
   verProyectoPerfilDetalle(perfilProyId: number){
-    this.abcService.verProyectoPerfilDetalle(perfilProyId).subscribe(resp => {
+    this.companyService.verProyectoPerfilDetalle(perfilProyId).subscribe(resp => {
       this.resp=resp
       this.perfilProy=this.resp["Perfil"]
       this.nomCand=this.perfilProy.candidato
@@ -82,7 +89,28 @@ export class AsignacionComponent implements OnInit {
       console.log("idPerfil")
       console.log(this.perfilProy.id_perfil)
       this.perfilId=this.perfilProy.id_perfil
+      this.obtenerlistaEVProyectoPerfil(this.perfilProy.id)
       this.obtenerHabilidadesPerfil(this.perfilProy.id_perfil)
+    },
+    error => {
+      this.error = true
+    })
+  }
+
+  obtenerlistaEVProyectoPerfil(perfilProyId: number){
+    this.abcService.getEVJob(perfilProyId).subscribe(resp => {
+      this.resp=resp
+      this.lstEV=this.resp["Entrevistas"]
+    },
+    error => {
+      this.error = true
+    })
+  }
+
+  obtenerlistaEvalsProyectoPerfil(perfilProyId: number){
+    this.companyService.getEvaluationsJob(perfilProyId).subscribe(resp => {
+      this.resp=resp
+      this.lstEvals=this.resp["lstEvals"]
     },
     error => {
       this.error = true
@@ -118,23 +146,61 @@ export class AsignacionComponent implements OnInit {
   )
   }
 
-  asignaCandidatoPerfilProyecto(perfilProyId: number, id_cand: number, fecha_inicio: string){
-    this.abcService.asignaCandidatoPerfilProyecto(perfilProyId, id_cand, fecha_inicio).subscribe(resp => {
-      console.info("The PerfilProject was updated: ", resp)
-      if (this.locale=="en-US"){
-        this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
+  calculoPeriodoEvaluado(){
+    console.log('FECHA ASIGNACION')
+    console.log(this.perfilProy.fecha_asig)
+    this.date_fecha_asig=new Date(this.perfilProy.fecha_asig)
+    if (this.lstEvals.length==0){
+      this.anno=this.date_fecha_asig.getFullYear()
+      this.mes=this.date_fecha_asig.getMonth()
+    }
+    else{
+      this.anno=this.lstEvals[this.lstEvals.length-1].anno
+      this.mes=this.lstEvals[this.lstEvals.length-1].mes
+      this.mes=this.mes+1
+      if (this.mes==12){
+        this.mes=0
+        this.anno=this.anno+1
       }
-      else if(this.locale=="es"){
-        this.toastr.success("Confirmacion", 'PerfilProjecto actualizado exitosamente.')
+      const annoaux=this.date_fecha_asig.getFullYear()
+      const mesaux=this.date_fecha_asig.getMonth()
+      
+      if (annoaux>this.anno || (annoaux==this.anno)&&(mesaux>=this.mes)) {
+        this.anno=annoaux
+        this.mes=mesaux
       }
-      else{
-        this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
-      }
-    },
-    error => {
-      this.error = true
-    })
+    }
+    this.strmes=this.setStrMonth(this.mes)
   }
+
+  setStrMonth(mes: number){
+    const mesesIngles=["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const mesesSpanish=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    return  mesesIngles[mes]
+  }
+
+  agregarEntrevista(){
+    //this.enrutador.navigate([`/calificacion/${this.perfilProyId}`], { state: {anno: this.anno, mes: this.mes, strmes: this.strmes, id_cand: String(this.idCand)} } )
+    this.enrutador.navigate([`/entrevistas/crear/${this.perfilProyId}`] )
+  }
+
+  //asignaCandidatoPerfilProyecto(perfilProyId: number, id_cand: number, fecha_inicio: string){
+  //  this.abcService.asignaCandidatoPerfilProyecto(perfilProyId, id_cand, fecha_inicio).subscribe(resp => {
+  //    console.info("The PerfilProject was updated: ", resp)
+  //    if (this.locale=="en-US"){
+  //      this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
+  //    }
+  //    else if(this.locale=="es"){
+  //      this.toastr.success("Confirmacion", 'PerfilProjecto actualizado exitosamente.')
+  //    }
+  //    else{
+  //      this.toastr.success("Confirmation", 'Successfully updated PerfilProject.')
+  //    }
+  //  },
+  //  error => {
+  //    this.error = true
+  //  })
+  //}
 
   showError(error: string) {
     this.toastr.error(error, "Error de autenticación")
@@ -157,7 +223,7 @@ export class AsignacionComponent implements OnInit {
   }
 
   actualizar(){
-    this.asignaCandidatoPerfilProyecto(this.perfilProyId, this.idCand, this.fecha_inicio)
+    //this.asignaCandidatoPerfilProyecto(this.perfilProyId, this.idCand, this.fecha_inicio)
   }
 
   receiveNombre($event: string) {

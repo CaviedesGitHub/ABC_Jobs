@@ -1,0 +1,179 @@
+<div class="container-fluid my-0" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <div class="divSup">
+        <div class="divIzq">
+          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/evaluation.png"  alt="Image of a Team">
+        </div>
+        <div class="divDer">
+          <mat-card class="example-card" >          
+            <mat-card-header>            
+              <mat-card-title-group>
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Job Evaluation</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content class="cardContent">
+              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }}</span></p>                
+              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Date of entry: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_asig }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Perfil: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              
+            </mat-card-content>
+          </mat-card>  
+        </div>
+      </div>
+      
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-left ">
+          <div class="row align-items-left">
+            <div class="col-12">
+              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Employee to be evaluated</h2>
+              <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>          
+            </div>
+          </div>
+        </div>
+        <div class="card-body py-1">
+          <div class="container mt-1">
+            <h2 class="text-center">New monthly evaluation</h2>
+            <div class="row align-items-left">
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+              <div class="col-12 col-sm-10 col-md-10 col-lg-6 col-xl-6">
+                <form 
+                  [formGroup]="evalForm"
+                  (ngSubmit)="!evalForm.invalid && createEvaluation(evalForm.value)"
+                >
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="year">Year</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="year"
+                      class="form-control form-control-sm"
+                      formControlName="year"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Year"
+                      data-cy="pass1Signup"
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evalForm.get('year')!.hasError('required') &&
+                        evalForm.get('year')!.touched
+                      "
+                    >
+                      Year required
+                    </div>
+                  </div>
+              
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="strmonth">Month</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="strmonth"
+                      class="form-control form-control-sm"
+                      formControlName="strmonth"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Month"
+                      data-cy="pass1Signup"
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evalForm.get('strmonth')!.hasError('required') &&
+                        evalForm.get('strmonth')!.touched
+                      "
+                    >
+                      Month required
+                    </div>
+                  </div>
+              
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label  i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="valuation">Valuation</label>
+                    <select data-cy="valueEval" novalidate id="valuation" formControlName="valuation" class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" data-cy="pass1Signup">
+                      <option i18n="selectTipo0Signup|Mensaje seleccione el valor" value="" disabled selected>Select your VALUE</option>
+                      <option i18n="selectTipo1Signup|Valor opcion1]" value="EXCELENTE">EXCELLENT</option>
+                      <option i18n="selectTipo2Signup|Valor opcion2]" value="BUENA">GOOD</option>
+                      <option i18n="selectTipo3Signup|Valor opcion3]" value="REGULAR">FAIR</option>
+                      <option i18n="selectTipo4Signup|Valor opcion4]" value="MALA">POOR</option>
+                    </select>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evalForm.get('valuation')!.hasError('required') &&
+                        evalForm.get('valuation')!.touched
+                      "
+                    >
+                      Valuation required
+                    </div>
+                  </div>
+              
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="note">Note</label>
+                    <textarea 
+                      novalidate
+                      id="note"
+                      class="form-control form-control-sm"
+                      formControlName="note"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Note">
+                      data-cy="pass1Signup"
+                    </textarea>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evalForm.get('note')!.hasError('required') &&
+                        evalForm.get('note')!.touched
+                      "
+                    >
+                      Note required
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="evalForm.get('note')!.hasError('maxlength')"
+                    >
+                      Note too long
+                    </div>
+                  </div>
+                  <div class="container-fluid text-center">
+                    <button
+                      type="button"
+                      class="btn btn-danger mx-3 mt-4"
+                      (click)="cancelCreation()"
+                      data-cy="cancelEval"
+                    >
+                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
+                    </button>           
+                    <button
+                      type="submit"
+                      class="btn btn-primary mx-3 mt-4"
+                      [disabled]="!evalForm.valid"
+                      data-cy="createEval"
+                    >
+                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+           </div>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
+  </div>
+</div>

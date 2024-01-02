@@ -29,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { PruebaMaterialModule } from './PruebaMaterial/PruebaMaterial.module';
 
 import { NgxPermissionsModule} from 'ngx-permissions';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { NgxPermissionsModule} from 'ngx-permissions';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorServiceService,
       multi: true
-    }
+    },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

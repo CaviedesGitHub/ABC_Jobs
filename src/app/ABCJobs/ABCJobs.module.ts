@@ -10,6 +10,10 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { DetailMatchComponent } from './Detail-Match/Detail-Match.component';
 import { PruebaSelectionTableComponent } from './Prueba-Selection-Table/Prueba-Selection-Table.component';
 import { PruebaSelection2TableComponent } from './Prueba-Selection2-Table/Prueba-Selection2-Table.component';
+import { PruebaExpansionTableComponent } from './Prueba-Expansion-Table/Prueba-Expansion-Table.component';
+import { DetailMatchPruebaComponent } from './Detail-Match-Prueba/Detail-Match-Prueba.component';
+import { ABCEntrevistasPuestoComponent } from './ABC-Entrevistas-Puesto/ABC-Entrevistas-Puesto.component';
+import { ABCEntrevistasCrearComponent } from './ABC-Entrevistas-Crear/ABC-Entrevistas-Crear.component';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -26,8 +30,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
-import { PruebaExpansionTableComponent } from './Prueba-Expansion-Table/Prueba-Expansion-Table.component';
-import { DetailMatchPruebaComponent } from './Detail-Match-Prueba/Detail-Match-Prueba.component';
 
 @NgModule({
   imports: [
@@ -59,6 +61,8 @@ import { DetailMatchPruebaComponent } from './Detail-Match-Prueba/Detail-Match-P
     PruebaSelection2TableComponent,
     PruebaExpansionTableComponent,
     DetailMatchPruebaComponent,
+    ABCEntrevistasPuestoComponent,
+    ABCEntrevistasCrearComponent,
   ],
   exports: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
@@ -72,6 +76,8 @@ import { DetailMatchPruebaComponent } from './Detail-Match-Prueba/Detail-Match-P
     PruebaSelection2TableComponent,
     PruebaExpansionTableComponent,
     DetailMatchPruebaComponent,
+    ABCEntrevistasPuestoComponent,
+    ABCEntrevistasCrearComponent,
   ]
 })
 export class ABCJobsModule { }

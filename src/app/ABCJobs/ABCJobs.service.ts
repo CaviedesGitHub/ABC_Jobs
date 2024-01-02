@@ -32,8 +32,12 @@ export class ABCJobsService {
     return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/'+`${id_ProyPerfil}`)
   }
 
-  asignaCandidatoPerfilProyecto(id_ProyPerfil: number, id_cand: number): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'/empresas/proyectos/perfiles/asignacion/'+`${id_ProyPerfil}`, {"id_cand": id_cand})
+  asignaCandidatoPerfilProyecto(id_ProyPerfil: number, id_cand: number, fecha_inicio: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/empresas/proyectos/perfiles/asignacion/'+`${id_ProyPerfil}`, {"id_cand": id_cand, "fecha_inicio":fecha_inicio})
+  }
+
+  getEVJob(id_ProyPerfil: number):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/entrevistas/'+`${id_ProyPerfil}`)
   }
 }
 

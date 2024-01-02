@@ -31,6 +31,16 @@
             </a>
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['COMPANY']">
+            <a 
+              i18n="Puestos Empresa|Puestos ofrecidos por una empresa"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/puestosEmpresa"
+              data-cy="puestosCompany"
+              >Company's Jobs
+            </a>
+          </li>          
+          <li class="nav-item" *ngxPermissionsOnly="['COMPANY']">
             <a
               i18n="Entrevistas|Entrevistas de un Candidato"
               class="nav-link active"
@@ -87,7 +97,17 @@
               aria-current="page"
               routerLink="/seleccionHabilidades"
               data-cy="habilABC"
-              >ABC Jobs</a
+              >Match Skills</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
+            <a
+              i18n="Puestos ABC|Puestos ofrecidos por las empresas a traves de la plataforma ABC"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/asignaPuesto"
+              data-cy="jobsABC"
+              >Jobs</a
             >
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">

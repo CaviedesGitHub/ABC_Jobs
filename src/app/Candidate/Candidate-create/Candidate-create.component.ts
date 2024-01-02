@@ -1,9 +1,10 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from '../Candidate';
 import { CandidateService } from '../Candidate.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-Candidate-create',
@@ -14,6 +15,7 @@ export class CandidateCreateComponent implements OnInit {
   candidateForm!: FormGroup;
 
   constructor(   
+    private dp: DatePipe,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private candidateService: CandidateService,
@@ -24,6 +26,10 @@ export class CandidateCreateComponent implements OnInit {
 
   userId: number | undefined
   token: string | undefined
+  fechaMin: Date | undefined;
+  fechaMax: Date | undefined;
+  fechaStrMin: string = '';
+  fechaStrMax: string | undefined;
 
   createCandidate(candidate: Candidate){
     this.candidateService.createCandidate(candidate).subscribe(
@@ -51,6 +57,10 @@ export class CandidateCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fechaMin=new Date(new Date().getFullYear()-60, new Date().getMonth(), new Date().getDate())
+    this.fechaMax=new Date(new Date().getFullYear()-18, new Date().getMonth(), new Date().getDate())
+    this.fechaStrMin=this.dp.transform(this.fechaMin, "yyyy-MM-dd")!
+    this.fechaStrMax=this.dp.transform(this.fechaMax, "yyyy-MM-dd")!
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
@@ -66,7 +76,7 @@ export class CandidateCreateComponent implements OnInit {
       nombres: ["", [Validators.required, Validators.minLength(2)]],
       apellidos: ["", [Validators.required, Validators.minLength(2)]],
       documento: [, [Validators.required, Validators.minLength(2)]],
-      fecha_nac: [, []],
+      fecha_nac: [, [Validators.required, validadoresEspeciales.validarFechas]],
       email: ["", [Validators.required, Validators.minLength(2)]],
       phone: ["", [Validators.required, Validators.minLength(2)]],
       ciudad: ["", [Validators.required, Validators.minLength(2)]],
@@ -84,4 +94,18 @@ export class CandidateCreateComponent implements OnInit {
     this.toastr.warning(warning, "Error de autenticación")
   }
 
+}
+
+class validadoresEspeciales{
+  public static validarFechas(elemento: FormControl){
+     let invalido : boolean = false;
+
+     let texto=elemento.value
+     let aux: Date = new Date(texto)
+     let fechaSeleccionada: Date = new Date(aux.getUTCFullYear(), aux.getUTCMonth(), aux.getUTCDate())
+     invalido = (fechaSeleccionada > new Date(new Date().getFullYear()-18, new Date().getMonth(), new Date().getDate())) || 
+                (fechaSeleccionada < new Date(new Date().getFullYear()-60, new Date().getMonth(), new Date().getDate()))
+     return invalido ? ({"Invalid Date": true}) : null;
+
+  }
 }

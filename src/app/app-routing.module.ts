@@ -21,9 +21,15 @@ import { AsignacionComponent } from './ABCJobs/Asignacion/Asignacion.component';
 import { PruebaSelectionTableComponent } from './ABCJobs/Prueba-Selection-Table/Prueba-Selection-Table.component';
 import { PruebaSelection2TableComponent } from './ABCJobs/Prueba-Selection2-Table/Prueba-Selection2-Table.component';
 import { PruebaExpansionTableComponent } from './ABCJobs/Prueba-Expansion-Table/Prueba-Expansion-Table.component';
+import { CompanyJobsComponent } from './Company/Company-Jobs/Company-Jobs.component';
+import { Company } from './Company/Company';
+import { CompanyEvalComponent } from './Company/Company-Eval/Company-Eval.component';
+import { CompanyEvalListComponent } from './Company/Company-Eval-List/Company-Eval-List.component';
+import { ABCEntrevistasPuestoComponent } from './ABCJobs/ABC-Entrevistas-Puesto/ABC-Entrevistas-Puesto.component';
+import { ABCEntrevistasCrearComponent } from './ABCJobs/ABC-Entrevistas-Crear/ABC-Entrevistas-Crear.component';
 
 const routes: Routes = [
-  { path: '', component: PruebaComponent },
+  { path: '', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
@@ -69,7 +75,12 @@ const routes: Routes = [
   { path: 'listaCumplenPerfil', component: ListaCumplenPerfilComponent },
   { path: 'construccion', component: PageConstructionComponent },
   { path: 'asignaPuesto', component: AsignaPuestoComponent },
-  { path: 'asignacion/:perfilProyId', component: AsignacionComponent }
+  { path: 'asignacion/:perfilProyId', component: AsignacionComponent },
+  { path: 'puestosEmpresa', component: CompanyJobsComponent },
+  { path: 'listaCalificacion/:perfilProyId', component: CompanyEvalListComponent },
+  { path: 'calificacion/:perfilProyId', component: CompanyEvalComponent },
+  { path: 'entrevistas/:perfilProyId', component: ABCEntrevistasPuestoComponent },
+  { path: 'entrevistas/crear/:perfilProyId', component: ABCEntrevistasCrearComponent },
 ];
 
 @NgModule({

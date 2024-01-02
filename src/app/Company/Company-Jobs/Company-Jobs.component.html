@@ -10,18 +10,11 @@
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
           <div class="card-header text-left ">
             <div class="row align-items-left">
-              <div class="divSup">
-                <div class="divIzq">
-                  <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/job.png"  alt="Image of a Team">
-                </div>
-                <div class="divDer">
-                  <div class="col-10">
-                    <h1 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Jobs Offered</h1>
-                    <h3 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Full list of jobs offered by companies</h3>          
-                  </div>
-                  <div class="col-2">
-                  </div>    
-                </div>
+              <div class="col-10">
+                <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Jobs Offered</h2>
+                <h5 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Full list of jobs offered by your company</h5>          
+              </div>
+              <div class="col-2">
               </div>
             </div>
           </div>
@@ -41,11 +34,6 @@
                 </div>
               </div>
               <div class="card-body">
-                <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>Company</mat-label>
-                  <input (input)="asignaTextoEmpresa($event)" matInput #fEmpresa maxlength="50" placeholder="Ex. The name or part of the name of a company...">
-                  <mat-hint align="end">{{fEmpresa.value.length}}/50</mat-hint>
-                </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Project</mat-label>
                   <input (input)="asignaTextoProyecto($event)" matInput #fProyecto maxlength="50" placeholder="Ex. The name or part of the name of a project...">
@@ -78,12 +66,7 @@
                   <th mat-header-cell *matHeaderCellDef>#</th>
                   <td mat-cell *matCellDef="let row">{{row.Num}}</td>
                 </ng-container>
-
-                <ng-container matColumnDef="nom_empresa">
-                  <th mat-header-cell *matHeaderCellDef>Company</th>
-                  <td mat-cell *matCellDef="let row">{{row.nom_empresa}}</td>
-                </ng-container>
-          
+         
                 <ng-container matColumnDef="nom_proyecto">
                   <th mat-header-cell *matHeaderCellDef>Project</th>
                   <td mat-cell *matCellDef="let row">{{row.nom_proyecto}}</td>
@@ -111,16 +94,16 @@
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item>
                         <mat-icon>bookmark</mat-icon>
-                        <span><a data-cy="linkAssignPuesto" 
+                        <span><a data-cy="linkAsignProject" 
                           routerLink="/asignacion/{{element.id}}"> 
                           <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Assignment</span> 
                         </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>bookmark</mat-icon>
-                        <span><a data-cy="linkEVPuesto" 
-                          routerLink="/entrevistas/{{element.id}}"> 
-                          <span i18n="menuEVPuestos|texto menu EV puestos">Interviews</span> 
+                        <span><a data-cy="linkEvalProject" 
+                          routerLink="/listaCalificacion/{{element.id}}"> 
+                          <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Evaluation</span> 
                         </a></span>
                       </button>
                       <button mat-menu-item>
@@ -164,32 +147,3 @@
     </div>
   </div>
 </div>  
-
-
-<!--     
-  <mat-icon>plus_one</mat-icon>
-
- mat-sort-header disableClear
-
-                <div class="card-footer text-muted">
-                <button data-cy="backCompanyView" mat-fab extended color="accent">
-                  <mat-icon>bookmark</mat-icon>
-                  <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
-                </button>
-               </div>
-
-                  <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>Id</th>
-                    <td mat-cell *matCellDef="let row">{{row.id}}</td>
-                  </ng-container>
-                  
-                  <ng-container matColumnDef="id_perfil">
-                    <th mat-header-cell *matHeaderCellDef>Id_profile</th>
-                    <td mat-cell *matCellDef="let row">{{row.id_perfil}}</td>
-                  </ng-container>
-            
-                  <ng-container matColumnDef="id_cand">
-                    <th mat-header-cell *matHeaderCellDef>Id_cand</th>
-                    <td mat-cell *matCellDef="let row">{{row.id_cand}}</td>
-                  </ng-container>
--->

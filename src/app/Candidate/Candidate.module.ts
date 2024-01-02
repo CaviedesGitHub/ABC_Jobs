@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CandidateComponent } from './Candidate.component';
 import { CandidateViewComponent } from './Candidate-view/Candidate-view.component';
 import { MatTableModule } from '@angular/material/table';
@@ -32,5 +32,8 @@ import { MatMenuModule } from '@angular/material/menu';
   ],
   declarations: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
   exports: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
+  providers: [
+    DatePipe
+  ],
 })
 export class CandidateModule { }

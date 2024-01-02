@@ -210,7 +210,7 @@
                 </div>
               </div>
           
-              <!--Address-->
+              <!--BirthDay-->
               <div class="mb-2 form-group col-0 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <label i18n="lblBirthCreateCandidate|Etiqueta del campo fecha nacimiento" class="text-left fst-italic fw-bold" for="fecha_nac">Birth Date</label>
                 <input
@@ -221,7 +221,23 @@
                   i18n-placeholder="holderBirthCreateCandidate|placeholder del campo fecha de nacimiento"
                   placeholder="Candidate's Date Of Birth"
                   type="date"
+                  [min]=this.fechaStrMin
+                  [max]=this.fechaStrMax
                 />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    candidateForm.get('fecha_nac')!.hasError('required') &&
+                    candidateForm.get('fecha_nac')!.touched
+                  ">
+                  <span i18n="msgErrorReqBirthDayCreateCandidate|Mensaje de error BirthDay Date requerida">BirthDay's date required</span>  
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="candidateForm.get('fecha_nac')!.hasError('Invalid Date')
+                  ">
+                  <span i18n="msgErrorInvalidBirthDayCreateCandidate|Mensaje de error fecha de Nac invalida">BirthDay's date Invalid</span>  
+                </div>
               </div>
             </div>
             <div class="container-fluid text-center">

@@ -23,7 +23,7 @@ export class CompanyVerComponent implements OnInit {
   token: string = "";
   company!: CompanyDetail;
   lstProy: any;
-  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'star'];
+  displayedColumns: string[] = ['id', 'nombre', 'fecha_inicio', 'descripcion', 'star'];
 
   viewDetailUserCompany(userId: number){
     this.companyService.viewDetailUserCompany(userId).subscribe(company=>{

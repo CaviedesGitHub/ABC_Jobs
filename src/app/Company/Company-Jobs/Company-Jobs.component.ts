@@ -1,23 +1,22 @@
 import { AfterViewInit, Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Puesto } from '../Puesto';
-import { ABCJobsService } from '../ABCJobs.service';
-import { ToastrService } from 'ngx-toastr';
+import { CompanyService } from '../Company.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, SortDirection} from '@angular/material/sort';
 import {HttpClient} from '@angular/common/http';
-
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-Asigna-puesto',
-  templateUrl: './Asigna-puesto.component.html',
-  styleUrls: ['./Asigna-puesto.component.css']
+  selector: 'app-Company-Jobs',
+  templateUrl: './Company-Jobs.component.html',
+  styleUrls: ['./Company-Jobs.component.css']
 })
-export class AsignaPuestoComponent implements OnInit, AfterViewInit {
+export class CompanyJobsComponent implements OnInit, AfterViewInit {
+
   textoEmpresa: string = '';
   textoProyecto: string = '';
   textoPerfil: string = '';
@@ -26,9 +25,9 @@ export class AsignaPuestoComponent implements OnInit, AfterViewInit {
   proyId: number | undefined;
   token: string | undefined;
   userId: number | undefined;
+  companyId: number | undefined;
 
-  displayedColumns: string[] = ['num', 'nom_empresa', 'nom_proyecto', 'nom_perfil', 'candidato', 'star'];
-  exampleDatabase!: ExampleHttpDatabase | null;
+  displayedColumns: string[] = ['num', 'nom_proyecto', 'nom_perfil', 'candidato', 'star'];
   data: any = [];
 
   resultsLength = 0;
@@ -38,7 +37,9 @@ export class AsignaPuestoComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private abcjobsService: ABCJobsService,
+  constructor(
+     private dp:DatePipe,
+     private companyService: CompanyService,
      private toastr: ToastrService,
      private router: ActivatedRoute,
      private enrutador: Router,
@@ -56,6 +57,7 @@ export class AsignaPuestoComponent implements OnInit, AfterViewInit {
       this.userId = parseInt(this.router.snapshot.params['userId'])
       this.token = this.router.snapshot.params['userToken']
     }
+    this.companyId=Number(sessionStorage.getItem("idCompany"))  //Number(str) parseInt(str) parseFloat(str)
     //this.viewDetailUserCompany(this.userId)
   }
 
@@ -71,11 +73,10 @@ export class AsignaPuestoComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true; 
-          return this.abcjobsService.getPuestos(
+          return this.companyService.getPuestos(this.companyId!,
             30, 
             this.paginator.pageIndex+1, 
             "ASC", 
-            this.textoEmpresa, 
             this.textoProyecto, 
             this.textoPerfil,
             this.textoCandidato
@@ -146,30 +147,4 @@ export class AsignaPuestoComponent implements OnInit, AfterViewInit {
     this.toastr.warning(warning, "Error de autenticación")
   }
 
-}
-
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
-
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) {}
-
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${
-      page + 1
-    }`;
-
-    return this._httpClient.get<GithubApi>(requestUrl);
-  }
 }
