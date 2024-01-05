@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ClsListaHabils } from './clsListaHabils';
 import { environment } from 'src/environments/environment';
 import { Puesto } from './Puesto';
+import { Entrevista } from './Entrevista';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class ABCJobsService {
     return this.http.post<any>(this.apiUrl+'/empresas/puestos', {"max": max, "num_pag": num_pag, "order": order, "empresa": empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato})
   }
 
+  getEntrevistas(max: number, num_pag: number, order: string, empresa: string, proyecto: string, perfil: string, candidato: string, fechaInicio: string, fechaFin: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/entrevistasPortal', {"max": max, "num_pag": num_pag, "order": order, "empresa": empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato, "inicio":fechaInicio, "fin": fechaFin})
+  }
+
   verProyectoPerfilDetalle(id_ProyPerfil: number): Observable<any> {
     return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/'+`${id_ProyPerfil}`)
   }
@@ -39,6 +44,19 @@ export class ABCJobsService {
   getEVJob(id_ProyPerfil: number):Observable<any>{
     return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/entrevistas/'+`${id_ProyPerfil}`)
   }
+
+  createEntrevista(ev: Entrevista):Observable<Entrevista>{
+    return this.http.post<Entrevista>(this.apiUrl+'/empresas/proyectos/perfiles/entrevistas', ev);
+  }
+
+  getEntrevista(entrevistaId: number):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/entrevistas/'+`${entrevistaId}`);
+  }
+
+  updateEntrevista(ev: any, entrevistaId: number):Observable<any>{
+    return this.http.post<any>(this.apiUrl+'/entrevistas/'+`${entrevistaId}`, ev);
+  }
+  
 }
 
 

@@ -17,10 +17,10 @@
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy.nom_empresa }} - {{ perfilProy.id }}</span></p>                
-              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy.nom_proyecto }}</span></p>
-              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy.fecha_inicio }}</span></p>
-              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Perfil: </span><span data-cy="phoneCompanyView">{{ perfilProy.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }} - {{ perfilProy?.id }}</span></p>                
+              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
               <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
               <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
               <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
@@ -58,7 +58,7 @@
               <!-- Position Column -->
               <ng-container matColumnDef="cuando">
                 <th mat-header-cell *matHeaderCellDef> <span i18n="headNameViewCompany|texto cabecera nombre ver empresa">Date and Time</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.cuando}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.cuando | date:"medium"}} </td>
               </ng-container>
           
               <!-- Initial Date Column |date:'longDate' -->
@@ -88,7 +88,11 @@
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a data-cy="linkDetailProject" routerLink="/detalleProyecto/{{ element.id }}/{{ this.userId }}/{{ this.token }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
+                      <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Results</span> </a></span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>open_in_new</mat-icon>
+                      <span><a data-cy="linkDetailProject" routerLink="/verResultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>edit</mat-icon>

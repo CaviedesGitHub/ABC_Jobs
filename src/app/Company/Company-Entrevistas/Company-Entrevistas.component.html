@@ -1,0 +1,200 @@
+<div class="container-fluid my-0" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <div class="example-container mat-elevation-z8">
+        <div class="card bg-light">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-header text-left ">
+            <div class="row align-items-left">
+              <div class="divSup">
+                <div class="divIzq">
+                  <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevistas2.jpg"  alt="Image of a Team">
+                </div>
+                <div class="divDer">
+                  <div class="col-10">
+                    <h1 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of interviews</h1>
+                    <h3 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">List of all scheduled and executed interviews registered in the company</h3>          
+                    <h1 style="margin-top: 30px"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ company.nombre }}</span></h1>
+                  </div>
+                  <div class="col-2">
+                  </div>    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card bg-light">
+              <div class="card-header text-left ">
+                <div class="row align-items-left">
+                  <div class="col-10">
+                    <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
+                    <h5 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h5>          
+                  </div>
+                  <div class="col-2">
+                    <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
+                      <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <mat-form-field class="example-full-width filtrosR">
+                  <mat-label>Project</mat-label>
+                  <input (input)="asignaTextoProyecto($event)" matInput #fProyecto maxlength="50" placeholder="Ex. The name or part of the name of a project...">
+                  <mat-hint align="end">{{fProyecto.value.length}}/50</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="example-full-width filtrosR">
+                  <mat-label>Profile</mat-label>
+                  <input (input)="asignaTextoPerfil($event)" matInput #fPerfil maxlength="50" placeholder="Ex. The name or part of the name of a profile...">
+                  <mat-hint align="end">{{fPerfil.value.length}}/50</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="example-full-width filtrosR">
+                  <mat-label>Candidate</mat-label>
+                  <input (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+                  <mat-hint align="end">{{fCandidato.value.length}}/50</mat-hint>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Enter a date range</mat-label>
+                  <mat-date-range-input [rangePicker]="picker">
+                    <input [(ngModel)]="this.textoInicio" matStartDate placeholder="Start date">
+                    <input [(ngModel)]="this.textoFin" matEndDate placeholder="End date">
+                  </mat-date-range-input>
+                  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div *ngIf="isLoadingResults || isRateLimitReached" class="example-loading-shade">
+              <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+              <div *ngIf="isRateLimitReached" class="example-rate-limit-reached">
+                ABCJob's API rate limit has been reached. It will be reset in one minute.
+              </div>
+            </div>
+        
+            <div class="example-table-container">
+              <table mat-table [dataSource]="data" class="example-table"
+                    matSort matSortActive="nom_empresa" matSortDisableClear matSortDirection="desc">
+
+                <ng-container matColumnDef="num" sticky>
+                  <th mat-header-cell *matHeaderCellDef>#</th>
+                  <td mat-cell *matCellDef="let row">{{row.Num}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="candidato">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Candidate's Name
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{row.candidato}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cuando">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Date and time of interview
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{row.cuando | date:"long"}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="contacto">
+                  <th mat-header-cell *matHeaderCellDef>Contact</th>
+                  <td mat-cell *matCellDef="let row">{{row.contacto}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="nom_proyecto">
+                  <th mat-header-cell *matHeaderCellDef>Project</th>
+                  <td mat-cell *matCellDef="let row">{{row.nom_proyecto}}</td>
+                </ng-container>
+          
+                <ng-container matColumnDef="nom_perfil">
+                  <th mat-header-cell *matHeaderCellDef>Profile</th>
+                  <td mat-cell *matCellDef="let row">{{row.nom_perfil}}</td>
+                </ng-container>
+
+                <!-- Star Column -->
+                <ng-container matColumnDef="star" stickyEnd>
+                  <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                        <mat-icon>open_in_new</mat-icon>
+                        <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Results</span> </a></span>
+                      </button>
+                      <button mat-menu-item>
+                        <mat-icon>open_in_new</mat-icon>
+                        <span><a data-cy="linkDetailProject" routerLink="/verResultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
+                      </button>
+                      <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span><a data-cy="linkEditProject" routerLink="/construccion" > <span i18n="menuUpdateViewCompany|Menu update proyecto en ver empresa">Update</span> </a></span>
+                      </button>
+                      <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span><a data-cy="linkDeleteProject" routerLink="/construccion" > <span i18n="menuDeleteViewCompany|Menu borrar proyecto en ver empresa">Delete</span> </a></span>
+                      </button>
+                    </mat-menu>
+                  </td>
+                </ng-container>
+         
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                   [ngClass]="{ hovered: row.hovered } "
+                   (mouseover)="row.hovered=true"
+                   (mouseout)="row.hovered=false"></tr>
+              </table>
+            </div>
+          
+            <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
+          </div>
+          <div class="card-footer text-muted">
+            <button 
+              type="button"
+              class="btn btn-danger mx-3 mt-4"
+              data-cy="backCompanyView" 
+              mat-fab extended color="accent">
+              <!-- <mat-icon>bookmark</mat-icon> -->
+              <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
+  </div>
+</div>  
+
+
+<!--     
+  <mat-icon>plus_one</mat-icon>
+
+ mat-sort-header disableClear
+
+                <div class="card-footer text-muted">
+                <button data-cy="backCompanyView" mat-fab extended color="accent">
+                  <mat-icon>bookmark</mat-icon>
+                  <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+                </button>
+               </div>
+
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>Id</th>
+                    <td mat-cell *matCellDef="let row">{{row.id}}</td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="id_perfil">
+                    <th mat-header-cell *matHeaderCellDef>Id_profile</th>
+                    <td mat-cell *matCellDef="let row">{{row.id_perfil}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="id_cand">
+                    <th mat-header-cell *matHeaderCellDef>Id_cand</th>
+                    <td mat-cell *matCellDef="let row">{{row.id_cand}}</td>
+                  </ng-container>
+-->

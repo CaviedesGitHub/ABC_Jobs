@@ -31,6 +31,10 @@ export class CompanyService {
     return this.http.post<any>(this.apiUrl+"/empresas", company);
   }
 
+  getCompany(id_empresa: number): Observable<Company> {
+    return this.http.get<Company>(this.apiUrl+"/empresa/"+`${id_empresa}`);
+  }
+
   createPerfil(p: PerfilProyecto, proyId: number): Observable<any> {
     //this.detalleUrl='http://localhost:5000'+'/empresas/proyectos/'+`${proyId}`+'/perfilesStr'
     return this.http.post<any>(this.apiUrl+'/empresas/proyectos/'+`${proyId}`+'/perfilesStr', p);
@@ -91,6 +95,10 @@ export class CompanyService {
 
   createEval(evaluation: Eval): Observable<Eval> {
     return this.http.post<Eval>(this.apiUrl+'/empresas/proyectos/perfiles/evaluaciones', evaluation);
+  }
+
+  getEntrevistas(id_empresa:number, max: number, num_pag: number, order: string, proyecto: string, perfil: string, candidato: string, fechaInicio: string, fechaFin: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/entrevistasEmpresa/'+`${id_empresa}`, {"max": max, "num_pag": num_pag, "order": order, "proyecto": proyecto, "perfil": perfil, "candidato": candidato, "inicio":fechaInicio, "fin": fechaFin})
   }
 
 }

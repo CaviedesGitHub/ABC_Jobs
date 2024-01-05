@@ -11,39 +11,43 @@ import { PerfilEmpComponent } from './Perfil-emp/Perfil-emp.component';
 import { ProyectoCrearComponent } from './Proyecto-crear/Proyecto-crear.component';
 import { CompanyJobsComponent } from './Company-Jobs/Company-Jobs.component';
 import { CompanyEvalComponent } from './Company-Eval/Company-Eval.component';
+import { CompanyEvalListComponent } from './Company-Eval-List/Company-Eval-List.component';
+import { CompanyEntrevistasComponent } from './Company-Entrevistas/Company-Entrevistas.component';
 
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { CompanyEvalListComponent } from './Company-Eval-List/Company-Eval-List.component';
-
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
     CommonModule, ReactiveFormsModule, RouterModule, FormsModule, 
     MatTableModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule,
     MatMenuModule, MatButtonModule, MatCardModule, MatSortModule, MatPaginatorModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule, MatNativeDateModule, MatDatepickerModule,
   ],
   declarations: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent, 
     PerfilAgregarComponent, PerfilEmpComponent,
     ProyectoCrearComponent,
     CompanyJobsComponent, CompanyEvalComponent, CompanyEvalListComponent,
+    CompanyEntrevistasComponent,
   ],
   exports: [CompanyComponent, CompanyCrearComponent, 
     CompanyVerComponent, ProyectoVerComponent,
     PerfilAgregarComponent, PerfilEmpComponent,
     ProyectoCrearComponent,
     CompanyJobsComponent, CompanyEvalComponent, CompanyEvalListComponent,
+    CompanyEntrevistasComponent,
   ],
 })
 export class CompanyModule { }

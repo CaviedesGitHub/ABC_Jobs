@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ABCJobsComponent } from './ABCJobs.component';
 import { PerfilConsultaCumplenComponent } from './Perfil-ConsultaCumplen/Perfil-ConsultaCumplen.component';
 import { ListaCumplenPerfilComponent } from './Lista-CumplenPerfil/Lista-CumplenPerfil.component';
@@ -14,9 +14,12 @@ import { PruebaExpansionTableComponent } from './Prueba-Expansion-Table/Prueba-E
 import { DetailMatchPruebaComponent } from './Detail-Match-Prueba/Detail-Match-Prueba.component';
 import { ABCEntrevistasPuestoComponent } from './ABC-Entrevistas-Puesto/ABC-Entrevistas-Puesto.component';
 import { ABCEntrevistasCrearComponent } from './ABC-Entrevistas-Crear/ABC-Entrevistas-Crear.component';
+import { ABCEntrevistasResultadoComponent } from './ABC-Entrevistas-Resultado/ABC-Entrevistas-Resultado.component';
+import { ABCEntrevistasVerResultadoComponent } from './ABC-Entrevistas-Ver-Resultado/ABC-Entrevistas-Ver-Resultado.component';
+import { ABCEntrevistasComponent } from './ABC-Entrevistas/ABC-Entrevistas.component';
 
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -29,7 +32,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -47,7 +51,10 @@ import { MatRippleModule } from '@angular/material/core';
     MatCardModule,
     MatSelectModule,
     MatRippleModule,
+    MatDatepickerModule, 
+    MatNativeDateModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
@@ -63,6 +70,9 @@ import { MatRippleModule } from '@angular/material/core';
     DetailMatchPruebaComponent,
     ABCEntrevistasPuestoComponent,
     ABCEntrevistasCrearComponent,
+    ABCEntrevistasResultadoComponent,
+    ABCEntrevistasVerResultadoComponent,
+    ABCEntrevistasComponent,
   ],
   exports: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
@@ -78,6 +88,12 @@ import { MatRippleModule } from '@angular/material/core';
     DetailMatchPruebaComponent,
     ABCEntrevistasPuestoComponent,
     ABCEntrevistasCrearComponent,
-  ]
+    ABCEntrevistasResultadoComponent,
+    ABCEntrevistasVerResultadoComponent,
+    ABCEntrevistasComponent,
+  ],
+  providers: [
+    DatePipe
+  ],
 })
 export class ABCJobsModule { }

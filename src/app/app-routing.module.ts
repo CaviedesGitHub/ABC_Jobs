@@ -27,6 +27,10 @@ import { CompanyEvalComponent } from './Company/Company-Eval/Company-Eval.compon
 import { CompanyEvalListComponent } from './Company/Company-Eval-List/Company-Eval-List.component';
 import { ABCEntrevistasPuestoComponent } from './ABCJobs/ABC-Entrevistas-Puesto/ABC-Entrevistas-Puesto.component';
 import { ABCEntrevistasCrearComponent } from './ABCJobs/ABC-Entrevistas-Crear/ABC-Entrevistas-Crear.component';
+import { ABCEntrevistasResultadoComponent } from './ABCJobs/ABC-Entrevistas-Resultado/ABC-Entrevistas-Resultado.component';
+import { ABCEntrevistasVerResultadoComponent } from './ABCJobs/ABC-Entrevistas-Ver-Resultado/ABC-Entrevistas-Ver-Resultado.component';
+import { ABCEntrevistasComponent } from './ABCJobs/ABC-Entrevistas/ABC-Entrevistas.component';
+import { CompanyEntrevistasComponent } from './Company/Company-Entrevistas/Company-Entrevistas.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -81,6 +85,10 @@ const routes: Routes = [
   { path: 'calificacion/:perfilProyId', component: CompanyEvalComponent },
   { path: 'entrevistas/:perfilProyId', component: ABCEntrevistasPuestoComponent },
   { path: 'entrevistas/crear/:perfilProyId', component: ABCEntrevistasCrearComponent },
+  { path: 'resultadoEntrevista/:entrevistaId', component: ABCEntrevistasResultadoComponent },
+  { path: 'verResultadoEntrevista/:entrevistaId', component: ABCEntrevistasVerResultadoComponent },
+  { path: 'entrevistasTodas', component: ABCEntrevistasComponent },
+  { path: 'entrevistasEmpresas', component: CompanyEntrevistasComponent },
 ];
 
 @NgModule({

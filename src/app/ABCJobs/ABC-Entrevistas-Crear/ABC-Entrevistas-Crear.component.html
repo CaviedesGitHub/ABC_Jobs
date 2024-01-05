@@ -1,3 +1,287 @@
-<p>
-  ABC-Entrevistas-Crear works!
-</p>
+<div class="example-loading-shade" *ngIf="this.seleccionaCandidato">
+</div>
+<div id="selectCandidateAbsol" *ngIf="this.seleccionaCandidato">
+  <H1 id="titulo_sel-candidato">Select a candidate</H1>
+  <app-Detail-Match-Prueba (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match-Prueba>          
+  <div class="container-fluid text-center">        
+    <button
+      type="button"
+      class="btn btn-primary mx-3 my-4"
+      data-cy="createEval"
+      (click)="this.seleccionaCandidato=false"
+    >
+      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Back</span>
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid my-0" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <div class="divSup">
+        <div class="divIzq">
+          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevista.png"  alt="Image of a Team">
+        </div>
+        <div class="divDer">
+          <mat-card class="example-card" >          
+            <mat-card-header>            
+              <mat-card-title-group>
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Job offered</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content class="cardContent">
+              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }}-{{this.perfilProy?.contacto_empresa}}</span></p>                
+              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              
+            </mat-card-content>
+          </mat-card>  
+        </div>
+      </div>
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-left ">
+          <div class="row align-items-left">
+            <div class="col-10">
+              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">New interview schedule</h2>
+              <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="container mt-1">
+            <h2 class="text-center">New interview</h2>
+            <div class="row align-items-left">
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+              <div class="col-12 col-sm-10 col-md-10 col-lg-6 col-xl-6">
+                <div *ngIf="false">
+                  <p>{{fechaMin}}</p>
+                  <p>{{fechaMax}}</p>
+                  <p>{{fechaStrMin}}</p>
+                  <p>{{fechaStrMax}}</p>
+                </div>
+                
+                <form 
+                  [formGroup]="evForm"
+                  (ngSubmit)="!evForm.invalid && createEntrevista(evForm.value)"
+                >
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_cand">id_cand</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="id_cand"
+                      class="form-control form-control-sm"
+                      formControlName="id_cand"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Candidate"
+                      data-cy="pass1Signup"
+                      [ngModel]="this.idCand"
+                    />
+                  </div>
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="candidato">Candidate</label>
+                    <div class="input-group input-group-sm mb-3">
+                      <input
+                        readonly
+                        novalidate
+                        id="candidato"
+                        class="form-control form-control-sm"
+                        formControlName="candidato"
+                        i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                        placeholder="Candidate"
+                        data-cy="pass1Signup"
+                        style="display: inline-block;"
+                        [ngModel]="this.nomCand"
+                      />
+                      <div class="input-group-append">
+                         <button (click)="this.seleccionaCandidato=true" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
+                          <span><i class="bi bi-search"></i></span>
+                         </button>
+                      </div>
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evForm.get('candidato')!.hasError('required') &&
+                        evForm.get('candidato')!.touched
+                      "
+                    >
+                      Candidate required
+                    </div>
+                  </div>                
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="cuando">DateyTime</label>
+                    <input
+                      novalidate
+                      id="cuando"
+                      class="form-control form-control-sm"
+                      formControlName="cuando"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="FechayHora"
+                      data-cy="pass1Signup"
+                      type="datetime-local"
+                      [min]=this.minStrDT
+                      [max]=this.maxStrDT
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evForm.get('cuando')!.hasError('required') &&
+                        evForm.get('cuando')!.touched
+                      "
+                    >
+                      Datetime required
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="evForm.get('cuando')!.hasError('Invalid DateTime')
+                      ">
+                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">DateTime Invalid</span>  
+                    </div>
+                  </div>
+
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="fecha">Date</label>
+                    <input
+                      novalidate
+                      id="fecha"
+                      class="form-control form-control-sm"
+                      formControlName="fecha"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Date"
+                      data-cy="pass1Signup"
+                      type="date"
+                      [min]=this.fechaStrMin
+                      [max]=this.fechaStrMax
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evForm.get('fecha')!.hasError('required') &&
+                        evForm.get('fecha')!.touched
+                      "
+                    >
+                      Date required
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="evForm.get('fecha')!.hasError('Invalid Date')
+                      ">
+                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">Date Invalid</span>  
+                    </div>
+                  </div>
+              
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="hora">Time</label>
+                    <input
+                      novalidate
+                      id="hora"
+                      class="form-control form-control-sm"
+                      formControlName="hora"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Time"
+                      data-cy="pass1Signup"
+                      type="time"
+                      [min]=this.horaMin
+                      [max]=this.horaMax
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evForm.get('hora')!.hasError('required') &&
+                        evForm.get('hora')!.touched
+                      "
+                    >
+                      Time required
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="evForm.get('hora')!.hasError('Invalid Time')
+                      ">
+                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">Invalid Time</span>  
+                    </div>
+                  </div>
+
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="zona">Zone</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="zona"
+                      class="form-control form-control-sm"
+                      formControlName="zona"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                      placeholder="Zone"
+                      data-cy="pass1Signup"
+                      [ngModel]="this.zona"
+                    />
+                  </div>
+
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="contacto">Contact</label>
+                    <input
+                      novalidate
+                      id="contacto"
+                      class="form-control form-control-sm"
+                      formControlName="contacto"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Contact"
+                      data-cy="pass1Signup"
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        evForm.get('contacto')!.hasError('required') &&
+                        evForm.get('contacto')!.touched
+                      "
+                    >
+                      Contact required
+                    </div>
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button
+                      type="button"
+                      class="btn btn-danger mx-3 mt-4"
+                      (click)="cancelCreation()"
+                      data-cy="cancelEval"
+                    >
+                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
+                    </button>           
+                    <button
+                      type="submit"
+                      class="btn btn-primary mx-3 mt-4"
+                      [disabled]="!evForm.valid"
+                      data-cy="createEval"
+                    >
+                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+           </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
+  </div>
+</div>
