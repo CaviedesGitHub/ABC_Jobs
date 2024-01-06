@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { CandidateComponent } from './Candidate.component';
 import { CandidateViewComponent } from './Candidate-view/Candidate-view.component';
+import { CandidateEntrevistasComponent } from './Candidate-Entrevistas/Candidate-Entrevistas.component';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -14,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   imports: [
@@ -30,8 +33,16 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatMenuModule,
   ],
-  declarations: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
-  exports: [CandidateComponent, CandidateViewComponent, CandidateCreateComponent],
+  declarations: [CandidateComponent, 
+    CandidateViewComponent, 
+    CandidateCreateComponent,
+    CandidateEntrevistasComponent
+  ],
+  exports: [CandidateComponent, 
+    CandidateViewComponent, 
+    CandidateCreateComponent,
+    CandidateEntrevistasComponent
+  ],
   providers: [
     DatePipe
   ],

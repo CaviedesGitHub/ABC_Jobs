@@ -31,6 +31,7 @@ import { ABCEntrevistasResultadoComponent } from './ABCJobs/ABC-Entrevistas-Resu
 import { ABCEntrevistasVerResultadoComponent } from './ABCJobs/ABC-Entrevistas-Ver-Resultado/ABC-Entrevistas-Ver-Resultado.component';
 import { ABCEntrevistasComponent } from './ABCJobs/ABC-Entrevistas/ABC-Entrevistas.component';
 import { CompanyEntrevistasComponent } from './Company/Company-Entrevistas/Company-Entrevistas.component';
+import { CandidateEntrevistasComponent } from './Candidate/Candidate-Entrevistas/Candidate-Entrevistas.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -89,6 +90,7 @@ const routes: Routes = [
   { path: 'verResultadoEntrevista/:entrevistaId', component: ABCEntrevistasVerResultadoComponent },
   { path: 'entrevistasTodas', component: ABCEntrevistasComponent },
   { path: 'entrevistasEmpresas', component: CompanyEntrevistasComponent },
+  { path: 'entrevistasCandidatos', component: CandidateEntrevistasComponent },
 ];
 
 @NgModule({
