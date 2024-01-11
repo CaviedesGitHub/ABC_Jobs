@@ -181,7 +181,7 @@ export class ABCEntrevistasPuestoComponent implements OnInit {
 
   agregarEntrevista(){
     //this.enrutador.navigate([`/calificacion/${this.perfilProyId}`], { state: {anno: this.anno, mes: this.mes, strmes: this.strmes, id_cand: String(this.idCand)} } )
-    this.enrutador.navigate([`/entrevistas/crear/${this.perfilProyId}`] )
+    this.enrutador.navigate(['/entrevistas/crear/'+`${this.perfilProyId}`] )
   }
 
   //asignaCandidatoPerfilProyecto(perfilProyId: number, id_cand: number, fecha_inicio: string){

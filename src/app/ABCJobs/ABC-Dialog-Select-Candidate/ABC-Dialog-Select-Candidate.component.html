@@ -1,0 +1,107 @@
+<h1 mat-dialog-title>Select a candidate</h1>
+<mat-dialog-content>
+  <div *ngIf="false">
+    <p>Nombre Candidato: {{this.nomHabil}}</p>
+    <p>Id Candidato: {{this.idHabil}}</p>
+    <p *ngIf="false">Data: {{data}}</p>
+    <p>Nombre Candidato: {{this.selCandidato.nombre}}</p>
+    <p>Id Candidato: {{this.selCandidato.id}}</p>
+  </div>
+  <div class="card-body">
+    <div class="card bg-light">
+      <div class="card-header text-left ">
+        <div class="row align-items-left">
+          <div class="col-10">
+            <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
+            <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
+          </div>
+          <div class="col-2">
+            <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
+              <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <mat-form-field class="example-full-width filtrosR">
+          <mat-label>Last Name</mat-label>
+          <input (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+          <mat-hint align="end">{{fApellidos.value.length}}/50</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="example-full-width filtrosR">
+          <mat-label>Name</mat-label>
+          <input (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+          <mat-hint align="end">{{fNombres.value.length}}/50</mat-hint>
+        </mat-form-field>      
+      </div>
+    </div>
+    <div *ngIf="isLoadingResults || isRateLimitReached" class="example-loading-shade">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <div *ngIf="isRateLimitReached" class="example-rate-limit-reached">
+        ABCJob's API rate limit has been reached. It will be reset in one minute.
+      </div>
+    </div>
+  
+    <div class="example-table-container">
+      <table mat-table [dataSource]="data" class="example-table"
+            matSort matSortActive="candidato" matSortDisableClear matSortDirection="desc">
+  
+        <ng-container matColumnDef="select" sticky>
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="selectHandler(row)"
+              [checked]="selection.isSelected(row)">
+            </mat-checkbox> 
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="num">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let row">{{row.Num}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="candidato">
+          <th mat-header-cell *matHeaderCellDef >
+            Candidate's Name
+          </th>
+          <td mat-cell *matCellDef="let row">{{row.candidato}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="documento">
+          <th mat-header-cell *matHeaderCellDef >
+            Document
+          </th>
+          <td mat-cell *matCellDef="let row">{{row.documento}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="ciudad">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let row">{{row.ciudad}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="email" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef>E-Mail</th>
+          <td mat-cell *matCellDef="let row">{{row.email}}</td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="filaClic(row)"
+          [ngClass]="{ hovered: row.hovered, highlighted: selection.isSelected(row) } "
+          (mouseover)="row.hovered=true"
+          (mouseout)="row.hovered=false">
+        </tr> 
+      </table>
+    </div>
+  
+    <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="selCandidato">Select</button>
+</mat-dialog-actions>
+

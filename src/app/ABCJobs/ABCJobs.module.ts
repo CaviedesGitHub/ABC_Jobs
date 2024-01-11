@@ -17,6 +17,10 @@ import { ABCEntrevistasCrearComponent } from './ABC-Entrevistas-Crear/ABC-Entrev
 import { ABCEntrevistasResultadoComponent } from './ABC-Entrevistas-Resultado/ABC-Entrevistas-Resultado.component';
 import { ABCEntrevistasVerResultadoComponent } from './ABC-Entrevistas-Ver-Resultado/ABC-Entrevistas-Ver-Resultado.component';
 import { ABCEntrevistasComponent } from './ABC-Entrevistas/ABC-Entrevistas.component';
+import { ABCCandidatosComponent } from './ABC-Candidatos/ABC-Candidatos.component';
+import { ABCEmpresasComponent } from './ABC-Empresas/ABC-Empresas.component';
+import { ABCDialogSelectSkillComponent } from './ABC-Dialog-Select-Skill/ABC-Dialog-Select-Skill.component';
+import { ABCExamenesComponent } from './ABC-Examenes/ABC-Examenes.component';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
@@ -34,6 +38,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ABCDialogConfirmationComponent } from './ABC-Dialog-Confirmation/ABC-Dialog-Confirmation.component';
+import { ABCDialogInputNumComponent } from './ABC-Dialog-Input-Num/ABC-Dialog-Input-Num.component';
+import { ABCDialogSelectCandidateComponent } from './ABC-Dialog-Select-Candidate/ABC-Dialog-Select-Candidate.component';
+import { ABCExamenesNuevoComponent } from './ABC-Examenes-Nuevo/ABC-Examenes-Nuevo.component';
 
 @NgModule({
   imports: [
@@ -53,6 +62,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatRippleModule,
     MatDatepickerModule, 
     MatNativeDateModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -73,6 +83,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ABCEntrevistasResultadoComponent,
     ABCEntrevistasVerResultadoComponent,
     ABCEntrevistasComponent,
+    ABCCandidatosComponent,
+    ABCEmpresasComponent,
+    ABCDialogSelectSkillComponent,
+    ABCDialogConfirmationComponent,
+    ABCExamenesComponent,
+    ABCDialogInputNumComponent,
+    ABCDialogSelectCandidateComponent,
+    ABCExamenesNuevoComponent,
   ],
   exports: [ABCJobsComponent, 
     PerfilConsultaCumplenComponent, 
@@ -91,6 +109,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ABCEntrevistasResultadoComponent,
     ABCEntrevistasVerResultadoComponent,
     ABCEntrevistasComponent,
+    ABCCandidatosComponent,
+    ABCEmpresasComponent,
+    ABCDialogSelectSkillComponent,
+    ABCDialogConfirmationComponent,
+    ABCExamenesComponent,
+    ABCDialogInputNumComponent,
+    ABCDialogSelectCandidateComponent,
+    ABCExamenesNuevoComponent,
   ],
   providers: [
     DatePipe

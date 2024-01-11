@@ -168,4 +168,10 @@ export class AsignacionComponent implements OnInit {
     this.idCand = $event;
   }
 
+  actualizaPerfil(){
+    this.perfilId=308
+    console.log("actualizaPerfil()")
+    console.log(this.perfilId)
+  }
+
 }

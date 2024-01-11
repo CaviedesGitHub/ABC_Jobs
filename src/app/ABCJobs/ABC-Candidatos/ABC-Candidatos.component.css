@@ -1,0 +1,110 @@
+/* Structure */
+.example-container {
+    position: relative;
+  }
+  
+  .example-table-container {
+    position: relative;
+    min-height: 200px;
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-rate-limit-reached {
+    max-width: 360px;
+    text-align: center;
+  }
+  
+  /* Column Widths */
+  .mat-column-number,
+  .mat-column-state {
+    max-width: 64px;
+  }
+  
+  .mat-column-created {
+    max-width: 124px;
+  }
+
+  .filtrosR {
+    width: 23%;
+    margin-right: 4px;
+  }
+
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+
+.logoPag {
+  width: 100%;
+  height: inherit;
+}
+
+
+.divSup{
+  background-color: rgb(255, 255, 255);
+  vertical-align:top;
+  margin-top: 0;
+}
+
+.divIzq{
+  width:12%;
+  margin: 0px;
+  padding: 1px;
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  vertical-align:top;
+}
+
+.divDer{
+  width:80%;
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  vertical-align:top;
+}
+
+.campo{
+  font-weight: bold;  
+}
+
+.linea{
+  margin: 0px;
+}
+
+.titTarjeta{
+  margin:0;
+  padding:0;
+}
+
+.cardContent{
+  margin-top: 12px;
+}
+
+.contraste{
+  color: black;
+}
+
+.hovered {
+    background: #eee;
+}
+
+.highlighted {
+  background: #999;
+}

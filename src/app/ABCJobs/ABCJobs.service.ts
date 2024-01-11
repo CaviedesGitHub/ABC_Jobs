@@ -6,6 +6,7 @@ import { ClsListaHabils } from './clsListaHabils';
 import { environment } from 'src/environments/environment';
 import { Puesto } from './Puesto';
 import { Entrevista } from './Entrevista';
+import { Examen } from '../Candidate/Examen';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,10 @@ export class ABCJobsService {
     return this.http.post<any>(this.apiUrl+'/entrevistasPortal', {"max": max, "num_pag": num_pag, "order": order, "empresa": empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato, "inicio":fechaInicio, "fin": fechaFin})
   }
 
+  getCandidatos(max: number, num_pag: number, order: string, apellidos: string, nombres: string, ciudad: string, fechaInicio: string, fechaFin: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/candidatos/parcial', {"max": max, "num_pag": num_pag, "order": order, "apellidos": apellidos, "nombres":nombres, "ciudad": ciudad, "inicio": fechaInicio, "fin": fechaFin})
+  }
+
   verProyectoPerfilDetalle(id_ProyPerfil: number): Observable<any> {
     return this.http.get<any>(this.apiUrl+'/empresas/proyectos/perfiles/'+`${id_ProyPerfil}`)
   }
@@ -57,6 +62,21 @@ export class ABCJobsService {
     return this.http.post<any>(this.apiUrl+'/entrevistas/'+`${entrevistaId}`, ev);
   }
   
+  createExamen(examen: Examen):Observable<Examen>{
+    return this.http.post<Examen>(this.apiUrl+'/pruebas', examen);
+  }  
+
+  getTestsCandidate(id_cand: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/pruebasCandidato/'+`${id_cand}`);
+  }
+
+  getExamenes(max: number, num_pag: number, order: string, candidato: string, habilidad: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/pruebasParam', {"max": max, "num_pag": num_pag, "order": order, "candidato": candidato, "habilidad":habilidad});
+  }
+
+  updateTestValue(id_examen: number, valor: number): Observable<any>{
+    return this.http.post<any>(this.apiUrl+'/pruebasCalificacion/'+`${id_examen}`, {"nota": valor});
+  }
 }
 
 

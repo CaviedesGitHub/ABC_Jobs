@@ -1,0 +1,97 @@
+.table-container {
+    height: 400px;
+    width: 550px;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+.example-container {
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+  
+  th.mat-column-nombre, td.mat-column-nombre {
+    padding-left: 8px;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-right {
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-left {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .logoPag {
+    width: 100%;
+    height: inherit;
+  }
+  
+  
+  .divSup{
+    background-color: rgb(255, 255, 255);
+    vertical-align:top;
+    margin-top: 0;
+  }
+  
+  .divIzq{
+    width:18%;
+    margin: 0px;
+    padding: 1px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    vertical-align:top;
+  }
+  
+  .divDer{
+    width:auto;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    vertical-align:top;
+  }
+  
+  .campo{
+    font-weight: bold;  
+  }
+  
+  .linea{
+    margin: 0px;
+  }
+  
+  .titTarjeta{
+    margin:0;
+    padding:0;
+  }
+  
+  .cardContent{
+    margin-top: 12px;
+  }
+
+  .contraste{
+    color: black;
+  }
+
+    
+.hovered {
+    background: #eee;
+}
+
+.highlighted {
+  background: #999;
+}

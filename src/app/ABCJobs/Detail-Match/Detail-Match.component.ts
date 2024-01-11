@@ -48,8 +48,12 @@ export class DetailMatchComponent implements OnInit {
   @Output() idEvent = new EventEmitter<number>();
 
   ngAfterViewInit() {
-    this.lstCandidatos2.paginator = this.paginator;
-    this.lstCandidatos2.sort = this.sort;
+    console.log("ngAfterViewInit()")
+    //console.log(this.lstCandidatos2)
+    //console.log(this.lstCandidatos2.paginator)
+    //console.log(this.paginator)
+    //this.lstCandidatos2.paginator = this.paginator;
+    //this.lstCandidatos2.sort = this.sort;
   }
 
   constructor(private toastr: ToastrService,
@@ -61,8 +65,11 @@ export class DetailMatchComponent implements OnInit {
     }
 
 
-  verCandidatosCumplen(perfilId: number){
-    this.companyService.verCandidatosCumplenServ(perfilId).subscribe(lstCand=>{
+  verCandidatosCumplen(profileId: number){
+    console.log("verCandidatosCumplen")
+    console.log(profileId)
+    this.companyService.verCandidatosCumplenServ(profileId).subscribe(lstCand=>{
+      console.log(profileId)
       //this.toastr.success("Confirmation", 'Consulta Done')
       if (this.locale=="en-US"){
         this.cadHT = "SOFT SKILLS: ";
@@ -85,9 +92,13 @@ export class DetailMatchComponent implements OnInit {
       this.lstCandidatos=lstCand
       //this.lstCandidatos2=new MatTableDataSource(lstCand.Respuesta.Seleccion);
       this.lstCandidatos2=lstCand.Respuesta.Seleccion
+      console.log(profileId)
+      console.log("this.lstCandidatos2  -> verCandidatosCumplen -> zona1")
+      console.log(this.lstCandidatos2)
       this.lstCandidatos2=new MatTableDataSource(this.lstCandidatos2);
       this.lstCandidatos2.paginator = this.paginator;
       this.lstCandidatos2.sort = this.sort;
+      console.log("this.lstCandidatos2  -> verCandidatosCumplen")
       console.log(this.lstCandidatos2)
     },
     error => {
@@ -96,8 +107,8 @@ export class DetailMatchComponent implements OnInit {
     )
   }
 
-  obtenerHabilidadesPerfil(perfilId: number){
-    this.companyService.getSkillsProfile(perfilId).subscribe(resp=>{
+  obtenerHabilidadesPerfil(profileId: number){
+    this.companyService.getSkillsProfile(profileId).subscribe(resp=>{
       console.log(resp)
       this.lstHabils=resp.Habilidades;
       for (let i=0; i<this.lstHabils.length; i=i+1){
@@ -126,6 +137,8 @@ export class DetailMatchComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("ngOnInit() detail-Match")
+    console.log(this.idPerfil)
     this.verCandidatosCumplen(this.idPerfil)
     //this.obtenerHabilidadesPerfil(this.idPerfil)
   }

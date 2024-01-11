@@ -32,4 +32,8 @@ export class CandidateService {
   getEntrevistas(id_cand:number, max: number, num_pag: number, order: string, empresa: string, proyecto: string, perfil: string, candidato: string, fechaInicio: string, fechaFin: string): Observable<any> {
     return this.http.post<any>(this.apiUrl+'/entrevistasCandidato/'+`${id_cand}`, {"max": max, "num_pag": num_pag, "order": order, "empresa":empresa, "proyecto": proyecto, "perfil": perfil, "candidato": candidato, "inicio":fechaInicio, "fin": fechaFin})
   }  
+
+  getExamenes(id_cand:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/pruebasCandidato/'+`${id_cand}`)
+  } 
 }

@@ -1,3 +1,11 @@
+<button
+  type="button"
+  class="btn btn-primary mx-3 mt-4"
+  (click)="actualizaPerfil()">
+  Save
+</button>
+  
+
 <div class="container-fluid my-0" id="principal">
   <div class="row align-items-left">
     <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
@@ -17,10 +25,10 @@
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy.nom_empresa }}</span></p>                
-              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy.nom_proyecto }}</span></p>
-              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy.fecha_inicio }}</span></p>
-              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa! }}</span></p>                
+              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto! }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio! }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil! }}</span></p>
               <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
               <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
               <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
@@ -40,7 +48,10 @@
           </div>
         </div>
         <div class="card-body">
-          <app-Detail-Match-Prueba (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match-Prueba>          
+          {{this.perfilId}}
+          <div *ngIf="this.perfilProy">
+            <app-Detail-Match (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match>          
+          </div>
         </div>
         <div class="card-footer text-muted">
           <button 

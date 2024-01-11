@@ -82,6 +82,16 @@
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
             <a
+              i18n="Examenes|Examenes presentados por un candidato"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/candidatosExamenes"
+              data-cy="examenesCandidate"
+              >Tests</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['CANDIDATE']">
+            <a
               i18n="Ingresos|Ingresos de un Candidato recibidos de las empresas"
               class="nav-link active"
               aria-current="page"
@@ -115,7 +125,7 @@
               i18n="Candidatos|Candidatos registrados en el portal ABC"
               class="nav-link active"
               aria-current="page"
-              routerLink="/construccion"
+              routerLink="/candidatos"
               data-cy="candidateABC"
               >Candidates</a
             >
@@ -125,7 +135,7 @@
               i18n="Empresas|Empresas registradas en el portal ABC"
               class="nav-link active"
               aria-current="page"
-              routerLink="/construccion"
+              routerLink="/empresas"
               data-cy="companyABC"
               >Companies</a
             >
@@ -138,6 +148,16 @@
               routerLink="/entrevistasTodas"
               data-cy="interABC"
               >Interviews</a
+            >
+          </li>
+          <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">
+            <a
+              i18n="Examenes|Examenes presentados por los candidatos"
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/examenes"
+              data-cy="examenesABC"
+              >Tests</a
             >
           </li>
           <li class="nav-item" *ngxPermissionsOnly="['ABCJOBS EMPLOYEE']">

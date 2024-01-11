@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Change the test result</h1>
+<mat-dialog-content>
+  <form [formGroup]="testForm">
+        <div class="form-group mx-sm-3 mb-2">
+          <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nota">Valuation</label>
+          <input
+            novalidate
+            id="nota"
+            class="form-control form-control-sm"
+            formControlName="nota"
+            i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+            placeholder="Valuation"
+            data-cy="valpass1Signup"
+            type="number"
+            min="0"
+            max="100"
+            [(ngModel)]="valor"
+          />
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            *ngIf="
+              testForm.get('nota')!.hasError('required') &&
+              testForm.get('nota')!.touched
+            "
+          >
+            Valuation required
+          </div>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            *ngIf="
+              testForm.get('nota')!.hasError('min') &&
+              testForm.get('nota')!.touched
+            "
+          >
+            Invalid value: Value must be greater than or equal to zero
+          </div>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            *ngIf="
+              testForm.get('nota')!.hasError('max') &&
+              testForm.get('nota')!.touched
+            "
+          >
+            Invalid value: Value must be less than or equal to one hundred
+          </div>
+        </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button [disabled]="testForm.invalid" mat-raised-button color="primary" [mat-dialog-close]="valor">Save</button>
+</mat-dialog-actions>

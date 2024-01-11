@@ -87,34 +87,34 @@ export class ABCEntrevistasCrearComponent implements OnInit {
     console.log(new Date())
     console.log("new Date().getTimezoneOffset()")
     console.log(new Date().getTimezoneOffset())
-    let timeZone;
-    if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
-      timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      console.log({ timeZone });
-    }
+    //let timeZone;
+    //if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
+    //  timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    //  console.log({ timeZone });
+    //}
     
-    let lang="en";
-    let ff=new Intl.DateTimeFormat(lang, {
-      timeZone: timeZone,
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      weekday: "long",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      second: "2-digit",
-      timeZoneName: "short",
-    }).format(new Date());
-    console.log("ff ff")
-    console.log(ff)
-    console.log("ff.toString()")
-    console.log(ff.toString())
-    let fecha1Str=ff.toString()
-    const dateSplit = fecha1Str.split(" ");
-    const timezoneAbbr = dateSplit[dateSplit.length - 1];
-    console.log("timezoneAbbr")
-    console.log(timezoneAbbr)
+    //let lang="en";
+    //let ff=new Intl.DateTimeFormat(lang, {
+    //  timeZone: timeZone,
+    //  day: "2-digit",
+    //  month: "2-digit",
+    //  year: "numeric",
+    //  weekday: "long",
+    //  hour: "2-digit",
+    //  minute: "2-digit",
+    //  hour12: false,
+    //  second: "2-digit",
+    //  timeZoneName: "short",
+    //}).format(new Date());
+    //console.log("ff ff")
+    //console.log(ff)
+    //console.log("ff.toString()")
+    //console.log(ff.toString())
+    //let fecha1Str=ff.toString()
+    //const dateSplit = fecha1Str.split(" ");
+    //const timezoneAbbr = dateSplit[dateSplit.length - 1];
+    //console.log("timezoneAbbr")
+    //console.log(timezoneAbbr)
 
     console.log("new Date()")
     console.log(new Date())
@@ -168,9 +168,11 @@ export class ABCEntrevistasCrearComponent implements OnInit {
     this.userId=Number(sessionStorage.getItem("idUser"))
     this.token=sessionStorage.getItem("token")!
     if (!this.userId || !this.token){
+      console.log("IF")
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else{
+      console.log("ELSE")
       if (!parseInt(this.router.snapshot.params['perfilProyId'])) {
         this.showError("Faltan datos Necesarios, por favor intentelo nuevamente.")
       }
@@ -179,6 +181,17 @@ export class ABCEntrevistasCrearComponent implements OnInit {
         this.verProyectoPerfilDetalle(this.perfilProyId)
       }
     }
+
+    this.evForm = this.formBuilder.group({
+      id_cand: [, Validators.required],
+      candidato: ['NO ASIGNADO', Validators.required],
+      cuando: [, [Validators.required, validadoresEspeciales.validaFechaHora]],
+      fecha: [, [Validators.required, validadoresEspeciales.validarFechas]],
+      hora: [, [Validators.required, validadoresEspeciales.validaHora]],
+      zona: [, Validators.required],
+      contacto: [this.perfilProy?.contacto_empresa, Validators.required],
+      perfilProyId: [this.perfilProyId, Validators.required]
+    })
 
   }
 
@@ -194,24 +207,14 @@ export class ABCEntrevistasCrearComponent implements OnInit {
       console.log("perfilProy")
       console.log(this.perfilProy)
       console.log("idPerfil")
-      console.log(this.perfilProy.id_perfil)
-      this.perfilId=this.perfilProy.id_perfil
-      this.obtenerlistaEVProyectoPerfil(this.perfilProy.id)
-      this.obtenerHabilidadesPerfil(this.perfilProy.id_perfil)
+      //console.log(this.perfilProy.id_perfil)
+      //this.perfilId=this.perfilProy.id_perfil
+      //this.obtenerlistaEVProyectoPerfil(this.perfilProy.id)
+      //this.obtenerHabilidadesPerfil(this.perfilProy.id_perfil)
 
       console.log("PUNTO VISION")
       console.log(this.perfilProy)
-      console.log(this.perfilProy.contacto_empresa)
-      this.evForm = this.formBuilder.group({
-        id_cand: [, Validators.required],
-        candidato: ['NO ASIGNADO', Validators.required],
-        cuando: [, [Validators.required, validadoresEspeciales.validaFechaHora]],
-        fecha: [, [Validators.required, validadoresEspeciales.validarFechas]],
-        hora: [, [Validators.required, validadoresEspeciales.validaHora]],
-        zona: [, Validators.required],
-        contacto: [this.perfilProy.contacto_empresa, Validators.required],
-        perfilProyId: [this.perfilProyId, Validators.required]
-      })
+      //console.log(this.perfilProy!.contacto_empresa)
     },
     error => {
       this.error = true

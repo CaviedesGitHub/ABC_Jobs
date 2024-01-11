@@ -1,3 +1,4 @@
+{{this.perfilProyId }}
 <div class="example-loading-shade" *ngIf="this.seleccionaCandidato">
 </div>
 <div id="selectCandidateAbsol" *ngIf="this.seleccionaCandidato">
@@ -114,8 +115,8 @@
                     <div
                       class="alert alert-danger alert-dismissible fade show"
                       *ngIf="
-                        evForm.get('candidato')!.hasError('required') &&
-                        evForm.get('candidato')!.touched
+                        evForm?.get('candidato')!.hasError('required') &&
+                        evForm?.get('candidato')!.touched
                       "
                     >
                       Candidate required

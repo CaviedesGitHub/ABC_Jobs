@@ -5,17 +5,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 //import { ToastrService } from 'ngx-toastr';
 import { CandidateDetail } from '../Candidate-detail';
 import { Habilidad } from '../Habilidad';
-import { Candidate } from '../Candidate';
-
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+
+import {MatSort, Sort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
-import { Confirmacion } from '../Confirmacion';
+import { ABCJobsService } from '../../ABCJobs/ABCJobs.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ABCDialogConfirmationComponent } from '../../ABCJobs/ABC-Dialog-Confirmation/ABC-Dialog-Confirmation.component';
 import { filter, observable, of, switchMap } from 'rxjs';
+import { Confirmacion } from '../Confirmacion';
 
 export interface interHabil {
   position: number;
@@ -61,39 +61,60 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'app-Candidate-Entrevistas',
-  templateUrl: './Candidate-Entrevistas.component.html',
-  styleUrls: ['./Candidate-Entrevistas.component.css']
+  selector: 'app-Candidate-Examenes',
+  templateUrl: './Candidate-Examenes.component.html',
+  styleUrls: ['./Candidate-Examenes.component.css']
 })
-export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
-  textoEmpresa: string = '';
-  textoProyecto: string = '';
-  textoPerfil: string = '';
-  textoCandidato: string = '';
-  textoRango: string = '';
-  textoInicio: string = '';
-  textoFin: string = '';
-
-  userId: number | undefined;
-  id_cand: number | undefined;
-  token: string = "";
-  candidate!: Candidate;
-  entrevistas: any;
-  listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
-  columnNames: string[] = ['cuando', 'contacto', 'nom_empresa', 'nom_proyecto', 'nom_perfil', 'star'];
-  @ViewChild(MatSort) sort: MatSort | null = null;
-  @ViewChild(MatSort) sort2: MatSort | null = null;
-  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
-  
-  constructor(private _liveAnnouncer: LiveAnnouncer, private candidateService: CandidateService, 
+export class CandidateExamenesComponent implements OnInit, AfterViewInit {
+  constructor(private _liveAnnouncer: LiveAnnouncer, 
+    private candidateService: CandidateService, 
+    private abcService: ABCJobsService,
     private router: ActivatedRoute,
+    private enrutador: Router,
     private toastr: ToastrService,
+    private dialog: MatDialog,
     @Inject(LOCALE_ID) public locale: string,) { 
     }
 
-  viewCandidate(id_cand: number){
-    this.candidateService.viewCandidate(id_cand).subscribe(cand=>{
-    console.info("The candidate was retrieved: ", cand.nombres)
+  userId: number | undefined;
+  token: string = "";
+  candidate: CandidateDetail | undefined;
+  lstExamenes: any;
+  listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
+  columnNames: string[] = ['nom_habil', 'nota', 'resultado', 'star'];
+  @ViewChild(MatSort) sort: MatSort | null = null;
+  @ViewChild(MatSort) sort2: MatSort | null = null;
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+
+  conf: Confirmacion | undefined;
+  pregES: string = "Esta seguro que quiere borrar este examen?"
+  explES: string = "Si borra este examen no podra ser recuperado. Esta accion es irreversible."
+  pregEN: string = "Are you sure you want to delete this test?"
+  explEN: string = "If you delete this test it cannot be recovered. This action is irreversible."
+  respuesta: string = ""
+
+  obtenerExamenesCandidato(id_cand: number){
+    this.abcService.getTestsCandidate(id_cand).subscribe(resp=>{
+      console.info("Recovered tests: ", resp)
+      if (this.locale=="en-US"){
+        this.toastr.success("Confirmation", 'Recovered tests.')
+      }
+      else if(this.locale=="es"){
+        this.toastr.success("Confirmacion", 'Examenes recuperados.')
+      }
+      else{
+        this.toastr.success("Confirmation", 'Recovered tests.')
+      }
+      this.lstExamenes=resp
+      this.lstExamenes=new MatTableDataSource(this.lstExamenes); //this.candidate.lstHabils; 
+      this.lstExamenes.sort = this.sort
+      this.lstExamenes.paginator = this.paginator
+      })
+  }
+
+  viewDetailUserCandidate(userId: number){
+    this.candidateService.viewDetailUserCandidate(userId).subscribe(cand=>{
+    console.info("The candidate was created: ", cand.nombres)
     if (this.locale=="en-US"){
       this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
     }
@@ -104,34 +125,7 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
       this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
     }
     this.candidate=cand
-    })
-  }
-
-  getEntrevistas(id_cand: number){
-    this.candidateService.getEntrevistas(id_cand,
-            500, 
-            1, 
-            "ASC", 
-            this.textoEmpresa, 
-            this.textoProyecto, 
-            this.textoPerfil,
-            this.textoCandidato,
-            this.textoInicio,
-            this.textoFin).subscribe(resp=>{
-    console.info("The Interviews was retrieved: ", resp)
-    if (this.locale=="en-US"){
-      this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
-    }
-    else if(this.locale=="es"){
-      this.toastr.success("Confirmacion", 'Datos del candidato recuperados exitosamente.')
-    }
-    else{
-      this.toastr.success("Confirmation", 'Candidate data successfully retrieved.')
-    }
-    this.entrevistas=resp.Entrevistas
-    this.entrevistas=new MatTableDataSource(this.entrevistas); //this.candidate.lstHabils; 
-    //this.listaHabils.sort = this.sort
-    //this.listaHabils.paginator = this.paginator
+    this.obtenerExamenesCandidato(this.candidate.id)
     })
   }
 
@@ -141,8 +135,8 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.entrevistas.sort = this.sort
-    this.entrevistas.paginator = this.paginator;
+    //this.listaHabils.sort = this.sort
+    //this.listaHabils.paginator = this.paginator;
   }
 
   /** Announce the change in sort state for assistive technology. */
@@ -170,13 +164,38 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
       this.userId = parseInt(this.router.snapshot.params['userId'])
       this.token = this.router.snapshot.params['userToken']
     }
-    this.id_cand=Number(sessionStorage.getItem("idCandidate")!)
-    this.viewCandidate(this.id_cand)
-    this.getEntrevistas(this.id_cand)
+    this.viewDetailUserCandidate(this.userId)
+
+    if (this.locale=="en-US"){
+      this.conf=new Confirmacion(this.pregEN, this.explEN)
+    }
+    else if(this.locale=="es"){
+      this.conf=new Confirmacion(this.pregES, this.explES)
+    }
+    else{
+      this.conf=new Confirmacion(this.pregEN, this.explEN)
+    }
   }
 
-  agregarHabilidad(){
-    //this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
+  agregarExamen(){
+    this.enrutador.navigate(['/candidatosExamenesNuevo'])
+  }
+
+  confirmacionBorrar(){
+    console.log("Confirmacion Borrar")
+    this.dialog.open(ABCDialogConfirmationComponent, {data: this.conf}).afterClosed().pipe(
+      filter(resp => !!resp),
+      switchMap( async (resp) => this.accion(resp))
+    ).subscribe(()=>{
+       //alert('Hizo Algo')
+    });
+  }
+
+  accion(r: any){
+    this.respuesta=r
+    if (r=="SI"){
+      this.enrutador.navigate(['/construccion'])
+    }
   }
 
   volverAtras(){
@@ -185,10 +204,10 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.entrevistas.filter = filterValue.trim().toLowerCase();
+    this.lstExamenes.filter = filterValue.trim().toLowerCase();
 
-    if (this.entrevistas.paginator) {
-      this.entrevistas.paginator.firstPage();
+    if (this.lstExamenes.paginator) {
+      this.lstExamenes.paginator.firstPage();
     }
   }
 

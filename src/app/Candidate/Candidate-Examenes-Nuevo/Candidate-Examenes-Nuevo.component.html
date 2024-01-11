@@ -1,0 +1,200 @@
+<div class="container-fluid my-0" id="principal">
+  <div class="row align-items-left">
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
+      <div class="divSup">
+        <div class="divIzq">
+          <img i18n-alt="txtAltViewCandidate|Texto alternativo imagen candidato" class="logoPag" src="../../../assets/imagenes/usuario2.png"  alt="Image of a User">
+        </div>
+        <div class="divDer">
+          <mat-card class="example-card" >          
+            <mat-card-header>            
+              <mat-card-title-group>
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate?.apellidos}}, {{candidate?.nombres}}</H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate?.email}}</mat-card-subtitle>                            
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content class="cardContent">
+              <p class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate?.documento }}</p>
+              <p class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate?.fecha_nac }}</p>
+              <p class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate?.ciudad }}</p>
+              <p class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate?.direccion }}</p>
+              <p class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate?.phone }}</p>
+            </mat-card-content>
+          </mat-card>  
+        </div>
+      </div>
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-left ">
+          <div class="row align-items-left">
+            <div class="col-12">
+              <h2 i18n="titDetalleViewCandidate|Titulo detalle ver candidato" class="mb-0 pb-0 fw-bold fst-italic fw-light">Creation of a new test</h2>
+              <h4 i18n="subTitDetalleViewCandidate|SubTitulo detalle ver candidato" class="card-title text-left mb-0 pb-0">Test to demonstrate competence in a technical skill</h4>          
+            </div>
+        </div>
+        <div class="card-body">
+          <div class="container mt-1">
+            <h2 class="text-center">New Test</h2>
+            <div class="row align-items-left">
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+              <div class="col-12 col-sm-10 col-md-10 col-lg-6 col-xl-6">           
+                <form 
+                  [formGroup]="testForm"
+                  (ngSubmit)="!testForm.invalid && createExamen(testForm.value)"
+                >
+                  <div *ngIf="false" class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_cand">id_cand</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="id_cand"
+                      class="form-control form-control-sm"
+                      formControlName="id_cand"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="Candidate"
+                      data-cy="pass1Signup"
+                    />
+                  </div>
+
+                  <div *ngIf="false" class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_habil">id_habil</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="id_habil"
+                      class="form-control form-control-sm"
+                      formControlName="id_habil"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      placeholder="id_habil"
+                      data-cy="idPass1Signup"
+                    />
+                  </div>
+                  
+                  <div class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nom_habil">Tech Skill</label>
+                    <div class="input-group input-group-sm mb-3">
+                      <input
+                        readonly
+                        novalidate
+                        id="nom_habil"
+                        class="form-control form-control-sm"
+                        formControlName="nom_habil"
+                        i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                        placeholder="Select Skill"
+                        data-cy="pass1Signup"
+                        style="display: inline-block;"
+                      />
+                      <div class="input-group-append">
+                         <button (click)="seleccionaHabilidad()" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
+                          <span><i class="bi bi-search"></i></span>
+                         </button>
+                      </div>
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        testForm.get('nom_habil')!.hasError('required') &&
+                        testForm.get('nom_habil')!.touched
+                      "
+                    >
+                      Skill required
+                    </div>
+                  </div>  
+
+                  <div *ngIf="tipo_usuario=='EMPLEADO_ABC'" class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nota">Valuation</label>
+                    <input
+                      (input)="muestraResultado($event)"
+                      novalidate
+                      id="nota"
+                      class="form-control form-control-sm"
+                      formControlName="nota"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                      placeholder="Valuation"
+                      data-cy="valpass1Signup"
+                      type="number"
+                      min="0"
+                      max="100"
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        testForm.get('nota')!.hasError('required') &&
+                        testForm.get('nota')!.touched
+                      "
+                    >
+                      Valuation required
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        testForm.get('nota')!.hasError('min') &&
+                        testForm.get('nota')!.touched
+                      "
+                    >
+                      Invalid value: Value must be greater than or equal to zero
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        testForm.get('nota')!.hasError('max') &&
+                        testForm.get('nota')!.touched
+                      "
+                    >
+                      Invalid value: Value must be less than or equal to one hundred
+                    </div>
+                  </div>
+
+                  <div *ngIf="tipo_usuario=='EMPLEADO_ABC'" class="form-group mx-sm-3 mb-2">
+                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="resultado">Result</label>
+                    <input
+                      readonly
+                      novalidate
+                      id="resultado"
+                      class="form-control form-control-sm"
+                      formControlName="resultado"
+                      i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                      placeholder="Result"
+                      data-cy="valpass1Signup"
+                    />
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button
+                      type="button"
+                      class="btn btn-danger mx-3 mt-4"
+                      (click)="cancelCreation()"
+                      data-cy="cancelEval"
+                    >
+                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
+                    </button>           
+                    <button
+                      type="submit"
+                      class="btn btn-primary mx-3 mt-4"
+                      [disabled]="!testForm.valid"
+                      data-cy="createEval"
+                    >
+                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
+              </div>
+           </div>
+          </div>
+        </div>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
+      
+    </div>
+  </div>
+</div>

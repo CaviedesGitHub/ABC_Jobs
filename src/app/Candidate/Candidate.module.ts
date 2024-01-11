@@ -3,6 +3,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { CandidateComponent } from './Candidate.component';
 import { CandidateViewComponent } from './Candidate-view/Candidate-view.component';
 import { CandidateEntrevistasComponent } from './Candidate-Entrevistas/Candidate-Entrevistas.component';
+import { CandidateExamenesComponent } from './Candidate-Examenes/Candidate-Examenes.component';
+import { CandidateExamenesNuevoComponent } from './Candidate-Examenes-Nuevo/Candidate-Examenes-Nuevo.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
@@ -16,7 +18,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -32,16 +35,22 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule,
   ],
   declarations: [CandidateComponent, 
     CandidateViewComponent, 
     CandidateCreateComponent,
-    CandidateEntrevistasComponent
+    CandidateEntrevistasComponent,
+    CandidateExamenesComponent,
+    CandidateExamenesNuevoComponent,
   ],
   exports: [CandidateComponent, 
     CandidateViewComponent, 
     CandidateCreateComponent,
-    CandidateEntrevistasComponent
+    CandidateEntrevistasComponent,
+    CandidateExamenesComponent,
+    CandidateExamenesNuevoComponent,
   ],
   providers: [
     DatePipe

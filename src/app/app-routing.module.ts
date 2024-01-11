@@ -32,9 +32,19 @@ import { ABCEntrevistasVerResultadoComponent } from './ABCJobs/ABC-Entrevistas-V
 import { ABCEntrevistasComponent } from './ABCJobs/ABC-Entrevistas/ABC-Entrevistas.component';
 import { CompanyEntrevistasComponent } from './Company/Company-Entrevistas/Company-Entrevistas.component';
 import { CandidateEntrevistasComponent } from './Candidate/Candidate-Entrevistas/Candidate-Entrevistas.component';
+import { ABCCandidatosComponent } from './ABCJobs/ABC-Candidatos/ABC-Candidatos.component';
+import { ABCEmpresasComponent } from './ABCJobs/ABC-Empresas/ABC-Empresas.component';
+import { CandidateExamenesComponent } from './Candidate/Candidate-Examenes/Candidate-Examenes.component';
+import { CandidateExamenesNuevoComponent } from './Candidate/Candidate-Examenes-Nuevo/Candidate-Examenes-Nuevo.component';
+import { ABCDialogSelectSkillComponent } from './ABCJobs/ABC-Dialog-Select-Skill/ABC-Dialog-Select-Skill.component';
+import { ABCDialogConfirmationComponent } from './ABCJobs/ABC-Dialog-Confirmation/ABC-Dialog-Confirmation.component';
+import { ABCExamenesComponent } from './ABCJobs/ABC-Examenes/ABC-Examenes.component';
+import { ABCDialogInputNumComponent } from './ABCJobs/ABC-Dialog-Input-Num/ABC-Dialog-Input-Num.component';
+import { ABCDialogSelectCandidateComponent } from './ABCJobs/ABC-Dialog-Select-Candidate/ABC-Dialog-Select-Candidate.component';
+import { ABCExamenesNuevoComponent } from './ABCJobs/ABC-Examenes-Nuevo/ABC-Examenes-Nuevo.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: ABCDialogSelectCandidateComponent},
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },
@@ -91,6 +101,12 @@ const routes: Routes = [
   { path: 'entrevistasTodas', component: ABCEntrevistasComponent },
   { path: 'entrevistasEmpresas', component: CompanyEntrevistasComponent },
   { path: 'entrevistasCandidatos', component: CandidateEntrevistasComponent },
+  { path: 'candidatos', component: ABCCandidatosComponent },
+  { path: 'empresas', component: ABCEmpresasComponent },
+  { path: 'examenes', component: ABCExamenesComponent },
+  { path: 'candidatosExamenes', component: CandidateExamenesComponent },
+  { path: 'candidatosExamenesNuevo', component: CandidateExamenesNuevoComponent },
+  { path: 'examenNuevo', component: ABCExamenesNuevoComponent },
 ];
 
 @NgModule({
