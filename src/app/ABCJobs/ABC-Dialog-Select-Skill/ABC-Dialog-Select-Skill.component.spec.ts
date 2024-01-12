@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCDialogSelectSkillComponent } from './ABC-Dialog-Select-Skill.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 describe('ABCDialogSelectSkillComponent', () => {
   let component: ABCDialogSelectSkillComponent;
@@ -11,6 +18,7 @@ describe('ABCDialogSelectSkillComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MAT_DIALOG_DATA, MatDialogModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ ABCDialogSelectSkillComponent ]
     })
     .compileComponents();

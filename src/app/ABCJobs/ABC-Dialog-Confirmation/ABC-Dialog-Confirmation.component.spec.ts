@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCDialogConfirmationComponent } from './ABC-Dialog-Confirmation.component';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 describe('ABCDialogConfirmationComponent', () => {
   let component: ABCDialogConfirmationComponent;
@@ -11,6 +12,7 @@ describe('ABCDialogConfirmationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatDialogModule, MAT_DIALOG_DATA, ],
       declarations: [ ABCDialogConfirmationComponent ]
     })
     .compileComponents();

@@ -10,6 +10,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { ToastrModule } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('CandidateViewComponent', () => {
   let component: CandidateViewComponent;
@@ -17,8 +21,8 @@ describe('CandidateViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, 
-        MatCardModule, MatFormFieldModule, MatPaginatorModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule, MatTableModule, MatSortModule,
+        MatCardModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
       declarations: [ CandidateViewComponent ]
     })
     .compileComponents();

@@ -161,26 +161,26 @@ export class ABCCandidatosComponent implements OnInit, AfterViewInit  {
 
   updateConsulta(){
     this.paginator.pageIndex = 0
-    console.log("Rango")
-    console.log(this.textoInicio)  //Fri Jan 05 2024 00:00:00 GMT-0800
-    console.log(this.textoFin)     //Fri Jan 05 2024 00:00:00 GMT-0800
+    //console.log("Rango")
+    //console.log(this.textoInicio)  //Fri Jan 05 2024 00:00:00 GMT-0800
+    //console.log(this.textoFin)     //Fri Jan 05 2024 00:00:00 GMT-0800
     const fechaInicio=new Date(this.textoInicio)
     const fechaFin=new Date(this.textoFin)
-    console.log('.toDateString()')
-    console.log(fechaInicio.toDateString())
-    console.log('.toISOString()')
-    console.log(fechaInicio.toISOString())
-    console.log('.toLocaleDateString()')
-    console.log(fechaInicio.toLocaleDateString())
-    console.log('.toLocaleString()')
-    console.log(fechaInicio.toLocaleString())
-    console.log('.toUTCString()')
-    console.log(fechaInicio.toUTCString())
-    console.log(console.log(fechaInicio))
-    console.log(console.log(fechaFin))
+    //console.log('.toDateString()')
+    //console.log(fechaInicio.toDateString())
+    //console.log('.toISOString()')
+    //console.log(fechaInicio.toISOString())
+    //console.log('.toLocaleDateString()')
+    //console.log(fechaInicio.toLocaleDateString())
+    //console.log('.toLocaleString()')
+    //console.log(fechaInicio.toLocaleString())
+    //console.log('.toUTCString()')
+    //console.log(fechaInicio.toUTCString())
+    //console.log(console.log(fechaInicio))
+    //console.log(console.log(fechaFin))
     
     this.ngAfterViewInit()
-    console.log("Actualiza Consulta")
+    //console.log("Actualiza Consulta")
   }
 
   showError(error: string) {

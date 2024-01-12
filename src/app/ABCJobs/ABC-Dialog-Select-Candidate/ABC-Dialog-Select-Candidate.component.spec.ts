@@ -4,6 +4,16 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCDialogSelectCandidateComponent } from './ABC-Dialog-Select-Candidate.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 describe('ABCDialogSelectCandidateComponent', () => {
   let component: ABCDialogSelectCandidateComponent;
@@ -11,6 +21,7 @@ describe('ABCDialogSelectCandidateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [DatePipe, MatProgressSpinnerModule, MatFormFieldModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDialogModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ ABCDialogSelectCandidateComponent ]
     })
     .compileComponents();

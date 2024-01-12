@@ -4,6 +4,11 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCEntrevistasCrearComponent } from './ABC-Entrevistas-Crear.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 describe('ABCEntrevistasCrearComponent', () => {
   let component: ABCEntrevistasCrearComponent;
@@ -11,6 +16,7 @@ describe('ABCEntrevistasCrearComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [DatePipe, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
       declarations: [ ABCEntrevistasCrearComponent ]
     })
     .compileComponents();

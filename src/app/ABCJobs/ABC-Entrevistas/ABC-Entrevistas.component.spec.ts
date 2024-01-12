@@ -4,6 +4,16 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCEntrevistasComponent } from './ABC-Entrevistas.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatNativeDateModule } from '@angular/material/core';
 
 describe('ABCEntrevistasComponent', () => {
   let component: ABCEntrevistasComponent;
@@ -11,6 +21,7 @@ describe('ABCEntrevistasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [DatePipe, MatNativeDateModule, MatDatepickerModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, HttpClientTestingModule, MatFormFieldModule, RouterTestingModule, ToastrModule.forRoot(), ],
       declarations: [ ABCEntrevistasComponent ]
     })
     .compileComponents();

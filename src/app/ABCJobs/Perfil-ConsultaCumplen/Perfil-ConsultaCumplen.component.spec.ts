@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { PerfilConsultaCumplenComponent } from './Perfil-ConsultaCumplen.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 describe('PerfilConsultaCumplenComponent', () => {
   let component: PerfilConsultaCumplenComponent;
@@ -11,6 +15,7 @@ describe('PerfilConsultaCumplenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatTableModule, MatFormFieldModule, HttpClientTestingModule, ToastrModule.forRoot()],
       declarations: [ PerfilConsultaCumplenComponent ]
     })
     .compileComponents();

@@ -4,6 +4,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCEntrevistasVerResultadoComponent } from './ABC-Entrevistas-Ver-Resultado.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ABCEntrevistasVerResultadoComponent', () => {
   let component: ABCEntrevistasVerResultadoComponent;
@@ -11,6 +17,7 @@ describe('ABCEntrevistasVerResultadoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot() ],
       declarations: [ ABCEntrevistasVerResultadoComponent ]
     })
     .compileComponents();

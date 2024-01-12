@@ -30,8 +30,8 @@ describe('CandidateComponent', () => {
    fixture = TestBed.createComponent(CandidateComponent);
    component = fixture.componentInstance;
 
-   component.candidate=new CandidateDetail(1, 'Luis Eduardo', 'Padilla Caviedes',
-   'Mz 8', 'caviedes72@hotmail.com', '3054419334',
+   component.candidate=new CandidateDetail(1, 'Luis Eduardo', 'Padilla Caviedes', 
+   'Mz 8', 1000000, new Date(), 'caviedes72@hotmail.com', '3054419334',
    '', 1, 1, '', []); 
    component.candidate.lstHabils.push(new Habilidad(1, 1, 100, 'BAJO', 1, 'Python', 'Tecnica'))
    component.candidate.lstHabils.push(new Habilidad(2, 1, 100, 'BAJO', 2, 'Angular', 'Tecnica'))

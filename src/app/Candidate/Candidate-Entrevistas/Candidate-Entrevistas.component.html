@@ -12,16 +12,16 @@
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate.apellidos}}, {{candidate.nombres}}</H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate.email}}</mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate?.apellidos}}, {{candidate?.nombres}}</H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate?.email}}</mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate.documento }}</p>
-              <p class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate.fecha_nac }}</p>
-              <p class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate.ciudad }}</p>
-              <p class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate.direccion }}</p>
-              <p class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate.phone }}</p>
+              <p class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate?.documento }}</p>
+              <p class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate?.fecha_nac }}</p>
+              <p class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate?.ciudad }}</p>
+              <p class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate?.direccion }}</p>
+              <p class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate?.phone }}</p>
             </mat-card-content>
           </mat-card>  
         </div>

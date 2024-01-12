@@ -120,8 +120,8 @@ export class CandidateExamenesNuevoComponent implements OnInit, AfterViewInit {
     this.candidate=cand
     this.testForm.controls['id_cand'].setValue(this.candidate.id)
     this.listaHabils=new MatTableDataSource(this.candidate.lstHabils); //this.candidate.lstHabils; 
-    //this.listaHabils.sort = this.sort
-    //this.listaHabils.paginator = this.paginator
+    this.listaHabils.sort = this.sort
+    this.listaHabils.paginator = this.paginator
     })
   }
 

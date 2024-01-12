@@ -77,7 +77,7 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
   userId: number | undefined;
   id_cand: number | undefined;
   token: string = "";
-  candidate!: Candidate;
+  candidate: Candidate | undefined;
   entrevistas: any;
   listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
   columnNames: string[] = ['cuando', 'contacto', 'nom_empresa', 'nom_proyecto', 'nom_perfil', 'star'];
@@ -130,8 +130,8 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
     }
     this.entrevistas=resp.Entrevistas
     this.entrevistas=new MatTableDataSource(this.entrevistas); //this.candidate.lstHabils; 
-    //this.listaHabils.sort = this.sort
-    //this.listaHabils.paginator = this.paginator
+    this.entrevistas.sort = this.sort
+    this.entrevistas.paginator = this.paginator
     })
   }
 
@@ -139,10 +139,10 @@ export class CandidateEntrevistasComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.entrevistas.sort = this.sort
-    this.entrevistas.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
+    //this.dataSource.paginator = this.paginator;
+    //this.entrevistas.sort = this.sort
+    //this.entrevistas.paginator = this.paginator;
   }
 
   /** Announce the change in sort state for assistive technology. */

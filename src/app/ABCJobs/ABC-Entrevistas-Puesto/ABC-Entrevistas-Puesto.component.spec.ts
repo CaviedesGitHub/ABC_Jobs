@@ -4,6 +4,11 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ABCEntrevistasPuestoComponent } from './ABC-Entrevistas-Puesto.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('ABCEntrevistasPuestoComponent', () => {
   let component: ABCEntrevistasPuestoComponent;
@@ -11,6 +16,7 @@ describe('ABCEntrevistasPuestoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatIconModule, HttpClientTestingModule, MatCardModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ ABCEntrevistasPuestoComponent ]
     })
     .compileComponents();

@@ -4,6 +4,15 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { PerfilEmpComponent } from './Perfil-emp.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('PerfilEmpComponent', () => {
   let component: PerfilEmpComponent;
@@ -11,6 +20,7 @@ describe('PerfilEmpComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatFormFieldModule, MatIconModule, ToastrModule.forRoot(), MatTableModule, MatPaginatorModule, MatSortModule, RouterTestingModule, HttpClientModule, HttpClientTestingModule],
       declarations: [ PerfilEmpComponent ]
     })
     .compileComponents();

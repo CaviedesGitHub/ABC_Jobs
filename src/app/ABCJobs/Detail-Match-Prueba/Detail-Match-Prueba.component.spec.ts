@@ -4,6 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { DetailMatchPruebaComponent } from './Detail-Match-Prueba.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { DatePipe } from '@angular/common';
 
 describe('DetailMatchPruebaComponent', () => {
   let component: DetailMatchPruebaComponent;
@@ -11,6 +19,7 @@ describe('DetailMatchPruebaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [DatePipe, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ DetailMatchPruebaComponent ]
     })
     .compileComponents();

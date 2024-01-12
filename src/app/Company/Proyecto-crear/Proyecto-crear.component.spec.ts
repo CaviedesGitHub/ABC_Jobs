@@ -4,6 +4,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProyectoCrearComponent } from './Proyecto-crear.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DatePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('ProyectoCrearComponent', () => {
   let component: ProyectoCrearComponent;
@@ -11,6 +17,7 @@ describe('ProyectoCrearComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [DatePipe, MatFormFieldModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
       declarations: [ ProyectoCrearComponent ]
     })
     .compileComponents();
