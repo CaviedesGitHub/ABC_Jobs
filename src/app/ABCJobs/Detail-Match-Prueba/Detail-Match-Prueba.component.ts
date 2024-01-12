@@ -60,8 +60,8 @@ export class DetailMatchPruebaComponent implements OnInit {
   @Output() idEvent = new EventEmitter<number>();
 
   ngAfterViewInit() {
-    this.lstCandidatos2.paginator = this.paginator;
-    this.lstCandidatos2.sort = this.sort;
+    //this.lstCandidatos2.paginator = this.paginator;
+    //this.lstCandidatos2.sort = this.sort;
   }
 
   constructor(private toastr: ToastrService,

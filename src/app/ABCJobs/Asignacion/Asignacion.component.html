@@ -1,9 +1,9 @@
-<button
+<!-- <button
   type="button"
   class="btn btn-primary mx-3 mt-4"
   (click)="actualizaPerfil()">
   Save
-</button>
+</button>  -->
   
 
 <div class="container-fluid my-0" id="principal">
@@ -48,9 +48,8 @@
           </div>
         </div>
         <div class="card-body">
-          {{this.perfilId}}
           <div *ngIf="this.perfilProy">
-            <app-Detail-Match (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match>          
+            <app-Detail-Match-Prueba (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match-Prueba>          
           </div>
         </div>
         <div class="card-footer text-muted">

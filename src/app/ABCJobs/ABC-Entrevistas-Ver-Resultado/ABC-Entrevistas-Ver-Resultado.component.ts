@@ -4,6 +4,7 @@ import { ABCJobsService } from '../ABCJobs.service';
 import { CompanyService } from 'src/app/Company/Company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-ABC-Entrevistas-Ver-Resultado',
@@ -29,6 +30,7 @@ export class ABCEntrevistasVerResultadoComponent implements OnInit {
     private abcService: ABCJobsService,
     private companyService: CompanyService,
     private formBuilder: FormBuilder,
+    private _location: Location,
     private router: ActivatedRoute,
     private enrutador: Router,
     @Inject(LOCALE_ID) public locale: string,) { }
@@ -67,6 +69,8 @@ export class ABCEntrevistasVerResultadoComponent implements OnInit {
       console.log(this.entrevista)
       console.log("id_perfil")
       console.log(this.id_perfil)
+      this.revForm.controls['calificacion'].setValue(this.entrevista.calificacion)
+      this.revForm.controls['anotaciones'].setValue(this.entrevista.anotaciones)
       this.obtenerHabilidadesPerfil(this.id_perfil)
     },
     error => {
@@ -123,7 +127,8 @@ export class ABCEntrevistasVerResultadoComponent implements OnInit {
     //this.evForm.controls['month'].setValue(this.mes) 
     //this.evForm.controls['id_cand'].setValue(this.idCand)
     //this.evForm.controls['idPerfilProy'].setValue(this.perfilProyId)
-    this.enrutador.navigate(['/entrevistas/'+`${this.perfilProyId}`]) 
+    //this.enrutador.navigate(['/entrevistas/'+`${this.perfilProyId}`]) 
+    this._location.back()
  }
 
 

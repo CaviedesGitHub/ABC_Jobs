@@ -44,7 +44,7 @@ import { ABCDialogSelectCandidateComponent } from './ABCJobs/ABC-Dialog-Select-C
 import { ABCExamenesNuevoComponent } from './ABCJobs/ABC-Examenes-Nuevo/ABC-Examenes-Nuevo.component';
 
 const routes: Routes = [
-  { path: '', component: ABCDialogSelectCandidateComponent},
+  { path: '', component: LoginComponent},
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'auth', component: AuthComponent },

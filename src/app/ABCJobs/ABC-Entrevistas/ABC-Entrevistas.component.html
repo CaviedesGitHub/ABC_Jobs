@@ -131,16 +131,12 @@
                     </button>
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item>
-                        <mat-icon>open_in_new</mat-icon>
-                        <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Results</span> </a></span>
+                        <mat-icon>edit</mat-icon>
+                        <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Update Results</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
                         <span><a data-cy="linkDetailProject" routerLink="/verResultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
-                      </button>
-                      <button mat-menu-item>
-                        <mat-icon>edit</mat-icon>
-                        <span><a data-cy="linkEditProject" routerLink="/construccion" > <span i18n="menuUpdateViewCompany|Menu update proyecto en ver empresa">Update</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>delete</mat-icon>

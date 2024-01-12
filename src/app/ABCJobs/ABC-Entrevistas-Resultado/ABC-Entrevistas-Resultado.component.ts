@@ -53,7 +53,6 @@ export class ABCEntrevistasResultadoComponent implements OnInit {
     this.revForm = this.formBuilder.group({
       calificacion: [, Validators.required],
       anotaciones: [, Validators.required],
-      
     })
   }
 
@@ -69,6 +68,8 @@ export class ABCEntrevistasResultadoComponent implements OnInit {
       console.log(this.entrevista)
       console.log("id_perfil")
       console.log(this.id_perfil)
+      this.revForm.controls['calificacion'].setValue(this.entrevista.calificacion)
+      this.revForm.controls['anotaciones'].setValue(this.entrevista.anotaciones)
       this.obtenerHabilidadesPerfil(this.id_perfil)
     },
     error => {
@@ -112,7 +113,8 @@ export class ABCEntrevistasResultadoComponent implements OnInit {
        console.info("The interview was updated: ", resp)
        this.toastr.success("Confirmation", "Interview updated")
        this.revForm.reset();
-       this.enrutador.navigate(['/entrevistas/'+`${this.perfilProyId}`]) 
+       //this.enrutador.navigate(['/entrevistas/'+`${this.perfilProyId}`]) 
+       this._location.back()
     })
   }
 

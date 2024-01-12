@@ -1,4 +1,3 @@
-{{this.perfilProyId }}
 <div class="example-loading-shade" *ngIf="this.seleccionaCandidato">
 </div>
 <div id="selectCandidateAbsol" *ngIf="this.seleccionaCandidato">
@@ -38,7 +37,7 @@
               <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }}-{{this.perfilProy?.contacto_empresa}}</span></p>                
               <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
               <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
-              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }} - {{perfilProy?.id_perfil}}</span></p>
               <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
               <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
               <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
@@ -122,37 +121,7 @@
                       Candidate required
                     </div>
                   </div>                
-                  <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="cuando">DateyTime</label>
-                    <input
-                      novalidate
-                      id="cuando"
-                      class="form-control form-control-sm"
-                      formControlName="cuando"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
-                      placeholder="FechayHora"
-                      data-cy="pass1Signup"
-                      type="datetime-local"
-                      [min]=this.minStrDT
-                      [max]=this.maxStrDT
-                    />
-                    <div
-                      class="alert alert-danger alert-dismissible fade show"
-                      *ngIf="
-                        evForm.get('cuando')!.hasError('required') &&
-                        evForm.get('cuando')!.touched
-                      "
-                    >
-                      Datetime required
-                    </div>
-                    <div
-                      class="alert alert-danger alert-dismissible fade show"
-                      *ngIf="evForm.get('cuando')!.hasError('Invalid DateTime')
-                      ">
-                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">DateTime Invalid</span>  
-                    </div>
-                  </div>
-
+                  
                   <div class="form-group mx-sm-3 mb-2">
                     <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="fecha">Date</label>
                     <input

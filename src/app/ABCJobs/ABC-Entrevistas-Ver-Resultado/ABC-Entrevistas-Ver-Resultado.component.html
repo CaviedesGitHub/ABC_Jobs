@@ -46,13 +46,84 @@
         <div class="card-body">
           <div class="container mt-1">
             <h2 class="text-center">View Results</h2>
-            {{entrevista.calificacion}}
-            {{entrevista.anotaciones}}
             <div class="row align-items-left">
               <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
               </div>
               <div class="col-12 col-sm-10 col-md-10 col-lg-6 col-xl-6">               
-                
+                <form 
+                  [formGroup]="revForm"
+                  (ngSubmit)="!revForm.invalid && updateEntrevista(revForm.value, entrevista.id)"
+                >
+                <div class="form-group mx-sm-3 mb-2">
+                  <label i18n="lblCalifResultEV|Etiqueta del calificacion en ResultEV" class="fst-italic fw-bold" for="calificacion">Valuation</label>
+                  <input
+                    novalidate
+                    readonly
+                    id="calificacion"
+                    class="form-control form-control-sm"
+                    formControlName="calificacion"
+                    i18n-placeholder="holderCalifViewEV|placeholder del campo calificacion"
+                    placeholder="Valuation"
+                    data-cy="CalifViewEV" />
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                      revForm.get('calificacion')!.hasError('required') &&
+                      revForm.get('calificacion')!.touched
+                    "
+                  >
+                    Valuation required
+                  </div>
+                </div>
+            
+                <div class="form-group mx-sm-3 mb-2">
+                  <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="anotaciones">Annotations</label>
+                  <textarea 
+                    novalidate
+                    readonly
+                    id="anotaciones"
+                    class="form-control form-control-sm"
+                    formControlName="anotaciones"
+                    i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                    placeholder="Annotations"
+                    data-cy="pass1Signup"
+                    rows="10">
+                  </textarea>
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                      revForm.get('anotaciones')!.hasError('required') &&
+                      revForm.get('anotaciones')!.touched
+                    "
+                  >
+                    Annotations required
+                  </div>
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="revForm.get('anotaciones')!.hasError('maxlength')"
+                  >
+                    Annotations too long
+                  </div>
+                </div>
+                  <div class="container-fluid text-center">
+                    <button
+                      type="button"
+                      class="btn btn-danger mx-3 mt-4"
+                      (click)="cancelCreation()"
+                      data-cy="cancelEval"
+                    >
+                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Back</span>
+                    </button>           
+                    <button *ngIf="false"
+                      type="submit"
+                      class="btn btn-primary mx-3 mt-4"
+                      [disabled]="!revForm.valid"
+                      data-cy="createEval"
+                    >
+                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Save</span>
+                    </button>
+                  </div>
+                </form>
               </div>
               <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
               </div>

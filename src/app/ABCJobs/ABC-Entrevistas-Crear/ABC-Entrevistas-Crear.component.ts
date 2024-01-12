@@ -182,14 +182,14 @@ export class ABCEntrevistasCrearComponent implements OnInit {
       }
     }
 
+    //cuando: [, [Validators.required, validadoresEspeciales.validaFechaHora]],
     this.evForm = this.formBuilder.group({
       id_cand: [, Validators.required],
       candidato: ['NO ASIGNADO', Validators.required],
-      cuando: [, [Validators.required, validadoresEspeciales.validaFechaHora]],
       fecha: [, [Validators.required, validadoresEspeciales.validarFechas]],
       hora: [, [Validators.required, validadoresEspeciales.validaHora]],
       zona: [, Validators.required],
-      contacto: [this.perfilProy?.contacto_empresa, Validators.required],
+      contacto: ["", Validators.required],
       perfilProyId: [this.perfilProyId, Validators.required]
     })
 
@@ -208,13 +208,15 @@ export class ABCEntrevistasCrearComponent implements OnInit {
       console.log(this.perfilProy)
       console.log("idPerfil")
       //console.log(this.perfilProy.id_perfil)
-      //this.perfilId=this.perfilProy.id_perfil
+      this.perfilId=this.perfilProy.id_perfil
       //this.obtenerlistaEVProyectoPerfil(this.perfilProy.id)
-      //this.obtenerHabilidadesPerfil(this.perfilProy.id_perfil)
+      this.obtenerHabilidadesPerfil(this.perfilProy.id_perfil)
 
       console.log("PUNTO VISION")
       console.log(this.perfilProy)
       //console.log(this.perfilProy!.contacto_empresa)
+      this.evForm.controls['contacto'].setValue(this.perfilProy.contacto_empresa)
+      this.evForm.controls['perfilProyId'].setValue(this.perfilProy.id)
     },
     error => {
       this.error = true
