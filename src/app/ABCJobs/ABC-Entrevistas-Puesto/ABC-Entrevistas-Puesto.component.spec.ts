@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 describe('ABCEntrevistasPuestoComponent', () => {
   let component: ABCEntrevistasPuestoComponent;
@@ -16,7 +17,7 @@ describe('ABCEntrevistasPuestoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatIconModule, HttpClientTestingModule, MatCardModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [MatIconModule, MatTableModule, HttpClientTestingModule, MatCardModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ ABCEntrevistasPuestoComponent ]
     })
     .compileComponents();

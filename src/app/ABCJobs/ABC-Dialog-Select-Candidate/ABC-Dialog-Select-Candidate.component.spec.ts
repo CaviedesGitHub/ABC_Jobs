@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ABCDialogSelectCandidateComponent', () => {
   let component: ABCDialogSelectCandidateComponent;
@@ -21,7 +23,7 @@ describe('ABCDialogSelectCandidateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatProgressSpinnerModule, MatFormFieldModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDialogModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
+      imports: [BrowserAnimationsModule, DatePipe, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDialogModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ ABCDialogSelectCandidateComponent ]
     })
     .compileComponents();

@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { Location } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ListaCumplenPerfilComponent', () => {
   let component: ListaCumplenPerfilComponent;
@@ -18,8 +21,9 @@ describe('ListaCumplenPerfilComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
-      declarations: [ ListaCumplenPerfilComponent ]
+      imports: [BrowserAnimationsModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      declarations: [ ListaCumplenPerfilComponent ],
+      providers: [Location]
     })
     .compileComponents();
   }));

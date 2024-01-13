@@ -15,6 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CandidateEntrevistasComponent', () => {
   let component: CandidateEntrevistasComponent;
@@ -22,7 +24,7 @@ describe('CandidateEntrevistasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatFormFieldModule, MatIconModule, MatDialogModule, MatTableModule, MatPaginatorModule, MatSortModule,  MatCardModule, ToastrModule.forRoot(), RouterTestingModule, HttpClientModule, HttpClientTestingModule],
+      imports: [BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDialogModule, MatTableModule, MatPaginatorModule, MatSortModule,  MatCardModule, ToastrModule.forRoot(), RouterTestingModule, HttpClientModule, HttpClientTestingModule],
       declarations: [ CandidateEntrevistasComponent ]
     })
     .compileComponents();

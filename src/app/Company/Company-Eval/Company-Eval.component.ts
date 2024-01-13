@@ -59,11 +59,13 @@ export class CompanyEvalComponent implements OnInit {
   ngOnInit() {
     console.log(this.location.getState())
     this.estado=this.location.getState()
-    this.anno=Number((this.estado as LolState).anno)
-    this.mes=Number((this.estado as LolState).mes)
-    this.strmes=(this.estado as LolState).strmes
-    this.idCand=Number((this.estado as LolState).id_cand)
-
+    if (this.estado) {
+      this.anno=Number((this.estado as LolState).anno)
+      this.mes=Number((this.estado as LolState).mes)
+      this.strmes=(this.estado as LolState).strmes
+      this.idCand=Number((this.estado as LolState).id_cand)  
+    }
+    
     this.userId=Number(sessionStorage.getItem("idUser"))
     this.token=sessionStorage.getItem("token")!
     if (!this.userId || !this.token){

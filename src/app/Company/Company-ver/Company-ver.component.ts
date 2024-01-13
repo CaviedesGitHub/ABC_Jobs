@@ -21,7 +21,7 @@ export class CompanyVerComponent implements OnInit {
 
   userId: number | undefined;
   token: string = "";
-  company!: CompanyDetail;
+  company: CompanyDetail | undefined;
   lstProy: any;
   displayedColumns: string[] = ['id', 'nombre', 'fecha_inicio', 'descripcion', 'star'];
 
@@ -72,7 +72,7 @@ export class CompanyVerComponent implements OnInit {
   }
 
   agregarProyecto(){
-    this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
+    this.enrutador.navigate([`/agregarProyecto/${this.company!.id}/${this.userId}/${this.token}`])
   }
 
   volverAtras(){

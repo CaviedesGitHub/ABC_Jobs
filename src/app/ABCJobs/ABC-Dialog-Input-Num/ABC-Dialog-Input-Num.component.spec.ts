@@ -5,6 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { ABCDialogInputNumComponent } from './ABC-Dialog-Input-Num.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ABCDialogInputNumComponent', () => {
   let component: ABCDialogInputNumComponent;
@@ -12,7 +13,7 @@ describe('ABCDialogInputNumComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule],
+      imports: [MatDialogModule, ReactiveFormsModule, ],
       declarations: [ ABCDialogInputNumComponent ]
     })
     .compileComponents();

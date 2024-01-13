@@ -19,14 +19,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator } from '@angular/material/paginator';
 
+import { NgxPermissionsModule} from 'ngx-permissions';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions'
+
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule, HttpClientModule, MatIconModule, MatButtonToggleModule,
       MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, 
       MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule,
-      MatSelectModule, MatCardModule, BrowserAnimationsModule 
+      MatSelectModule, MatCardModule, BrowserAnimationsModule, NgxPermissionsModule.forRoot(),
      ],
-    declarations: [AppComponent, CandidateComponent, CandidateViewComponent, MatPaginator]
+    declarations: [AppComponent, CandidateComponent, CandidateViewComponent, MatPaginator],
+    providers: [NgxRolesService, NgxPermissionsService]
   }));
 
   it('should create the app', () => {

@@ -12,17 +12,17 @@
             <mat-card class="example-card" >          
               <mat-card-header>            
                 <mat-card-title-group>
-                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Company: </span><span data-cy="nameCompanyView">{{ company.nombre }}</span></H1></mat-card-title>
-                  <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">Type: </span><span data-cy="typeCompanyView">{{ company.tipo }}</span></mat-card-subtitle>                            
+                  <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Company: </span><span data-cy="nameCompanyView">{{ company?.nombre }}</span></H1></mat-card-title>
+                  <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">Type: </span><span data-cy="typeCompanyView">{{ company?.tipo }}</span></mat-card-subtitle>                            
                 </mat-card-title-group>
               </mat-card-header>
               <mat-card-content class="cardContent">
-                <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Contact: </span><span data-cy="contactCompanyView">{{ company.contacto }}</span></p>                
-                <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">E-Mail: </span><span data-cy="emailCompanyView">{{ company.correo }}</span></p>
-                <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Phone: </span><span data-cy="phoneCompanyView">{{ company.celular }}</span></p>
-                <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Country: </span><span data-cy="countryCompanyView">{{ company.pais }}</span></p>
-                <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">City: </span><span data-cy="cityCompanyView">{{ company.ciudad }}</span></p>
-                <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Address: </span><span data-cy="addressCompanyView">{{ company.direccion }}</span></p>
+                <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Contact: </span><span data-cy="contactCompanyView">{{ company?.contacto }}</span></p>                
+                <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">E-Mail: </span><span data-cy="emailCompanyView">{{ company?.correo }}</span></p>
+                <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Phone: </span><span data-cy="phoneCompanyView">{{ company?.celular }}</span></p>
+                <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Country: </span><span data-cy="countryCompanyView">{{ company?.pais }}</span></p>
+                <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">City: </span><span data-cy="cityCompanyView">{{ company?.ciudad }}</span></p>
+                <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Address: </span><span data-cy="addressCompanyView">{{ company?.direccion }}</span></p>
                 
               </mat-card-content>
             </mat-card>  

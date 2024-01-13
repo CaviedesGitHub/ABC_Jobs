@@ -12,6 +12,7 @@ import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-ABC-Candidatos',
   templateUrl: './ABC-Candidatos.component.html',

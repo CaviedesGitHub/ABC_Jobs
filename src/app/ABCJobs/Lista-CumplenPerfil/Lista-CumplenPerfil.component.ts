@@ -84,10 +84,12 @@ export class ListaCumplenPerfilComponent implements OnInit {
   ngOnInit() {
     console.log(this.location.getState())
     this.estado=this.location.getState()
-    this.clsListaHabils=new ClsListaHabils(this.estado['lstHabils'])
-    this.lstHT=(this.estado as LolState).lstHT
-    this.lstHB=(this.estado as LolState).lstHB
-    this.lstHP=(this.estado as LolState).lstHP
+    if (this.estado){
+      this.clsListaHabils=new ClsListaHabils(this.estado['lstHabils'])
+      this.lstHT=(this.estado as LolState).lstHT
+      this.lstHB=(this.estado as LolState).lstHB
+      this.lstHP=(this.estado as LolState).lstHP
+    }
     for (let i=0; i<this.lstHT?.length; i=i+1){
       if (i==this.lstHT?.length-1){
         this.cadHT=this.cadHT.concat(this.lstHT[i])  

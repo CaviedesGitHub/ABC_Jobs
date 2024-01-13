@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DetailMatchComponent', () => {
   let component: DetailMatchComponent;
@@ -18,7 +20,7 @@ describe('DetailMatchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, MatTableModule, MatInputModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ DetailMatchComponent ]
     })
     .compileComponents();

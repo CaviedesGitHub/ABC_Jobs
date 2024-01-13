@@ -20,7 +20,7 @@ export class ProyectoVerComponent implements OnInit {
   projectAny!: ProjectDetail;
   error: boolean = false;
   p!: Project;
-  project!: any;
+  project: any | undefined;
   lstProfiles: any;
   displayedColumns: string[] = ['id', 'nombre', 'candidato', 'lstHT', 'lstHB', 'lstHP', 'star'];  //, 'lstHB', 'lstHP',  'Skills Tech', 'Skills Soft', 'Personalidad', 
 

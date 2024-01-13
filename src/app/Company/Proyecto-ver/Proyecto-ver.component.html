@@ -12,13 +12,13 @@
           <mat-card class="example-card" >           
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewProject|Titulo ver proyecto" class="campo">Project: </span><span data-cy="titleProject">{{ project.nombre }}</span></H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewProject|Subtitulo ver proyecto" class="campo">Company: </span><span data-cy="companyProject">{{ project.empresa }}</span></mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewProject|Titulo ver proyecto" class="campo">Project: </span><span data-cy="titleProject">{{ project?.nombre }}</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloViewProject|Subtitulo ver proyecto" class="campo">Company: </span><span data-cy="companyProject">{{ project?.empresa }}</span></mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoFechaIniViewProject|campo fecha inicial ver proyecto" class="campo">Initial Date: </span><span data-cy="fechaIniProject">{{ project.fecha_inicio}}</span></p>
-              <p class="linea"><span i18n="campoDescViewProject|campo descripcion ver proyecto" class="campo">Description: </span><span data-cy="descripProject">{{ project.descripcion }}</span></p>
+              <p class="linea"><span i18n="campoFechaIniViewProject|campo fecha inicial ver proyecto" class="campo">Initial Date: </span><span data-cy="fechaIniProject">{{ project?.fecha_inicio}}</span></p>
+              <p class="linea"><span i18n="campoDescViewProject|campo descripcion ver proyecto" class="campo">Description: </span><span data-cy="descripProject">{{ project?.descripcion }}</span></p>
             </mat-card-content>
           </mat-card>  
         </div>

@@ -139,9 +139,9 @@ export class PerfilAgregarComponent implements OnInit {
       lstHabils: ["", [Validators.required]]
     })
     this.getSkills()
-    this.ctrlHT.onclick = this.asignaHabils;
-    this.ctrlHB.onclick = this.asignaHabils;
-    this.ctrlHP.onclick = this.asignaHabils;
+    //this.ctrlHT.onclick = this.asignaHabils;
+    //this.ctrlHB.onclick = this.asignaHabils;
+    //this.ctrlHP.onclick = this.asignaHabils;
   }
   
   showError(error: string) {

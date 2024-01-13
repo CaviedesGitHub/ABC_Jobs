@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AsignaPuestoComponent', () => {
   let component: AsignaPuestoComponent;
@@ -20,7 +22,7 @@ describe('AsignaPuestoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, DatePipe, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ AsignaPuestoComponent ]
     })
     .compileComponents();

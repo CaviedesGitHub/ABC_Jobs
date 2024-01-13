@@ -14,6 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ABCEntrevistasComponent', () => {
   let component: ABCEntrevistasComponent;
@@ -21,7 +25,7 @@ describe('ABCEntrevistasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatNativeDateModule, MatDatepickerModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, HttpClientTestingModule, MatFormFieldModule, RouterTestingModule, ToastrModule.forRoot(), ],
+      imports: [BrowserAnimationsModule, DatePipe, MatInputModule, MatProgressSpinnerModule, FormsModule, ReactiveFormsModule, MatNativeDateModule, MatDatepickerModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, HttpClientTestingModule, MatFormFieldModule, RouterTestingModule, ToastrModule.forRoot(), ],
       declarations: [ ABCEntrevistasComponent ]
     })
     .compileComponents();

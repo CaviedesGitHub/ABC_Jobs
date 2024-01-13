@@ -8,14 +8,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
+import { NgxPermissionsModule} from 'ngx-permissions';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions'
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule],
-      declarations: [ SignUpComponent ]
+      imports: [NgxPermissionsModule.forRoot(), ReactiveFormsModule, ToastrModule.forRoot(), HttpClientTestingModule, HttpClientModule],
+      declarations: [ SignUpComponent ],
+      providers: []
     })
     .compileComponents();
   }));

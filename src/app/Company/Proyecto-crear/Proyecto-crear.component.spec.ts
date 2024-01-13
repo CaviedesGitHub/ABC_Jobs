@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProyectoCrearComponent', () => {
   let component: ProyectoCrearComponent;
@@ -17,8 +18,9 @@ describe('ProyectoCrearComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatFormFieldModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
-      declarations: [ ProyectoCrearComponent ]
+      imports: [ RouterTestingModule,  DatePipe, MatFormFieldModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
+      declarations: [ ProyectoCrearComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   }));

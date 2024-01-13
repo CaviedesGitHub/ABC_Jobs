@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PruebaSelection2TableComponent', () => {
   let component: PruebaSelection2TableComponent;
@@ -20,7 +22,7 @@ describe('PruebaSelection2TableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatSelectModule, HttpClientTestingModule, RouterTestingModule, MatTableModule, MatSortModule,
+      imports: [BrowserAnimationsModule, MatSelectModule, FormsModule, ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule, MatTableModule, MatSortModule,
         MatCardModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
       declarations: [ PruebaSelection2TableComponent ]
     })

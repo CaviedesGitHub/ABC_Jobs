@@ -49,7 +49,7 @@ export class AsignacionComponent implements OnInit {
   ngOnInit() {
     console.log(this.location.getState())
     this.estado=this.location.getState()
-    this.prueba1=(this.estado as LolState).prueba1
+    //this.prueba1=(this.estado as LolState).prueba1
 
     this.userId=Number(sessionStorage.getItem("idUser"))
     this.token=sessionStorage.getItem("token")!

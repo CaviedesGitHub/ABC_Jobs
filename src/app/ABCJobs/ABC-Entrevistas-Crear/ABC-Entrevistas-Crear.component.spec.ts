@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatCardModule } from '@angular/material/card';
 
 describe('ABCEntrevistasCrearComponent', () => {
   let component: ABCEntrevistasCrearComponent;
@@ -16,8 +18,9 @@ describe('ABCEntrevistasCrearComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
-      declarations: [ ABCEntrevistasCrearComponent ]
+      imports: [DatePipe, MatCardModule, RouterTestingModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
+      declarations: [ ABCEntrevistasCrearComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   }));

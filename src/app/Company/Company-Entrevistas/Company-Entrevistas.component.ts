@@ -31,7 +31,7 @@ export class CompanyEntrevistasComponent implements OnInit, AfterViewInit {
   userId: number | undefined;
   companyId: number | undefined;
 
-  company!: Company;
+  company: Company | undefined;
 
   displayedColumns: string[] = ['num', 'candidato', 'cuando', 'contacto', 'nom_proyecto', 'nom_perfil', 'star'];
   exampleDatabase!: ExampleHttpDatabase | null;

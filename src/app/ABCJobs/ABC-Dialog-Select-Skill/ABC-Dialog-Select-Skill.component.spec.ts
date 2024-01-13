@@ -7,19 +7,31 @@ import { ABCDialogSelectSkillComponent } from './ABC-Dialog-Select-Skill.compone
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ABCDialogSelectSkillComponent', () => {
   let component: ABCDialogSelectSkillComponent;
   let fixture: ComponentFixture<ABCDialogSelectSkillComponent>;
-
+  const mockDialogRef = {
+    close: jasmine.createSpy('close')
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MAT_DIALOG_DATA, MatDialogModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
-      declarations: [ ABCDialogSelectSkillComponent ]
+      imports: [BrowserAnimationsModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      declarations: [ ABCDialogSelectSkillComponent ],
+      providers: [{ provide: MatDialogRef, useValue: mockDialogRef },
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {
+            title: 'myTitle',
+          }
+        }]
     })
     .compileComponents();
   }));

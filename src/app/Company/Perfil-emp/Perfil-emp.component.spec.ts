@@ -13,6 +13,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PerfilEmpComponent', () => {
   let component: PerfilEmpComponent;
@@ -20,7 +22,7 @@ describe('PerfilEmpComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatFormFieldModule, MatIconModule, ToastrModule.forRoot(), MatTableModule, MatPaginatorModule, MatSortModule, RouterTestingModule, HttpClientModule, HttpClientTestingModule],
+      imports: [BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, ToastrModule.forRoot(), MatTableModule, MatPaginatorModule, MatSortModule, RouterTestingModule, HttpClientModule, HttpClientTestingModule],
       declarations: [ PerfilEmpComponent ]
     })
     .compileComponents();

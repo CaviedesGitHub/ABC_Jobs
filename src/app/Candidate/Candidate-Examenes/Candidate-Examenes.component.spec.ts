@@ -13,6 +13,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CandidateExamenesComponent', () => {
   let component: CandidateExamenesComponent;
@@ -20,7 +24,7 @@ describe('CandidateExamenesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule, MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule,
+      imports: [BrowserAnimationsModule, MatIconModule, MatInputModule, MatFormFieldModule, MatDialogModule, MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule,
         ToastrModule.forRoot(), RouterTestingModule, HttpClientModule, HttpClientTestingModule],
       declarations: [ CandidateExamenesComponent ]
     })

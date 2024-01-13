@@ -12,6 +12,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DetailMatchPruebaComponent', () => {
   let component: DetailMatchPruebaComponent;
@@ -19,7 +21,7 @@ describe('DetailMatchPruebaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [DatePipe, BrowserAnimationsModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ DetailMatchPruebaComponent ]
     })
     .compileComponents();

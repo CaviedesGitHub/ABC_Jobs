@@ -14,6 +14,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ABCExamenesComponent', () => {
   let component: ABCExamenesComponent;
@@ -21,7 +24,7 @@ describe('ABCExamenesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatProgressSpinnerModule, MatFormFieldModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, DatePipe, MatIconModule, MatInputModule, MatProgressSpinnerModule, MatFormFieldModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ ABCExamenesComponent ]
     })
     .compileComponents();

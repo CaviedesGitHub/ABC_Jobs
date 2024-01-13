@@ -13,6 +13,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ABCCandidatosComponent', () => {
   let component: ABCCandidatosComponent;
@@ -20,7 +24,7 @@ describe('ABCCandidatosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatDatepickerModule, MatNativeDateModule, MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, MatProgressSpinnerModule, MatInputModule, FormsModule, MatDatepickerModule, MatNativeDateModule, MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(),],
       declarations: [ ABCCandidatosComponent ]
     })
     .compileComponents();

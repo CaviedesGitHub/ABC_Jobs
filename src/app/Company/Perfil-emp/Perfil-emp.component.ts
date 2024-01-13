@@ -33,8 +33,8 @@ export class PerfilEmpComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort | null = null;
 
   ngAfterViewInit() {
-    this.lstCandidatos2.paginator = this.paginator;
-    this.lstCandidatos2.sort = this.sort;
+    //this.lstCandidatos2.paginator = this.paginator;
+    //this.lstCandidatos2.sort = this.sort;
   }
 
   constructor(private toastr: ToastrService,

@@ -13,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PerfilAgregarComponent', () => {
   let component: PerfilAgregarComponent;
@@ -20,7 +23,7 @@ describe('PerfilAgregarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatFormFieldModule, MatTableModule, MatPaginatorModule, MatSortModule, RouterTestingModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
+      imports: [BrowserAnimationsModule, MatCheckboxModule, MatInputModule,  MatFormFieldModule, MatTableModule, MatPaginatorModule, MatSortModule, RouterTestingModule, ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
       declarations: [ PerfilAgregarComponent ]
     })
     .compileComponents();

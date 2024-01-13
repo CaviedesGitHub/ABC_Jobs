@@ -14,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CandidateViewComponent', () => {
   let component: CandidateViewComponent;
@@ -21,8 +23,8 @@ describe('CandidateViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule, MatTableModule, MatSortModule,
-        MatCardModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, HttpClientTestingModule, RouterTestingModule, MatIconModule, MatTableModule, MatSortModule,
+        MatCardModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
       declarations: [ CandidateViewComponent ]
     })
     .compileComponents();

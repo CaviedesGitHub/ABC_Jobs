@@ -11,6 +11,11 @@ import { DatePipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CompanyJobsComponent', () => {
   let component: CompanyJobsComponent;
@@ -18,8 +23,9 @@ describe('CompanyJobsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DatePipe, MatTableModule, MatPaginatorModule, MatSortModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
-      declarations: [ CompanyJobsComponent ]
+      imports: [BrowserAnimationsModule, DatePipe, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, RouterTestingModule, MatTableModule, MatPaginatorModule, MatSortModule, ToastrModule.forRoot(), HttpClientModule, HttpClientTestingModule],
+      declarations: [ CompanyJobsComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   }));

@@ -17,7 +17,7 @@ interface LolState {
 export class CompanyEvalListComponent implements OnInit {
   estado: any;
   resp: any;
-  perfilProy: any;
+  perfilProy: any | undefined;
   perfilId: number = 1;
   token: string = "";
   userId: number = 0;
@@ -53,7 +53,7 @@ export class CompanyEvalListComponent implements OnInit {
   ngOnInit() {
     console.log(this.location.getState())
     this.estado=this.location.getState()
-    this.prueba1=(this.estado as LolState).prueba1
+    //this.prueba1=(this.estado as LolState).prueba1
 
     this.userId=Number(sessionStorage.getItem("idUser"))
     this.token=sessionStorage.getItem("token")!

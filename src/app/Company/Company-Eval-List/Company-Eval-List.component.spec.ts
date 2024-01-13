@@ -10,6 +10,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 describe('CompanyEvalListComponent', () => {
   let component: CompanyEvalListComponent;
@@ -17,7 +18,7 @@ describe('CompanyEvalListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatIconModule, MatCardModule, ToastrModule.forRoot(), RouterTestingModule, HttpClientModule, HttpClientTestingModule],
+      imports: [MatIconModule, MatTableModule,  MatCardModule, ToastrModule.forRoot(), RouterTestingModule, HttpClientModule, HttpClientTestingModule],
       declarations: [ CompanyEvalListComponent ]
     })
     .compileComponents();

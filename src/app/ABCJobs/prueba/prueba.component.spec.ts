@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PruebaComponent', () => {
   let component: PruebaComponent;
@@ -20,8 +22,8 @@ describe('PruebaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatProgressSpinnerModule, HttpClientTestingModule, RouterTestingModule, MatTableModule, MatSortModule,
-        MatCardModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
+      imports: [BrowserAnimationsModule, MatProgressSpinnerModule, HttpClientTestingModule, RouterTestingModule, MatTableModule, MatSortModule,
+        MatCardModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, ToastrModule.forRoot(),],
       declarations: [ PruebaComponent ]
     })
     .compileComponents();
