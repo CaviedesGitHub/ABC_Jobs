@@ -6,6 +6,8 @@ import { DebugElement } from '@angular/core';
 import { PruebaExpansionTableComponent } from './Prueba-Expansion-Table.component';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PruebaExpansionTableComponent', () => {
   let component: PruebaExpansionTableComponent;
@@ -13,7 +15,7 @@ describe('PruebaExpansionTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatTableModule, CommonModule],
+      imports: [BrowserAnimationsModule, MatIconModule, MatTableModule, CommonModule],
       declarations: [ PruebaExpansionTableComponent ]
     })
     .compileComponents();

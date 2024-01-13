@@ -21,6 +21,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { NgxPermissionsModule} from 'ngx-permissions';
 import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions'
+import { LoginComponent } from './Auth/Login/Login.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -29,7 +30,7 @@ describe('AppComponent', () => {
       MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule,
       MatSelectModule, MatCardModule, BrowserAnimationsModule, NgxPermissionsModule.forRoot(),
      ],
-    declarations: [AppComponent, CandidateComponent, CandidateViewComponent, MatPaginator],
+    declarations: [AppComponent, LoginComponent, CandidateComponent, CandidateViewComponent, MatPaginator],
     providers: [NgxRolesService, NgxPermissionsService]
   }));
 

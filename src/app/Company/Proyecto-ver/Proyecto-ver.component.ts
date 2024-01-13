@@ -40,7 +40,7 @@ export class ProyectoVerComponent implements OnInit {
     }
 
     viewDetailProject(proyId: number){
-      this.p=new Project(proyId, 1, "Mi Empresa", "String");
+      this.p=new Project(proyId, 1, "Mi Empresa", new Date(), "String");
       this.companyService.viewDetailProject(this.p).subscribe(proj=>{
         console.info("The Project was created: ", proj)
         //this.toastr.success("Confirmation", `/${proj.nombre}`)
