@@ -42,6 +42,7 @@ import { ABCExamenesComponent } from './ABCJobs/ABC-Examenes/ABC-Examenes.compon
 import { ABCDialogInputNumComponent } from './ABCJobs/ABC-Dialog-Input-Num/ABC-Dialog-Input-Num.component';
 import { ABCDialogSelectCandidateComponent } from './ABCJobs/ABC-Dialog-Select-Candidate/ABC-Dialog-Select-Candidate.component';
 import { ABCExamenesNuevoComponent } from './ABCJobs/ABC-Examenes-Nuevo/ABC-Examenes-Nuevo.component';
+import { CandidateProfileCrearComponent } from './Candidate/Candidate-Profile-Crear/Candidate-Profile-Crear.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -107,6 +108,7 @@ const routes: Routes = [
   { path: 'candidatosExamenes', component: CandidateExamenesComponent },
   { path: 'candidatosExamenesNuevo', component: CandidateExamenesNuevoComponent },
   { path: 'examenNuevo', component: ABCExamenesNuevoComponent },
+  { path: 'agregarPerfilCandidato', component: CandidateProfileCrearComponent },
 ];
 
 @NgModule({

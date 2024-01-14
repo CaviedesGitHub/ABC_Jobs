@@ -1,0 +1,303 @@
+<p>
+  Candidate-Profile-Crear works!
+</p>
+<div class="container-fluid my-2" id="principal">
+  <div class="row align-items-center">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-2 col-xl-2">
+    </div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <div class="card bg-light">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-header text-center ">
+          <h1 i18n="TituloAddprofile|Titulo principal de la pagina" data-cy="titleProfile" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Profile</h1>
+          <h5 i18n="IndicacionAddProfile|Enunciado guia para el usuario" data-cy="descripProfile" class="card-title text-center mb-0 pb-0">Enter the name of the profile and skills required</h5>
+        </div>
+        <div class="card-body">
+          <div class="container mt-2 pt-0">
+            <form
+              [formGroup]="perfilForm"
+              (ngSubmit)="!perfilForm.invalid && createPerfil(perfilForm.value)"
+            >
+              <!--Nombre-->
+              <div class="form-group mx-sm-3 mb-2">
+                <label i18n="lblNameAddProfile|Etiqueta del campo nombre" class="fst-italic fw-bold" for="nombre">Name</label>
+                <input
+                  novalidate
+                  id="nombre"
+                  class="form-control form-control-sm"
+                  formControlName="nombre"
+                  i18n-placeholder="holderNameAddprofile|placeholder del campo nombre"
+                  placeholder="Rol's name"
+                  data-cy="nameProfile"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    perfilForm.get('nombre')!.hasError('required') &&
+                    perfilForm.get('nombre')!.touched
+                  "
+                >
+                  <span i18n="msgErrorReqNameAddProfile|Mensaje de error nombre requerido">Name required</span>
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="perfilForm.get('nombre')!.hasError('minlength')"
+                >
+                  <span i18n="msgErrorShortNameAddProfile|Mensaje de error nombre muy corto">Name too short</span>
+                </div>
+              </div>
+              <mat-form-field>
+                <mat-label><span i18n="msgFilterAddProfile|Etiqueta de filtro de habilidades">Filter</span></mat-label>
+                <input data-cy="filterSkills" matInput (keyup)="applyFilter($event)" 
+                 i18n-placeholder="msgPlaceFilterAddProfile|PlaceHolder para el fitro de adicionar Perfil" placeholder="Ex. ium" #input>
+              </mat-form-field>
+              <div class="container table-container mt-2" *ngIf="true">
+                <table data-cy="lstSkills" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8">
+    
+                  <!-- Checkbox Column -->
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    data-cy="checkAllSkill"
+                                    [aria-label]="checkboxLabel()">
+                      </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null; actSel();"
+                                    [checked]="selection.isSelected(row)"
+                                    data-cy="checkSkill"
+                                    [aria-label]="checkboxLabel(row)">
+                      </mat-checkbox>
+                    </td>
+                  </ng-container>
+                
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderNumAddProfile|Etiqueta encabezado numero" >No. </span></th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderNameAddProfile|Etiqueta encabezado nombre" >Name </span></th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                  </ng-container>
+                
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="tipo">
+                    <th mat-header-cell *matHeaderCellDef> <span i18n="lblHeaderTypeAddProfile|Etiqueta encabezado tipo" >Type</span> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                      (click)="selection.toggle(row)">
+                  </tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptyAddProfile|Mensaje cuando no hay elementos que concuerden con el filtro" >No data matching the filter </span>" {{input.value}}"</td>
+                  </tr>
+                </table>
+               </div>
+
+              <div class="container-fluid text-center">
+                <button
+                  type="button"
+                  class="btn btn-danger mx-3 mt-4"
+                  (click)="cancelCreation()"
+                  data-cy="cancelProfile"
+                >
+                  <span i18n="msgBotonCancelAddProfile|Mensaje boton cancelar Adicionar Perfil">Cancel</span>
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary mx-3 mt-4"
+                  [disabled]="!perfilForm.valid"
+                  data-cy="createProfile"
+                >
+                  <span i18n="msgBotonCreateAddProfile|Mensaje boton Adicionar Perfil">Create</span>
+                </button> 
+              </div>
+            </form>
+
+          
+           </div>
+        </div>
+        <div class="card-footer text-muted">
+         </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-2 col-xl-2">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <p>
+  Perfl-agregar works!
+</p>
+<p>this.proyId: {{this.proyId}}</p>
+<p>this.token: {{this.token}}</p>  
+
+
+<p></p><p></p><p></p>
+            <form name="formHabilidades">
+              <div style="width: 25%; display:inline-block;">
+                <p><label for="lstHabTec2">habilidades Tecnicas</label></p>
+                <select [(ngModel)]="selectedHT" multiple name="lstHabTec2" id="lstHabTec2">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHT">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHT}}</p>
+              </div>
+          
+              <div style="width: 75%; display:inline-block;">
+                <p><label for="lstHabBlan2">habilidades Blandas</label></p>
+                <select [(ngModel)]="selectedHB" multiple name="lstHabBlan2" id="lstHabBlan2">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHB">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHB}}</p>
+              </div>
+              
+              <div style="width: 30%; display:inline-block;">
+                <p><label for="lstHabPers2">habilidades Personales</label></p>
+                <select [(ngModel)]="selectedHP"  multiple name="lstHabPers2" id="lstHabPers2">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHP">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHP}}</p>
+              </div>
+            </form>
+
+
+              lstHabils
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="lstHabils">Skill</label>
+                <input
+                  novalidate
+                  id="lstHabils"
+                  class="form-control form-control-sm"
+                  formControlName="lstHabils"
+                  placeholder="Skill's List"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    perfilForm.get('lstHabils')!.hasError('required') &&
+                    perfilForm.get('lstHabils')!.touched
+                  "
+                >
+                  Skills required
+                </div>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="perfilForm.get('lstHabils')!.hasError('minlength')"
+                >
+                  Skill's List too short
+                </div>
+              </div>
+          
+            <p></p><p></p><p></p>
+            <form name="formHabilidades">
+              <div style="width: 25%; display:inline-block;">
+                <p><label for="lstHabTec">habilidades Tecnicas</label></p>
+                <select [(ngModel)]="selectedHT" multiple name="lstHabTec" id="lstHabTec">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHT">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHT}}</p>
+              </div>
+          
+              <div style="width: 75%; display:inline-block;">
+                <p><label for="lstHabBlan">habilidades Blandas</label></p>
+                <select [(ngModel)]="selectedHB" multiple name="lstHabBlan" id="lstHabBlan">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHB">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHB}}</p>
+              </div>
+              
+              <div style="width: 30%; display:inline-block;">
+                <p><label for="lstHabPers">habilidades Personales</label></p>
+                <select [(ngModel)]="selectedHP"  multiple name="lstHabPers" id="lstHabPers">
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHP">{{ ht.nombre }}</option>
+                </select>
+                <p>You have selected {{selectedHP}}</p>
+              </div>
+            </form>
+
+
+
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="lstHabTec">Tec Skill</label>
+                <select 
+                   novalidate
+                   [(ngModel)]="selectedHT" multiple 
+                   name="lstHabTec" 
+                   id="lstHabTec"
+                   class="form-control form-control-sm"
+                   formControlName="lstHabTec"
+                >
+                  <option value={{ht.id}} *ngFor="let ht of this.lstHT">{{ ht.nombre }}</option>
+                </select>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    perfilForm.get('lstHabTec')!.hasError('required') &&
+                    perfilForm.get('lstHabTec')!.touched
+                  "
+                >
+                  Skills required
+                </div>
+              </div>          
+
+
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="lstHabBlan">Soft Skill</label>
+                <select 
+                   novalidate
+                   [(ngModel)]="selectedHB" multiple 
+                   name="lstHabBlan" 
+                   id="lstHabBlan"
+                   class="form-control form-control-sm"
+                   formControlName="lstHabBlan"
+                >
+                <option value={{ht.id}} *ngFor="let ht of this.lstHB">{{ ht.nombre }}</option>
+                </select>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    perfilForm.get('lstHabBlan')!.hasError('required') &&
+                    perfilForm.get('lstHabBlan')!.touched
+                  "
+                >
+                  Skills required
+                </div>
+              </div>               
+
+
+              <div class="form-group mx-sm-3 mb-2">
+                <label class="fst-italic fw-bold" for="lstHabPers">Soft Skill</label>
+                <select 
+                   novalidate
+                   [(ngModel)]="selectedHP" multiple 
+                   name="lstHabPers" 
+                   id="lstHabPers"
+                   class="form-control form-control-sm"
+                   formControlName="lstHabPers"
+                >
+                <option value={{ht.id}} *ngFor="let ht of this.lstHP">{{ ht.nombre }}</option>
+                </select>
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                    perfilForm.get('lstHabPers')!.hasError('required') &&
+                    perfilForm.get('lstHabPers')!.touched
+                  "
+                >
+                  Skills required
+                </div>
+              </div>
+
+
+
+-->

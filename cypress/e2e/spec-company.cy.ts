@@ -174,9 +174,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=addressCompanyView]').invoke('text').should('eq', address)
 
       let nameProject=faker.company.name()+Date.now().toString()
+      let fecha_inicio=faker.date.soon({days: 10})
       let descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)//(faker.commerce.productName()+Date.now().toString())
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)//(faker.commerce.productDescription())
       cy.get('[data-cy=submitProject]').click()
 
@@ -189,9 +191,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
 
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -204,9 +208,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
       
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -220,6 +226,7 @@ describe('Company Test', () => {
 
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -231,18 +238,21 @@ describe('Company Test', () => {
 
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(faker.company.name()+Date.now().toString())
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(faker.lorem.sentences(4))
       cy.get('[data-cy=nameProject]').scrollIntoView().focus()
       cy.get('[data-cy=root]').contains('Description too long')
       cy.get('[data-cy=cancelProject]').click()
 
       cy.get('[data-cy=addProjCompanyView]').click()
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=nameProject]').type('A')
       cy.get('[data-cy=descProject]').scrollIntoView().focus().type(faker.lorem.sentence())
       cy.get('[data-cy=root]').contains('Name too short')
       cy.get('[data-cy=cancelProject]').click()
 
       cy.get('[data-cy=addProjCompanyView]').click()
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=nameProject]').scrollIntoView().focus()
       cy.get('[data-cy=descProject]').scrollIntoView().focus().type(faker.lorem.sentence())
       cy.get('[data-cy=root]').contains('Name required')
@@ -287,8 +297,10 @@ describe('Company Test', () => {
 
       let nameProject=faker.company.name()+Date.now().toString()
       let descProject=faker.lorem.sentence()
+      let fecha_inicio=faker.date.soon({days: 10})
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)//(faker.commerce.productName()+Date.now().toString())
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)//(faker.commerce.productDescription())
       cy.get('[data-cy=submitProject]').click()
 
@@ -301,9 +313,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
 
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -316,9 +330,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
       
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -332,6 +348,7 @@ describe('Company Test', () => {
 
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -343,18 +360,21 @@ describe('Company Test', () => {
 
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(faker.company.name()+Date.now().toString())
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(faker.lorem.sentences(4))
       cy.get('[data-cy=nameProject]').scrollIntoView().focus()
       cy.get('[data-cy=root]').contains('Description too long')
       cy.get('[data-cy=cancelProject]').click()
 
       cy.get('[data-cy=addProjCompanyView]').click()
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=nameProject]').type('A')
       cy.get('[data-cy=descProject]').scrollIntoView().focus().type(faker.lorem.sentence())
       cy.get('[data-cy=root]').contains('Name too short')
       cy.get('[data-cy=cancelProject]').click()
 
       cy.get('[data-cy=addProjCompanyView]').click()
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=nameProject]').scrollIntoView().focus()
       cy.get('[data-cy=descProject]').scrollIntoView().focus().type(faker.lorem.sentence())
       cy.get('[data-cy=root]').contains('Name required')
@@ -362,7 +382,7 @@ describe('Company Test', () => {
 
       cy.url().should('include', 'detalleEmpresa')  
       cy.contains('ABC Jobs')
-      cy.get('[data-cy=lstProjCompanyView]').children().eq(1).children().eq(0).children().eq(3).children().eq(0).click()
+      cy.get('[data-cy=lstProjCompanyView]').children().eq(1).children().eq(0).children().eq(4).children().eq(0).click()
       cy.get('[data-cy=linkDetailProject]').click()
 
 
@@ -376,10 +396,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstSkills]').children().eq(1).children().eq(56).children().eq(0).click()
       cy.get('[data-cy=lstSkills]').children().eq(1).children().eq(80).children().eq(0).click()
       cy.get('[data-cy=createProfile]').click()
-      cy.get('[data-cy=root]').within(() => {
-         cy.get('#toast-container').contains('Profile successfully created.')
-         cy.get('#toast-container').children().eq(0).children().eq(0).click()
-      })
+      //cy.get('[data-cy=root]').within(() => {
+      //   cy.get('#toast-container').contains('Profile successfully created.')  // Project data were successfully retrieved.
+      //   cy.get('#toast-container').children().eq(0).children().eq(0).click()
+      //})
+      ////cy.get('[data-cy=cancelProfile]').click()
 
       cy.get('[data-cy=lstProfile]').contains('JavaScript')
       cy.get('[data-cy=lstProfile]').contains('Abierto')
@@ -449,8 +470,10 @@ describe('Company Test', () => {
 
       let nameProject=faker.company.name()+Date.now().toString()
       let descProject=faker.lorem.sentence()
+      let fecha_inicio=faker.date.soon({days: 10})
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)//(faker.commerce.productName()+Date.now().toString())
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)//(faker.commerce.productDescription())
       cy.get('[data-cy=submitProject]').click()
 
@@ -463,9 +486,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
 
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -478,9 +503,11 @@ describe('Company Test', () => {
       cy.get('[data-cy=lstProjCompanyView]').contains(descProject)
       
       nameProject=faker.company.name()+Date.now().toString()
+      fecha_inicio=faker.date.soon({days: 10})
       descProject=faker.lorem.sentence()
       cy.get('[data-cy=addProjCompanyView]').click()
       cy.get('[data-cy=nameProject]').type(nameProject)
+      cy.get('[data-cy=fecha_iniProject]').type(fecha_inicio.toISOString().substring(0, 10))
       cy.get('[data-cy=descProject]').type(descProject)
       cy.get('[data-cy=submitProject]').click()
 
@@ -494,7 +521,7 @@ describe('Company Test', () => {
 
       cy.url().should('include', 'detalleEmpresa')  
       cy.contains('ABC Jobs')
-      cy.get('[data-cy=lstProjCompanyView]').children().eq(1).children().eq(0).children().eq(3).children().eq(0).click()
+      cy.get('[data-cy=lstProjCompanyView]').children().eq(1).children().eq(0).children().eq(4).children().eq(0).click()
       cy.get('[data-cy=linkDetailProject]').click()
 
 

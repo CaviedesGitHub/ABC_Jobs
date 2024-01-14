@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CandidateProfileCrearComponent } from './Candidate-Profile-Crear/Candidate-Profile-Crear.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CandidateEntrevistasComponent,
     CandidateExamenesComponent,
     CandidateExamenesNuevoComponent,
+    CandidateProfileCrearComponent,
   ],
   exports: [CandidateComponent, 
     CandidateViewComponent, 
@@ -51,6 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CandidateEntrevistasComponent,
     CandidateExamenesComponent,
     CandidateExamenesNuevoComponent,
+    CandidateProfileCrearComponent,
   ],
   providers: [
     DatePipe

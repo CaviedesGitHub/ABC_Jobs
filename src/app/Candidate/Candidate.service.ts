@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Candidate } from './Candidate';
 import { CandidateDetail } from './Candidate-detail';
 import { environment } from 'src/environments/environment';
+import { PerfilCandidato } from './PerfilCandidato';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class CandidateService {
   
   createCandidate(candidate: Candidate): Observable<any> {
     return this.http.post<any>(this.apiUrl+"/candidatos", candidate);
+  }
+
+  createPerfil(perfil: PerfilCandidato, candId: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/perfil/asignaCandidato/'+`${candId}`, perfil);
   }
 
   viewDetailUserCandidate(userId: number): Observable<CandidateDetail> {

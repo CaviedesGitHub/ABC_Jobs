@@ -2,7 +2,6 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { Component, OnInit, ViewChild, AfterViewInit, LOCALE_ID, Inject } from '@angular/core';
 import { CandidateService } from '../Candidate.service';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { ToastrService } from 'ngx-toastr';
 import { CandidateDetail } from '../Candidate-detail';
 import { Habilidad } from '../Habilidad';
 import { MatPaginator } from '@angular/material/paginator';
@@ -62,9 +61,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CandidateViewComponent implements OnInit, AfterViewInit {
 
   //private toastr: ToastrService,
-  constructor(private _liveAnnouncer: LiveAnnouncer, private candidateService: CandidateService, 
+  constructor(private _liveAnnouncer: LiveAnnouncer, 
+    private candidateService: CandidateService, 
     private router: ActivatedRoute,
     private toastr: ToastrService,
+    private enrutador: Router,
     @Inject(LOCALE_ID) public locale: string,) { 
     }
 
@@ -135,7 +136,14 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
     this.viewDetailUserCandidate(this.userId)
   }
 
+  agregarPerfil(){
+    console.log('agregarPerfil')
+    this.enrutador.navigate([`/agregarPerfilCandidato`])
+    //this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
+  }
+
   agregarHabilidad(){
+    //this.enrutador.navigate([`/agregarPerfil/${this.proyId}/${this.userId}/${this.token}`])
     //this.enrutador.navigate([`/agregarProyecto/${this.company.id}/${this.userId}/${this.token}`])
   }
 
