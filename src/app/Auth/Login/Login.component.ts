@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
       else if (res.tipo=='EMPLEADO_ABC'){
         sessionStorage.setItem("creado", "SI")
         this.authService.setEmployeeRole()
+        this.router.navigate(['asignaPuesto'])  
       }    
       else{
         this.authService.setGuestRole()
