@@ -26,7 +26,7 @@
                   formControlName="id_cand"
                   i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                   placeholder="Candidate"
-                  data-cy="pass1Signup"
+                  data-cy="idCandTest"
                 />
               </div>
 
@@ -40,7 +40,7 @@
                   formControlName="id_habil"
                   i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                   placeholder="id_habil"
-                  data-cy="idPass1Signup"
+                  data-cy="idHabilTest"
                 />
               </div>
               
@@ -55,11 +55,11 @@
                     formControlName="nom_cand"
                     i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                     placeholder="Select Candidate"
-                    data-cy="pass1Signup"
+                    data-cy="nom_candTest"
                     style="display: inline-block;"
                   />
                   <div class="input-group-append">
-                      <button (click)="seleccionaCandidato()" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
+                      <button data-cy="btnSelCandExamen" (click)="seleccionaCandidato()" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
                       <span><i class="bi bi-search"></i></span>
                       </button>
                   </div>
@@ -86,11 +86,11 @@
                     formControlName="nom_habil"
                     i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                     placeholder="Select Skill"
-                    data-cy="pass1Signup"
+                    data-cy="nom_habilTest"
                     style="display: inline-block;"
                   />
                   <div class="input-group-append">
-                      <button (click)="seleccionaHabilidad()" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
+                      <button data-cy="btnSelHabilExamen" (click)="seleccionaHabilidad()" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
                       <span><i class="bi bi-search"></i></span>
                       </button>
                   </div>
@@ -116,7 +116,7 @@
                   formControlName="nota"
                   i18n-placeholder="holderPass1Signup|placeholder del campo zona"
                   placeholder="Valuation"
-                  data-cy="valpass1Signup"
+                  data-cy="valExamenNuevo"
                   type="number"
                   min="0"
                   max="100"
@@ -160,7 +160,7 @@
                   formControlName="resultado"
                   i18n-placeholder="holderPass1Signup|placeholder del campo zona"
                   placeholder="Result"
-                  data-cy="valpass1Signup"
+                  data-cy="resExamenNuevo"
                 />
               </div>
 
@@ -169,7 +169,7 @@
                   type="button"
                   class="btn btn-danger mx-3 mt-4"
                   (click)="cancelCreation()"
-                  data-cy="cancelEval"
+                  data-cy="cancelTest"
                 >
                   <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
                 </button>           
@@ -177,7 +177,7 @@
                   type="submit"
                   class="btn btn-primary mx-3 mt-4"
                   [disabled]="!testForm.valid"
-                  data-cy="createEval"
+                  data-cy="createTest"
                 >
                   <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
                 </button>

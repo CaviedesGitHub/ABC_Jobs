@@ -1,3 +1,4 @@
+{{this.candId}}
 <div class="container-fluid my-4" id="principal">
   <div class="row align-items-center">
     <div class="col-0 col-sm-2 col-md-1 col-lg-1 col-xl-2">
@@ -7,8 +8,12 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 i18n="TituloCreateCandidate|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Candidate</h1>
-          <h5 i18n="IndicacionCreateCandidate|Enunciado guia para el usuario" class="card-title text-center mb-0 pb-0">Enter the candidate's data</h5>
+          <h1 i18n="TituloCreateCandidate|Titulo principal de la pagina" 
+              data-cy="tituloH1CrearCandidato"
+              class="mb-0 pb-0 fw-bold fst-italic fw-light">Create a new Candidate</h1>
+          <h5 i18n="IndicacionCreateCandidate|Enunciado guia para el usuario" 
+              data-cy="subtituloH5CrearCandidato"
+              class="card-title text-center mb-0 pb-0">Enter the candidate's data</h5>
         </div>
         <div class="card-body">
           <div class="container mt-2">
@@ -27,6 +32,7 @@
                     i18n-placeholder="holderNameCreateCandidate|placeholder del campo nombre"
                     formControlName="nombres"
                     placeholder="Candidate's names"
+                    data-cy="nombresCrearCandidato"
                   />
                   <div
                     class="alert alert-danger alert-dismissible fade show"
@@ -54,6 +60,7 @@
                   formControlName="apellidos"
                   i18n-placeholder="holderLastNameCreateCandidate|placeholder del campo apellidos"
                   placeholder="Candidate's last name"
+                  data-cy="apellidosCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -81,6 +88,7 @@
                   formControlName="documento"
                   i18n-placeholder="holderDocumentCreateCandidate|placeholder del campo documentoi"
                   placeholder="Candidate's document"
+                  data-cy="documentoCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -108,6 +116,7 @@
                   formControlName="email"
                   i18n-placeholder="holderMailCreateCandidate|placeholder del campo correo"
                   placeholder="Candidate's email"
+                  data-cy="emailCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -135,6 +144,7 @@
                   formControlName="phone"
                   i18n-placeholder="holderPhoneCreateCandidate|placeholder del campo telefono"
                   placeholder="Candidate's phone"
+                  data-cy="phoneCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -163,6 +173,7 @@
                   formControlName="ciudad"
                   i18n-placeholder="holderCityCreateCandidate|placeholder del campo ciudad"
                   placeholder="Candidate's city"
+                  data-cy="ciudadCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -192,6 +203,7 @@
                   i18n-placeholder="holderAddressCreateCandidate|placeholder del campo direccion"
                   placeholder="Candidate's address"
                   maxlength="20"
+                  data-cy="direccionCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -223,6 +235,7 @@
                   type="date"
                   [min]=this.fechaStrMin
                   [max]=this.fechaStrMax
+                  data-cy="fecha_nacCrearCandidato"
                 />
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -245,6 +258,7 @@
                 type="button"
                 class="btn btn-danger mx-3 mt-4"
                 (click)="cancelCreation()"
+                data-cy="btnCancelCrearCandidato"
               >
               <span i18n="msgBotonCancelCreateCandidate|Mensaje boton cancelar creacion candidato">Cancel</span>
               </button>
@@ -252,6 +266,7 @@
                 type="submit"
                 class="btn btn-primary mx-3 mt-4"
                 [disabled]="!candidateForm.valid"
+                data-cy="btnCrearCandidato"
               >
               <span i18n="msgBotonCreateCreateCandidate|Mensaje boton creacion candidato">Create</span>
               </button>

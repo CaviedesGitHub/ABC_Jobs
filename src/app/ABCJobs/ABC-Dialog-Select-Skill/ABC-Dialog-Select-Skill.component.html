@@ -17,11 +17,11 @@
     <div class="card-body">
       <mat-form-field>
         <mat-label><span i18n="FilterMatchProfile|Texto filtro de la pagina">Filter</span></mat-label>
-        <input data-cy="filterMatch" matInput (keyup)="applyFilter($event)" 
+        <input data-cy="filterHabil" matInput (keyup)="applyFilter($event)" 
           i18n-placeholder="holderFilterMatchProfile|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
       </mat-form-field>
       <section class="example-container mat-elevation-z8" tabindex="0">  
-        <table data-cy="lstCandMatch" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8" matSort>
+        <table data-cy="lstHabilsSelHabil" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8" matSort>
         
           <ng-container matColumnDef="select" sticky>
             <th mat-header-cell *matHeaderCellDef></th>
@@ -66,7 +66,7 @@
           </tr>
         </table>
         </section>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+        <mat-paginator data-cy="pagSelHabil" [pageSizeOptions]="[5, 10, 20]"
           showFirstLastButtons
           i18n-aria-label="msgAriaPaginMathProfiles|Mensaje aria paginador en ver Emparejamiento"
           aria-label="Select page of candidates">
@@ -75,6 +75,6 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="habilidad">Select</button>
+  <button data-cy="btnCancelSelHabil" mat-button mat-dialog-close>Cancel</button>
+  <button data-cy="btnSelectSelHabil" mat-raised-button color="primary" [mat-dialog-close]="habilidad">Select</button>
 </mat-dialog-actions>

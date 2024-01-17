@@ -69,11 +69,12 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
     @Inject(LOCALE_ID) public locale: string,) { 
     }
 
+  candId: number | undefined;
   userId: number | undefined;
   token: string = "";
   candidate: CandidateDetail | undefined;
   listaHabils: any;  // new MatTableDataSource(ELEMENT2_DATA);  new MatTableDataSource(ELEMENT2_DATA);   //any; //MatTableDataSource<any> | undefined; //any; //MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]); //MatTableDataSource<Habilidad> | undefined; //[{"nombre":"Python", "tipo":"tecnica"}, {"nombre":"java", "tipo":"tecnica"}]
-  columnNames: string[] = ['nombre', 'tipo', 'calificacion', 'valoracion', 'star'];
+  columnNames: string[] = ['nombre', 'tipo', 'calificacion', 'valoracion', 'id_habil', 'star'];
   @ViewChild(MatSort) sort: MatSort | null = null;
   @ViewChild(MatSort) sort2: MatSort | null = null;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -122,6 +123,7 @@ export class CandidateViewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.candId=Number(sessionStorage.getItem("idCandidate"))
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.userId=Number(sessionStorage.getItem("idUser"))
       this.token=sessionStorage.getItem("token")!

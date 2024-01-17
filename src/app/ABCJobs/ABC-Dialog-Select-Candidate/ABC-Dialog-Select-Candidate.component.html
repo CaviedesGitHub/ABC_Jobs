@@ -16,7 +16,7 @@
             <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
           </div>
           <div class="col-2">
-            <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
+            <button data-cy="btnUpdateSelCand" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
               <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
             </button>
           </div>
@@ -25,13 +25,13 @@
       <div class="card-body">
         <mat-form-field class="example-full-width filtrosR">
           <mat-label>Last Name</mat-label>
-          <input (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
-          <mat-hint align="end">{{fApellidos.value.length}}/50</mat-hint>
+          <input data-cy="filterApellidoSelCand" (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
+          <mat-hint align="end">{{fApellidos.value.length}}/80</mat-hint>
         </mat-form-field>
         <mat-form-field class="example-full-width filtrosR">
           <mat-label>Name</mat-label>
-          <input (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
-          <mat-hint align="end">{{fNombres.value.length}}/50</mat-hint>
+          <input data-cy="filterNombreSelCand" (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
+          <mat-hint align="end">{{fNombres.value.length}}/80</mat-hint>
         </mat-form-field>      
       </div>
     </div>
@@ -43,7 +43,7 @@
     </div>
   
     <div class="example-table-container">
-      <table mat-table [dataSource]="data" class="example-table"
+      <table data-cy="lstCandSelCand" mat-table [dataSource]="data" class="example-table"
             matSort matSortActive="candidato" matSortDisableClear matSortDirection="desc">
   
         <ng-container matColumnDef="select" sticky>
@@ -94,14 +94,14 @@
       </table>
     </div>
   
-    <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
+    <mat-paginator data-cy="pagSelCand" [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
   </div>
   <div class="card-footer text-muted">
   </div>
   
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="selCandidato">Select</button>
+  <button data-cy="btnCancelSelCand" mat-button mat-dialog-close>Cancel</button>
+  <button data-cy="btnSelectSelCand" mat-raised-button color="primary" [mat-dialog-close]="selCandidato">Select</button>
 </mat-dialog-actions>
 

@@ -31,7 +31,7 @@ export class CandidateProfileCrearComponent implements OnInit {
   selectedH:string="";
   userId: number = 0;
   proyId: number = 1;
-  candId: number = 0;
+  candId: number = 99;
   token: string = "";
   selection!: SelectionModel<Habil>;
   selLstH: string = "Vacio,";
@@ -132,10 +132,11 @@ export class CandidateProfileCrearComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log("Init Crear Perfil")
+    this.candId=Number(sessionStorage.getItem("idCandidate"))
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.userId=Number(sessionStorage.getItem("idUser"))
       this.token=sessionStorage.getItem("token")!
-      this.candId=Number(sessionStorage.getItem("idCandidate"))
       if (!this.userId || !this.token){
         this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
       }
@@ -146,7 +147,7 @@ export class CandidateProfileCrearComponent implements OnInit {
     }
 
     this.perfilForm = this.formBuilder.group({
-      nombre: ["", [Validators.required, Validators.minLength(2)]],
+      nombre: ["ASIGNADO", [Validators.required, Validators.minLength(2)]],
       lstHabils: ["", [Validators.required]]
     })
     this.getSkills()

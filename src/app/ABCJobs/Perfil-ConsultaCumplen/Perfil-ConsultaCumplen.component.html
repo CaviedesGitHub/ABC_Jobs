@@ -16,7 +16,7 @@
               <mat-label><span i18n="FilterPerfilConsultaABC|Texto filtro de la pagina">Filter</span></mat-label>
               <input matInput (keyup)="applyFilter($event)" i18n-placeholder="holderFilterPerfilConsultaABC|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
             </mat-form-field>
-            <table mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8">
+            <table data-cy="lstSkills" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8">
 
               <!-- Checkbox Column -->
               <ng-container matColumnDef="select">
@@ -68,7 +68,7 @@
           <button class="btn btn-danger">
             <span i18n="msgBotonCancelPerfilConsultaABC|Mensaje boton cancelar en PerfilConsultaABC" class="contraste">Cancel</span>
           </button>          
-          <button id="btnBuscaCumplen" (click)="this.buscaCandidatos()" class="btn btn-primary">
+          <button data-cy="buscaCandidatosABCPerfil" id="btnBuscaCumplen" (click)="this.buscaCandidatos()" class="btn btn-primary">
             <span i18n="msgBotonFindPerfilConsultaABC|Mensaje boton find en PerfilConsultaABC" class="contraste">Find</span>
           </button>
         </div>          

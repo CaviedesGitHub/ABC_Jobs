@@ -1,6 +1,11 @@
 <p>
   Candidate-Profile-Crear works!
 </p>
+
+<p>---</p>
+<p>valor: {{this.candId}}</p>
+<p>---</p>
+
 <div class="container-fluid my-2" id="principal">
   <div class="row align-items-center">
     <div class="col-0 col-sm-0 col-md-1 col-lg-2 col-xl-2">
@@ -19,7 +24,7 @@
               (ngSubmit)="!perfilForm.invalid && createPerfil(perfilForm.value)"
             >
               <!--Nombre-->
-              <div class="form-group mx-sm-3 mb-2">
+              <div *ngIf="false" class="form-group mx-sm-3 mb-2">
                 <label i18n="lblNameAddProfile|Etiqueta del campo nombre" class="fst-italic fw-bold" for="nombre">Name</label>
                 <input
                   novalidate

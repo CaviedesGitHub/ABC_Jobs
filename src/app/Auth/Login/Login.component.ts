@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
           console.log(res.candidato)
           this.candidate=res.candidato
           sessionStorage.setItem("idCandidate", String(this.candidate.id))
+          console.log("sessionStorage-idCandidate: "+sessionStorage.getItem("idCandidate"))
           if (JSON.stringify(this.candidate) === '{}'){
             sessionStorage.setItem("creado", "NO")
             this.router.navigate([`/candidato/${decodedToken.sub}/${res.token}`])  
@@ -109,7 +110,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      nombre: ["", [Validators.required, Validators.maxLength(20)]],
+      nombre: ["", [Validators.required, Validators.maxLength(30)]],
       password: ["", Validators.required]
     })
     console.log("Lenguaje: ")

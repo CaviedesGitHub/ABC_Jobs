@@ -1,3 +1,6 @@
+<p>---</p>
+<p>valor: {{this.candId}}</p>
+<p>---</p>
 <div class="container-fluid my-0" id="principal">
   <div class="row align-items-left">
     <div class="col-0 col-sm-2 col-md-3 col-lg-0 col-xl-0">
@@ -12,16 +15,16 @@
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate?.apellidos}}, {{candidate?.nombres}}</H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate?.email}}</mat-card-subtitle>                            
+                <mat-card-title><H1  data-cy="tituloVercandidato" class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCandidate|Titulo ver Candidato" class="campo">Candidate: </span>{{candidate?.apellidos}}, {{candidate?.nombres}}</H1></mat-card-title>
+                <mat-card-subtitle  data-cy="subTituloVercandidato" ><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo">E-Mail: </span>{{candidate?.email}}</mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate?.documento }}</p>
-              <p class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate?.fecha_nac }}</p>
-              <p class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate?.ciudad }}</p>
-              <p class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate?.direccion }}</p>
-              <p class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate?.phone }}</p>
+              <p data-cy="docVercandidato" class="linea"><span i18n="campoDocumentViewCandidate|campo documento ver candidato" class="campo">Document: </span>{{ candidate?.documento }}</p>
+              <p data-cy="docVercandidato" class="linea"><span i18n="campoBirthDateViewCandidate|campo Fecha Nacimiento ver candidato" class="campo">BirthDate: </span>{{ candidate?.fecha_nac }}</p>
+              <p data-cy="docVercandidato" class="linea"><span i18n="campoCityViewCandidate|campo ciudad ver candidato" class="campo">City: </span>{{ candidate?.ciudad }}</p>
+              <p data-cy="docVercandidato" class="linea"><span i18n="campoAddressViewCandidate|campo direccion ver candidato" class="campo">Address: </span>{{ candidate?.direccion }}</p>
+              <p data-cy="docVercandidato" class="linea"><span i18n="campoPhoneViewCandidate|campo telefono ver candidato" class="campo">Phone: </span>{{ candidate?.phone }}</p>
             </mat-card-content>
           </mat-card>  
         </div>
@@ -35,7 +38,7 @@
               <h5 i18n="subTitDetalleViewCandidate|SubTitulo detalle ver candidato" class="card-title text-left mb-0 pb-0">List of skills registered by this candidate</h5>          
             </div>
             <div class="col-2">
-              <button style="float: right" (click)="agregarPerfil()" mat-fab extended color="primary">
+              <button data-cy="btnAsignaPerfil" style="float: right" (click)="agregarPerfil()" mat-fab extended color="primary">
                 <mat-icon>plus_one</mat-icon>
                 <span i18n="txtBtnNewViewCandidate|texto boton nuevo ver candidato">New Profile</span>
               </button>
@@ -48,7 +51,7 @@
             i18n-placeholder="holderFilterViewCandidate|Place holder filtro de la pagina" placeholder="Ex. Mia" #input>
           </mat-form-field>
           <section class="example-container mat-elevation-z8" tabindex="0">
-            <table mat-table [dataSource]="listaHabils" matSort matSortDisableClear >
+            <table data-cy="lstSkills"  mat-table [dataSource]="listaHabils" matSort matSortDisableClear >
               <ng-container matColumnDef="nombre" sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header 
                     i18n-sortActionDescription="orderNameViewCandidate|texto ordenar por nombre en ver candidato"
@@ -75,7 +78,12 @@
                   {{ habili.valoracion }}
                 </td>
               </ng-container>
-
+              <ng-container matColumnDef="id_habil">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span i18n="headValueViewCandidate|texto cabecera calificacion ver candidato">Id</span></th>
+                <td mat-cell *matCellDef="let habili">
+                  {{ habili.id_habil }}
+                </td>
+              </ng-container>
               <!-- Star Column -->
               <ng-container matColumnDef="star" stickyEnd>
                 <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
@@ -102,7 +110,7 @@
               <tr mat-header-row *matHeaderRowDef="columnNames; sticky: true"></tr>
               <tr mat-row *matRowDef="let row; columns: columnNames;"></tr>
             </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 15]" 
+            <mat-paginator data-cy="pagVerCandidato" [pageSizeOptions]="[5, 10, 15]" 
                            showFirstLastButtons 
                            i18n-aria-label="msgAriaPaginViewCandidate|Mensaje aria paginador en ver candidato"
                            aria-label="Select Page">

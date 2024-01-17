@@ -24,6 +24,7 @@ export class CandidateCreateComponent implements OnInit {
     @Inject(LOCALE_ID) public locale: string,) 
   { }
 
+  candId: number | undefined
   userId: number | undefined
   token: string | undefined
   fechaMin: Date | undefined;
@@ -35,6 +36,14 @@ export class CandidateCreateComponent implements OnInit {
     this.candidateService.createCandidate(candidate).subscribe(
       resp => {
         sessionStorage.setItem("creado", "SI")
+        sessionStorage.setItem("idCandidate", String(resp.Candidato.id))
+        console.log("CREATE CANDIDATO")
+        console.log("resp: "+resp.Candidato.id)
+        console.log("resp: "+resp.Candidato.nombres)
+        console.log("sessionStorage-idCandidate:"+sessionStorage.getItem("idCandidate"))
+        console.log("resp: "+resp["Candidato"])
+        console.log("resp: "+resp["Candidato"].nombres)
+        console.log("-----CREATE CANDIDATO-----")
         console.info("The candidate was created: ", candidate)
         //this.toastr.success("Confirmation", "Candidate created"+`${resp.nombres}`)
         if (this.locale=="en-US"){
@@ -61,6 +70,8 @@ export class CandidateCreateComponent implements OnInit {
     this.fechaMax=new Date(new Date().getFullYear()-18, new Date().getMonth(), new Date().getDate())
     this.fechaStrMin=this.dp.transform(this.fechaMin, "yyyy-MM-dd")!
     this.fechaStrMax=this.dp.transform(this.fechaMax, "yyyy-MM-dd")!
+    console.log("createcandidate-sessionStorage-idCandidate: "+sessionStorage.getItem("idCandidate"))
+    this.candId=Number(sessionStorage.getItem("idCandidate"))
     if (!parseInt(this.router.snapshot.params['userId']) || this.router.snapshot.params['userToken'] === " ") {
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
