@@ -10,7 +10,7 @@
             formControlName="nota"
             i18n-placeholder="holderPass1Signup|placeholder del campo zona"
             placeholder="Valuation"
-            data-cy="valpass1Signup"
+            data-cy="valExamenInputDialog"
             type="number"
             min="0"
             max="100"
@@ -47,6 +47,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button [disabled]="testForm.invalid" mat-raised-button color="primary" [mat-dialog-close]="valor">Save</button>
+  <button data-cy="btnCancelInputDialog" mat-button mat-dialog-close>Cancel</button>
+  <button data-cy="btnSaveInputDialog" [disabled]="testForm.invalid" mat-raised-button color="primary" [mat-dialog-close]="valor">Save</button>
 </mat-dialog-actions>

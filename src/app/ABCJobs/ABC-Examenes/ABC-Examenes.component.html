@@ -34,7 +34,7 @@
                     <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
                   </div>
                   <div class="col-2">
-                    <button data-cy="btnUpdateQueryTestNew" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
+                    <button data-cy="btnUpdateQueryTest" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
                       <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
                     </button>
                   </div>
@@ -43,13 +43,13 @@
               <div class="card-body">
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Skill Tech</mat-label>
-                  <input data-cy="txtFilterHabilTest" (input)="asignaTextoHabilidad($event)" matInput #fHabilidad maxlength="50" placeholder="Ex. The name or part of the name of a skill...">
-                  <mat-hint align="end">{{fHabilidad.value.length}}/50</mat-hint>
+                  <input data-cy="txtFilterHabilTest" (input)="asignaTextoHabilidad($event)" matInput #fHabilidad maxlength="80" placeholder="Ex. The name or part of the name of a skill...">
+                  <mat-hint align="end">{{fHabilidad.value.length}}/80</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Candidate</mat-label>
-                  <input data-cy="txtFilterCandTest" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
-                  <mat-hint align="end">{{fCandidato.value.length}}/50</mat-hint>
+                  <input data-cy="txtFilterCandTest" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
+                  <mat-hint align="end">{{fCandidato.value.length}}/80</mat-hint>
                 </mat-form-field>
               </div>
             </div>
@@ -61,7 +61,7 @@
             </div>
         
             <div class="example-table-container">
-              <table mat-table [dataSource]="data" class="example-table"
+              <table data-cy="lstTests" mat-table [dataSource]="data" class="example-table"
                     matSort matSortActive="nom_habil" matSortDisableClear matSortDirection="desc">
 
                 <ng-container matColumnDef="num" sticky>
@@ -104,11 +104,11 @@
                       <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                      <button (click)="cambiaNota(element.id)" mat-menu-item>
+                      <button data-cy="btnChangeValue" (click)="cambiaNota(element.id)" mat-menu-item>
                         <mat-icon>edit</mat-icon>
                         <span i18n="menuUpdateTest|Menu update en Test List">Update</span>
                       </button>
-                      <button (click)="confirmacionBorrar()" mat-menu-item>
+                      <button data-cy="btnDeleteTest" (click)="confirmacionBorrar()" mat-menu-item>
                         <mat-icon>delete</mat-icon>
                         <span i18n="menuDeleteTest|Menu delete en Test List">Delete</span>
                       </button>
@@ -121,7 +121,7 @@
               </table>
             </div>
           
-            <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
+            <mat-paginator data-cy="pagTests" [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
           </div>
           <div class="card-footer text-muted">
             <button 

@@ -3,7 +3,7 @@ import {faker} from '@faker-js/faker'
 const NUM_EMPRESAS=2
 const NUM_PROYECTOS=1
 const NUM_PERFILES=3
-const NUM_CANDIDATOS=1
+const NUM_CANDIDATOS=3
 const LONG_VECTOR_AZAR=10
 
 let TimeStamp=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 
@@ -12,24 +12,12 @@ let userName='User'+TimeStamp
 let userNameABC='UserABC'+TimeStamp
 let userPass='12345'
 let userRole='EMPRESA' //'CANDIDATO' , ABCJOBS EMPLOYEE
-let companyName=''
-let companyEmail=''
-let Skill1=''
-let Skill2=''
-let Skill3=''
 
-let lstNombresEmpresas: string[]=[]
-let lstNombresProyectos: string[]=[]
-let lstNombresPerfilesProy: string[]=[]
 
 let lstNombresUsers: string[]=[]
 let lstApellidosUsers: string[]=[]
 
-let UUIDempresa=faker.string.uuid();
-
-let lstUUIDEmpresas: string[]=[]
-let lstUUIDProyectos: string[]=[]
-let lstUUIDPerfilesProy: string[]=[]
+let UUIDcandidato=faker.string.uuid();
 
 let ahora: Date;
 let nombre_emp: string;
@@ -69,7 +57,7 @@ class DatosPruebaPuestos{
         this.loginUsuario(userName, pass)
 
         nombre="Nombre"+ahora.getTime().toString()
-        apellido="Apellido"+ahora.getTime().toString()
+        apellido="Apellido"+UUIDcandidato+ahora.getTime().toString()
         this.creaCandidato(nombre, apellido)
         lstNombresUsers.push(nombre)
         lstApellidosUsers.push(apellido)
@@ -79,7 +67,7 @@ class DatosPruebaPuestos{
     creaCandidato(nombre: string, apellido: string){
       const name = nombre
       const lastname = apellido
-      const documento = Math.ceil(ahora.getTime()/10000)
+      const documento = Math.floor(Math.random()*1000000000)  
       const email = 'Mail'+ahora.getTime().toString()+'@correo.com'
       const phone = faker.phone.number()
       let fecha_nac = faker.date.recent()
@@ -103,6 +91,29 @@ class DatosPruebaPuestos{
         cy.get('#toast-container').children().eq(0).children().eq(0).click()
       })
 
+    }
+
+    crearExamen(candidato: string, habilidad: string){
+        cy.get('[data-cy=linkTestNew]').click()  //cy.get('[data-cy=linkTestNew]').trigger('mousedown')
+        cy.get('[data-cy=btnSelCandExamen]').click()
+        cy.get('[data-cy=filterApellidoSelCand]').type(candidato, {force: true})  //filterNombreSelCand
+        cy.get('[data-cy=btnUpdateSelCand]').click()
+        cy.get('[data-cy=lstCandSelCand]').children().eq(1).children().eq(0).children().eq(0).click()
+        cy.get('[data-cy=btnSelectSelCand]').click()  //btnCancelSelCand
+        cy.get('[data-cy=btnSelHabilExamen]').click()
+        cy.get('[data-cy=filterHabil]').type(habilidad, {force: true})
+        cy.get('[data-cy=lstHabilsSelHabil]').children().eq(1).children().eq(0).children().eq(0).click()
+        cy.get('[data-cy=btnSelectSelHabil]').click()  //btnCancelSelHabil
+        cy.get('[data-cy=createTest]').click()
+    }
+
+    cambiaValor(examen: number, valor: string){
+        cy.get('[data-cy=lstTests]').children().eq(1).children().eq(examen).children().eq(5).children().eq(0).click({force: true})
+        cy.get('[data-cy=btnChangeValue]').click({force: true})
+        //pagTests  lstTests pagSelHabil   pagSelCand  txtFilterHabilTest  txtFilterCandTest btnUpdateQueryTest btnCancelInputDialog
+        cy.get('[data-cy=valExamenInputDialog]').clear()
+        cy.get('[data-cy=valExamenInputDialog]').type(valor)
+        cy.get('[data-cy=btnSaveInputDialog]').click()
     }
 
     asignaPerfilCandidato(lstHabils: number[]){
@@ -147,9 +158,8 @@ class DatosPruebaPuestos{
 describe('ABCJobs Test Examenes', () => {
     before(() => {
         const DP=new DatosPruebaPuestos()
-        //DP.crearDatosCandidatos()
+        DP.crearDatosCandidatos()
         DP.crearUsuario(userNameABC, userPass, "EMPLEADO_ABC")
-        //DP.loginUsuario('UserABC1705290774842', userPass)
     })
         
     beforeEach(() => {
@@ -158,29 +168,53 @@ describe('ABCJobs Test Examenes', () => {
     })
 
     afterEach(() => {
-      //cy.get('[data-cy=root]').within(() => {
-      //  cy.get('[data-cy=logoutMenu]').click()
-      //})
     })
 
     it('Test Examenes', () => {
-      //const DP=new DatosPruebaPuestos()
-      cy.visit('/examenes')   //listaCumplenPerfil
-      //cy.get('[data-cy=btnUpdateQueryTestNew]').click()        //cy.get('[data-cy=btnTestNew]').click()
+      const DP=new DatosPruebaPuestos()
+      cy.visit('/examenes')   
+      //cy.get('[data-cy=linkTestNew]').click()  //cy.get('[data-cy=linkTestNew]').trigger('mousedown')
+      DP.crearExamen(lstApellidosUsers[0], 'TypeScript')
+      DP.crearExamen(lstApellidosUsers[1], 'TypeScript')
+      DP.crearExamen(lstApellidosUsers[2], 'TypeScript')
 
-      cy.get('[data-cy=linkTestNew]').click()
-      //cy.get('[data-cy=linkTestNew]').trigger('mousedown')
-      cy.get('[data-cy=btnSelCandExamen]').click()
-      cy.get('[data-cy=filterApellidoSelCand]').type('Padilla', {force: true})  //filterNombreSelCand
-      cy.get('[data-cy=btnUpdateSelCand]').click()
-      cy.get('[data-cy=lstCandSelCand]').children().eq(1).children().eq(0).children().eq(0).click()
-      cy.get('[data-cy=btnSelectSelCand]').click()  //btnCancelSelCand
-      cy.get('[data-cy=btnSelHabilExamen]').click()
-      cy.get('[data-cy=filterHabil]').type('ja', {force: true})
-      cy.get('[data-cy=lstHabilsSelHabil]').children().eq(1).children().eq(0).children().eq(0).click()
-      cy.get('[data-cy=btnSelectSelHabil]').click()  //btnCancelSelHabil
-      cy.get('[data-cy=createTest]').click()
-      //pagSelHabil   pagSelCand
+      cy.get('[data-cy=txtFilterCandTest]').type(lstApellidosUsers[0], {force: true})
+      cy.get('[data-cy=btnUpdateQueryTest]').click()
+      cy.get('[data-cy=pagTests]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+        })
+
+        cy.get('[data-cy=txtFilterHabilTest]').type('TypeScript', {force: true})
+        cy.get('[data-cy=txtFilterCandTest]').clear()
+        cy.get('[data-cy=txtFilterCandTest]').type(UUIDcandidato, {force: true})
+        cy.get('[data-cy=btnUpdateQueryTest]').click()
+        cy.get('[data-cy=pagTests]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+          ($pag)=> { 
+            let cadena=$pag.text()
+            cadena=cadena.substring(cadena.indexOf("of"))
+            cadena=cadena.substring(cadena.indexOf(" ")+1)
+            let total=Number(cadena)
+            expect(total).eq(3)
+          })              
+
+        DP.cambiaValor(0, '99')
+        DP.cambiaValor(1, '77')
+        DP.cambiaValor(2, '55')
+        cy.get('[data-cy=lstTests]').contains('99')
+        cy.get('[data-cy=lstTests]').contains('77')
+        cy.get('[data-cy=lstTests]').contains('55')
+
+        cy.get('[data-cy=lstTests]').children().eq(1).children().eq(0).children().eq(5).children().eq(0).click({force: true})
+        cy.get('[data-cy=btnDeleteTest]').click({force: true})
+        cy.get('[data-cy=btnNoDialog]').click()
+        //cy.get('[data-cy=btnYesDialog]').click()
+        //cy.url().should('include', 'construccion')  
+        //cy.get('[data-cy=backConstruction]').click()
     })
 
   })
