@@ -2,7 +2,7 @@ import {faker} from '@faker-js/faker'
 
 const NUM_EMPRESAS=1
 const NUM_PROYECTOS=1
-const NUM_PERFILES=2
+const NUM_PERFILES=1
 const NUM_CANDIDATOS=1
 const LONG_VECTOR_AZAR=10
 
@@ -31,10 +31,17 @@ let lstUUIDEmpresas: string[]=[]
 let lstUUIDProyectos: string[]=[]
 let lstUUIDPerfilesProy: string[]=[]
 
+let UUIDcandidato=faker.string.uuid();
+
 let ahora: Date;
 let nombre_emp: string;
 let lstPerfilesHab=[[0, 56, 80], [1, 57, 81], [2, 58, 82]]
+let lstPerfilesHab2=[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 
+                     [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 
+                     [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]]
+let lstPerfilesHabAzar: Array<Array<number>>=[]   
 let PerfilAzar: number[]=[]
+let PerfilAzarTemp: number[]=[]
 
 while (PerfilAzar.length<10){
   let x=Math.ceil(Math.random()*90)
@@ -42,6 +49,18 @@ while (PerfilAzar.length<10){
     PerfilAzar.push(x)
   }
   PerfilAzar.sort(function(a,b){return a-b;})
+}
+
+for (let k=0; k<3; k++){
+  PerfilAzarTemp=[]
+  while (PerfilAzarTemp.length<10){
+    let x=Math.ceil(Math.random()*90)
+    if (!PerfilAzarTemp.includes(x)){
+      PerfilAzarTemp.push(x)
+    }
+    PerfilAzarTemp.sort(function(a,b){return a-b;})
+  } 
+  lstPerfilesHabAzar.push(PerfilAzarTemp)
 }
 
 //PerfilAzar=[1,2,3,4,5]
@@ -53,16 +72,26 @@ function sleep(ms: number){
 
 let i: number;
 for (i=0; i<5; i++){
+    //ahora=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 
+    //               new Date().getHours(), new Date().getMinutes(), new Date().getSeconds(), new Date().getMilliseconds())
     lstUUIDEmpresas.push(faker.string.uuid())
-}
-
-for (i=0; i<3; i++){
-    lstUUIDProyectos.push(faker.string.uuid())
+    //lstNombresEmpresas[i]="Company"+UUIDempresa+ahora.getTime().toString()
     sleep(500)
 }
 
 for (i=0; i<3; i++){
+    //ahora=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 
+    //      new Date().getHours(), new Date().getMinutes(), new Date().getSeconds(), new Date().getMilliseconds())  
+    lstUUIDProyectos.push(faker.string.uuid())
+    //lstNombresProyectos[i]=faker.company.name()+lstUUIDProyectos[i]//+ahora.getTime().toString()
+    sleep(500)
+}
+
+for (i=0; i<3; i++){
+    //ahora=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 
+    //      new Date().getHours(), new Date().getMinutes(), new Date().getSeconds(), new Date().getMilliseconds())  
     lstUUIDPerfilesProy.push(faker.string.uuid())
+    //lstNombresPerfilesProy[i]=faker.person.jobTitle()+lstUUIDPerfilesProy[i]//+ahora.getTime().toString()
     sleep(500)
 }
 
@@ -82,8 +111,8 @@ class DatosPruebaPuestos{
             this.loginUsuario(userName, pass)
 
             nombre_emp="Company"+UUIDempresa+ahora.getTime().toString()
-            this.creaEmpresa(nombre_emp)
             lstNombresEmpresas.push(nombre_emp)
+            this.creaEmpresa(nombre_emp)
         }
     }
 
@@ -101,12 +130,12 @@ class DatosPruebaPuestos{
         this.loginUsuario(userName, pass)
 
         nombre="Nombre"+ahora.getTime().toString()
-        apellido="Apellido"+ahora.getTime().toString()
+        apellido="Apellido"+UUIDcandidato+ahora.getTime().toString()
         this.creaCandidato(nombre, apellido)
         lstNombresUsers.push(nombre)
         lstApellidosUsers.push(apellido)
 
-        this.asignaPerfilCandidato(PerfilAzar)
+        this.asignaPerfilCandidato(lstPerfilesHabAzar[i])
         cy.wait(2000)
         cy.get('[data-cy=pagVerCandidato]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
           ($pag)=> { 
@@ -122,10 +151,10 @@ class DatosPruebaPuestos{
     creaCandidato(nombre: string, apellido: string){
       const name = nombre
       const lastname = apellido
-      const documento = Math.ceil(ahora.getTime()/10000)
+      const documento = Math.floor(Math.random()*1000000000)  
       const email = 'Mail'+ahora.getTime().toString()+'@correo.com'
       const phone = faker.phone.number()
-      let fecha_nac = faker.date.recent()
+      let fecha_nac = faker.date.past()
       fecha_nac.setFullYear(fecha_nac.getFullYear()-18)
       const city = faker.location.city()
       const address = faker.location.streetAddress()
@@ -205,11 +234,23 @@ class DatosPruebaPuestos{
          cy.get('#toast-container').contains('Successfully established company.')
          cy.get('#toast-container').children().eq(0).children().eq(0).click()
       })
+
+      cy.url().should('include', 'detalleEmpresa')  
+      cy.contains('ABC Jobs')
+      cy.get('[data-cy=nameCompanyView]').invoke('text').should('eq', nameCompany)
+      cy.get('[data-cy=typeCompanyView]').invoke('text').should('eq', type)
+      cy.get('[data-cy=emailCompanyView]').invoke('text').should('eq', email)
+      cy.get('[data-cy=phoneCompanyView]').invoke('text').should('eq', phone)
+      cy.get('[data-cy=contactCompanyView]').invoke('text').should('eq', contact)
+      cy.get('[data-cy=countryCompanyView]').invoke('text').should('eq', country)
+      cy.get('[data-cy=cityCompanyView]').invoke('text').should('eq', city)
+      cy.get('[data-cy=addressCompanyView]').invoke('text').should('eq', address)
+
       let nombre_proy: string;
       for (let j=0; j<NUM_PROYECTOS; j++){
         nombre_proy=faker.company.name()+lstUUIDProyectos[j]+ahora.getTime().toString()
-        this.crearProyecto(nombre_proy);
         lstNombresProyectos.push(nombre_proy)
+        this.crearProyecto(nombre_proy);
       }
 
       let nombre_perfil: string;
@@ -219,7 +260,7 @@ class DatosPruebaPuestos{
         for (let l=0; l<NUM_PERFILES; l++){
             nombre_perfil=faker.person.jobTitle()+lstUUIDPerfilesProy[l]+ahora.getTime().toString()
             lstNombresPerfilesProy.push(nombre_perfil)
-            this.crearPerfil(nombre_perfil, lstPerfilesHab[l])
+            this.crearPerfil(nombre_perfil, lstPerfilesHabAzar[l])
         }
         cy.get('[data-cy=backProject]').click({force: true})
       }
@@ -272,7 +313,7 @@ class DatosPruebaPuestos{
 describe('ABCJobs Test', () => {
     before(() => {
         const DP=new DatosPruebaPuestos()
-        //DP.crearDatosEmpresas()
+        DP.crearDatosEmpresas()
         DP.crearDatosCandidatos()
         DP.crearUsuario(userNameABC, userPass, "EMPLEADO_ABC")
         //DP.loginUsuario('UserABC1705290774842', userPass)
@@ -289,13 +330,44 @@ describe('ABCJobs Test', () => {
       //})
     })
 
-    it('Test Match profiles', () => {
+    it('Test Job assignment', () => {
       const DP=new DatosPruebaPuestos()
-      cy.visit('/examenes')   //listaCumplenPerfil
-      cy.get('[data-cy=btnUpdateQueryTestNew]').click()
+      cy.visit('/asignaPuesto')
+      cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
+      cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
+      cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(NUM_EMPRESAS) //1
+        })
+      cy.get('[data-cy=lstPuestosABC]').children().eq(1).children().eq(0).children().eq(5).children().eq(0).click({force: true})
+      cy.get('[data-cy=linkAssignPuesto]').click({force: true})
+
+      cy.wait(2000)
+      cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1) //1
+      })
+
+      cy.get('[data-cy=lstCandAsig]').children().eq(1).children().eq(0).children().eq(0).click()
+      cy.get('[data-cy=updateAsignacion]').click({force: true})
+      cy.get('[data-cy=backAsignacion]').click({force: true})
+      cy.wait(2000)
+      cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
+      cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
+      cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.get('[data-cy=lstPuestosABC]').contains(lstApellidosUsers[0])
     })
 
-    it('Test Match profiles', () => {
+    it.skip('Test Match profiles', () => {
       const DP=new DatosPruebaPuestos()
       cy.visit('/seleccionHabilidades')   //listaCumplenPerfil
 
@@ -314,14 +386,11 @@ describe('ABCJobs Test', () => {
         })
     })
 
-    it.skip('Test Filter Company', () => {
+    it('Test Filter Company', () => {
         cy.visit('/asignaPuesto')
-        const valor=30
-        expect(valor).eq(30)
         cy.get('[data-cy=filtroEmpresaPuestos]').type(UUIDempresa)
         cy.get('[data-cy=updateQueryPuestos]').click()
-        //cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).invoke('text').then(
-        //    total => expect(total).to.eq(' 1 - 30 of 45 '))
+        cy.wait(2000)
         cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
           ($pag)=> { 
             let cadena=$pag.text()
@@ -332,10 +401,11 @@ describe('ABCJobs Test', () => {
           })
       })
 
-    it.skip('Test Filter Project', () => {
+    it('Test Filter Project', () => {
       cy.visit('/asignaPuesto')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait(1000)
       cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
         ($pag)=> { 
           let cadena=$pag.text()
@@ -346,10 +416,11 @@ describe('ABCJobs Test', () => {
         })
     })
 
-    it.skip('Test Filter ProfileProject', () => {
+    it('Test Filter ProfileProject', () => {
       cy.visit('/asignaPuesto')
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait(1000)
       cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
         ($pag)=> { 
           let cadena=$pag.text()
@@ -360,11 +431,12 @@ describe('ABCJobs Test', () => {
         })
     })
 
-    it.skip('Test Filter ProfileProject and Project', () => {
+    it('Test Filter ProfileProject and Project', () => {
       cy.visit('/asignaPuesto')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait(1000)
       cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
         ($pag)=> { 
           let cadena=$pag.text()

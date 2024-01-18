@@ -72,7 +72,7 @@ describe('Candidate Test', () => {
         const documento = Math.ceil(ahora.getTime()/10000)
         const email = 'Mail'+ahora.getTime().toString()+'@correo.com'
         const phone = faker.phone.number()
-        let fecha_nac = faker.date.recent()
+        let fecha_nac = faker.date.past()
         fecha_nac.setFullYear(fecha_nac.getFullYear()-18)
         const city = faker.location.city()
         const address = faker.location.streetAddress()

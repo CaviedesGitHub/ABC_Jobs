@@ -18,7 +18,7 @@
             <input matInput (keyup)="applyFilter($event)" i18n-placeholder="holderFilterMatchProfileABC|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
           </mat-form-field>
           <section class="example-container mat-elevation-z8" tabindex="0">  
-            <table mat-table [dataSource]="lstCandidatos" class="mat-elevation-z8" matSort>
+            <table data-cy="lstCandCumplen" mat-table [dataSource]="lstCandidatos" class="mat-elevation-z8" matSort>
            
               <ng-container matColumnDef="apellidos" sticky>
                 <th class="mat-column-position" mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadLastMatchProfileABC|Texto cabecera apellidos">Secondary Name</span> </th>

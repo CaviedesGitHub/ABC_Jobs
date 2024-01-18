@@ -8,11 +8,11 @@
   <div class="card-body">
     <mat-form-field>
       <mat-label><span i18n="FilterMatchProfile|Texto filtro de la pagina">Filter</span></mat-label>
-      <input data-cy="filterMatch" matInput (keyup)="applyFilter($event)" 
+      <input data-cy="filterAsignacion" matInput (keyup)="applyFilter($event)" 
         i18n-placeholder="holderFilterMatchProfile|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
     </mat-form-field>
     <section class="example-container mat-elevation-z8" tabindex="0">  
-      <table multiTemplateDataRows data-cy="lstCandMatch" mat-table [dataSource]="lstCandidatos2" class="mat-elevation-z8" matSort>
+      <table data-cy="lstCandAsig" multiTemplateDataRows mat-table [dataSource]="lstCandidatos2" class="mat-elevation-z8" matSort>
      
         <!-- <ng-container *ngFor="let column of displayedColumns2; track column" matColumnDef="{{column}}">
           <th mat-header-cell *matHeaderCellDef> {{column}} </th>
@@ -151,7 +151,7 @@
         </tr>
       </table>
       </section>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      <mat-paginator data-cy="pagAsignacion" [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
         i18n-aria-label="msgAriaPaginMathProfiles|Mensaje aria paginador en ver Emparejamiento"
         aria-label="Select page of candidates">

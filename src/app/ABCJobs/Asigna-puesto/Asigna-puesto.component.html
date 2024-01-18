@@ -58,7 +58,7 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Candidate</mat-label>
-                  <input  data-cy="filtroCandidatoPuestos" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="100" placeholder="Ex. The name or part of the name of a candidate..">
+                  <input data-cy="filtroCandidatoPuestos" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="100" placeholder="Ex. The name or part of the name of a candidate..">
                   <mat-hint align="end">{{fCandidato.value.length}}/50</mat-hint>
                 </mat-form-field>
               </div>
@@ -71,7 +71,7 @@
             </div>
         
             <div class="example-table-container">
-              <table mat-table [dataSource]="data" class="example-table"
+              <table data-cy="lstPuestosABC" mat-table [dataSource]="data" class="example-table"
                     matSort matSortActive="nom_empresa" matSortDisableClear matSortDirection="desc">
 
                 <ng-container matColumnDef="num" sticky>
