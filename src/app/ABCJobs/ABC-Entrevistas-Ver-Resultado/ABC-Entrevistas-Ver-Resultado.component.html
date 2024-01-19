@@ -64,7 +64,7 @@
                     formControlName="calificacion"
                     i18n-placeholder="holderCalifViewEV|placeholder del campo calificacion"
                     placeholder="Valuation"
-                    data-cy="CalifViewEV" />
+                    data-cy="califViewResultEV" />
                   <div
                     class="alert alert-danger alert-dismissible fade show"
                     *ngIf="
@@ -86,7 +86,7 @@
                     formControlName="anotaciones"
                     i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                     placeholder="Annotations"
-                    data-cy="pass1Signup"
+                    data-cy="anotaViewResultEV"
                     rows="10">
                   </textarea>
                   <div
@@ -110,7 +110,7 @@
                       type="button"
                       class="btn btn-danger mx-3 mt-4"
                       (click)="cancelCreation()"
-                      data-cy="cancelEval"
+                      data-cy="cancelViewResultEV"
                     >
                       <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Back</span>
                     </button>           
@@ -118,7 +118,7 @@
                       type="submit"
                       class="btn btn-primary mx-3 mt-4"
                       [disabled]="!revForm.valid"
-                      data-cy="createEval"
+                      data-cy="createViewResultEV"
                     >
                       <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Save</span>
                     </button>

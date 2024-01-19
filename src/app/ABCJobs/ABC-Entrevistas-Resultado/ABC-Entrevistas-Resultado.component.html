@@ -56,7 +56,7 @@
                 >
                 <div class="form-group mx-sm-3 mb-2">
                   <label  i18n="lblCalifResultEV|Etiqueta del calificacion en ResultEV" class="fst-italic fw-bold" for="calificacion">Valuation</label>
-                  <select data-cy="valueCalif" novalidate id="calificacion" formControlName="calificacion" class="form-select form-select-sm" aria-label="Interview Rating" data-cy="califResultsEV">
+                  <select data-cy="valueCalifResultEV" novalidate id="calificacion" formControlName="calificacion" class="form-select form-select-sm" aria-label="Interview Rating" >
                     <option i18n="selectTipo0Signup|Mensaje seleccione el valor" value="" disabled selected>Select your VALUE</option>
                     <option i18n="selectTipo1Signup|Valor opcion1]" value="EXCELENTE">EXCELLENT</option>
                     <option i18n="selectTipo2Signup|Valor opcion2]" value="BUENA">GOOD</option>
@@ -83,7 +83,7 @@
                     formControlName="anotaciones"
                     i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                     placeholder="Annotations"
-                    data-cy="pass1Signup"
+                    data-cy="anotaResultEV"
                     rows="10">
                   </textarea>
                   <div
@@ -107,7 +107,7 @@
                       type="button"
                       class="btn btn-danger mx-3 mt-4"
                       (click)="cancelCreation()"
-                      data-cy="cancelEval"
+                      data-cy="cancelResultEV"
                     >
                       <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
                     </button>           
@@ -115,7 +115,7 @@
                       type="submit"
                       class="btn btn-primary mx-3 mt-4"
                       [disabled]="!revForm.valid"
-                      data-cy="createEval"
+                      data-cy="createResultEV"
                     >
                       <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Save</span>
                     </button>
