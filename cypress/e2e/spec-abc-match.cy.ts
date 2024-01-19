@@ -109,8 +109,10 @@ class DatosPruebaPuestos{
         lstNombresUsers.push(nombre)
         lstApellidosUsers.push(apellido)
 
+        cy.intercept('GET', '/candidatoUsuarioDetalle/*').as('lstHabilsCand')
         this.asignaPerfilCandidato(PerfilAzar)
-        cy.wait(2000)
+        cy.wait('@lstHabilsCand')
+        //cy.wait(2000)
         cy.get('[data-cy=pagVerCandidato]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
           ($pag)=> { 
             let cadena=$pag.text()
@@ -212,8 +214,10 @@ describe('ABCJobs Test', () => {
       for (let m=0; m<PerfilAzar.length; m++){
         DP.seleccionaHabilidad(PerfilAzar[m]-1)
       }
+      cy.intercept('POST', '/cumplenPerfilporLista').as('cumplenPerfilLista')
       cy.get('[data-cy=buscaCandidatosABCPerfil]').click()
-      cy.wait(3000)
+      cy.wait('@cumplenPerfilLista')
+      //cy.wait(3000)
       cy.get('[data-cy=pagCumplenPerfil]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
         ($pag)=> { 
           let cadena=$pag.text()

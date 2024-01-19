@@ -135,8 +135,10 @@ class DatosPruebaPuestos{
         lstNombresUsers.push(nombre)
         lstApellidosUsers.push(apellido)
 
+        cy.intercept('GET', '/candidatoUsuarioDetalle/*').as('perfilCand')
         this.asignaPerfilCandidato(lstPerfilesHabAzar[i])
-        cy.wait(2000)
+        cy.wait('@perfilCand')
+        //cy.wait(2000)
         cy.get('[data-cy=pagVerCandidato]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
           ($pag)=> { 
             let cadena=$pag.text()
@@ -330,13 +332,157 @@ describe('ABCJobs Test', () => {
       //})
     })
 
+    it('Test InterViews', () => {
+      const DP=new DatosPruebaPuestos()
+      cy.visit('/asignaPuesto')
+      cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
+      cy.get('[data-cy=filtroEmpresaPuestos]').type(UUIDempresa)
+      cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait('@lstPuestos')
+
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(NUM_EMPRESAS*NUM_PROYECTOS*NUM_PERFILES)
+      })
+
+      //cy.get('[data-cy=filtroEmpresaPuestos]').type(lstNombresEmpresas[0])
+      //cy.get('[data-cy=updateQueryPuestos]').click()
+      //cy.wait('@lstPuestos')
+
+      //cy.intercept('GET', '/entrevistas/*').as('entrevistaPuesto')
+      cy.get('[data-cy=lstPuestosABC]').children().eq(1).children().eq(0).children().eq(5).children().eq(0).click({force: true})
+      cy.get('[data-cy=linkEVPuesto]').click({force: true})
+      //cy.wait('@entrevistaPuesto')   
+      cy.get('[data-cy=addEntrevistaPuesto]').click()
+
+      cy.intercept('GET', '/cumplenPerfil/*').as('cumplenPerfilEV')
+      cy.get('[data-cy=btnCandNewEV]').click()
+      cy.wait('@cumplenPerfilEV')  
+      cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+      cy.get('[data-cy=lstCandAsig]').children().eq(1).children().eq(0).children().eq(0).click()
+      cy.get('[data-cy=selectCandEV]').click({force: true})
+
+      let fechaEV = new Date()
+      fechaEV.setDate(fechaEV.getDate()+1)  //let fechaEV=faker.date.soon({days: 15})
+      cy.get('[data-cy=fechaNewEV]').type(fechaEV.toISOString().substring(0, 10))
+
+      let horaEV= "08:30"
+      cy.get('[data-cy=horaNewEV]').type(horaEV)
+
+      //cy.get('[data-cy=contactNewEV]').type(faker.person.fullName())
+      cy.intercept('GET', '/entrevistas/*').as('entrevistaPuesto')
+      cy.get('[data-cy=createNewEV]').click()
+      //cy.wait('@entrevistaPuesto')  
+
+      //lstEntrevistasPuesto
+      //cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+      //  ($pag)=> { 
+      //    let cadena=$pag.text()
+      //    cadena=cadena.substring(cadena.indexOf("of"))
+      //    cadena=cadena.substring(cadena.indexOf(" ")+1)
+      //    let total=Number(cadena)
+      //    expect(total).eq(1)
+      //})
+
+      cy.get('[data-cy=lstEntrevistasPuesto]').contains(lstApellidosUsers[0])
+      cy.visit('/entrevistasTodas')
+      cy.intercept('POST', '/entrevistasPortal').as('queryAllEV')
+
+      cy.get('[data-cy=companyAllEV]').type(lstNombresEmpresas[0])
+      cy.get('[data-cy=updateAllEV]').click({force: true})
+      cy.wait('@queryAllEV')  
+      cy.get('[data-cy=lstAllEV]').contains(lstNombresEmpresas[0])
+      cy.get('[data-cy=pagAllEV]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+      cy.get('[data-cy=companyAllEV]').clear()
+      cy.get('[data-cy=projectAllEV]').type(lstNombresProyectos[0])
+      cy.get('[data-cy=updateAllEV]').click({force: true})
+      cy.wait('@queryAllEV')  
+      cy.get('[data-cy=lstAllEV]').contains(lstNombresProyectos[0])
+      cy.get('[data-cy=pagAllEV]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+      cy.get('[data-cy=projectAllEV]').clear()
+      cy.get('[data-cy=profileAllEV]').type(lstNombresPerfilesProy[0])
+      cy.get('[data-cy=updateAllEV]').click({force: true})
+      cy.wait('@queryAllEV')  
+      cy.get('[data-cy=lstAllEV]').contains(lstNombresPerfilesProy[0])
+      cy.get('[data-cy=pagAllEV]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+      cy.get('[data-cy=profileAllEV]').clear()
+      cy.get('[data-cy=candAllEV]').type(lstApellidosUsers[0])
+      cy.get('[data-cy=updateAllEV]').click({force: true})
+      cy.wait('@queryAllEV')  
+      cy.get('[data-cy=lstAllEV]').contains(lstApellidosUsers[0])
+      cy.get('[data-cy=pagAllEV]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+      cy.get('[data-cy=candAllEV]').clear()
+      cy.get('[data-cy=companyAllEV]').type(fechaEV.toISOString().substring(0, 10))
+      cy.get('[data-cy=projectAllEV]').type(fechaEV.toISOString().substring(0, 10))
+      cy.get('[data-cy=companyAllEV]').clear()
+      cy.get('[data-cy=projectAllEV]').clear()
+      cy.get('[data-cy=fecha1AllEV]').type(fechaEV.toISOString().substring(0, 10))
+      cy.get('[data-cy=fecha2AllEV]').type(fechaEV.toISOString().substring(0, 10))
+      cy.get('[data-cy=updateAllEV]').click({force: true})
+      cy.wait('@queryAllEV')  
+      //cy.get('[data-cy=lstAllEV]').contains(lstApellidosUsers[0])
+      cy.get('[data-cy=pagAllEV]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+      })
+
+    })
+
     it('Test Job assignment', () => {
       const DP=new DatosPruebaPuestos()
       cy.visit('/asignaPuesto')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
-      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))
@@ -344,11 +490,16 @@ describe('ABCJobs Test', () => {
           let total=Number(cadena)
           expect(total).eq(NUM_EMPRESAS) //1
         })
+        
+      cy.intercept('GET', '/cumplenPerfil/*').as('cumplenPerfil')
       cy.get('[data-cy=lstPuestosABC]').children().eq(1).children().eq(0).children().eq(5).children().eq(0).click({force: true})
       cy.get('[data-cy=linkAssignPuesto]').click({force: true})
+      cy.wait('@cumplenPerfil')      
+      //cy.wait(2000)
 
-      cy.wait(2000)
-      cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      //cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should('have.text', '1 - 1 of 1 ')
+      cy.get('[data-cy=pagAsignacion]').children().eq(0).children().eq(0).
+                                        children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))
@@ -360,11 +511,28 @@ describe('ABCJobs Test', () => {
       cy.get('[data-cy=lstCandAsig]').children().eq(1).children().eq(0).children().eq(0).click()
       cy.get('[data-cy=updateAsignacion]').click({force: true})
       cy.get('[data-cy=backAsignacion]').click({force: true})
-      cy.wait(2000)
+
+      cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait('@lstPuestos')
       cy.get('[data-cy=lstPuestosABC]').contains(lstApellidosUsers[0])
+
+      cy.get('[data-cy=filtroProyectoPuestos]').clear()
+      cy.get('[data-cy=filtroPerfilPuestos]').clear()
+      cy.get('[data-cy=filtroCandidatoPuestos]').type(lstApellidosUsers[0])
+      cy.get('[data-cy=updateQueryPuestos]').click()
+      cy.wait('@lstPuestos')
+      cy.get('[data-cy=lstPuestosABC]').contains(lstApellidosUsers[0])
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
+        ($pag)=> { 
+          let cadena=$pag.text()
+          cadena=cadena.substring(cadena.indexOf("of"))
+          cadena=cadena.substring(cadena.indexOf(" ")+1)
+          let total=Number(cadena)
+          expect(total).eq(1)
+        })
     })
 
     it.skip('Test Match profiles', () => {
@@ -375,8 +543,8 @@ describe('ABCJobs Test', () => {
         DP.seleccionaHabilidad(PerfilAzar[m]-1)
       }
       cy.get('[data-cy=buscaCandidatosABCPerfil]').click()
-      cy.wait(3000)
-      cy.get('[data-cy=pagCumplenPerfil]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      //cy.wait(3000)
+      cy.get('[data-cy=pagCumplenPerfil]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))
@@ -388,10 +556,12 @@ describe('ABCJobs Test', () => {
 
     it('Test Filter Company', () => {
         cy.visit('/asignaPuesto')
+        cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
         cy.get('[data-cy=filtroEmpresaPuestos]').type(UUIDempresa)
         cy.get('[data-cy=updateQueryPuestos]').click()
-        cy.wait(2000)
-        cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+        cy.wait('@lstPuestos')
+
+        cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
           ($pag)=> { 
             let cadena=$pag.text()
             cadena=cadena.substring(cadena.indexOf("of"))
@@ -403,10 +573,12 @@ describe('ABCJobs Test', () => {
 
     it('Test Filter Project', () => {
       cy.visit('/asignaPuesto')
+      cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
-      cy.wait(1000)
-      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      cy.wait('@lstPuestos')
+
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))
@@ -418,10 +590,12 @@ describe('ABCJobs Test', () => {
 
     it('Test Filter ProfileProject', () => {
       cy.visit('/asignaPuesto')
+      cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
-      cy.wait(1000)
-      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      cy.wait('@lstPuestos')
+
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))
@@ -433,11 +607,13 @@ describe('ABCJobs Test', () => {
 
     it('Test Filter ProfileProject and Project', () => {
       cy.visit('/asignaPuesto')
+      cy.intercept('POST', '/empresas/puestos').as('lstPuestos')
       cy.get('[data-cy=filtroProyectoPuestos]').type(lstUUIDProyectos[0])
       cy.get('[data-cy=filtroPerfilPuestos]').type(lstUUIDPerfilesProy[0])
       cy.get('[data-cy=updateQueryPuestos]').click()
-      cy.wait(1000)
-      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).then(
+      cy.wait('@lstPuestos')
+
+      cy.get('[data-cy=pagAsignaPuesto]').children().eq(0).children().eq(0).children().eq(1).children().eq(0).should(
         ($pag)=> { 
           let cadena=$pag.text()
           cadena=cadena.substring(cadena.indexOf("of"))

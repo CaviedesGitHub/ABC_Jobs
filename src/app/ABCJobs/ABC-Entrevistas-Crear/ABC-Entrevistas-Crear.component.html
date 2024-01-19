@@ -7,7 +7,7 @@
     <button
       type="button"
       class="btn btn-primary mx-3 my-4"
-      data-cy="createEval"
+      data-cy="selectCandEV"
       (click)="this.seleccionaCandidato=false"
     >
       <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Back</span>
@@ -51,7 +51,7 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">New interview schedule</h2>
+              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleNewEntrevista" class="mb-0 pb-0 fw-bold fst-italic fw-light">New interview schedule</h2>
               <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
             </div>
             <div class="col-2">
@@ -86,7 +86,7 @@
                       formControlName="id_cand"
                       i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                       placeholder="Candidate"
-                      data-cy="pass1Signup"
+                      data-cy="idNewEV"
                       [ngModel]="this.idCand"
                     />
                   </div>
@@ -101,12 +101,12 @@
                         formControlName="candidato"
                         i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                         placeholder="Candidate"
-                        data-cy="pass1Signup"
+                        data-cy="candidatoNewEV"
                         style="display: inline-block;"
                         [ngModel]="this.nomCand"
                       />
                       <div class="input-group-append">
-                         <button (click)="this.seleccionaCandidato=true" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
+                         <button data-cy="btnCandNewEV" (click)="this.seleccionaCandidato=true" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Search">
                           <span><i class="bi bi-search"></i></span>
                          </button>
                       </div>
@@ -131,7 +131,7 @@
                       formControlName="fecha"
                       i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                       placeholder="Date"
-                      data-cy="pass1Signup"
+                      data-cy="fechaNewEV"
                       type="date"
                       [min]=this.fechaStrMin
                       [max]=this.fechaStrMax
@@ -162,7 +162,7 @@
                       formControlName="hora"
                       i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                       placeholder="Time"
-                      data-cy="pass1Signup"
+                      data-cy="horaNewEV"
                       type="time"
                       [min]=this.horaMin
                       [max]=this.horaMax
@@ -194,7 +194,7 @@
                       formControlName="zona"
                       i18n-placeholder="holderPass1Signup|placeholder del campo zona"
                       placeholder="Zone"
-                      data-cy="pass1Signup"
+                      data-cy="zonaNewEV"
                       [ngModel]="this.zona"
                     />
                   </div>
@@ -208,7 +208,7 @@
                       formControlName="contacto"
                       i18n-placeholder="holderPass1Signup|placeholder del campo password1"
                       placeholder="Contact"
-                      data-cy="pass1Signup"
+                      data-cy="contactNewEV"
                     />
                     <div
                       class="alert alert-danger alert-dismissible fade show"
@@ -226,7 +226,7 @@
                       type="button"
                       class="btn btn-danger mx-3 mt-4"
                       (click)="cancelCreation()"
-                      data-cy="cancelEval"
+                      data-cy="cancelNewEV"
                     >
                       <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
                     </button>           
@@ -234,7 +234,7 @@
                       type="submit"
                       class="btn btn-primary mx-3 mt-4"
                       [disabled]="!evForm.valid"
-                      data-cy="createEval"
+                      data-cy="createNewEV"
                     >
                       <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
                     </button>

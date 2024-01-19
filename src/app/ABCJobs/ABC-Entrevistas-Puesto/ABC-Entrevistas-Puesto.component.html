@@ -38,7 +38,7 @@
               <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
             </div>
             <div class="col-2">
-              <button data-cy="addProjCompanyView" style="float: right" (click)="agregarEntrevista()" mat-fab extended color="primary">
+              <button data-cy="addEntrevistaPuesto" style="float: right" (click)="agregarEntrevista()" mat-fab extended color="primary">
                 <mat-icon>plus_one</mat-icon>
                 <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">New</span>
               </button>
@@ -47,7 +47,7 @@
         </div>
         <div class="card-body">
           <section class="example-container mat-elevation-z8" tabindex="0">
-            <table data-cy="lstProjCompanyView" mat-table [dataSource]="lstEV">
+            <table data-cy="lstEntrevistasPuesto" mat-table [dataSource]="lstEV">
               ['candidato', 'cuando', 'contacto', 'nom_empresa', 'nom_proy', 'nom_perfil'];
               <!-- Name Column -->
               <ng-container matColumnDef="candidato" sticky>
@@ -112,7 +112,7 @@
           </section>
         </div>
         <div class="card-footer text-muted">
-          <button data-cy="backCompanyView" (click)="volverAtras()" mat-fab extended color="accent">
+          <button data-cy="backEntrevistasPuesto" (click)="volverAtras()" mat-fab extended color="accent">
             <mat-icon>bookmark</mat-icon>
             <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
           </button>

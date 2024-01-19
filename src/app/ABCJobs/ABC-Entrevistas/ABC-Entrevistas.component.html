@@ -33,7 +33,7 @@
                     <h5 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h5>          
                   </div>
                   <div class="col-2">
-                    <button data-cy="addProjCompanyView" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
+                    <button data-cy="updateAllEV" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
                       <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
                     </button>
                   </div>
@@ -42,29 +42,29 @@
               <div class="card-body">
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Company</mat-label>
-                  <input (input)="asignaTextoEmpresa($event)" matInput #fEmpresa maxlength="50" placeholder="Ex. The name or part of the name of a company...">
+                  <input data-cy="companyAllEV" (input)="asignaTextoEmpresa($event)" matInput #fEmpresa maxlength="50" placeholder="Ex. The name or part of the name of a company...">
                   <mat-hint align="end">{{fEmpresa.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Project</mat-label>
-                  <input (input)="asignaTextoProyecto($event)" matInput #fProyecto maxlength="50" placeholder="Ex. The name or part of the name of a project...">
+                  <input data-cy="projectAllEV" (input)="asignaTextoProyecto($event)" matInput #fProyecto maxlength="50" placeholder="Ex. The name or part of the name of a project...">
                   <mat-hint align="end">{{fProyecto.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Profile</mat-label>
-                  <input (input)="asignaTextoPerfil($event)" matInput #fPerfil maxlength="50" placeholder="Ex. The name or part of the name of a profile...">
+                  <input data-cy="profileAllEV" (input)="asignaTextoPerfil($event)" matInput #fPerfil maxlength="50" placeholder="Ex. The name or part of the name of a profile...">
                   <mat-hint align="end">{{fPerfil.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
                   <mat-label>Candidate</mat-label>
-                  <input (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+                  <input data-cy="candAllEV" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
                   <mat-hint align="end">{{fCandidato.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Enter a date range</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
-                    <input [(ngModel)]="this.textoInicio" matStartDate placeholder="Start date">
-                    <input [(ngModel)]="this.textoFin" matEndDate placeholder="End date">
+                    <input data-cy="fecha1AllEV" [(ngModel)]="this.textoInicio" matStartDate placeholder="Start date">
+                    <input data-cy="fecha2AllEV" [(ngModel)]="this.textoFin" matEndDate placeholder="End date">
                   </mat-date-range-input>
                   <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -80,7 +80,7 @@
             </div>
         
             <div class="example-table-container">
-              <table mat-table [dataSource]="data" class="example-table"
+              <table data-cy="lstAllEV" mat-table [dataSource]="data" class="example-table"
                     matSort matSortActive="nom_empresa" matSortDisableClear matSortDirection="desc">
 
                 <ng-container matColumnDef="num" sticky>
@@ -154,13 +154,13 @@
               </table>
             </div>
           
-            <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
+            <mat-paginator data-cy="pagAllEV" [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
           </div>
           <div class="card-footer text-muted">
             <button 
               type="button"
               class="btn btn-danger mx-3 mt-4"
-              data-cy="backCompanyView" 
+              data-cy="backEntrevistasTodas" 
               mat-fab extended color="accent">
               <!-- <mat-icon>bookmark</mat-icon> -->
               <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
