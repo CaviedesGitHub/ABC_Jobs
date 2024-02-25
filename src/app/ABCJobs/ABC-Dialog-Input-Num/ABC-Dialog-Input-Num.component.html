@@ -1,14 +1,14 @@
-<h1 mat-dialog-title>Change the test result</h1>
+<h1 i18n="titDialogInput|Titulo Dialogo Entrada" mat-dialog-title>Change the test result</h1>
 <mat-dialog-content>
   <form [formGroup]="testForm">
         <div class="form-group mx-sm-3 mb-2">
-          <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nota">Valuation</label>
+          <label i18n="lblValoracion|DialogEntrada Etiqueta del campo valoracion" class="fst-italic fw-bold" for="nota">Valuation</label>
           <input
             novalidate
             id="nota"
             class="form-control form-control-sm"
             formControlName="nota"
-            i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+            i18n-placeholder="holderCDEValoracion|DialogEntrada placeholder del campo valoracion"
             placeholder="Valuation"
             data-cy="valExamenInputDialog"
             type="number"
@@ -23,7 +23,7 @@
               testForm.get('nota')!.touched
             "
           >
-            Valuation required
+          <span i18n="msgErrorCDIValorRequerido|Mensaje de error valor requerido">Valuation required</span>
           </div>
           <div
             class="alert alert-danger alert-dismissible fade show"
@@ -32,7 +32,7 @@
               testForm.get('nota')!.touched
             "
           >
-            Invalid value: Value must be greater than or equal to zero
+            <span i18n="msgErrorCDIValormayor0|Mensaje de error valor mayor que 0">Invalid value: Value must be greater than or equal to zero</span>
           </div>
           <div
             class="alert alert-danger alert-dismissible fade show"
@@ -41,12 +41,12 @@
               testForm.get('nota')!.touched
             "
           >
-            Invalid value: Value must be less than or equal to one hundred
+            <span i18n="msgErrorCDIValorMenor100|Mensaje de error valor menor que 100">Invalid value: Value must be less than or equal to one hundred</span>
           </div>
         </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button data-cy="btnCancelInputDialog" mat-button mat-dialog-close>Cancel</button>
-  <button data-cy="btnSaveInputDialog" [disabled]="testForm.invalid" mat-raised-button color="primary" [mat-dialog-close]="valor">Save</button>
+  <button data-cy="btnCancelInputDialog" mat-button mat-dialog-close><span i18n="txtBtnDialogEntradaCANCEL|texto boton Cancel">Cancel</span></button>
+  <button data-cy="btnSaveInputDialog" [disabled]="testForm.invalid" mat-raised-button color="primary" [mat-dialog-close]="valor"><span i18n="txtBtnDialogEntradaSAVE|texto boton Save">Save</span></button>
 </mat-dialog-actions>

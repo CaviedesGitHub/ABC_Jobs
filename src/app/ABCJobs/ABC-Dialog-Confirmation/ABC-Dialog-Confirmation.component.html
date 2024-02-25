@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Confirmation</h1>
+<h1  i18n="titDialogConfirm|Titulo Dialogo confirmacion" mat-dialog-title>Confirmation</h1>
 <mat-dialog-content>
   <div id="pregunta">
     {{data.pregunta}}
@@ -8,6 +8,6 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button data-cy="btnNoDialog" mat-button (click)="no()">No</button>
-  <button data-cy="btnYesDialog" mat-raised-button color="primary" (click)="si()">Yes</button>
+  <button data-cy="btnNoDialog" mat-button (click)="no()"><span i18n="txtBtnDialogConfirmNO|texto boton No">No</span></button>
+  <button data-cy="btnYesDialog" mat-raised-button color="primary" (click)="si()"><span i18n="txtBtnDialogConfirmYES|texto boton Yes">Yes</span></button>
 </mat-dialog-actions>

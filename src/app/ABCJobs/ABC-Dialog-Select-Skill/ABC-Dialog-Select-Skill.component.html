@@ -1,4 +1,6 @@
-<h1 mat-dialog-title>Select the skill to be evaluated</h1>
+<h1 i18n="titDialogSelSkill|Titulo Dialogo Sel Skill" mat-dialog-title>
+  Select the skill to be evaluated
+</h1>
 <mat-dialog-content>
   <div *ngIf="false">
     <p>Nombre Habilidad: {{this.nomHabil}}</p>
@@ -16,9 +18,9 @@
     </div> -->
     <div class="card-body">
       <mat-form-field>
-        <mat-label><span i18n="FilterMatchProfile|Texto filtro de la pagina">Filter</span></mat-label>
+        <mat-label><span i18n="FilterSelSkill|Texto filtro de la pagina">Filter</span></mat-label>
         <input data-cy="filterHabil" matInput (keyup)="applyFilter($event)" 
-          i18n-placeholder="holderFilterMatchProfile|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
+          i18n-placeholder="holderFilterSelSkill|Place holder filtro de la pagina" placeholder="Ex. ium" #input>
       </mat-form-field>
       <section class="example-container mat-elevation-z8" tabindex="0">  
         <table data-cy="lstHabilsSelHabil" mat-table [dataSource]="lstHabilsData" class="mat-elevation-z8" matSort>
@@ -33,17 +35,17 @@
           </ng-container>
   
           <ng-container matColumnDef="id" sticky>
-            <th class="mat-column-position" mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadLastMatchProfile|Texto cabecera apellidos">Id</span> </th>
+            <th class="mat-column-position" mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadLastSelSkill|Texto cabecera apellidos">Id</span> </th>
             <td class="mat-column-position" mat-cell *matCellDef="let element"> {{element.id}} </td>
           </ng-container>
     
           <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadNameMatchProfile|Texto cabecera nombre">Name</span> </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadNameSelSkill|Texto cabecera nombre">Name</span> </th>
             <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
           </ng-container>
     
           <ng-container matColumnDef="tipo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadRatingMatchProfile|Texto cabecera rating">Type</span> </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span i18n="textHeadTipoSelSkill|Texto cabecera rating">Type</span> </th>
             <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
           </ng-container> 
     
@@ -62,19 +64,19 @@
             (mouseout)="row.hovered=false">
           </tr> 
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptyMatchProfile|Mensaje filtro sin coincidencias en ver Emparejamiento">No data matching the filter</span> "{{input.value}}"</td>
+            <td class="mat-cell" colspan="4"><span i18n="msgFilterEmptySelSkill|Mensaje filtro sin coincidencias en ver Emparejamiento">No data matching the filter</span> "{{input.value}}"</td>
           </tr>
         </table>
         </section>
         <mat-paginator data-cy="pagSelHabil" [pageSizeOptions]="[5, 10, 20]"
           showFirstLastButtons
-          i18n-aria-label="msgAriaPaginMathProfiles|Mensaje aria paginador en ver Emparejamiento"
+          i18n-aria-label="msgAriaPaginSelSkill|Mensaje aria paginador en ver Emparejamiento"
           aria-label="Select page of candidates">
         </mat-paginator>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button data-cy="btnCancelSelHabil" mat-button mat-dialog-close>Cancel</button>
-  <button data-cy="btnSelectSelHabil" mat-raised-button color="primary" [mat-dialog-close]="habilidad">Select</button>
+  <button data-cy="btnCancelSelHabil" mat-button mat-dialog-close><span i18n="txtBtnCancelSelSkill|texto boton cancelar en Sel Skill">Cancel</span></button>
+  <button data-cy="btnSelectSelHabil" mat-raised-button color="primary" [mat-dialog-close]="habilidad"><span i18n="txtBtnSelectSelSkill|texto boton select en Sel Skill">Select</span></button>
 </mat-dialog-actions>

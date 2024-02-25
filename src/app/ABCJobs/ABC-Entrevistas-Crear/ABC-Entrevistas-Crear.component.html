@@ -1,7 +1,7 @@
 <div class="example-loading-shade" *ngIf="this.seleccionaCandidato">
 </div>
 <div id="selectCandidateAbsol" *ngIf="this.seleccionaCandidato">
-  <H1 id="titulo_sel-candidato">Select a candidate</H1>
+  <H1 i18n="TituloSelectCandidato1|Subtitulo Select Candidato" id="titulo_sel-candidato">Select a candidate</H1>
   <app-Detail-Match-Prueba (idEvent)="receiveId($event)" (nombreEvent)="receiveNombre($event)" [idPerfil]="this.perfilId" ></app-Detail-Match-Prueba>          
   <div class="container-fluid text-center">        
     <button
@@ -10,7 +10,7 @@
       data-cy="selectCandEV"
       (click)="this.seleccionaCandidato=false"
     >
-      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Back</span>
+      <span i18n="msgBotonCreateCreateEV|Mensaje boton crear EV">Back</span>
     </button>
   </div>
 </div>
@@ -23,24 +23,24 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
       <div class="divSup">
         <div class="divIzq">
-          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevista.png"  alt="Image of a Team">
+          <img i18n-alt="txtAltCreateEV|Texto alternativo imagen EV" class="logoPag" src="../../../assets/imagenes/entrevista.png"  alt="Image of a Team">
         </div>
         <div class="divDer">
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Job offered</span></H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloCreateEV|Titulo Create EV" class="campo">Job offered</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloCreateEV|Subtitulo Create EV" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }}-{{this.perfilProy?.contacto_empresa}}</span></p>                
-              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
-              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
-              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }} - {{perfilProy?.id_perfil}}</span></p>
-              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
-              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
-              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              <p class="linea"><span i18n="campoContactoCreateEV|campo contacto create ev" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }}-{{this.perfilProy?.contacto_empresa}}</span></p>                
+              <p class="linea"><span i18n="campoMailCreateEV|campo mail create ev" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateCreateEV|campo initial date create ev" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaCreateEV|campo phone create ev" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }} - {{perfilProy?.id_perfil}}</span></p>
+              <p class="linea"><span i18n="campoPaisCreateEV|campo pais create ev" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityCreateEV|campo ciudad create ev" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirCreateEV|campo dir create ev" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
               
             </mat-card-content>
           </mat-card>  
@@ -51,7 +51,7 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleNewEntrevista" class="mb-0 pb-0 fw-bold fst-italic fw-light">New interview schedule</h2>
+              <h2 i18n="titDetalleCreateEV2|Titulo detalle create ev" data-cy="subtitleNewEntrevista" class="mb-0 pb-0 fw-bold fst-italic fw-light">New interview schedule</h2>
               <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
             </div>
             <div class="col-2">
@@ -60,7 +60,7 @@
         </div>
         <div class="card-body">
           <div class="container mt-1">
-            <h2 class="text-center">New interview</h2>
+            <h2 i18n="titNuevaCreateEV2|Titulo detalle create ev" class="text-center">New interview</h2>
             <div class="row align-items-left">
               <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
               </div>
@@ -77,21 +77,21 @@
                   (ngSubmit)="!evForm.invalid && createEntrevista(evForm.value)"
                 >
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_cand">id_cand</label>
+                    <label i18n="lblIdCand|Etiqueta del campo IdCand" class="fst-italic fw-bold" for="id_cand">id_cand</label>
                     <input
                       readonly
                       novalidate
                       id="id_cand"
                       class="form-control form-control-sm"
                       formControlName="id_cand"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      i18n-placeholder="holderIdCand|placeholder del campo id_cand"
                       placeholder="Candidate"
                       data-cy="idNewEV"
                       [ngModel]="this.idCand"
                     />
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="candidato">Candidate</label>
+                    <label i18n="lblCandidatoCreateEV|Etiqueta del campo candidato" class="fst-italic fw-bold" for="candidato">Candidate</label>
                     <div class="input-group input-group-sm mb-3">
                       <input
                         readonly
@@ -99,7 +99,7 @@
                         id="candidato"
                         class="form-control form-control-sm"
                         formControlName="candidato"
-                        i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                        i18n-placeholder="holderCandidatoCreateEV|placeholder del campo candidato"
                         placeholder="Candidate"
                         data-cy="candidatoNewEV"
                         style="display: inline-block;"
@@ -118,18 +118,18 @@
                         evForm?.get('candidato')!.touched
                       "
                     >
-                      Candidate required
+                      <span i18n="msgErrorCandRequiredCreateEV|Mensaje de error candidato requerido">Candidate required</span>
                     </div>
                   </div>                
                   
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="fecha">Date</label>
+                    <label i18n="lblFechaCreateEV|Etiqueta del campo fecha" class="fst-italic fw-bold" for="fecha">Date</label>
                     <input
                       novalidate
                       id="fecha"
                       class="form-control form-control-sm"
                       formControlName="fecha"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      i18n-placeholder="holderFechaCreateEV|placeholder del campo fecha"
                       placeholder="Date"
                       data-cy="fechaNewEV"
                       type="date"
@@ -143,24 +143,24 @@
                         evForm.get('fecha')!.touched
                       "
                     >
-                      Date required
+                    <span i18n="msgErrorFechaRequiredCreateEV|Mensaje de error fecha requerida">Date required</span>
                     </div>
                     <div
                       class="alert alert-danger alert-dismissible fade show"
                       *ngIf="evForm.get('fecha')!.hasError('Invalid Date')
                       ">
-                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">Date Invalid</span>  
+                        <span i18n="msgErrorInvalidDateIniCreateEV|Mensaje de error fecha Inicial Invalida">Date Invalid</span>  
                     </div>
                   </div>
               
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="hora">Time</label>
+                    <label i18n="lblHoraCreateEV|Etiqueta del campo hora" class="fst-italic fw-bold" for="hora">Time</label>
                     <input
                       novalidate
                       id="hora"
                       class="form-control form-control-sm"
                       formControlName="hora"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      i18n-placeholder="holderHoraCreateEV|placeholder del campo hora"
                       placeholder="Time"
                       data-cy="horaNewEV"
                       type="time"
@@ -174,25 +174,25 @@
                         evForm.get('hora')!.touched
                       "
                     >
-                      Time required
+                    <span i18n="msgErrorRequiredTimeCreateEV|Mensaje de error hora requerida">Time required</span>  
                     </div>
                     <div
                       class="alert alert-danger alert-dismissible fade show"
                       *ngIf="evForm.get('hora')!.hasError('Invalid Time')
                       ">
-                        <span i18n="msgErrorInvalidDateIniCreateProject|Mensaje de error fecha Inicial Invalida">Invalid Time</span>  
+                        <span i18n="msgErrorInvalidHoraCreateEV|Mensaje de error hora Invalida">Invalid Time</span>  
                     </div>
                   </div>
 
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="zona">Zone</label>
+                    <label i18n="lblZonaCreateEV|Etiqueta del campo zona" class="fst-italic fw-bold" for="zona">Zone</label>
                     <input
                       readonly
                       novalidate
                       id="zona"
                       class="form-control form-control-sm"
                       formControlName="zona"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                      i18n-placeholder="holderZonaCreateEV|placeholder del campo zona"
                       placeholder="Zone"
                       data-cy="zonaNewEV"
                       [ngModel]="this.zona"
@@ -200,13 +200,13 @@
                   </div>
 
                   <div class="form-group mx-sm-3 mb-2">
-                    <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="contacto">Contact</label>
+                    <label i18n="lblContactoCreateEV|Etiqueta del campo contacto" class="fst-italic fw-bold" for="contacto">Contact</label>
                     <input
                       novalidate
                       id="contacto"
                       class="form-control form-control-sm"
                       formControlName="contacto"
-                      i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                      i18n-placeholder="holderContactoCreateEV|placeholder del campo Contacto"
                       placeholder="Contact"
                       data-cy="contactNewEV"
                     />
@@ -217,7 +217,7 @@
                         evForm.get('contacto')!.touched
                       "
                     >
-                      Contact required
+                    <span i18n="msgErrorRequiredContactoCreateEV|Mensaje de error contacto requerido">Contact required</span>  
                     </div>
                   </div>
 
@@ -228,7 +228,7 @@
                       (click)="cancelCreation()"
                       data-cy="cancelNewEV"
                     >
-                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
+                      <span i18n="msgBotonCancelCreateEV|Mensaje boton cancelar entrevista">Cancel</span>
                     </button>           
                     <button
                       type="submit"
@@ -236,7 +236,7 @@
                       [disabled]="!evForm.valid"
                       data-cy="createNewEV"
                     >
-                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
+                      <span i18n="msgBotonCreateCreateEV|Mensaje boton crear entrevista">Create</span>
                     </button>
                   </div>
                 </form>

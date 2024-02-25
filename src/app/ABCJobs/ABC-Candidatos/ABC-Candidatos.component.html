@@ -41,22 +41,22 @@
               </div>
               <div class="card-body">
                 <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>Last Name</mat-label>
-                  <input (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+                  <mat-label><span i18n="txtCandABCFiltroApellidos|CandABC texto filtro apellidos">Last Name</span></mat-label>
+                  <input (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="50" i18n-placeholder="candidate_apellidos|placeholder nombre del candidato" placeholder="Ex. The name or part of the name of a candidate..">
                   <mat-hint align="end">{{fApellidos.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>Name</mat-label>
-                  <input (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="50" placeholder="Ex. The name or part of the name of a candidate..">
+                  <mat-label><span i18n="txtCandABCFiltroNombres|CandABC texto filtro nombres">Name</span></mat-label>
+                  <input (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="50" i18n-placeholder="candidate_name|placeholder nombre del candidato" placeholder="Ex. The name or part of the lastname of a candidate..">
                   <mat-hint align="end">{{fNombres.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>City</mat-label>
-                  <input (input)="asignaTextoCiudad($event)" matInput #fCiudad maxlength="50" placeholder="Ex. The name or part of the name of a company...">
+                  <mat-label><span i18n="txtCandABCFiltroCiudad|CandABC texto filtro Ciudad">City</span></mat-label>
+                  <input (input)="asignaTextoCiudad($event)" matInput #fCiudad maxlength="50" i18n-placeholder="candidate_ciudad|placeholder company" placeholder="Ex. The name or part of the name of a company...">
                   <mat-hint align="end">{{fCiudad.value.length}}/50</mat-hint>
                 </mat-form-field>
                 <mat-form-field>
-                  <mat-label>Enter a date range</mat-label>
+                  <mat-label><span i18n="txtCandABCFiltroDateRange|CandABC texto filtro date range">Enter a date range</span></mat-label>
                   <mat-date-range-input [rangePicker]="picker">
                     <input [(ngModel)]="this.textoInicio" matStartDate placeholder="Start date">
                     <input [(ngModel)]="this.textoFin" matEndDate placeholder="End date">
@@ -70,7 +70,7 @@
             <div *ngIf="isLoadingResults || isRateLimitReached" class="example-loading-shade">
               <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
               <div *ngIf="isRateLimitReached" class="example-rate-limit-reached">
-                ABCJob's API rate limit has been reached. It will be reset in one minute.
+                <span i18n="txtCandABCLimitReached|CandABC Tasa Limite alcanzado">ABCJob's API rate limit has been reached. It will be reset in one minute.</span>
               </div>
             </div>
         
@@ -85,42 +85,50 @@
 
                 <ng-container matColumnDef="candidato">
                   <th mat-header-cell *matHeaderCellDef >
-                    Candidate's Name
+                    <span i18n="txtCandABCHeadName|CandABC texto cabecera nombre">Candidate's Name</span>
                   </th>
                   <td mat-cell *matCellDef="let row">{{row.candidato}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="documento">
                   <th mat-header-cell *matHeaderCellDef >
-                    Document
+                    <span i18n="txtCandABCHeadDoc|CandABC texto cabecera Doc">Document</span>
                   </th>
                   <td mat-cell *matCellDef="let row">{{row.documento}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="fecha_nac">
                   <th mat-header-cell *matHeaderCellDef >
-                    BirthDay
+                    <span i18n="txtCandABCHeadBirthDay|CandABC texto cabecera fechaNac">BirthDay</span>
                   </th>
                   <td mat-cell *matCellDef="let row">{{row.fecha_nac | date:"long"}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="ciudad">
-                  <th mat-header-cell *matHeaderCellDef>City</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="txtCandABCHeadCity|CandABC texto cabecera Ciudad">City</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.ciudad}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="email">
-                  <th mat-header-cell *matHeaderCellDef>E-Mail</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="txtCandABCemail|CandABC texto cabecera Correo">E-Mail</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.email}}</td>
                 </ng-container>
           
                 <ng-container matColumnDef="phone">
-                  <th mat-header-cell *matHeaderCellDef>Phone</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="txtCandABCHeadPhone|CandABC texto cabecera Phone">Phone</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.phone}}</td>
                 </ng-container>
           
                 <ng-container matColumnDef="direccion">
-                  <th mat-header-cell *matHeaderCellDef>Address</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="txtCandABCHeadDir|CandABC texto cabecera Direccion">Address</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.direccion}}</td>
                 </ng-container>
 
@@ -134,23 +142,23 @@
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
-                        <span><a data-cy="linkResultEV" routerLink="/construccion" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
+                        <span><a data-cy="linkResultEV" routerLink="/construccion" > <span i18n="menuVerViewCandABC|texto menu ver candidato abc">View</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
-                        <span><a data-cy="linkDetailProject" routerLink="/construccion" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Interviews</span> </a></span>
+                        <span><a data-cy="linkDetailProject" routerLink="/construccion" > <span i18n="menuVerInterviewsCandABC|texto menu entrevistas candidato abc">Interviews</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>open_in_new</mat-icon>
-                        <span><a data-cy="linkPruebasCandidato" routerLink="/construccion" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Test List</span> </a></span>
+                        <span><a data-cy="linkPruebasCandidato" routerLink="/construccion" > <span i18n="menuVerTestsCandABC|texto menu pruebas candidato abc">Test List</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>edit</mat-icon>
-                        <span><a data-cy="linkEditProject" routerLink="/construccion" > <span i18n="menuUpdateViewCompany|Menu update proyecto en ver empresa">Update</span> </a></span>
+                        <span><a data-cy="linkEditProject" routerLink="/construccion" > <span i18n="menuUpdateCandABC|Menu update candidato abc">Update</span> </a></span>
                       </button>
                       <button mat-menu-item>
                         <mat-icon>delete</mat-icon>
-                        <span><a data-cy="linkDeleteProject" routerLink="/construccion" > <span i18n="menuDeleteViewCompany|Menu borrar proyecto en ver empresa">Delete</span> </a></span>
+                        <span><a data-cy="linkDeleteProject" routerLink="/construccion" > <span i18n="menuDeleteCandABC|Menu borrar candidato abc">Delete</span> </a></span>
                       </button>
                     </mat-menu>
                   </td>
@@ -173,7 +181,7 @@
               data-cy="backCompanyView" 
               mat-fab extended color="accent">
               <!-- <mat-icon>bookmark</mat-icon> -->
-              <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+              <span i18n="txtBtnBackCandidateABC|texto boton volver en ver empresa" class="contraste">Back</span>
             </button>
           </div>
         </div>

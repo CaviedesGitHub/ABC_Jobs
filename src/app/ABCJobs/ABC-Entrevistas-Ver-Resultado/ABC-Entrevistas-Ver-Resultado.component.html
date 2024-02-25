@@ -6,26 +6,26 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
       <div class="divSup">
         <div class="divIzq">
-          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevista.png"  alt="Image of a Team">
+          <img i18n-alt="txtAltResultsEV|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevista.png"  alt="Image of a Team">
         </div>
         <div class="divDer">
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Interview</span> - {{entrevista?.id}}</H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloResultsEV|Titulo Results EV" class="campo">Interview</span> - {{entrevista?.id}}</H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloResultsEV|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Candidate: </span><span data-cy="contactCompanyView">{{ entrevista?.candidato }}-{{entrevista?.id_cand}}</span></p>                
-              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">DateTime: </span><span data-cy="emailCompanyView">{{ entrevista?.cuando | date:"medium" }}</span></p>
-              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Contact: </span><span data-cy="initialDateCompanyView">{{ entrevista?.candidato }}</span></p>
+              <p class="linea"><span i18n="campoContactoResultsEV|campo contacto ResultsEV" class="campo">Candidate: </span><span data-cy="contactCompanyView">{{ entrevista?.candidato }}-{{entrevista?.id_cand}}</span></p>                
+              <p class="linea"><span i18n="campoMailResultsEV|campo mail ResultsEV" class="campo">DateTime: </span><span data-cy="emailCompanyView">{{ entrevista?.cuando | date:"medium" }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateResultsEV|campo initial date ResultsEV" class="campo">Contact: </span><span data-cy="initialDateCompanyView">{{ entrevista?.candidato }}</span></p>
               <p class="linea"><span i18n="campoProfileResultsEV|campo profile ResultsEV" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ entrevista?.nom_perfil }}</span></p>
               <p class="linea"><span i18n="campoProjectResultsEV|campo Project ResultsEV" class="campo">Project: </span><span data-cy="phoneCompanyView">{{ entrevista?.nom_proyecto }}</span></p>
               <p class="linea"><span i18n="campoCompanyResultsEV|campo company ResultsEV" class="campo">Company: </span><span data-cy="phoneCompanyView">{{ entrevista?.nom_empresa }}</span></p>
-              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
-              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
-              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              <p class="linea"><span i18n="campoPaisResultsEV|campo pais ResultsEV" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityResultsEV|campo ciudad ResultsEV" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirResultsEV|campo dir ResultsEV" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
               
             </mat-card-content>
           </mat-card>  
@@ -36,7 +36,7 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Interview results</h2>
+              <h2 i18n="titDetalleResultsEV|Titulo detalle results EV" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Interview results</h2>
               <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
             </div>
             <div class="col-2">
@@ -45,7 +45,7 @@
         </div>
         <div class="card-body">
           <div class="container mt-1">
-            <h2 class="text-center">View Results</h2>
+            <h2 i18n="titDetalleViewResultsEV|Titulo detalle View Results EV" class="text-center">View Results</h2>
             <div class="row align-items-left">
               <div class="col-0 col-sm-1 col-md-1 col-lg-3 col-xl-3">
               </div>
@@ -55,14 +55,14 @@
                   (ngSubmit)="!revForm.invalid && updateEntrevista(revForm.value, entrevista.id)"
                 >
                 <div class="form-group mx-sm-3 mb-2">
-                  <label i18n="lblCalifResultEV|Etiqueta del calificacion en ResultEV" class="fst-italic fw-bold" for="calificacion">Valuation</label>
+                  <label i18n="lblCalifResultsEV|Etiqueta del calificacion en ResultEV" class="fst-italic fw-bold" for="calificacion">Valuation</label>
                   <input
                     novalidate
                     readonly
                     id="calificacion"
                     class="form-control form-control-sm"
                     formControlName="calificacion"
-                    i18n-placeholder="holderCalifViewEV|placeholder del campo calificacion"
+                    i18n-placeholder="holderCalifViewResultsEV|placeholder del campo calificacion"
                     placeholder="Valuation"
                     data-cy="califViewResultEV" />
                   <div
@@ -72,19 +72,19 @@
                       revForm.get('calificacion')!.touched
                     "
                   >
-                    Valuation required
+                    <span i18n="txtErrorMsgValoracionRequeridaResultsEV|Valoracion requerida en ResultsEV">Valuation required</span>
                   </div>
                 </div>
             
                 <div class="form-group mx-sm-3 mb-2">
-                  <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="anotaciones">Annotations</label>
+                  <label i18n="lblAnotaResultsEV|Etiqueta del campo anotaciones" class="fst-italic fw-bold" for="anotaciones">Annotations</label>
                   <textarea 
                     novalidate
                     readonly
                     id="anotaciones"
                     class="form-control form-control-sm"
                     formControlName="anotaciones"
-                    i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                    i18n-placeholder="holderAnotaResultsEV|placeholder del campo anotaciones"
                     placeholder="Annotations"
                     data-cy="anotaViewResultEV"
                     rows="10">
@@ -96,13 +96,13 @@
                       revForm.get('anotaciones')!.touched
                     "
                   >
-                    Annotations required
+                    <span i18n="txtErrorMsgAnotacionRequeridaResultsEV|Anotacion requerida en ResultsEV">Annotations required</span>
                   </div>
                   <div
                     class="alert alert-danger alert-dismissible fade show"
                     *ngIf="revForm.get('anotaciones')!.hasError('maxlength')"
                   >
-                    Annotations too long
+                  <span i18n="txtErrorMsgAnotacionLargaResultsEV|Anotacion muy larga en ResultsEV">Annotations too long</span>
                   </div>
                 </div>
                   <div class="container-fluid text-center">
@@ -112,7 +112,7 @@
                       (click)="cancelCreation()"
                       data-cy="cancelViewResultEV"
                     >
-                      <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Back</span>
+                      <span i18n="msgBotonCancelResultsEV|Mensaje boton cancelar Results EV">Back</span>
                     </button>           
                     <button *ngIf="false"
                       type="submit"
@@ -120,7 +120,7 @@
                       [disabled]="!revForm.valid"
                       data-cy="createViewResultEV"
                     >
-                      <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Save</span>
+                      <span i18n="msgBotonCreateResultsEV|Mensaje boton crear Results EV">Save</span>
                     </button>
                   </div>
                 </form>

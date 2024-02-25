@@ -7,8 +7,8 @@
       <div class="card bg-light">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-header text-center ">
-          <h1 i18n="TituloSignup|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">New Test</h1>
-          <h4 i18n="IndicacionSignup|Enunciado guia para el usuario" class="card-title text-center my-0 py-0">Enter the new test data</h4>
+          <h1 i18n="TituloNewExamen|Titulo principal de la pagina" class="mb-0 pb-0 fw-bold fst-italic fw-light">New Test</h1>
+          <h4 i18n="IndicacionNewExamen|Enunciado guia para el usuario" class="card-title text-center my-0 py-0">Enter the new test data</h4>
         </div>
         <div class="card-body py-1">          
           <div class="container mt-1">
@@ -17,35 +17,35 @@
               (ngSubmit)="!testForm.invalid && createExamen(testForm.value)"
             >
               <div *ngIf="false" class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_cand">id_cand</label>
+                <label i18n="lblIdCandNewExamen|Etiqueta del campo id_cand" class="fst-italic fw-bold" for="id_cand">id_cand</label>
                 <input
                   readonly
                   novalidate
                   id="id_cand"
                   class="form-control form-control-sm"
                   formControlName="id_cand"
-                  i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                  i18n-placeholder="holderIdCandNewExamen|placeholder Id Cand New Examen"
                   placeholder="Candidate"
                   data-cy="idCandTest"
                 />
               </div>
 
               <div *ngIf="false" class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="id_habil">id_habil</label>
+                <label i18n="lblIdHabilNewExamen|Etiqueta del campo Id Habil" class="fst-italic fw-bold" for="id_habil">id_habil</label>
                 <input
                   readonly
                   novalidate
                   id="id_habil"
                   class="form-control form-control-sm"
                   formControlName="id_habil"
-                  i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                  i18n-placeholder="holderIdHabilNewExamen|placeholder Id Habil"
                   placeholder="id_habil"
                   data-cy="idHabilTest"
                 />
               </div>
               
               <div class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nom_cand">Candidate</label>
+                <label i18n="lblNomCandNewExamen|Etiqueta del campo Nom Cand" class="fst-italic fw-bold" for="nom_cand">Candidate</label>
                 <div class="input-group input-group-sm mb-3">
                   <input
                     readonly
@@ -53,7 +53,7 @@
                     id="nom_cand"
                     class="form-control form-control-sm"
                     formControlName="nom_cand"
-                    i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                    i18n-placeholder="holderNomCandNewExamen|placeholder del campo Nom Cand"
                     placeholder="Select Candidate"
                     data-cy="nom_candTest"
                     style="display: inline-block;"
@@ -71,12 +71,12 @@
                     testForm.get('nom_cand')!.touched
                   "
                 >
-                  Candidate required
+                  <span i18n="errMsgCandidateRequiredNewExamen|Mensaje error candidato requerido">Candidate required</span>
                 </div>
               </div>  
 
               <div class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nom_habil">Tech Skill</label>
+                <label i18n="lblNomHabilNewExamen|Etiqueta del campo no Habil" class="fst-italic fw-bold" for="nom_habil">Tech Skill</label>
                 <div class="input-group input-group-sm mb-3">
                   <input
                     readonly
@@ -84,7 +84,7 @@
                     id="nom_habil"
                     class="form-control form-control-sm"
                     formControlName="nom_habil"
-                    i18n-placeholder="holderPass1Signup|placeholder del campo password1"
+                    i18n-placeholder="holderNomHabilNewExamen|placeholder del campo Nom Habil"
                     placeholder="Select Skill"
                     data-cy="nom_habilTest"
                     style="display: inline-block;"
@@ -102,19 +102,19 @@
                     testForm.get('nom_habil')!.touched
                   "
                 >
-                  Skill required
+                  <span i18n="errMsgSkillRequiredNewExamen|Mensaje error habil requerida">Skill required</span>
                 </div>
               </div>  
 
               <div class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="nota">Valuation</label>
+                <label i18n="lblNotaNewExamen|Etiqueta del campo Nota" class="fst-italic fw-bold" for="nota">Valuation</label>
                 <input
                   (input)="muestraResultado($event)"
                   novalidate
                   id="nota"
                   class="form-control form-control-sm"
                   formControlName="nota"
-                  i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                  i18n-placeholder="holderNota|placeholder del Nota"
                   placeholder="Valuation"
                   data-cy="valExamenNuevo"
                   type="number"
@@ -128,7 +128,7 @@
                     testForm.get('nota')!.touched
                   "
                 >
-                  Valuation required
+                <span i18n="errMsgNotaRequiredNewExamen|Mensaje error nota requerida">Valuation required</span>
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -137,7 +137,7 @@
                     testForm.get('nota')!.touched
                   "
                 >
-                  Invalid value: Value must be greater than or equal to zero
+                <span i18n="errMsgValorMas0NewExamen|Mensaje error Nota mayor que cero">Invalid value: Value must be greater than or equal to zero</span>
                 </div>
                 <div
                   class="alert alert-danger alert-dismissible fade show"
@@ -146,19 +146,19 @@
                     testForm.get('nota')!.touched
                   "
                 >
-                  Invalid value: Value must be less than or equal to one hundred
+                  <span i18n="errMsgValorMenor100NewExamen|Mensaje error nota menor que 100">Invalid value: Value must be less than or equal to one hundred</span>
                 </div>
               </div>
 
               <div class="form-group mx-sm-3 mb-2">
-                <label i18n="lblPass1Signup|Etiqueta del campo password1" class="fst-italic fw-bold" for="resultado">Result</label>
+                <label i18n="lblResultNewExamen|Etiqueta del campo Result" class="fst-italic fw-bold" for="resultado">Result</label>
                 <input
                   readonly
                   novalidate
                   id="resultado"
                   class="form-control form-control-sm"
                   formControlName="resultado"
-                  i18n-placeholder="holderPass1Signup|placeholder del campo zona"
+                  i18n-placeholder="holderResultNewExamen|placeholder del campo Result"
                   placeholder="Result"
                   data-cy="resExamenNuevo"
                 />
@@ -171,7 +171,7 @@
                   (click)="cancelCreation()"
                   data-cy="cancelTest"
                 >
-                  <span i18n="msgBotonCancelCreateCompany|Mensaje boton cancelar empresa">Cancel</span>
+                  <span i18n="msgBotonCancelNewExamen|Mensaje boton cancelar en New Examen">Cancel</span>
                 </button>           
                 <button
                   type="submit"
@@ -179,7 +179,7 @@
                   [disabled]="!testForm.valid"
                   data-cy="createTest"
                 >
-                  <span i18n="msgBotonCreateCreateCompany|Mensaje boton crear empresa">Create</span>
+                  <span i18n="msgBotonCreateNewExamen|Mensaje boton crear New Examen">Create</span>
                 </button>
               </div>
             </form>

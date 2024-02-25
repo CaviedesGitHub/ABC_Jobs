@@ -12,12 +12,12 @@
             <div class="row align-items-left">
               <div class="divSup">
                 <div class="divIzq">
-                  <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/examen.png"  alt="Image of a Team">
+                  <img i18n-alt="txtAltViewExamenes|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/examen.png"  alt="Image of a Team">
                 </div>
                 <div class="divDer">
                   <div class="col-10">
-                    <h1 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of submitted exams</h1>
-                    <h3 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Parameterized list of all exams presented on the platform</h3>          
+                    <h1 i18n="titDetalleViewExamenes|Titulo detalle Examenes" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of submitted exams</h1>
+                    <h3 i18n="subTitDetalleViewExamenes|SubTitulo detalle Examenes" class="card-title text-left mb-0 pb-0">Parameterized list of all exams presented on the platform</h3>          
                   </div>
                   <div class="col-2">
                   </div>    
@@ -30,24 +30,24 @@
               <div class="card-header text-left ">
                 <div class="row align-items-left">
                   <div class="col-10">
-                    <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
-                    <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
+                    <h2 i18n="titDetalleViewExamenes2|Titulo detalle Examenes" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
+                    <h4 i18n="subTitDetalleViewExamenes2|SubTitulo detalle Examenes" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
                   </div>
                   <div class="col-2">
                     <button data-cy="btnUpdateQueryTest" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
-                      <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
+                      <span i18n="txtBtnUpdateViewExamenes|texto boton Update Examenes">Update</span>
                     </button>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>Skill Tech</mat-label>
+                  <mat-label><span i18n="lblFiltroSkillTechViewExamenes|filtro Skill Tech Examenes">Skill Tech</span></mat-label>
                   <input data-cy="txtFilterHabilTest" (input)="asignaTextoHabilidad($event)" matInput #fHabilidad maxlength="80" placeholder="Ex. The name or part of the name of a skill...">
                   <mat-hint align="end">{{fHabilidad.value.length}}/80</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width filtrosR">
-                  <mat-label>Candidate</mat-label>
+                  <mat-label><span i18n="lblFiltroCandidateViewExamenes|filtro Candidate Examenes">Candidate</span></mat-label>
                   <input data-cy="txtFilterCandTest" (input)="asignaTextoCandidato($event)" matInput #fCandidato maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
                   <mat-hint align="end">{{fCandidato.value.length}}/80</mat-hint>
                 </mat-form-field>
@@ -56,7 +56,7 @@
             <div *ngIf="isLoadingResults || isRateLimitReached" class="example-loading-shade">
               <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
               <div *ngIf="isRateLimitReached" class="example-rate-limit-reached">
-                ABCJob's API rate limit has been reached. It will be reset in one minute.
+                <span i18n="txtLimiteViewExamenes|Limite Examenes">ABCJob's API rate limit has been reached. It will be reset in one minute.</span>
               </div>
             </div>
         
@@ -70,23 +70,29 @@
                 </ng-container>
 
                 <ng-container matColumnDef="candidato">
-                  <th mat-header-cell *matHeaderCellDef>Candidate</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="lblHeadCandidatoViewExamenes|Head candidato Examenes">Candidate</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.candidato}}</td>
                 </ng-container>
           
                 <ng-container matColumnDef="nom_habil">
-                  <th mat-header-cell *matHeaderCellDef>Skill</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="lblHeadSkillViewExamenes|Head Skill Examenes">Skill</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.nom_habil}}</td>
                 </ng-container>
           
                 <ng-container matColumnDef="nota">
-                  <th mat-header-cell *matHeaderCellDef>Valuation</th>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span i18n="lblHeadValuationViewExamenes|Head Valuation Examenes">Valuation</span>
+                  </th>
                   <td mat-cell *matCellDef="let row">{{row.nota}}</td>
                 </ng-container>
           
                 <ng-container matColumnDef="resultado">
                   <th mat-header-cell *matHeaderCellDef >
-                    Result
+                    <span i18n="lblHeadResultViewExamenes|Head Result Examenes">Result</span>
                   </th>
                   <td mat-cell *matCellDef="let row">{{row.resultado}}</td>
                 </ng-container>
@@ -130,7 +136,7 @@
               data-cy="backExamenes" 
               mat-fab extended color="accent">
               <!-- <mat-icon>bookmark</mat-icon> -->
-              <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+              <span i18n="txtBtnBackViewExamenes|texto boton volver en ver examenes" class="contraste">Back</span>
             </button>
           </div>
         </div>

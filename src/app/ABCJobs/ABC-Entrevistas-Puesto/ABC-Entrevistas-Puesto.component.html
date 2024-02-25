@@ -6,24 +6,24 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-12 col-xl-12">
       <div class="divSup">
         <div class="divIzq">
-          <img i18n-alt="txtAltViewCompany|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevistas.jpg"  alt="Image of a Team">
+          <img i18n-alt="txtAltEVPuesto|Texto alternativo imagen Team" class="logoPag" src="../../../assets/imagenes/entrevistas.jpg"  alt="Image of a Team">
         </div>
         <div class="divDer">
           <mat-card class="example-card" >          
             <mat-card-header>            
               <mat-card-title-group>
-                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloViewCompany|Titulo ver empresa" class="campo">Job offered</span></H1></mat-card-title>
-                <mat-card-subtitle><span i18n="subTituloViewCompany|Subtitulo ver empresa" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
+                <mat-card-title><H1 class="titTarjeta" style="font-weight:bold"><span i18n="tituloEVPuesto|Titulo EV Puesto" class="campo">Job offered</span></H1></mat-card-title>
+                <mat-card-subtitle><span i18n="subTituloEVPuesto|Subtitulo EV Puesto" class="campo"></span><span data-cy="typeCompanyView"></span></mat-card-subtitle>                            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content class="cardContent">
-              <p class="linea"><span i18n="campoContactoViewCompany|campo contacto ver empresa" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }} - {{ perfilProy?.id }}</span></p>                
-              <p class="linea"><span i18n="campoMailViewCompany|campo mail ver empresa" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
-              <p class="linea"><span i18n="campoInitialDateViewCompany|campo initial date ver empresa" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
-              <p class="linea"><span i18n="campoEmpresaViewCompany|campo phone ver empresa" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
-              <p class="linea"><span i18n="campoPaisViewCompany|campo pais ver empresa" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
-              <p class="linea"><span i18n="campoCityViewCompany|campo ciudad ver empresa" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
-              <p class="linea"><span i18n="campoDirViewCompany|campo dir ver empresa" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
+              <p class="linea"><span i18n="campoContactoEVPuesto|campo contacto EV Puesto" class="campo">Company: </span><span data-cy="contactCompanyView">{{ perfilProy?.nom_empresa }} - {{ perfilProy?.id }}</span></p>                
+              <p class="linea"><span i18n="campoMailEVPuesto|campo mail EV Puesto" class="campo">Project: </span><span data-cy="emailCompanyView">{{ perfilProy?.nom_proyecto }}</span></p>
+              <p class="linea"><span i18n="campoInitialDateEVPuesto|campo initial date EV Puesto" class="campo">Initial Date: </span><span data-cy="initialDateCompanyView">{{ perfilProy?.fecha_inicio }}</span></p>
+              <p class="linea"><span i18n="campoEmpresaEVPuesto|campo phone EV Puesto" class="campo">Profile: </span><span data-cy="phoneCompanyView">{{ perfilProy?.nom_perfil }}</span></p>
+              <p class="linea"><span i18n="campoPaisEVPuesto|campo pais EV Puesto" class="campo">Technical Skills: </span><span data-cy="countryCompanyView">{{ cadHT  }}</span></p>
+              <p class="linea"><span i18n="campoCityEVPuesto|campo ciudad EV Puesto" class="campo">Soft Skills: </span><span data-cy="cityCompanyView">{{ cadHB  }}</span></p>
+              <p class="linea"><span i18n="campoDirEVPuesto|campo dir EV Puesto" class="campo">Personal Skills: </span><span data-cy="addressCompanyView">{{ cadHP  }}</span></p>
               
             </mat-card-content>
           </mat-card>  
@@ -34,13 +34,13 @@
         <div class="card-header text-left ">
           <div class="row align-items-left">
             <div class="col-10">
-              <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of interviews for this position</h2>
+              <h2 i18n="titDetalleEVPuesto|Titulo detalle EV Puesto" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">List of interviews for this position</h2>
               <!-- <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">{{this.nomCand}} - {{this.idCand}}</h4>           -->
             </div>
             <div class="col-2">
               <button data-cy="addEntrevistaPuesto" style="float: right" (click)="agregarEntrevista()" mat-fab extended color="primary">
                 <mat-icon>plus_one</mat-icon>
-                <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">New</span>
+                <span i18n="txtBtnNewEVPuesto|texto boton nuevo EV Puesto">New</span>
               </button>
             </div>
           </div>
@@ -51,30 +51,30 @@
               ['candidato', 'cuando', 'contacto', 'nom_empresa', 'nom_proy', 'nom_perfil'];
               <!-- Name Column -->
               <ng-container matColumnDef="candidato" sticky>
-                <th mat-header-cell *matHeaderCellDef> <span i18n="headIdViewCompany|texto cabecera Id ver empresa">Candidate</span> </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="headIdEVPuesto|texto cabecera Id EV Puesto">Candidate</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.candidato}} </td>
               </ng-container>
           
               <!-- Position Column -->
               <ng-container matColumnDef="cuando">
-                <th mat-header-cell *matHeaderCellDef> <span i18n="headNameViewCompany|texto cabecera nombre ver empresa">Date and Time</span> </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="headNameEVPuesto|texto cabecera nombre EV Puesto">Date and Time</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.cuando | date:"medium"}} </td>
               </ng-container>
           
               <!-- Initial Date Column |date:'longDate' -->
               <ng-container matColumnDef="contacto">
-                <th mat-header-cell *matHeaderCellDef> <span i18n="headFechaIniViewCompany|texto cabecera fecha inicial ver empresa">Contact</span> </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="headFechaIniEVPuesto|texto cabecera fecha inicial EV Puesto">Contact</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.contacto}} </td>
               </ng-container>
 
               <!-- Weight Column -->
               <ng-container matColumnDef="anotaciones">
-                <th mat-header-cell *matHeaderCellDef> <span i18n="headDescViewCompany|texto cabecera descripcion ver empresa">Annotations</span> </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="headDescEVPuesto|texto cabecera descripcion EV Puesto">Annotations</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.anotaciones}} </td>
               </ng-container>
 
               <ng-container matColumnDef="calificacion">
-                <th mat-header-cell *matHeaderCellDef> <span i18n="headDescViewCompany|texto cabecera descripcion ver empresa">Qualification</span> </th>
+                <th mat-header-cell *matHeaderCellDef> <span i18n="headDescEVPuesto|texto cabecera descripcion EV Puesto">Qualification</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.calificacion}} </td>
               </ng-container>
                     
@@ -88,19 +88,19 @@
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">Results</span> </a></span>
+                      <span><a data-cy="linkResultEV" routerLink="/resultadoEntrevista/{{ element.id }}" > <span i18n="menuEditResultEVPuesto|texto menu edit result EV Puesto">Results</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>open_in_new</mat-icon>
-                      <span><a data-cy="linkDetailProject" routerLink="/verResultadoEntrevista/{{ element.id }}" > <span i18n="menuVerViewCompany|texto menu ver proyecto ver empresa">View</span> </a></span>
+                      <span><a data-cy="linkDetailProject" routerLink="/verResultadoEntrevista/{{ element.id }}" > <span i18n="menuVerResultEVPuesto|texto menu ver result EV Puesto">View</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>edit</mat-icon>
-                      <span><a data-cy="linkEditProject" routerLink="/construcion" > <span i18n="menuUpdateViewCompany|Menu update proyecto en ver empresa">Update</span> </a></span>
+                      <span><a data-cy="linkEditProject" routerLink="/construcion" > <span i18n="menuUpdateEVPuesto|Menu update EV Puesto">Update</span> </a></span>
                     </button>
                     <button mat-menu-item>
                       <mat-icon>delete</mat-icon>
-                      <span><a data-cy="linkDeleteProject" routerLink="/construcion" > <span i18n="menuDeleteViewCompany|Menu borrar proyecto en ver empresa">Delete</span> </a></span>
+                      <span><a data-cy="linkDeleteProject" routerLink="/construcion" > <span i18n="menuDeleteEVPuesto|Menu borrar EV Puesto">Delete</span> </a></span>
                     </button>
                   </mat-menu>
                 </td>
@@ -114,7 +114,7 @@
         <div class="card-footer text-muted">
           <button data-cy="backEntrevistasPuesto" (click)="volverAtras()" mat-fab extended color="accent">
             <mat-icon>bookmark</mat-icon>
-            <span i18n="txtBtnBackViewCompany|texto boton volver en ver empresa" class="contraste">Back</span>
+            <span i18n="txtBtnBackEVPuesto|texto boton volver en EV Puesto" class="contraste">Back</span>
           </button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Select a candidate</h1>
+<h1 i18n="titDialogSelCand|Titulo Dialogo SelCand" mat-dialog-title>Select a candidate</h1>
 <mat-dialog-content>
   <div *ngIf="false">
     <p>Nombre Candidato: {{this.nomHabil}}</p>
@@ -12,24 +12,24 @@
       <div class="card-header text-left ">
         <div class="row align-items-left">
           <div class="col-10">
-            <h2 i18n="titDetalleViewCompany|Titulo detalle ver empresa" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
-            <h4 i18n="subTitDetalleViewCompany|SubTitulo detalle ver empresa" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
+            <h2 i18n="titDetalleSelectCand|Titulo detalle Select Cand" data-cy="subtitleCompanyView" class="mb-0 pb-0 fw-bold fst-italic fw-light">Remote Query Filters</h2>
+            <h4 i18n="subTitDetalleSelectCand|SubTitulo detalle Select Cand" class="card-title text-left mb-0 pb-0">Fields to filter the query</h4>          
           </div>
           <div class="col-2">
             <button data-cy="btnUpdateSelCand" style="float: right" (click)="updateConsulta()" class="btn btn-primary mx-3 mt-4">
-              <span i18n="txtBtnNewViewCompany|texto boton nuevo ver empresa">Update</span>
+              <span i18n="txtBtnUpdateSelCand|texto boton actualiza consulta">Update</span>
             </button>
           </div>
         </div>
       </div>
       <div class="card-body">
         <mat-form-field class="example-full-width filtrosR">
-          <mat-label>Last Name</mat-label>
+          <mat-label><span i18n="txtFilterSelCandLastName|texto boton filtro apellido">Last Name</span></mat-label>
           <input data-cy="filterApellidoSelCand" (input)="asignaTextoApellidos($event)" matInput #fApellidos maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
           <mat-hint align="end">{{fApellidos.value.length}}/80</mat-hint>
         </mat-form-field>
         <mat-form-field class="example-full-width filtrosR">
-          <mat-label>Name</mat-label>
+          <mat-label><span i18n="txtFilterSelCandName|texto boton filtro name">Name</span></mat-label>
           <input data-cy="filterNombreSelCand" (input)="asignaTextoNombres($event)" matInput #fNombres maxlength="80" placeholder="Ex. The name or part of the name of a candidate..">
           <mat-hint align="end">{{fNombres.value.length}}/80</mat-hint>
         </mat-form-field>      
@@ -38,7 +38,7 @@
     <div *ngIf="isLoadingResults || isRateLimitReached" class="example-loading-shade">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
       <div *ngIf="isRateLimitReached" class="example-rate-limit-reached">
-        ABCJob's API rate limit has been reached. It will be reset in one minute.
+        <span i18n="txtSelCandLimitReached|SelCand Tasa Limite alcanzado">ABCJob's API rate limit has been reached. It will be reset in one minute.</span>
       </div>
     </div>
   
@@ -62,25 +62,29 @@
   
         <ng-container matColumnDef="candidato">
           <th mat-header-cell *matHeaderCellDef >
-            Candidate's Name
+            <span i18n="txtSelCandHeadName|SelCand texto cabecera nombre">Candidate's Name</span>
           </th>
           <td mat-cell *matCellDef="let row">{{row.candidato}}</td>
         </ng-container>
   
         <ng-container matColumnDef="documento">
           <th mat-header-cell *matHeaderCellDef >
-            Document
+            <span i18n="txtSelCandHeadDoc|SelCand texto cabecera Doc">Document</span>
           </th>
           <td mat-cell *matCellDef="let row">{{row.documento}}</td>
         </ng-container>
   
         <ng-container matColumnDef="ciudad">
-          <th mat-header-cell *matHeaderCellDef>City</th>
+          <th mat-header-cell *matHeaderCellDef>
+            <span i18n="txtSelCandHeadCity|SelCand texto cabecera City">City</span>
+          </th>
           <td mat-cell *matCellDef="let row">{{row.ciudad}}</td>
         </ng-container>
   
         <ng-container matColumnDef="email" stickyEnd>
-          <th mat-header-cell *matHeaderCellDef>E-Mail</th>
+          <th mat-header-cell *matHeaderCellDef>
+            <span i18n="txtSelCandHeadEmail|SelCand texto cabecera Email">E-Mail</span>
+          </th>
           <td mat-cell *matCellDef="let row">{{row.email}}</td>
         </ng-container>
   
@@ -101,7 +105,11 @@
   
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button data-cy="btnCancelSelCand" mat-button mat-dialog-close>Cancel</button>
-  <button data-cy="btnSelectSelCand" mat-raised-button color="primary" [mat-dialog-close]="selCandidato">Select</button>
+  <button data-cy="btnCancelSelCand" mat-button mat-dialog-close>
+    <span i18n="txtBtnCancelSelCand|texto boton cancelar en Sel cand">Cancel</span>
+  </button>
+  <button data-cy="btnSelectSelCand" mat-raised-button color="primary" [mat-dialog-close]="selCandidato">
+    <span i18n="txtBtnSelectSelCand|texto boton select en Sel cand">Select</span>
+  </button>
 </mat-dialog-actions>
 
