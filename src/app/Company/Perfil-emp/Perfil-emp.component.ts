@@ -48,21 +48,12 @@ export class PerfilEmpComponent implements OnInit {
     this.companyService.verCandidatosCumplenServ(perfilId).subscribe(lstCand=>{
       //this.toastr.success("Confirmation", 'Consulta Done')
       if (this.locale=="en-US"){
-        this.cadHT = "SOFT SKILLS: ";
-        this.cadHB = "HABILIDADES BLANDAS: ";
-        this.cadHP = "PERSONAL SKILLS:: ";
         this.toastr.success("Confirmation", 'Consultation successfully completed.')
       }
       else if(this.locale=="es"){
-        this.cadHT = "HABILIDADES TECNICAS: ";
-        this.cadHB = "HABILIDADES BLANDAS: ";
-        this.cadHP = "HABILIDADES PERSONALES: ";
         this.toastr.success("Confirmacion", 'Consulta realizada exitosamente.')
       }
       else{
-        this.cadHT = "SOFT SKILLS: ";
-        this.cadHB = "HABILIDADES BLANDAS: ";
-        this.cadHP = "PERSONAL SKILLS:: ";
         this.toastr.success("Confirmation", 'Consultation successfully completed.')
       }
       this.lstCandidatos=lstCand
@@ -80,6 +71,21 @@ export class PerfilEmpComponent implements OnInit {
   }
 
   obtenerHabilidadesPerfil(perfilId: number){
+    if (this.locale=="en-US"){
+      this.cadHT = "SOFT SKILLS: ";
+      this.cadHB = "HABILIDADES BLANDAS: ";
+      this.cadHP = "PERSONAL SKILLS: ";
+    }
+    else if(this.locale=="es"){
+      this.cadHT = "HABILIDADES TECNICAS: ";
+      this.cadHB = "HABILIDADES BLANDAS: ";
+      this.cadHP = "HABILIDADES PERSONALES: ";
+    }
+    else{
+      this.cadHT = "SOFT SKILLS: ";
+      this.cadHB = "HABILIDADES BLANDAS: ";
+      this.cadHP = "PERSONAL SKILLS: ";
+    }
     this.companyService.getSkillsProfile(perfilId).subscribe(resp=>{
       console.log(resp)
       this.lstHabils=resp.Habilidades;
@@ -87,6 +93,7 @@ export class PerfilEmpComponent implements OnInit {
         console.log(this.lstHabils[i]["nombre"])
         if (this.lstHabils[i]["cod_habil"]==1){
           this.cadHT=this.cadHT.concat(this.lstHabils[i]["nombre"], "- ")
+          console.log(this.cadHT)
           console.log("1: tecnica")
         }
         else if(this.lstHabils[i]["cod_habil"]==2){

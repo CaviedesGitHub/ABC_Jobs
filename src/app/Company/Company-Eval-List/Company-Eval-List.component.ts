@@ -136,22 +136,41 @@ export class CompanyEvalListComponent implements OnInit {
   calculoPeriodoEvaluado(){
     console.log('FECHA ASIGNACION')
     console.log(this.perfilProy.fecha_asig)
-    this.date_fecha_asig=new Date(this.perfilProy.fecha_asig)
+    var dateFechaAsigAux = new Date(this.perfilProy.fecha_asig)
+    var userTimezoneOffset = dateFechaAsigAux.getTimezoneOffset()*60000    //     //if (dateFechaAsigAux.toString().indexOf('+')>=0){ //  userTimezoneOffset= userTimezoneOffset * (-1) //}
+    var dateFechaAsig = new Date(dateFechaAsigAux.getTime() + userTimezoneOffset)
+    console.log(dateFechaAsig)
+
+    var dateFechaInicioAux = new Date(this.perfilProy.fecha_inicio)
+    var dateFechaInicio = new Date(dateFechaInicioAux.getTime() + userTimezoneOffset)
+    console.log(this.perfilProy.fecha_inicio)
+    console.log(dateFechaInicio)    
+    
+    var dateFechaBase: Date
+    if (dateFechaInicio>dateFechaAsig){
+       dateFechaBase=dateFechaInicio
+    }
+    else {
+       dateFechaBase=dateFechaAsig
+    }
+    console.log(dateFechaBase)   
+    console.log("================================")
+    
+    this.date_fecha_asig=dateFechaAsig
     if (this.lstEvals.length==0){
-      this.anno=this.date_fecha_asig.getFullYear()
-      this.mes=this.date_fecha_asig.getMonth()
+      this.anno=dateFechaBase.getFullYear()
+      this.mes=dateFechaBase.getMonth()
     }
     else{
-      this.anno=this.lstEvals[this.lstEvals.length-1].anno
-      this.mes=this.lstEvals[this.lstEvals.length-1].mes
+      this.anno=this.lstEvals[0].anno  //this.lstEvals.length-1
+      this.mes=this.lstEvals[0].mes  //this.lstEvals.length-1
       this.mes=this.mes+1
       if (this.mes==12){
         this.mes=0
         this.anno=this.anno+1
       }
-      const annoaux=this.date_fecha_asig.getFullYear()
-      const mesaux=this.date_fecha_asig.getMonth()
-      
+      const annoaux=dateFechaAsig.getFullYear()
+      const mesaux=dateFechaAsig.getMonth()
       if (annoaux>this.anno || (annoaux==this.anno)&&(mesaux>=this.mes)) {
         this.anno=annoaux
         this.mes=mesaux
